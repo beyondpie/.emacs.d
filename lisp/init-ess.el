@@ -74,7 +74,6 @@
   )
 
 (require 'major-mode-hydra)
-
 (major-mode-hydra-define ess-r-mode nil
   ("Eval"
    ( ("sl" ess-eval-line "send line")
@@ -86,6 +85,18 @@
      )
    "Help"
    (("gg" lsp-find-definition "lsp find definition"))
-))
+   ))
+
+(require 'general)
+(general-define-key
+ :states 'normal
+ :keymaps 'ess-r-mode-map
+ :prefix ","
+ "sl" '(ess-eval-line :which-key "eval send line")
+ "sf" '(ess-eval-function :which-key "eval send function")
+ "sr" '(ess-eval-region :which-key "eval send region")
+ "'" '(R :which-key "start repl")
+ )
+
 
 (provide 'init-ess)

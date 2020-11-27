@@ -45,6 +45,9 @@
 (require-package 'evil)
 (evil-mode 1)
 
+(with-eval-after-load 'evil
+  (define-key evil-normal-state-map (kbd "M-.") nil))
+
 ;; undo-tree
 (require-package 'undo-tree)
 (global-undo-tree-mode)
