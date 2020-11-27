@@ -4,7 +4,8 @@
 
 (when (maybe-require-package 'diredfl)
   (with-eval-after-load 'dired
-    (diredfl-global-mode)
+    ;; close this mode, too many colors
+    ;; (diredfl-global-mode)
     (require 'dired-x)))
 
 ;; Hook up dired-x global bindings without loading it up-front
