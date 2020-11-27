@@ -43,6 +43,7 @@
 (require 'init-projectile)
 (require 'init-dashboard)
 (require 'init-treemacs)
+(require 'init-osx-keys)
 
 (require 'init-prog)
 (require 'init-lsp)
