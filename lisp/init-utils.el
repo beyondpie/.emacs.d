@@ -2,7 +2,7 @@
 
 ;; for tabs
 (setq-default indent-tabs-mode t
-              default-tab-width 4)
+              default-tab-width 2)
 
 ;; ** language
 (ispell-change-dictionary "american" t)

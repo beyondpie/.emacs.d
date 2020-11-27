@@ -1,4 +1,4 @@
-;; init.el ---start emacs configuration  -*- lexical-binding: t -*-
+;;; init.el ---start emacs configuration  -*- lexical-binding: t -*-
 
 ;; load the full configuration
 (defconst *spell-check-support-enabled* t)
@@ -36,7 +36,6 @@
 (require 'init-ibuffer)
 (require 'init-flycheck)
 (require 'init-recentf)
-;; (require 'init-smex)
 (require 'init-ivy)
 (require 'init-company)
 (require 'init-windows)
