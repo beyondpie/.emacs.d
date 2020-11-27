@@ -16,6 +16,7 @@
 
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 
+
 (require 'init-elpa)
 (require 'init-path)
 
@@ -39,6 +40,8 @@
 (require 'init-windows)
 (require 'init-git)
 (require 'init-projectile)
+(require 'init-dashboard)
+(require 'init-treemacs)
 
 (require 'init-python)
 
@@ -51,6 +54,7 @@
         try-expand-dabbrev-all-buffers
         try-expand-dabbrev-from-kill))
 
+;; multiple major mode
 (require-package 'mmm-mode)
 (require 'mmm-auto)
 (setq mmm-global-mode 'buffers-with-submode-classes)
