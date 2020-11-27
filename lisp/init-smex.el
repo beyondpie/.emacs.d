@@ -2,6 +2,7 @@
 ;;; Commentary: from purcell
 ;;; Code:
 
+;; TODO: check if after helm if I neeed smex
 ;; Use smex to handle M-x
 (when (maybe-require-package 'smex)
   ;; Change path for ~/.smex-items

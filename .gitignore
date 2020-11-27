@@ -2,3 +2,15 @@
 /elpa-27.1/
 /elpa-28.0/
 /.DS_Store
+*.eld
+/recentf~
+/recentf
+/custom.el~
+/init.el~
+/.cache/
+/.lsp-session-v1
+/auto-save-list/
+/transient/
+.DS_Store
+/.uptimes.el
+/.smex-items

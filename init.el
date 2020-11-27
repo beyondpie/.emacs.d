@@ -1,6 +1,6 @@
-;;; -*- lexical-binding: t -*-
+;; init.el ---start emacs configuration  -*- lexical-binding: t -*-
 
-;;; load the full configuration
+;; load the full configuration
 (defconst *spell-check-support-enabled* t)
 (defconst *is-a-mac* (eq system-type 'darwin))
 
@@ -25,6 +25,8 @@
 (require-package 'command-log-mode)
 (require-package 'use-package)
 
+(require 'init-utils)
+(require 'init-helm)
 
 (require 'init-themes)
 (require 'init-gui-frames)
@@ -34,7 +36,7 @@
 (require 'init-ibuffer)
 (require 'init-flycheck)
 (require 'init-recentf)
-(require 'init-smex)
+;; (require 'init-smex)
 (require 'init-ivy)
 (require 'init-company)
 (require 'init-windows)
@@ -43,6 +45,8 @@
 (require 'init-dashboard)
 (require 'init-treemacs)
 
+(require 'init-lsp)
+(require 'init-ess)
 (require 'init-python)
 
 
