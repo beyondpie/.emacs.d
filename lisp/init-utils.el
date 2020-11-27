@@ -27,7 +27,6 @@
 
 (which-key-mode)
 
-
 ;; evil mode
 (setq evil-disable-insert-state-bindings t)
 (require-package 'evil)
@@ -37,4 +36,9 @@
 (require-package 'undo-tree)
 (global-undo-tree-mode)
 
+;; doom-mode line
+
+(require-package 'doom-modeline)
+(doom-modeline-mode 1)
+(setq doom-modeline-icon nil)
 (provide 'init-utils)
