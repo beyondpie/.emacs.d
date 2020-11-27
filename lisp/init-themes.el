@@ -34,4 +34,5 @@
   (setq custom-enabled-themes '(spacemacs-light))
   (reapply-themes))
 
+(set-frame-font "Monaco-16" nil t)
 (provide 'init-themes)

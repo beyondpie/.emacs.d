@@ -14,6 +14,8 @@
 (dolist (dir '("site-lisp" "lisp"))
 	(push (expand-file-name dir user-emacs-directory) load-path))
 
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+
 (require 'init-elpa)
 (require 'init-path)
 
@@ -24,13 +26,35 @@
 
 
 (require 'init-themes)
+(require 'init-gui-frames)
 (require 'init-dired)
 (require 'init-isearch)
 (require 'init-grep)
 (require 'init-ibuffer)
 (require 'init-flycheck)
 (require 'init-recentf)
+(require 'init-smex)
+(require 'init-ivy)
+(require 'init-company)
+(require 'init-windows)
+(require 'init-git)
+(require 'init-projectile)
 
+(require 'init-python)
+
+
+(global-set-key (kbd "M-/") 'hippie-expand)
+(setq hippie-expand-try-functions-list
+      '(try-complete-file-name-partially
+        try-complete-file-name
+        try-expand-dabbrev
+        try-expand-dabbrev-all-buffers
+        try-expand-dabbrev-from-kill))
+
+(require-package 'mmm-mode)
+(require 'mmm-auto)
+(setq mmm-global-mode 'buffers-with-submode-classes)
+(setq mmm-submode-decoration-level 2)
 
 
 (when (maybe-require-package 'uptimes)
