@@ -1,4 +1,4 @@
-;;; init-dired.el ---configure dired -*- lexical-binding: t -*-
+;; init-dired.el ---configure dired -*- lexical-binding: t -*-
 
 (setq-default dired-dwim-target t)
 
@@ -15,5 +15,9 @@
 (when (maybe-require-package 'diff-hl)
   (with-eval-after-load 'dired
     (add-hook 'dired-mode-hook 'diff-hl-dired-mode)))
+
+(when *is-a-mac*
+  (setq dired-use-ls-dired nil))
+
 
 (provide 'init-dired)

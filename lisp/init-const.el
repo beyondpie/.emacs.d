@@ -1,4 +1,4 @@
-;; init-dashboard.el --- Initialize dashboard configurations.	-*- lexical-binding: t -*-
+;; init-const.el ---settings of extra const values	-*- lexical-binding: t -*-
 
 (defconst beyondpie-homepage
 	"https://github.com/beyondpie"

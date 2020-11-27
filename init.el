@@ -45,6 +45,7 @@
 (require 'init-dashboard)
 (require 'init-treemacs)
 
+(require 'init-prog)
 (require 'init-lsp)
 (require 'init-ess)
 (require 'init-python)

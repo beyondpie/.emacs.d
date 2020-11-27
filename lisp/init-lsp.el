@@ -31,8 +31,7 @@
 
 			 (setq read-process-output-max (* 1024 1024))
 			 :hook
-			 ((prog-mode . (lambda() (unless (derived-mode-p 'emacs-lisp-mode 'lisp-mode)
-																 (lsp))))
+			 (
 				(lsp-mode . (lambda()
 											(lsp-enable-which-key-integration)))
 				))

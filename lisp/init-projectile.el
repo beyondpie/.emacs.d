@@ -1,6 +1,8 @@
 ;;; init-projectile.el --- Use Projectile for navigation within projects -*- lexical-binding: t -*-
 
 ;; from purcell
+
+(setq projectile-enable-caching t)
 (when (maybe-require-package 'projectile)
   (add-hook 'after-init-hook 'projectile-mode)
 
