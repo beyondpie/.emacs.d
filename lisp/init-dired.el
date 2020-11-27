@@ -15,10 +15,24 @@
 
 (when (maybe-require-package 'diff-hl)
   (with-eval-after-load 'dired
-    (add-hook 'dired-mode-hook 'diff-hl-dired-mode)))
+    (add-hook 'dired-mode-hook 'diff-hl-dired-mode)
+    (define-key dired-mode-map (kbd "SPC") nil)
+    ))
 
+(require 'general)
+(general-define-key
+ :states '(normal)
+ :prefix "SPC"
+ "fj" '(dired-jump :which-key "jump dired")
+ )
+
+;; install gnu ls
 (when *is-a-mac*
-  (setq dired-use-ls-dired nil))
+  (setq dired-use-ls-dired t
+	insert-directory-program "/usr/local/bin/gls"
+	dired-listing-switches "-aBhl --group-directories-first"
+	)
+  )
 
 (require-package 'dired-quick-sort)
 (dired-quick-sort-setup)

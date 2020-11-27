@@ -1,5 +1,18 @@
 ;; init-utils.el --- Initialize ultilities.	-*- lexical-binding: t -*-
 
+;; some packages
+(require-package 'diminish)
+(maybe-require-package 'scratch)
+(require-package 'command-log-mode)
+;; package management
+(require-package 'use-package)
+;; key bindings
+(require-package 'general)
+(require-package 'hydra)
+(require-package 'major-mode-hydra)
+
+
+
 ;; for tabs
 (setq-default indent-tabs-mode t
               default-tab-width 2)
@@ -41,4 +54,10 @@
 (require-package 'doom-modeline)
 (doom-modeline-mode 1)
 (setq doom-modeline-icon nil)
+
+;; for major-mode
+(global-set-key (kbd "M-SPC") #'major-mode-hydra)
+
+
+
 (provide 'init-utils)

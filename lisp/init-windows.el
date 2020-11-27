@@ -61,4 +61,23 @@
 (global-set-key (kbd "C-x |") 'split-window-horizontally-instead)
 (global-set-key (kbd "C-x _") 'split-window-vertically-instead)
 
+;; key bindings
+;; https://sam217pa.github.io/2016/09/23/keybindings-strategies-in-emacs/
+;; SPC in normal state
+;; mimic spacemacs
+;; close SPC key in dire-mode-map
+(require 'general)
+(general-define-key
+ :states '(normal)
+ :prefix "SPC"
+ "wh" '(evil-window-left :which-key "left window")
+ "wl" '(evil-window-right :which-key "right window")
+ "wj" '(evil-window-down :which-key "down window")
+ "wk" '(evil-window-up :which-key "up window")
+ "wm" '(toggle-frame-maximized :which-key "max window")
+ "wf" '(toggle-frame-fullscreen :which-key "full window")
+ "wM" '(make-frame :which-key "make frame")
+ "wo" '(other-frame :which-key "other frame")
+ )
+
 (provide 'init-windows)

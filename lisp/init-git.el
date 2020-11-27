@@ -19,6 +19,13 @@
   (global-set-key (kbd "C-x v t") 'git-timemachine-toggle))
 
 (global-set-key (kbd "C-x g") 'magit-status)
+(require 'general)
+(general-define-key
+ :states '(normal)
+ :prefix "SPC"
+ "gs" '(magit-status :which-key "magit status")
+ )
+
 
 (require-package 'fullframe)
 (with-eval-after-load 'magit

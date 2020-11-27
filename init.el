@@ -20,11 +20,6 @@
 (require 'init-elpa)
 (require 'init-path)
 
-(require-package 'diminish)
-(maybe-require-package 'scratch)
-(require-package 'command-log-mode)
-(require-package 'use-package)
-
 (require 'init-utils)
 (require 'init-helm)
 
