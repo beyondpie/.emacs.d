@@ -1,0 +1,12 @@
+* My dot emacs
+
+	This dotemacs is only used personally for learning emacs in depth.
+	- System: MacOS
+  - evil: no special configures now
+	- lsp: use lsp for python and R
+	- May be changed often
+	- Emacs verion: >= 27.1
+
+* Reference
+	- Purcell emacs.d
+	- Seagle [[https://github.com/seagle0128/.emacs.d][emacs.d]]
