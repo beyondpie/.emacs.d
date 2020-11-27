@@ -1,11 +1,23 @@
 ;; init-helm.el ---setting helm -*- lexical-binding: t -*-
 
-
 (require-package 'helm)
+(helm-mode 1)
+(helm-autoresize-mode 1)
+(setq helm-split-window-default-side 'below)
+(setq helm-autoresize-max-height 30)
+
+(require-package 'helm-git-grep)
+(eval-after-load 'helm
+  '(define-key helm-map (kbd "C-c g") 'helm-git-grep-from-helm))
+
 (require-package 'helm-swoop)
 (global-set-key (kbd "M-x") #'helm-M-x)
 (global-set-key (kbd "C-x C-f") #'helm-find-files)
-(helm-mode 1)
+
+;; If this value is t, split window inside the current window
+(setq helm-swoop-split-with-multiple-windows t)
+;; Split direcion. 'split-window-vertically or 'split-window-horizontally
+(setq helm-swoop-split-direction 'split-window-vertically)
 
 (global-set-key (kbd "C-SPC") 'set-mark-command)
 

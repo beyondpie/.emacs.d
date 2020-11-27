@@ -78,14 +78,11 @@
           (lambda ()
             (setq line-spacing 0)))
 
-
 ;; Change global font size easily
 
 (require-package 'default-text-scale)
 (add-hook 'after-init-hook 'default-text-scale-mode)
 
-
-
 (require-package 'disable-mouse)
 
 ;; http://ergoemacs.org/emacs/emacs_customize_default_window_size.html

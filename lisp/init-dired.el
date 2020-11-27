@@ -19,5 +19,7 @@
 (when *is-a-mac*
   (setq dired-use-ls-dired nil))
 
+(require-package 'dired-quick-sort)
+(dired-quick-sort-setup)
 
 (provide 'init-dired)
