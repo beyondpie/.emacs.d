@@ -27,4 +27,14 @@
 
 (which-key-mode)
 
+
+;; evil mode
+(setq evil-disable-insert-state-bindings t)
+(require-package 'evil)
+(evil-mode 1)
+
+;; undo-tree
+(require-package 'undo-tree)
+(global-undo-tree-mode)
+
 (provide 'init-utils)
