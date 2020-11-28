@@ -9,6 +9,7 @@
 (setq-default switch-window-shortcut-style 'alphabet)
 (setq-default switch-window-timeout nil)
 (global-set-key (kbd "C-x o") 'switch-window)
+(require-package 'avy)
 
 
 ;;----------------------------------------------------------------------------
@@ -75,6 +76,8 @@
  "wf" '(toggle-frame-fullscreen :which-key "full window")
  "wM" '(make-frame :which-key "make frame")
  "wo" '(other-frame :which-key "other frame")
+ "jl" '(avy-goto-line :which-key "jump to line")
+ "jw" '(avy-goto-word-1 :which-key "jump to word")
  )
 
 ;; scroll continuouly one line at a time
