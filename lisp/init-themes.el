@@ -10,6 +10,7 @@
 
 (defun set-evil-insert-state-cursor ()
   "change evil insert state cusor color based on theme"
+  (interactive)
   (if (string= (frame-parameter nil 'background-mode) "light")
     (setq evil-insert-state-cursor '(bar "Black"))
     (setq evil-insert-state-cursor '(bar "White"))))
