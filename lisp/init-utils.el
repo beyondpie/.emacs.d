@@ -80,11 +80,6 @@
 
 (define-key evil-emacs-state-map [escape] 'evil-normal-state)
 
-(setq evil-mode-line-format nil
-      evil-insert-state-cursor '(bar "White")
-      evil-visual-state-cursor '(box "#F86155")
-      evil-normal-state-cursor '(box "Orange"))
-
 ;; undo-tree
 (require-package 'undo-tree)
 (global-undo-tree-mode)
@@ -97,7 +92,5 @@
 ;; for major-mode
 (require 'init-const)
 (global-set-key (kbd beyondpie/non-normal-leader-key) #'major-mode-hydra)
-
-
 
 (provide 'init-utils)
