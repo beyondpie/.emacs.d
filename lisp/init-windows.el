@@ -1,5 +1,5 @@
 ;;; init-windows.el --- setting windows within frames -*- lexical-binding: t -*-
-;; from purcell
+;; ref purcell
 
 ;; navigate the windoews with "C-c <left>" or "C-c <right>"
 (add-hook 'after-init-hook 'winner-mode)
@@ -61,12 +61,6 @@
 (global-set-key (kbd "C-x |") 'split-window-horizontally-instead)
 (global-set-key (kbd "C-x _") 'split-window-vertically-instead)
 
-;; key bindings
-;; https://sam217pa.github.io/2016/09/23/keybindings-strategies-in-emacs/
-;; SPC in normal state
-;; mimic spacemacs
-;; close SPC key in dire-mode-map
-
 (require 'init-const)
 (require 'general)
 (general-define-key
@@ -82,5 +76,8 @@
  "wM" '(make-frame :which-key "make frame")
  "wo" '(other-frame :which-key "other frame")
  )
+
+;; scroll continuouly one line at a time
+(setq scroll-conservatively 10000)
 
 (provide 'init-windows)

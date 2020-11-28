@@ -12,6 +12,11 @@
 (define-key ctl-x-map "\C-j" 'dired-jump)
 (define-key ctl-x-4-map "\C-j" 'dired-jump-other-window)
 
+;; key bindings
+;; https://sam217pa.github.io/2016/09/23/keybindings-strategies-in-emacs/
+;; SPC in normal state
+;; mimic spacemacs
+;; close SPC key in dire-mode-map
 
 (when (maybe-require-package 'diff-hl)
   (with-eval-after-load 'dired
