@@ -3,7 +3,6 @@
 ;; from seagle0128
 
 (require 'init-const)
-
 ;; optional for dashboard
 (require-package 'all-the-icons)
 ;; https://github.com/emacs-dashboard/emacs-dashboard

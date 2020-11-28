@@ -44,7 +44,7 @@
 (setq evil-disable-insert-state-bindings t)
 (require-package 'evil)
 (evil-mode 1)
-
+;; remove M-. binded by evil normal state.
 (with-eval-after-load 'evil
   (define-key evil-normal-state-map (kbd "M-.") nil))
 
@@ -59,7 +59,8 @@
 (setq doom-modeline-icon nil)
 
 ;; for major-mode
-(global-set-key (kbd "M-SPC") #'major-mode-hydra)
+(require 'init-const)
+(global-set-key (kbd beyondpie/non-normal-leader-key) #'major-mode-hydra)
 
 
 

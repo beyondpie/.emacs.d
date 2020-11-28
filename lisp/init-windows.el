@@ -66,10 +66,13 @@
 ;; SPC in normal state
 ;; mimic spacemacs
 ;; close SPC key in dire-mode-map
+
+(require 'init-const)
 (require 'general)
 (general-define-key
- :states '(normal)
- :prefix "SPC"
+ :states '(normal visual insert emacs)
+ :prefix beyondpie/normal-leader-key
+ :non-normal-prefix beyondpie/non-normal-leader-key
  "wh" '(evil-window-left :which-key "left window")
  "wl" '(evil-window-right :which-key "right window")
  "wj" '(evil-window-down :which-key "down window")

@@ -19,7 +19,7 @@
 
 (require 'init-elpa)
 (require 'init-path)
-
+(require 'init-const)
 (require 'init-utils)
 (require 'init-helm)
 
