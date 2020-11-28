@@ -98,5 +98,10 @@
  "'" '(R :which-key "start repl")
  )
 
+(general-define-key
+ :states '(insert emacs)
+ :keymaps 'ess-r-mode-map
+ "-" '(ess-insert-assign :which-key "ess assign")
+)
 
 (provide 'init-ess)

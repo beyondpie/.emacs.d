@@ -78,6 +78,8 @@
 (when (file-exists-p custom-file)
   (load custom-file))
 
+;; for doggypoo
+(require 'doggypoo)
 
 (provide 'init)
 
