@@ -90,7 +90,6 @@
 (global-undo-tree-mode)
 
 ;; doom-mode line
-
 (require-package 'doom-modeline)
 (doom-modeline-mode 1)
 (setq doom-modeline-icon nil)
