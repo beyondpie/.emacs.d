@@ -43,11 +43,23 @@
 
 ;; evil mode
 (setq evil-disable-insert-state-bindings t)
+;; https://github.com/emacs-evil/evil-collection
+(setq evil-want-integration t)
+(setq evil-want-keybinding nil)
 (require-package 'evil)
 (evil-mode 1)
+
+;; evil-collection make SPC setting failed ...
+
+;; (require-package 'evil-collection)
+;; (when (require 'evil-collection nil t)
+;;   (evil-collection-init))
+
 ;; remove M-. binded by evil normal state.
 (with-eval-after-load 'evil
   (define-key evil-normal-state-map (kbd "M-.") nil))
+
+
 
 ;; undo-tree
 (require-package 'undo-tree)

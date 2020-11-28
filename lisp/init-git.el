@@ -6,6 +6,13 @@
 (require-package 'gitignore-mode)
 (require-package 'gitconfig-mode)
 
+; optional: this is the evil state that evil-magit will use
+(setq evil-magit-state 'normal)
+;; optional: disable additional bindings for yanking text
+(setq evil-magit-use-y-for-yank t)
+(require-package 'evil-magit)
+
+
 ;; TODO: check the usages of following packages
 (maybe-require-package 'yagist)
 (require-package 'bug-reference-github)
