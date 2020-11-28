@@ -15,7 +15,7 @@
 (global-set-key (kbd "C-SPC") 'set-mark-command)
 
 ;; for tabs
-(setq-default indent-tabs-mode t
+(setq-default indent-tabs-mode nil
               default-tab-width 2)
 
 ;; ** language

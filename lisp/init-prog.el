@@ -16,7 +16,8 @@
  :states 'normal
  :keymaps 'prog-mode-map
  :prefix ","
- "gg" '(xref-find-definitions :which-key "lsp find def")
+ "gg" '(xref-find-definitions :which-key "xref find def")
+ "el" '(flycheck-list-errors :which-key "flycheck list of errors")
  )
 
 (provide 'init-prog)
