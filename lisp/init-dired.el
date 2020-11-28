@@ -24,6 +24,7 @@
  :states '(normal)
  :prefix "SPC"
  "fj" '(dired-jump :which-key "jump dired")
+ "ff" '(helm-find-files :which-key "find file")
  )
 
 ;; install gnu ls
