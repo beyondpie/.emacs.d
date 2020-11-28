@@ -19,18 +19,17 @@
 ;; Split direcion. 'split-window-vertically or 'split-window-horizontally
 (setq helm-swoop-split-direction 'split-window-vertically)
 
-(global-set-key (kbd "C-SPC") 'set-mark-command)
 
-;; helm
-;; TODO: maybe we don't need isearch?
 (global-set-key (kbd "C-s") 'helm-swoop)
-;; http://tuhdo.github.io/helm-intro.html#orgheadline2
-(eval-after-load "helm-mode"
-	'(define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)) ; rebind tab to do persistent action
-(eval-after-load "helm-mode"
-	'(define-key helm-map (kbd "C-i") 'helm-execute-persistent-action)) ; make TAB works in terminal
-(eval-after-load "helm-mode"
-	'(define-key helm-map (kbd "C-z")  'helm-select-action)) ; list actions using C-z
+;; Disable pre-input
+(setq helm-swoop-pre-input-function
+      (lambda () ""))
 
+;; http://tuhdo.github.io/helm-intro.html#orgheadline2
+(with-eval-after-load 'helm
+  (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
+  (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action)
+  (define-key helm-map (kbd "C-z") 'helm-select-action)
+  )
 
 (provide 'init-helm)

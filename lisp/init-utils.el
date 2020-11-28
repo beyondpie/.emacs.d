@@ -11,7 +11,8 @@
 (require-package 'hydra)
 (require-package 'major-mode-hydra)
 
-
+;; for mark
+(global-set-key (kbd "C-SPC") 'set-mark-command)
 
 ;; for tabs
 (setq-default indent-tabs-mode t
