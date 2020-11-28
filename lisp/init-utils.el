@@ -43,22 +43,42 @@
 
 ;; evil mode
 (setq evil-disable-insert-state-bindings t)
-;; https://github.com/emacs-evil/evil-collection
-(setq evil-want-integration t)
-(setq evil-want-keybinding nil)
 (require-package 'evil)
 (evil-mode 1)
 
 ;; evil-collection make SPC setting failed ...
 
+;; https://github.com/emacs-evil/evil-collection
+;; (setq evil-want-integration t)
+;; (setq evil-want-keybinding nil)
 ;; (require-package 'evil-collection)
 ;; (when (require 'evil-collection nil t)
-;;   (evil-collection-init))
+  ;; (evil-collection-init))
 
 ;; remove M-. binded by evil normal state.
 (with-eval-after-load 'evil
   (define-key evil-normal-state-map (kbd "M-.") nil))
 
+;;  override normal state with dired’s keybindings, you could do this:
+;; The latter is what evil does by default (followed by an evil-add-hjkl-bindings).
+(evil-make-overriding-map dired-mode-map 'normal)
+
+
+;; https://github.com/noctuid/evil-guide#use-some-emacs-keybindings
+;; Note that at any time you can use evil-toggle-key (C-z by default;
+;; bound to evil-emacs-state) to enter emacs state or \ (bound to
+;; evil-execute-in-emacs-state) to execute the next command in emacs
+;; state. In emacs state, evil-toggle-key is bound to switch to the
+;; previous state. This may not be what you want if you’ve entered emacs
+;; state from insert state, so you may want to also bind ESC to enter
+;; normal state
+
+;; Note that in this case, attempting to rebind (kbd "ESC") will not work
+;; in GUI Emacs (and will prevent meta from working if used in the
+;; terminal). Currently it is not possible to bind
+;; escape in emacs state for terminal Emacs (see issue #14).
+
+(define-key evil-emacs-state-map [escape] 'evil-normal-state)
 
 
 ;; undo-tree
