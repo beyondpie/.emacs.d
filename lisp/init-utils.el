@@ -43,17 +43,16 @@
 
 ;; evil mode
 (setq evil-disable-insert-state-bindings t)
+;; (setq evil-want-keybinding nil)
 (require-package 'evil)
 (evil-mode 1)
 
 ;; evil-collection make SPC setting failed ...
 
 ;; https://github.com/emacs-evil/evil-collection
-;; (setq evil-want-integration t)
-;; (setq evil-want-keybinding nil)
 ;; (require-package 'evil-collection)
 ;; (when (require 'evil-collection nil t)
-  ;; (evil-collection-init))
+;;   (evil-collection-init))
 
 ;; remove M-. binded by evil normal state.
 (with-eval-after-load 'evil
@@ -61,8 +60,9 @@
 
 ;;  override normal state with dired’s keybindings, you could do this:
 ;; The latter is what evil does by default (followed by an evil-add-hjkl-bindings).
-(evil-make-overriding-map dired-mode-map 'normal)
-
+(with-eval-after-load 'dired
+  (evil-make-overriding-map dired-mode-map 'normal)
+  )
 
 ;; https://github.com/noctuid/evil-guide#use-some-emacs-keybindings
 ;; Note that at any time you can use evil-toggle-key (C-z by default;
@@ -80,6 +80,10 @@
 
 (define-key evil-emacs-state-map [escape] 'evil-normal-state)
 
+(setq evil-mode-line-format nil
+      evil-insert-state-cursor '(bar "White")
+      evil-visual-state-cursor '(box "#F86155")
+      evil-normal-state-cursor '(box "Orange"))
 
 ;; undo-tree
 (require-package 'undo-tree)
