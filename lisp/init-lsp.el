@@ -7,12 +7,6 @@
 ;; have to use require to install package, use-pacakge not work
 ;; not know why
 (use-package lsp-mode
-  :commands (lsp-enable-which-key-integration
-	     lsp-format-buffer
-	     lsp-organize-imports
-	     lsp-install-server
-	     lsp-deferred
-	     lsp)
   :init
   (setq lsp-keymap-prefix "C-c l"
 	lsp-keep-workspace-alive nil
@@ -32,10 +26,8 @@
 
   (setq read-process-output-max (* 1024 1024))
   :hook
-  (
-   (lsp-mode . (lambda()
-		 (lsp-enable-which-key-integration)))
-   ))
+  (lsp-mode . lsp-enable-which-key-integration)
+   )
 
 (use-package helm-lsp
   :commands (helm-lsp-workspace-symbol

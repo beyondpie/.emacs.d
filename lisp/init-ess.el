@@ -23,11 +23,11 @@
    "sl" '(ess-eval-line :which-key "eval send line")
    "sf" '(ess-eval-function :which-key "eval send function")
    "sr" '(ess-eval-region :which-key "eval send region")
-   ;; move the commands to prog-mode
    "gg" '(lsp-find-definition :which-key "lsp find definition")
    "gf" '(helm-semantic-or-imenu :which-key "helm search semantic")
    "go" '(helm-occur :which-key "helm occur")
    "gm" '(helm-all-mark-rings :which-key "helm all mark rings")
+   "rn" '(lsp-rename :which-key "lsp rename")
    "'" '(R :which-key "start repl"))
   (:states '(insert emacs)
    :keymaps 'ess-r-mode-map

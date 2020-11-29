@@ -1,9 +1,9 @@
 ;;; init-company.el --- Completion with company -*- lexical-binding: t -*-
 
-;;; Commentary: 
+;;; Commentary:
 ;;ref: seagle init-company
 
-;;; Codes:
+;;; Code:
 
 (use-package company
   :diminish
@@ -35,7 +35,9 @@
                                    gud-mode eshell-mode shell-mode)
         company-backends '((company-capf :with company-yasnippet)
                            (company-dabbrev-code company-keywords company-files)
-                           company-dabbrev))
+                           company-dabbrev)
+        tab-always-indent 'complete)
+  (add-to-list 'completion-styles 'initials t)
 
   (defun my-company-yasnippet ()
     "Hide the current completeions and show snippets."
@@ -90,7 +92,8 @@
       :bind (:map company-active-map
              ([remap company-show-doc-buffer] . company-quickhelp-manual-begin))
       :hook (global-company-mode . company-quickhelp-mode)
-      :init (setq company-quickhelp-delay 0.5)))
+      :init (setq company-quickhelp-delay 5))
+  )
 
 (provide 'init-company)
 ;;; init-company.el ends here

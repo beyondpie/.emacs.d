@@ -64,7 +64,7 @@
 (use-package doom-modeline
   :config
   (doom-modeline-mode 1)
-  (setq doom-modeline-icon nil)
+  (setq doom-modeline-icon t)
 )
 
 ;; for major-mode
