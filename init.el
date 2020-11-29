@@ -22,6 +22,7 @@
 (require 'init-const)
 (require 'init-utils)
 (require 'init-helm)
+;; (require 'init-ivy)
 
 (require 'init-themes)
 (require 'init-gui-frames)
@@ -31,7 +32,6 @@
 (require 'init-ibuffer)
 (require 'init-flycheck)
 (require 'init-recentf)
-(require 'init-ivy)
 (require 'init-company)
 (require 'init-windows)
 (require 'init-git)
@@ -80,7 +80,6 @@
 
 ;; for doggypoo
 (require 'doggypoo)
-
 (provide 'init)
 
 ;; Local Variables:

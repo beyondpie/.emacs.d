@@ -6,6 +6,8 @@
 (require-package 'command-log-mode)
 ;; package management
 (require-package 'use-package)
+;; use for byte-compile: https://github.com/jwiegley/use-package/issues/436
+(require 'bind-key)
 ;; key bindings
 (require-package 'general)
 (require-package 'hydra)
@@ -79,6 +81,8 @@
 ;; escape in emacs state for terminal Emacs (see issue #14).
 
 (define-key evil-emacs-state-map [escape] 'evil-normal-state)
+;; use emacs command of C-e in normal state
+(define-key evil-normal-state-map (kbd "C-e") 'move-end-of-line)
 
 ;; undo-tree
 (require-package 'undo-tree)
@@ -92,5 +96,20 @@
 ;; for major-mode
 (require 'init-const)
 (global-set-key (kbd beyondpie/non-normal-leader-key) #'major-mode-hydra)
+
+;; auto-package-update
+(use-package auto-package-update
+  :commands (auto-package-update-now
+             auto-package-update-maybe
+             )
+  :ensure t
+  :pin melpa
+  :config
+  (setq auto-package-update-delete-old-versions t)
+  (setq auto-package-update-hide-results t)
+  (setq auto-package-update-interval 14)
+  (setq auto-package-update-prompt-before-update t)
+  (auto-package-update-maybe))
+
 
 (provide 'init-utils)

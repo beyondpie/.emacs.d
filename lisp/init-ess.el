@@ -1,19 +1,42 @@
-;; init-ess.el --- set R env. -*- lexical-binding: t -*-
+;;; init-ess.el --- set R env. -*- lexical-binding: t -*-
 
-(require-package 'ess)
-(require 'lsp-mode)
-(add-hook 'ess-r-mode-hook (lambda() (lsp)))
+;;; Commentary:
+
+;;; Code:
+
+(use-package ess
+  :ensure t
+  :pin melpa
+  ;; currently R depends on lsp
+  :after lsp-mode
+  :init
+  :config
+  (setq ess-indent-offset 2)
+  :hook (ess-r-mode . lsp)
+  :general
+  (:states '(normal visual)
+   :keymaps 'ess-r-mode-map
+   :prefix beyondpie/major-mode-leader-key
+   "sl" '(ess-eval-line :which-key "eval send line")
+   "sf" '(ess-eval-function :which-key "eval send function")
+   "sr" '(ess-eval-region :which-key "eval send region")
+   "gg" '(lsp-find-definition :which-key "lsp find definition")
+   "'" '(R :which-key "start repl"))
+  (:states '(insert emacs)
+   :keymaps 'ess-r-mode-map
+   "-" '(ess-insert-assign :which-key "ess-assign")
+   )
+  (:keymaps 'inferior-ess-r-mode-map
+   "C-l" '(comint-clear-buffer :which-key "clear console")))
+
 
 ;; use of stan
-(require-package 'stan-mode)
-(require-package 'company-stan)
-(require-package 'eldoc-stan)
-(require-package 'flycheck-stan)
-(require-package 'stan-snippets)
 
 (use-package stan-mode
   ;; Uncomment if directly loading from your development repo
   ;; :load-path "your-path/stan-mode/stan-mode"
+  :ensure t
+  :pin melpa
   :mode ("\\.stan\\'" . stan-mode)
   :hook (stan-mode . stan-mode-setup)
   ;;
@@ -24,6 +47,9 @@
 (use-package company-stan
   ;; Uncomment if directly loading from your development repo
   ;; :load-path "your-path/stan-mode/company-stan/"
+  :ensure t
+  :pin melpa
+  :after stan-mode
   :hook (stan-mode . company-stan-setup)
   ;;
   :config
@@ -33,6 +59,9 @@
 (use-package eldoc-stan
   ;; Uncomment if directly loading from your development repo
   ;; :load-path "your-path/stan-mode/eldoc-stan/"
+  :ensure t
+  :pin melpa
+  :after stan-mode
   :hook (stan-mode . eldoc-stan-setup)
   ;;
   :config
@@ -42,6 +71,9 @@
 
 (use-package flycheck-stan
   ;; Add a hook to setup `flycheck-stan' upon `stan-mode' entry
+  :ensure t
+  :pin melpa
+  :after stan-mode
   :hook ((stan-mode . flycheck-stan-stanc2-setup)
          (stan-mode . flycheck-stan-stanc3-setup))
   :config
@@ -56,52 +88,14 @@
 (use-package stan-snippets
   ;; Uncomment if directly loading from your development repo
   ;; :load-path "your-path/stan-mode/stan-snippets/"
+  :ensure t
+  :pin melpa
+  :after stan-mode
   :hook (stan-mode . stan-snippets-initialize)
   ;;
   :config
   ;; No configuration options as of now.
   )
-
-
-  ;;; stan-snippets.el
-(use-package stan-snippets
-  ;; Uncomment if directly loading from your development repo
-  ;; :load-path "your-path/stan-mode/stan-snippets/"
-  :hook (stan-mode . stan-snippets-initialize)
-  ;;
-  :config
-  ;; No configuration options as of now.
-  )
-
-(require 'major-mode-hydra)
-(major-mode-hydra-define ess-r-mode nil
-  ("Eval"
-   ( ("sl" ess-eval-line "send line")
-     ("sf" ess-eval-function "send function")
-     ("sr" ess-eval-region "send region")
-     )
-  "REPL"
-   ( ("'" R "start R")
-     )
-   "Help"
-   (("gg" lsp-find-definition "lsp find definition"))
-   ))
-
-(require 'general)
-(general-define-key
- :states 'normal
- :keymaps 'ess-r-mode-map
- :prefix ","
- "sl" '(ess-eval-line :which-key "eval send line")
- "sf" '(ess-eval-function :which-key "eval send function")
- "sr" '(ess-eval-region :which-key "eval send region")
- "'" '(R :which-key "start repl")
- )
-
-(general-define-key
- :states '(insert emacs)
- :keymaps 'ess-r-mode-map
- "-" '(ess-insert-assign :which-key "ess assign")
-)
 
 (provide 'init-ess)
+;;; init-ess.el ends here

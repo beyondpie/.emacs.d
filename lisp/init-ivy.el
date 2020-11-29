@@ -2,6 +2,8 @@
 ;;; Commentary: from purcell
 ;;; Code:
 
+;; keep it but use helm firstly
+
 (when (maybe-require-package 'ivy)
   (add-hook 'after-init-hook 'ivy-mode)
   (with-eval-after-load 'ivy

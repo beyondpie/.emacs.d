@@ -1,6 +1,9 @@
-;; init-treemacs.el --- Initialize treemacs.	-*- lexical-binding: t -*-
+;;; init-treemacs.el --- Initialize treemacs.-*- lexical-binding: t -*-
 
-;; from https://github.com/Alexander-Miller/treemacs
+;;; Commentary:
+;; Ref: https://github.com/Alexander-Miller/treemacs
+
+;;; Code:
 
 (use-package treemacs
   :ensure t
@@ -28,7 +31,8 @@
           treemacs-max-git-entries               5000
           treemacs-missing-project-action        'ask
           treemacs-move-forward-on-expand        nil
-          treemacs-no-png-images                 nil
+          ;; don't show icons in treemacs
+          treemacs-no-png-images                 t
           treemacs-no-delete-other-windows       t
           treemacs-project-follow-cleanup        nil
           treemacs-persist-file                  (expand-file-name ".cache/treemacs-persist" user-emacs-directory)
@@ -77,10 +81,11 @@
   :after treemacs projectile
   :ensure t)
 
-(use-package treemacs-icons-dired
-  :after treemacs dired
-  :ensure t
-  :config (treemacs-icons-dired-mode))
+;; Prefer no figures in dired
+;; (use-package treemacs-icons-dired
+;;   :after treemacs dired
+;;   :ensure t
+;;   :config (treemacs-icons-dired-mode))
 
 (use-package treemacs-magit
   :after treemacs magit
@@ -92,6 +97,4 @@
   :config (treemacs-set-scope-type 'Perspectives))
 
 (provide 'init-treemacs)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; init-treemacs.el ends here
