@@ -4,14 +4,17 @@
 
 ;;; Code:
 
+;; TODO: have to use require lsp-mode
+(require 'lsp-mode)
 (use-package ess
   :ensure t
   :pin melpa
-  ;; currently R depends on lsp
-  :after lsp-mode
   :init
+  :requires lsp-mode
   :config
-  (setq ess-indent-offset 2)
+  (setq ess-indent-offset 2
+        ess-style 'RStudio
+        ess-fancy-comments nil)
   :hook (ess-r-mode . lsp)
   :general
   (:states '(normal visual)
@@ -35,7 +38,6 @@
 
 
 ;; use of stan
-
 (use-package stan-mode
   ;; Uncomment if directly loading from your development repo
   ;; :load-path "your-path/stan-mode/stan-mode"

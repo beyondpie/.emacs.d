@@ -60,7 +60,9 @@
          ("C-c g" . helm-git-grep-from-helm)
          ("C-i" . helm-execute-persistent-action)
          ("C-z" . helm-select-action)
-         ("[tab]" . helm-execute-persistent-action)))
-
+         ([tab] . helm-execute-persistent-action)))
+;; TODO: require helm will lead void compilation function
+;; have to manually activate helm by M-x
+;; (require 'helm)
 (provide 'init-helm)
 ;;; init-helm ends here

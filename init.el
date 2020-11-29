@@ -1,6 +1,10 @@
-;;; init.el ---start emacs configuration  -*- lexical-binding: t -*-
+;;; init.el --- start emacs configuration  -*- lexical-binding: t -*-
 
-;; load the full configuration
+;;; Commentary:
+;; Ref: purcell
+
+;;; Codes:
+
 (defconst *spell-check-support-enabled* t)
 (defconst *is-a-mac* (eq system-type 'darwin))
 
@@ -22,7 +26,6 @@
 (require 'init-const)
 (require 'init-utils)
 (require 'init-helm)
-;; (require 'init-ivy)
 
 (require 'init-themes)
 (require 'init-gui-frames)
@@ -33,6 +36,7 @@
 (require 'init-flycheck)
 (require 'init-recentf)
 (require 'init-company)
+(require 'init-yasnippet)
 (require 'init-windows)
 (require 'init-git)
 (require 'init-projectile)
@@ -44,6 +48,7 @@
 (require 'init-lsp)
 (require 'init-ess)
 (require 'init-python)
+(require 'init-tex)
 
 
 (global-set-key (kbd "M-/") 'hippie-expand)
@@ -81,8 +86,4 @@
 ;; for doggypoo
 (require 'doggypoo)
 (provide 'init)
-
-;; Local Variables:
-;; coding: utf-8
-;; no-byte-compile: t
-;; End:
+;;; init.el ends here

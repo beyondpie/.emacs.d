@@ -1,71 +1,41 @@
 ;; init-utils.el --- Initialize ultilities.	-*- lexical-binding: t -*-
 
-;; some packages
-(require-package 'diminish)
-(maybe-require-package 'scratch)
+;;; Commentary:
+;; ref from seagle and purcell
+
+;;; Code:
+(require-package 'scratch)
 (require-package 'command-log-mode)
-;; package management
-(require-package 'use-package)
-;; use for byte-compile: https://github.com/jwiegley/use-package/issues/436
-(require 'bind-key)
-;; key bindings
-(require-package 'general)
-(require-package 'hydra)
-(require-package 'major-mode-hydra)
-
-;; for mark
-(global-set-key (kbd "C-SPC") 'set-mark-command)
-
-;; for tabs
-(setq-default indent-tabs-mode nil
-              default-tab-width 2)
-
-;; ** language
-(ispell-change-dictionary "american" t)
-(define-coding-system-alias 'UTF-8 'utf-8)
-
+(use-package general)
+(require 'general)
+(use-package hydra)
+(use-package major-mode-hydra)
 
 ;; https://github.com/justbur/emacs-which-key
-(require-package 'which-key)
-;; Allow C-h to trigger which-key before it is done automatically
-(setq which-key-show-early-on-C-h t)
+(use-package which-key
+  :init
+  (setq which-key-show-early-on-C-h t)
+  (setq which-key-idle-delay 0.4)
+  (setq which-key-idle-secondary-delay 0.01)
+  (setq which-key-popup-type 'side-window)
+  (setq which-key-side-window-location 'bottom)
+  (setq which-key-side-window-max-width 0.33)
+  (setq which-key-side-window-max-height 0.25)
+  (setq which-key-max-description-length 30)
+  :config
+  (which-key-mode)
+)
 
-;; make sure which-key doesn't show normally but refreshes quickly after it is
-;; triggered.
-(setq which-key-idle-delay 0.4)
-(setq which-key-idle-secondary-delay 0.01)
-
-(setq which-key-popup-type 'side-window)
-(setq which-key-side-window-location 'bottom)
-(setq which-key-side-window-max-width 0.33)
-(setq which-key-side-window-max-height 0.25)
-(setq which-key-max-description-length 30)
-
-(which-key-mode)
-
-;; evil mode
-(setq evil-disable-insert-state-bindings t)
-;; (setq evil-want-keybinding nil)
-(require-package 'evil)
-(evil-mode 1)
-
-;; evil-collection make SPC setting failed ...
-
-;; https://github.com/emacs-evil/evil-collection
-;; (require-package 'evil-collection)
-;; (when (require 'evil-collection nil t)
-;;   (evil-collection-init))
-
-;; remove M-. binded by evil normal state.
-(with-eval-after-load 'evil
-  (define-key evil-normal-state-map (kbd "M-.") nil))
-
-;;  override normal state with dired’s keybindings, you could do this:
-;; The latter is what evil does by default (followed by an evil-add-hjkl-bindings).
-(with-eval-after-load 'dired
-  (evil-make-overriding-map dired-mode-map 'normal)
-  )
-
+(use-package evil
+  :init
+  (setq evil-disable-insert-state-bindings t)
+  :config
+  (evil-mode 1)
+  (with-eval-after-load 'dired
+  (evil-make-overriding-map dired-mode-map 'normal))
+  :bind
+  (:map evil-normal-state-map
+  ("M-." . nil)
 ;; https://github.com/noctuid/evil-guide#use-some-emacs-keybindings
 ;; Note that at any time you can use evil-toggle-key (C-z by default;
 ;; bound to evil-emacs-state) to enter emacs state or \ (bound to
@@ -74,42 +44,44 @@
 ;; previous state. This may not be what you want if you’ve entered emacs
 ;; state from insert state, so you may want to also bind ESC to enter
 ;; normal state
-
 ;; Note that in this case, attempting to rebind (kbd "ESC") will not work
 ;; in GUI Emacs (and will prevent meta from working if used in the
 ;; terminal). Currently it is not possible to bind
 ;; escape in emacs state for terminal Emacs (see issue #14).
-
-(define-key evil-emacs-state-map [escape] 'evil-normal-state)
-;; use emacs command of C-e in normal state
-(define-key evil-normal-state-map (kbd "C-e") 'move-end-of-line)
+  ("C-e" . move-end-of-line)
+  :map evil-emacs-state-map
+  ([escape] . evil-normal-state)
+  )
+  )
+;; TODO: have to use require to start evil
+(require 'evil)
 
 ;; undo-tree
-(require-package 'undo-tree)
-(global-undo-tree-mode)
+(use-package undo-tree
+  :init
+  (setq global-undo-tree-mode t)
+)
 
 ;; doom-mode line
-(require-package 'doom-modeline)
-(doom-modeline-mode 1)
-(setq doom-modeline-icon nil)
+(use-package doom-modeline
+  :config
+  (doom-modeline-mode 1)
+  (setq doom-modeline-icon nil)
+)
 
 ;; for major-mode
 (require 'init-const)
 (global-set-key (kbd beyondpie/non-normal-leader-key) #'major-mode-hydra)
 
-;; auto-package-update
-(use-package auto-package-update
-  :commands (auto-package-update-now
-             auto-package-update-maybe
-             )
-  :ensure t
-  :pin melpa
-  :config
-  (setq auto-package-update-delete-old-versions t)
-  (setq auto-package-update-hide-results t)
-  (setq auto-package-update-interval 14)
-  (setq auto-package-update-prompt-before-update t)
-  (auto-package-update-maybe))
+;; for mark
+(global-set-key (kbd "C-SPC") 'set-mark-command)
 
+;; for tabs
+(setq-default indent-tabs-mode nil
+              default-tab-width 2)
+;; ** language
+(ispell-change-dictionary "american" t)
+(define-coding-system-alias 'UTF-8 'utf-8)
 
 (provide 'init-utils)
+;;; init-utils.el ends here

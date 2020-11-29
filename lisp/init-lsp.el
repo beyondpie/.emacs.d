@@ -1,10 +1,11 @@
 ;; init-lsp.el --- Initialize LSP configurations.	-*- lexical-binding: t -*-
 
+;;; Commentary:
 ;; ref seagle
 
+;;; Code:
 ;; have to use require to install package, use-pacakge not work
 ;; not know why
-(require-package 'lsp-mode)
 (use-package lsp-mode
   :commands (lsp-enable-which-key-integration
 	     lsp-format-buffer
@@ -52,3 +53,4 @@
 
 
 (provide 'init-lsp)
+;;; init-lsp.el ends here
