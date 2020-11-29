@@ -84,3 +84,4 @@
 (setq scroll-conservatively 10000)
 
 (provide 'init-windows)
+;;; init-windows.el ends here

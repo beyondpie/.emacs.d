@@ -1,4 +1,4 @@
-;; init-lsp.el --- Initialize LSP configurations.	-*- lexical-binding: t -*-
+;;; init-lsp.el --- Initialize LSP configurations. -*- lexical-binding: t -*-
 
 ;;; Commentary:
 ;; ref seagle
@@ -22,12 +22,10 @@
 	lsp-enable-text-document-color nil
 
 	lsp-enable-indentation nil
-	lsp-enable-on-type-formatting nil)
-
-  (setq read-process-output-max (* 1024 1024))
+	lsp-enable-on-type-formatting nil
+        read-process-output-max (* 1024 1024))
   :hook
-  (lsp-mode . lsp-enable-which-key-integration)
-   )
+  (lsp-mode . lsp-enable-which-key-integration))
 
 (use-package helm-lsp
   :commands (helm-lsp-workspace-symbol
@@ -42,7 +40,6 @@
 
 (use-package lsp-treemacs
   :commands lsp-treemacs-errors-list)
-
 
 (provide 'init-lsp)
 ;;; init-lsp.el ends here

@@ -81,5 +81,13 @@
 (ispell-change-dictionary "american" t)
 (define-coding-system-alias 'UTF-8 'utf-8)
 
+;; for text edit
+(general-define-key
+ :states '(normal visual insert emacs)
+ :prefix beyondpie/normal-leader-key
+ :non-normal-prefix beyondpie/non-normal-leader-key
+ "ir" '(indent-region :which-key "indent region")
+ )
+
 (provide 'init-utils)
 ;;; init-utils.el ends here

@@ -12,8 +12,8 @@
   :hook (after-init . helm-mode)
   :config
   (setq helm-split-window-default-side 'below
-        helm-autoresize-max-height 30
-        helm-autoresize-min-height 30
+        helm-autoresize-max-height 40
+        helm-autoresize-min-height 10
         helm-echo-input-in-header-line nil
         history-delete-duplicates t
         helm-M-x-fuzzy-match t

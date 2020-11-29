@@ -1,7 +1,9 @@
-;; init-dashboard.el --- Initialize dashboard configurations.	-*- lexical-binding: t -*-
+;;; init-dashboard.el --- Initialize dashboard configurations.	-*- lexical-binding: t -*-
 
-;; from seagle0128
+;;; Commentary:
+;; Ref: seagle
 
+;;; Code:
 (require 'init-const)
 ;; optional for dashboard
 (require-package 'all-the-icons)
@@ -15,13 +17,12 @@
 ;; show navigator below the banner
 (setq dashboard-set-navigator t)
 (setq dashboard-navigator-buttons
-			`(;; line1
-				((, (all-the-icons-octicon "mark-github" :height 1.1 :v-adjust 0.0)
-				 "GithubPage" "Browse githubpage"
-				 (lambda (&rest _) (browse-url beyondpie-homepage)))
-				 )
-			 )
-)
+      `(;; line1
+	((, (all-the-icons-octicon
+             "mark-github" :height 1.1 :v-adjust 0.0)
+	    "GithubPage" "Browse githubpage"
+	    (lambda (&rest _) (browse-url beyondpie-homepage)))
+	 )))
 
 ;; Content is not centered by default. To center, set
 (setq dashboard-center-content t)
@@ -56,3 +57,4 @@
                                                    :face 'font-lock-keyword-face))
 
 (provide 'init-dashboard)
+;;; init-dashboard.el ends here

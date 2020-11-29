@@ -4,8 +4,17 @@
 
 ;;; Code:
 
-;; TODO: have to use require lsp-mode
 (require 'lsp-mode)
+(defun beyondpie/format_r_file()
+  "format buffer using styler_file.R defined in materials dir"
+  (interactive)
+  (async-shell-command
+   (format "Rscript --verbose --vanilla %s %s"
+           beyondpie/r_styler_path
+           (buffer-file-name))
+   "*styler Out Buffer*"
+   "*styler Error Buffer"))
+
 (use-package ess
   :ensure t
   :pin melpa
@@ -28,6 +37,9 @@
    "go" '(helm-occur :which-key "helm occur")
    "gm" '(helm-all-mark-rings :which-key "helm all mark rings")
    "rn" '(lsp-rename :which-key "lsp rename")
+   "rb" '(lsp-format-buffer :which-key "lsp buffer")
+   "rr" '(lsp-format-region :which-key "lsp region")
+   "rf" '(beyondpie/format_r_file :which-key "my format r file")
    "'" '(R :which-key "start repl"))
   (:states '(insert emacs)
    :keymaps 'ess-r-mode-map
