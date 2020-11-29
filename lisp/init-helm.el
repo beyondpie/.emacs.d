@@ -15,7 +15,17 @@
         helm-autoresize-min-height 30
         helm-echo-input-in-header-line nil
         history-delete-duplicates t
+        helm-M-x-fuzzy-match t
+        helm-buffers-fuzzy-matching t
+        helm-recentf-fuzzy-match t
+        helm-semantic-fuzzy-match t
+        helm-imenu-fuzzy-match t
+        helm-locate-fuzzy-match t
+        helm-apropos-fuzzy-match t
+        helm-lisp-fuzzy-completion t
         )
+  ;; used for helm-man-woman in shell
+  (add-to-list 'helm-sources-using-default-as-input 'helm-source-man-pages)
   (helm-autoresize-mode 1)
   (helm-mode 1)
   (use-package helm-git-grep
@@ -44,12 +54,13 @@
     )
   :bind (("M-x" . helm-M-x)
          ("C-x C-f" . helm-find-files)
+         ("M-y" . helm-show-kill-ring)
+         ("C-x b" . helm-mini)
          :map helm-map
          ("C-c g" . helm-git-grep-from-helm)
          ("C-i" . helm-execute-persistent-action)
          ("C-z" . helm-select-action)
-         ("[tab]" . helm-execute-persistent-action)
-  ))
+         ("[tab]" . helm-execute-persistent-action)))
 
 (provide 'init-helm)
 ;;; init-helm ends here
