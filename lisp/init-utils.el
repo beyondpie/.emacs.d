@@ -13,6 +13,7 @@
 
 ;; https://github.com/justbur/emacs-which-key
 (use-package which-key
+  :hook (after-init . which-key-mode)
   :init
   (setq which-key-show-early-on-C-h t)
   (setq which-key-idle-delay 0.4)
@@ -22,15 +23,14 @@
   (setq which-key-side-window-max-width 0.33)
   (setq which-key-side-window-max-height 0.25)
   (setq which-key-max-description-length 30)
-  :config
-  (which-key-mode)
 )
 
 (use-package evil
   :init
   (setq evil-disable-insert-state-bindings t)
+  :hook (after-init . evil-mode)
   :config
-  (evil-mode 1)
+  ;; (evil-mode 1)
   (with-eval-after-load 'dired
   (evil-make-overriding-map dired-mode-map 'normal))
   :bind
@@ -53,8 +53,6 @@
   ([escape] . evil-normal-state)
   )
   )
-;; TODO: have to use require to start evil
-(require 'evil)
 
 ;; undo-tree
 (use-package undo-tree

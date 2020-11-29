@@ -9,6 +9,7 @@
   :ensure t
   :pin melpa
   :delight
+  :hook (after-init . helm-mode)
   :config
   (setq helm-split-window-default-side 'below
         helm-autoresize-max-height 30
@@ -61,8 +62,5 @@
          ("C-i" . helm-execute-persistent-action)
          ("C-z" . helm-select-action)
          ([tab] . helm-execute-persistent-action)))
-;; TODO: require helm will lead void compilation function
-;; have to manually activate helm by M-x
-;; (require 'helm)
 (provide 'init-helm)
 ;;; init-helm ends here
