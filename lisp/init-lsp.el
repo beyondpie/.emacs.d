@@ -9,7 +9,9 @@
 (use-package lsp-mode
   :init
   (setq lsp-keymap-prefix "C-c l"
-	lsp-keep-workspace-alive nil
+	lsp-keep-workspace-alive t
+        lsp-enable-snippet t
+        lsp-enable-xref t
 	lsp-signature-auto-activate nil
 	lsp-modeline-code-actions-enable nil
 	lsp-modeline-diagnostics-enable nil
@@ -17,9 +19,10 @@
 
 	lsp-enable-file-watchers nil
 	lsp-enable-folding nil
-	lsp-enable-semantic-highlighting nil
-	lsp-enable-symbol-highlighting nil
+	lsp-enable-semantic-highlighting t
+	lsp-enable-symbol-highlighting t
 	lsp-enable-text-document-color nil
+        lsp-enable-imenu t
 
 	lsp-enable-indentation nil
 	lsp-enable-on-type-formatting nil

@@ -27,12 +27,22 @@
 
 (use-package evil
   :init
-  (setq evil-disable-insert-state-bindings t)
-  :hook (after-init . evil-mode)
+  (setq evil-disable-insert-state-bindings t
+        evil-mode-line-format nil
+        evil-visual-state-cursor '(box "#F86155")
+        evil-normal-state-cursor '(box "Orange"))
+  (defun set-evil-insert-state-cursor ()
+    "change evil insert state cusor color based on theme"
+    (interactive)
+    (if (string= (frame-parameter nil 'background-mode) "light")
+        (setq evil-insert-state-cursor '(bar "Black"))
+      (setq evil-insert-state-cursor '(bar "White"))))
+  :hook ((after-init . evil-mode)
+         (after-init . set-evil-insert-state-cursor)
+         )
   :config
-  ;; (evil-mode 1)
   (with-eval-after-load 'dired
-  (evil-make-overriding-map dired-mode-map 'normal))
+    (evil-make-overriding-map dired-mode-map 'normal))
   :bind
   (:map evil-normal-state-map
   ("M-." . nil)
@@ -68,8 +78,7 @@
 )
 
 ;; for major-mode
-(require 'init-const)
-(global-set-key (kbd beyondpie/non-normal-leader-key) #'major-mode-hydra)
+;; (global-set-key (kbd beyondpie/non-normal-leader-key) #'major-mode-hydra)
 
 ;; for mark
 (global-set-key (kbd "C-SPC") 'set-mark-command)

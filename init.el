@@ -3,7 +3,7 @@
 ;;; Commentary:
 ;; Ref: purcell
 
-;;; Codes:
+;;; Code:
 
 (defconst *spell-check-support-enabled* t)
 (defconst *is-a-mac* (eq system-type 'darwin))
@@ -19,7 +19,6 @@
 	(push (expand-file-name dir user-emacs-directory) load-path))
 
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-
 
 (require 'init-elpa)
 (require 'init-path)
@@ -50,30 +49,6 @@
 (require 'init-python)
 (require 'init-tex)
 
-
-(global-set-key (kbd "M-/") 'hippie-expand)
-(setq hippie-expand-try-functions-list
-      '(try-complete-file-name-partially
-        try-complete-file-name
-        try-expand-dabbrev
-        try-expand-dabbrev-all-buffers
-        try-expand-dabbrev-from-kill))
-
-;; multiple major mode
-(require-package 'mmm-mode)
-(require 'mmm-auto)
-(setq mmm-global-mode 'buffers-with-submode-classes)
-(setq mmm-submode-decoration-level 2)
-
-
-(when (maybe-require-package 'uptimes)
-  (setq-default uptimes-keep-count 200)
-  (add-hook 'after-init-hook (lambda () (require 'uptimes))))
-
-(when (fboundp 'global-eldoc-mode)
-  (add-hook 'after-init-hook 'global-eldoc-mode))
-
-
 (add-hook 'after-init-hook
           (lambda ()
             (require 'server)
@@ -83,7 +58,5 @@
 (when (file-exists-p custom-file)
   (load custom-file))
 
-;; for doggypoo
-(require 'doggypoo)
 (provide 'init)
 ;;; init.el ends here

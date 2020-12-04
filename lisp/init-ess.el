@@ -6,7 +6,7 @@
 
 (require 'lsp-mode)
 (defun beyondpie/format_r_file()
-  "format buffer using styler_file.R defined in materials dir"
+  "Format buffer using styler_file.R defined in materials dir."
   (interactive)
   (async-shell-command
    (format "Rscript --verbose --vanilla %s %s"
