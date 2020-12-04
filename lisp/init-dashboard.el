@@ -50,7 +50,7 @@
 
 ;; close randome footnote
 ;;(setq dashboard-set-footer nil)
-(setq dashboard-footer-messages '("吾志所向一往无前，愈挫愈勇再接再厉。"))
+(setq dashboard-footer-messages '("吾志所向, 一往无前，愈挫愈奋，再接再厉。"))
 (setq dashboard-footer-icon (all-the-icons-octicon "dashboard"
                                                    :height 1.1
                                                    :v-adjust -0.05

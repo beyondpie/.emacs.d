@@ -4,7 +4,6 @@
 
 ;;; Code:
 
-(require 'lsp-mode)
 (defun beyondpie/format_r_file()
   "Format buffer using styler_file.R defined in materials dir."
   (interactive)
@@ -19,8 +18,8 @@
   :ensure t
   :pin melpa
   :init
-  :requires lsp-mode
   :config
+  (require 'lsp-mode)
   (setq ess-indent-offset 2
         ess-style 'RStudio
         ess-fancy-comments nil)
