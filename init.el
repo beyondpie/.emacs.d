@@ -8,6 +8,14 @@
 (defconst *spell-check-support-enabled* t)
 (defconst *is-a-mac* (eq system-type 'darwin))
 
+;; set mac command
+;; Both command keys are 'Super'
+(when *is-a-mac*
+  (setq mac-right-command-modifier 'super
+        mac-command-modifier 'super)
+)
+
+
 ;; garbage collection during startup
 (let ((normal-gc-cons-threshold (* 20 1024 1024))
       (init-gc-cons-threshold (* 128 1024 1024)))
@@ -44,6 +52,7 @@
 (require 'init-osx-keys)
 
 (require 'init-prog)
+(require 'init-shell)
 (require 'init-lsp)
 (require 'init-ess)
 (require 'init-python)
