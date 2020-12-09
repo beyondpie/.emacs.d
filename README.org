@@ -1,12 +1,33 @@
 * My dot emacs
+  This configuration is only used personally for learning emacs in
+  depth. It is influenced heavily by spacemacs, which I use for near 4
+  years. The key features I like:
+  - Key bindings: /SPC/ as the leader key in normal mode; /,/ as the
+    leader key for major mode.
+  - Window-related quick jumps.
+ 
+** Note for this configuration
+  - System: MacOS and Linux
+  - Emacs verion: >= 27.1
+  - Highly used packages:
+    - *use-package*: manage the packages
+    - *general*: key binding, especially useful with use-package
+    - *evil*: my vim editor (hybrid: insert mode use emacs command)
+    - *magit*: git
+    - *helm*: search, match and so on. highly integrated
+    - *vterm*: common shell usage
+    - *projectile*: project management
+    - *treemacs*: list of files and functions
+    - *lsp*: unified programming language server
+    - programming language related:
+      - *auctex*: Latex
+      - *lsp-pyright* + *python-mode*: python
+      - *ess*: R
+      - *company*: code completion
+      - *flycheck*: check syntax
+  - May change a lot.
 
-	This dotemacs is only used personally for learning emacs in depth.
-	- System: MacOS
-  - evil: no special configures now
-	- lsp: use lsp for python and R
-	- May be changed often
-	- Emacs verion: >= 27.1
-
-* Reference
-	- Purcell emacs.d
-	- Seagle [[https://github.com/seagle0128/.emacs.d][emacs.d]]
+** Reference
+  - Purcell [[https://github.com/purcell/emacs.d][emacs.d]]
+  - Seagle [[https://github.com/seagle0128/.emacs.d][emacs.d]]
+  - [[https://github.com/syl20bnr/spacemacs][Spacemacs]]
