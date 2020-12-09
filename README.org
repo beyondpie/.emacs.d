@@ -8,6 +8,7 @@
  
 ** Note for this configuration
   - System: MacOS and Linux
+  - GUI mainly, terminal should be OK
   - Emacs verion: >= 27.1
   - Highly used packages:
     - *use-package*: manage the packages
@@ -25,6 +26,7 @@
       - *ess*: R
       - *company*: code completion
       - *flycheck*: check syntax
+    - *pdf-tools*: view pdf (GUI mode)
   - May change a lot.
 
 ** Reference
