@@ -127,25 +127,25 @@
       (exec-path-from-shell-copy-env "PYTHONPATH"))
     (setq-default python-indent-guess-indent-offset nil)
     )
-    :general
-    (:states '(normal visual)
-             :keymaps 'python-mode-map
-             :prefix beyondpie/major-mode-leader-key
-             "gg" '(lsp-find-definition :which-key "lsp find definition")
-             "gf" '(helm-semantic-or-imenu :which-key "helm search semantic")
-             "go" '(helm-occur :which-key "helm occur")
-             "gm" '(helm-all-mark-rings :which-key "helm all mark rings")
-             "rn" '(lsp-rename :which-key "lsp rename")
-             "rb" '(lsp-format-buffer :which-key "lsp buffer")
-             "rr" '(lsp-format-region :which-key "lsp region")
-             "'" '(spacemacs/python-start-or-switch-repl :which-key "python repl")
-             "sl" '(spacemacs/python-shell-send-line :which-key "send line")
-             "sf" '(spacemacs/python-shell-send-defun :which-key "send defun")
-             "sr" '(spacemacs/python-shell-send-region :which-key "send region")
-             )
-    (:states '(insert emacs)
-             :keymaps 'inferior-python-mode-map
-             "C-l" '(spacemacs/comint-clear-buffer :which-key "clear buffer"))
+  :general
+  (:states '(normal visual)
+           :keymaps 'python-mode-map
+           :prefix beyondpie/major-mode-leader-key
+           "gg" '(lsp-find-definition :which-key "lsp find definition")
+           "gf" '(helm-semantic-or-imenu :which-key "helm search semantic")
+           "go" '(helm-occur :which-key "helm occur")
+           "gm" '(helm-all-mark-rings :which-key "helm all mark rings")
+           "rn" '(lsp-rename :which-key "lsp rename")
+           "rb" '(lsp-format-buffer :which-key "lsp buffer")
+           "rr" '(lsp-format-region :which-key "lsp region")
+           "'" '(spacemacs/python-start-or-switch-repl :which-key "python repl")
+           "sl" '(spacemacs/python-shell-send-line :which-key "send line")
+           "sf" '(spacemacs/python-shell-send-defun :which-key "send defun")
+           "sr" '(spacemacs/python-shell-send-region :which-key "send region")
+           )
+  (:states '(insert emacs)
+           :keymaps 'inferior-python-mode-map
+           "C-l" '(spacemacs/comint-clear-buffer :which-key "clear buffer"))
   )
 
 (provide 'init-python)
