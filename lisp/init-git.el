@@ -15,7 +15,8 @@
            "gs" '(magit-status :which-key "magit-status")
            "gd" '(magit-dispatch :which-key "magit-dispatch")
            )
-  :bind ("C-x g" . magit-status)
+  :bind (("C-x g" . magit-status)
+         ("C-c g" . magit-file-dispatch))
         )
 (provide 'init-git)
 ;;; init-git.el ends here

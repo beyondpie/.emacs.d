@@ -4,8 +4,6 @@
 ;; ref from seagle and purcell
 
 ;;; Code:
-(require-package 'scratch)
-(require-package 'command-log-mode)
 (use-package general)
 (require 'general)
 (use-package hydra)
@@ -45,23 +43,33 @@
     (evil-make-overriding-map dired-mode-map 'normal))
   :bind
   (:map evil-normal-state-map
-  ("M-." . nil)
-;; https://github.com/noctuid/evil-guide#use-some-emacs-keybindings
-;; Note that at any time you can use evil-toggle-key (C-z by default;
-;; bound to evil-emacs-state) to enter emacs state or \ (bound to
-;; evil-execute-in-emacs-state) to execute the next command in emacs
-;; state. In emacs state, evil-toggle-key is bound to switch to the
-;; previous state. This may not be what you want if you’ve entered emacs
-;; state from insert state, so you may want to also bind ESC to enter
-;; normal state
-;; Note that in this case, attempting to rebind (kbd "ESC") will not work
-;; in GUI Emacs (and will prevent meta from working if used in the
-;; terminal). Currently it is not possible to bind
-;; escape in emacs state for terminal Emacs (see issue #14).
-  ("C-e" . move-end-of-line)
-  :map evil-emacs-state-map
-  ([escape] . evil-normal-state)
-  )
+        ("M-." . nil)
+        ;; https://github.com/noctuid/evil-guide#use-some-emacs-keybindings
+        ;; Note that at any time you can use evil-toggle-key (C-z by default;
+        ;; bound to evil-emacs-state) to enter emacs state or \ (bound to
+        ;; evil-execute-in-emacs-state) to execute the next command in emacs
+        ;; state. In emacs state, evil-toggle-key is bound to switch to the
+        ;; previous state. This may not be what you want if you’ve entered emacs
+        ;; state from insert state, so you may want to also bind ESC to enter
+        ;; normal state
+        ;; Note that in this case, attempting to rebind (kbd "ESC") will not work
+        ;; in GUI Emacs (and will prevent meta from working if used in the
+        ;; terminal). Currently it is not possible to bind
+        ;; escape in emacs state for terminal Emacs (see issue #14).
+        ("C-e" . move-end-of-line)
+        :map evil-emacs-state-map
+        ([escape] . evil-normal-state)
+        )
+  :general
+  (:states '(normal visual insert emacs)
+           :prefix beyondpie/normal-leader-key
+           :non-normal-prefix beyondpie/non-normal-leader-key
+           "wh" '(evil-window-left :which-key "left window")
+           "wl" '(evil-window-right :which-key "right window")
+           "wj" '(evil-window-down :which-key "down window")
+           "wk" '(evil-window-up :which-key "up window")
+           
+           )
   )
 
 ;; undo-tree

@@ -77,10 +77,8 @@ locate PACKAGE."
 
 (eval-when-compile
   (require 'use-package))
-
-;; Required by `use-package'
-(use-package diminish)
-(use-package bind-key)
+(require 'diminish)
+(require 'bind-key)
 
 ;; Update GPG keyring for GNU ELPA
 (use-package gnu-elpa-keyring-update)
