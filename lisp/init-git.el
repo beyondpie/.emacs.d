@@ -1,41 +1,21 @@
-;;; init-git.el --- Git SCM support -*- lexical-binding: t -*-
+;;; init-git.el --- Git support -*- lexical-binding: t -*-
 
-(require-package 'magit)
-(require-package 'magit-todos)
-(require-package 'git-blamed)
-(require-package 'gitignore-mode)
-(require-package 'gitconfig-mode)
+;;; Commentary:
+;; Ref: Purcell
 
-; optional: this is the evil state that evil-magit will use
-(setq evil-magit-state 'normal)
-;; optional: disable additional bindings for yanking text
-(setq evil-magit-use-y-for-yank t)
-(require-package 'evil-magit)
-
-
-;; TODO: check the usages of following packages
-(maybe-require-package 'yagist)
-(require-package 'bug-reference-github)
-(add-hook 'prog-mode-hook 'bug-reference-prog-mode)
-(maybe-require-package 'github-clone)
-(maybe-require-package 'forge)
-(maybe-require-package 'github-review)
-
-
-(when (maybe-require-package 'git-timemachine)
-  (global-set-key (kbd "C-x v t") 'git-timemachine-toggle))
-
-(global-set-key (kbd "C-x g") 'magit-status)
-(require 'general)
-(general-define-key
- :states '(normal)
- :prefix "SPC"
- "gs" '(magit-status :which-key "magit status")
- )
-
-
-(require-package 'fullframe)
-(with-eval-after-load 'magit
-  (fullframe magit-status magit-mode-quit-window))
-
+;;; Code:
+(use-package magit
+  :ensure t
+  :pin melpa
+  :general
+  (:states '(normal visual insert emacs)
+           :prefix beyondpie/normal-leader-key
+           :non-normal-prefix beyondpie/non-normal-leader-key
+           "gf" '(magit-file-dispatch :which-key "magit-file-dispatch")
+           "gs" '(magit-status :which-key "magit-status")
+           "gd" '(magit-dispatch :which-key "magit-dispatch")
+           )
+  :bind ("C-x g" . magit-status)
+        )
 (provide 'init-git)
+;;; init-git.el ends here
