@@ -9,25 +9,20 @@
   ;; Hook up dired-x global bindings without loading it up-front
   (define-key ctl-x-map "\C-j" 'dired-jump)
   (define-key ctl-x-4-map "\C-j" 'dired-jump-other-window)
+  ;; otherwise, when using evil norm state in dired-mode
+  ;; enter will be move to the next line.
   (general-define-key
-   :states '(normal)
-   :prefix "SPC"
-   "fj" '(dired-jump :which-key "jump dired")
-   "ff" '(helm-find-files :which-key "find file")
+   :states '(normal visual)
+   :keymaps 'dired-mode-map
+   "RET" 'dired-find-file
    )
-  ;; install gnu ls
+  ;; neeed gnu ls
   (when *is-a-mac*
     (setq dired-use-ls-dired t
 	  insert-directory-program "/usr/local/bin/gls"
 	  dired-listing-switches "-aBhl --group-directories-first"
 	  )
     )
-  ;; key bindings
-  ;; https://sam217pa.github.io/2016/09/23/keybindings-strategies-in-emacs/
-  ;; SPC in normal state
-  ;; mimic spacemacs
-  ;; close SPC key in dire-mode-map
-  (define-key dired-mode-map (kbd "SPC") nil)
   )
 
 (use-package diff-hl

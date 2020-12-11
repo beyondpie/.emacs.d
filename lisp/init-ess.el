@@ -18,8 +18,9 @@
   :ensure t
   :pin melpa
   :init
+  :after lsp-mode
   :config
-  (require 'lsp-mode)
+  ;; (require 'lsp-mode)
   (setq ess-indent-offset 2
         ess-style 'RStudio
         ess-fancy-comments nil)

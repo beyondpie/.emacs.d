@@ -24,9 +24,12 @@
 )
 
 (use-package evil
+  :ensure t
   :init
   (setq evil-disable-insert-state-bindings t
         evil-mode-line-format nil
+        evil-want-integration t
+        evil-want-keybinding nil
         evil-visual-state-cursor '(box "#F86155")
         evil-normal-state-cursor '(box "Orange"))
   (defun set-evil-insert-state-cursor ()
@@ -38,9 +41,6 @@
   :hook ((after-init . evil-mode)
          (after-init . set-evil-insert-state-cursor)
          )
-  :config
-  (with-eval-after-load 'dired
-    (evil-make-overriding-map dired-mode-map 'normal))
   :bind
   (:map evil-normal-state-map
         ("M-." . nil)
@@ -64,18 +64,23 @@
   (:states '(normal visual insert emacs)
            :prefix beyondpie/normal-leader-key
            :non-normal-prefix beyondpie/non-normal-leader-key
+           ;; https://github.com/noctuid/general.el/issues/99
            "wh" '(evil-window-left :which-key "left window")
            "wl" '(evil-window-right :which-key "right window")
            "wj" '(evil-window-down :which-key "down window")
            "wk" '(evil-window-up :which-key "up window")
-           
+           "fj" '(dired-jump :which-key "jump dired")
+           "ff" '(helm-find-files :which-key "find file")
            )
   )
 
+
 ;; undo-tree
 (use-package undo-tree
-  :init
-  (setq global-undo-tree-mode t)
+  :ensure t
+  :pin melpa
+  :hook (after-init . global-undo-tree-mode)
+  :bind ("C-x u" . undo-tree-visualize)
 )
 
 ;; doom-mode line
@@ -113,7 +118,11 @@
       (progn (setq buffer-read-only t)
              (message "File is a symlink."))
     ))
+
 (add-hook 'find-file-hooks 'read-only-if-symlink)
+
+;; y-or-n
+(fset 'yes-or-no-p 'y-or-n-p)
 
 (provide 'init-utils)
 ;;; init-utils.el ends here
