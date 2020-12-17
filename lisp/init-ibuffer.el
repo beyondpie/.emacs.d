@@ -1,13 +1,23 @@
 ;;; init-ibuffer.el --- ibuffer settings -*- lexical-binding: t -*-
+;;; Commentary:
+;; Ref: Purcell
 
-(require-package 'ibuffer)
+;;; Code:
 
-(with-eval-after-load 'ibuffer
-  ;; Use human readable Size column instead of original one
+(use-package ibuffer
+  :ensure t
+  :pin melpa
+  :config
   (define-ibuffer-column size-h
     (:name "Size" :inline t)
-    (file-size-human-readable (buffer-size))))
+    (file-size-human-readable (buffer-size)))
+  :bind ("C-x C-b" . ibuffer)
+  :general
+  (:states '(normal visual insert emacs)
+           :prefix beyondpie/normal-leader-key
+           :non-normal-prefix beyondpie/non-normal-leader-key
+           "bb" '(ibuffer :which-key "ibuffer"))
+  )
 
-
-(global-set-key (kbd "C-x C-b") 'ibuffer)
 (provide 'init-ibuffer)
+;;; init-ibuffer.el ends here

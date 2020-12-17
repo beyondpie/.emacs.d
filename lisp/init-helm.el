@@ -67,7 +67,8 @@
   (:states '(normal visual insert emacs)
            :prefix beyondpie/normal-leader-key
            :non-normal-prefix beyondpie/non-normal-leader-key
-           "hg" '(helm-git-grep :which-key "helm git grep"))
+           "hg" '(helm-git-grep :which-key "helm git grep")
+           "bf" '(helm-mini :which-key "helm-mini"))
   )
 (provide 'init-helm)
 ;;; init-helm ends here
