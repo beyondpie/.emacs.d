@@ -41,6 +41,8 @@
   :hook ((after-init . evil-mode)
          (after-init . set-evil-insert-state-cursor)
          )
+  :config
+  (set-evil-insert-state-cursor)
   :bind
   (:map evil-normal-state-map
         ("M-." . nil)
@@ -109,6 +111,8 @@
  :prefix beyondpie/normal-leader-key
  :non-normal-prefix beyondpie/non-normal-leader-key
  "ir" '(indent-region :which-key "indent region")
+ "rw" '(delete-trailing-whitespace :which "delete trailing whitespace")
+ "sr" '(eval-region :which "eval lisp region")
  )
 
 ;; files

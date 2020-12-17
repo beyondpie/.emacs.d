@@ -1,15 +1,11 @@
 ;;; init-themes.el --- set themes -*- lexical-binding: t -*-
 
 ;;; Commentary:
-;; Ref: purcell
-
 ;;; Code:
 
+;; use-package cannot install spacemacs-them, wired.
 (require-package 'spacemacs-theme)
-(require-package 'modus-operandi-theme)
-(require-package 'modus-vivendi-theme)
-
-(setq-default custom-enabled-themes '(spacemacs-dark))
+(load-theme 'spacemacs-dark t)
 (set-frame-font "Monaco-16" nil t)
 
 (provide 'init-themes)

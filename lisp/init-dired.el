@@ -11,11 +11,20 @@
   (define-key ctl-x-4-map "\C-j" 'dired-jump-other-window)
   ;; otherwise, when using evil norm state in dired-mode
   ;; enter will be move to the next line.
+  
   (general-define-key
    :states '(normal visual)
    :keymaps 'dired-mode-map
    "RET" 'dired-find-file
+   "m" 'dired-mark
+   "D" 'dired-do-delete
+   "g" 'revert-buffer
+   "u" 'dired-unmark
+   "+" 'dired-create-directory
+   "C" 'dired-do-copy
+   "R" 'dired-do-rename
    )
+  
   ;; neeed gnu ls
   (when *is-a-mac*
     (setq dired-use-ls-dired t
