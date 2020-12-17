@@ -1,4 +1,4 @@
-;; init-utils.el --- Initialize ultilities.	-*- lexical-binding: t -*-
+;;; init-utils.el --- Initialize ultilities.	-*- lexical-binding: t -*-
 
 ;;; Commentary:
 ;; ref from seagle and purcell

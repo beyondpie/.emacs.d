@@ -22,9 +22,10 @@
   "M-SPC"
   "Non-normal state leader key."
   )
+
 ;;; binding super failed
 ;; (when *is-a-mac*
-  ;; (setq beyondpie/non-normal-leader-key "super"))
+;;   (setq beyondpie/non-normal-leader-key (kbd "p")))
 
 
 (defconst beyondpie/major-mode-leader-key

@@ -32,13 +32,14 @@
   (use-package helm-git-grep
     :ensure t
     :pin melpa
-    :delight)
+    :commands helm-git-grep)
   (use-package helm-xref
   :ensure t
   :pin melpa)
   (use-package helm-projectile
     :ensure t
     :pin melpa
+    :commands helm-projectile-switch-project
     :config
     (helm-projectile-on)
     )
@@ -61,6 +62,12 @@
          ("C-c g" . helm-git-grep-from-helm)
          ("C-i" . helm-execute-persistent-action)
          ("C-z" . helm-select-action)
-         ([tab] . helm-execute-persistent-action)))
+         ([tab] . helm-execute-persistent-action))
+  :general
+  (:states '(normal visual insert emacs)
+           :prefix beyondpie/normal-leader-key
+           :non-normal-prefix beyondpie/non-normal-leader-key
+           "hg" '(helm-git-grep :which-key "helm git grep"))
+  )
 (provide 'init-helm)
 ;;; init-helm ends here
