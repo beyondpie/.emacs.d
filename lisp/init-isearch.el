@@ -1,32 +1,19 @@
 ;;; init-isearch.el --- isearch settings -*- lexical-binding: t -*-
-;;; Commentary: From purcell
+;;; Commentary:
 ;;; Code:
 
-;; Show number of matches while searching
-(when (maybe-require-package 'anzu)
-  (add-hook 'after-init-hook 'global-anzu-mode)
-  (setq anzu-mode-lighter "")
-  (global-set-key [remap query-replace-regexp] 'anzu-query-replace-regexp)
-  (global-set-key [remap query-replace] 'anzu-query-replace))
-
-(with-eval-after-load 'isearch
-  ;; DEL during isearch should edit the search string, not jump back to the previous result
-  (define-key isearch-mode-map [remap isearch-delete-char] 'isearch-del-char)
-
-  ;; Activate occur easily inside isearch
-  (when (fboundp 'isearch-occur)
-    ;; to match ivy conventions
-    (define-key isearch-mode-map (kbd "C-c C-o") 'isearch-occur)))
-
-(defun sanityinc/isearch-exit-other-end ()
-  "Exit isearch, but at the other end of the search string.
-This is useful when followed by an immediate kill."
-  (interactive)
-  (isearch-exit)
-  (goto-char isearch-other-end))
-
-(define-key isearch-mode-map [(control return)] 'sanityinc/isearch-exit-other-end)
-
+(use-package anzu
+  :ensure t
+  :pin melpa
+  :hook (after-init . global-anzu-mode)
+  :general
+  (:states '(normal visual insert emacs)
+           :prefix beyondpie/normal-leader-key
+           :non-normal-prefix beyondpie/non-normal-leader-key
+           "rq" '(anzu-query-replace :which-key "anzu-query-replace")
+           "rg" '(anzu-query-replace-regexp :which-key "anzu-query-replace-regexp")
+           "rc" '(anzu-replace-at-cursor-thing :which-key "anzu-replace-at-cursor")
+           ))
 
 (provide 'init-isearch)
 ;;; init-isearch.el ends here
