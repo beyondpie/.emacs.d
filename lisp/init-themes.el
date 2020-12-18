@@ -1,12 +1,20 @@
 ;;; init-themes.el --- set themes -*- lexical-binding: t -*-
 
 ;;; Commentary:
+;; spacemacs-theme setting
+;; https://github.com/nashamri/spacemacs-theme/issues/42
+
 ;;; Code:
 
-;; use-package cannot install spacemacs-them, wired.
-(require-package 'spacemacs-theme)
-(load-theme 'spacemacs-dark t)
-(set-frame-font "Monaco-16" nil t)
-
+(use-package spacemacs-common
+  :ensure spacemacs-theme
+  :pin melpa
+  :defer t
+  :init
+  (set-frame-font "Monaco-16" nil t)
+  :hook (after-init . (lambda ()
+                        (load-theme 'spacemacs-dark t)
+                        ))
+  )
 (provide 'init-themes)
 ;;; init-themes.el ends here

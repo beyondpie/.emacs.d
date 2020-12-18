@@ -1,15 +1,22 @@
 ;;; init-grep.el --setting for grep -*- lexical-binding: t -*-
+;;; Commentary:
 
-;; from purcell
+;; Ref: Purcell
+
+;;; Code:
 
 (setq-default grep-highlight-matches t
               grep-scroll-output t)
-
-;; let's just use ag firstly
-(when (and (executable-find "ag")
-           (maybe-require-package 'ag))
-  (require-package 'wgrep-ag)
+(use-package ag
+  :ensure t
+  :pin melpa
+  :config
   (setq-default ag-highlight-search t)
-  (global-set-key (kbd "M-?") 'ag-project))
+  :general
+  (:states '(normal visual insert emacs)
+           :prefix beyondpie/normal-leader-key
+           :non-normal-prefix beyondpie/non-normal-leader-key
+           "sa" '(ag-project :which-key "ag search in project")))
 
 (provide 'init-grep)
+;;; init-grep.el ends here

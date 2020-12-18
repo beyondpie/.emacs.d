@@ -111,8 +111,8 @@
  :prefix beyondpie/normal-leader-key
  :non-normal-prefix beyondpie/non-normal-leader-key
  "ir" '(indent-region :which-key "indent region")
- "rw" '(delete-trailing-whitespace :which "delete trailing whitespace")
- "sr" '(eval-region :which "eval lisp region")
+ "rw" '(delete-trailing-whitespace :which-key "delete trailing whitespace")
+ "sr" '(eval-region :which-key "elisp eval-region")
  )
 
 ;; files
