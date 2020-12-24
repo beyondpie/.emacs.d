@@ -30,11 +30,14 @@
  window-resize-pixelwise t
  frame-resize-pixelwise t)
 
-(when (fboundp 'tool-bar-mode)
-  (tool-bar-mode -1))
-(when (fboundp 'set-scroll-bar-mode)
-  (set-scroll-bar-mode nil))
+(scroll-bar-mode -1)
+(defun my/disable-scroll-bars (frame)
+  (modify-frame-parameters frame
+                           '((vertical-scroll-bars . nil)
+                             (horizontal-scroll-bars . nil))))
+(add-hook 'after-make-frame-functions 'my/disable-scroll-bars)
 
+(tool-bar-mode -1)
 (menu-bar-mode -1)
 
 (let ((no-border '(internal-border-width . 0)))

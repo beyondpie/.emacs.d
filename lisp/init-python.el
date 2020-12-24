@@ -86,6 +86,10 @@
   (let ((comint-buffer-maximum-size 0))
     (comint-truncate-buffer)))
 
+(use-package blacken
+  :ensure t
+  :pin melpa
+  :commands (blacken-buffer))
 
 (use-package lsp-pyright
 :ensure t
@@ -136,8 +140,7 @@
            "go" '(helm-occur :which-key "helm occur")
            "gm" '(helm-all-mark-rings :which-key "helm all mark rings")
            "rn" '(lsp-rename :which-key "lsp rename")
-           "rb" '(lsp-format-buffer :which-key "lsp buffer")
-           "rr" '(lsp-format-region :which-key "lsp region")
+           "==" '(blacken-buffer :which-key "black buffer")
            "'" '(spacemacs/python-start-or-switch-repl :which-key "python repl")
            "sl" '(spacemacs/python-shell-send-line :which-key "send line")
            "sf" '(spacemacs/python-shell-send-defun :which-key "send defun")
