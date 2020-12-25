@@ -19,13 +19,14 @@
   )
 
 (defun spacemacs//python-setup-checkers (&rest args)
-  ;; set python checker
   (when (fboundp 'flycheck-set-checker-executable)
-    (let ((flake8 (executable-find "flake8")))
+    (let ((pylint (executable-find "pylint"))
+          (flake8 (executable-find "flake8")))
+      (when pylint
+        (flycheck-set-checker-executable "python-pylint" pylint))
       (when flake8
-        (flycheck-set-checker-executable "python-flake8" flake8))
-      ))
-  )
+        (flycheck-set-checker-executable "python-flake8" flake8)))))
+
 
 (defun spacemacs/python-setup-everything (&rest args)
   "Set up python env"
@@ -92,26 +93,26 @@
   :commands (blacken-buffer))
 
 (use-package lsp-pyright
-:ensure t
-:pin melpa
-)
+  :ensure t
+  :pin melpa
+  )
 
 (use-package pyvenv
-:ensure t
-:pin melpa
-:hook (python-mode . pyvenv-tracking-mode)
-:general
-(:states '(normal visual)
-            :keymaps 'python-mode-map
-            :prefix beyondpie/major-mode-leader-key
-            "va"  #'pyvenv-activate
-            "vd" #'pyvenv-deactivate
-            "vw" #'pyvenv-workon)
-:config
-(dolist (func '(pyvenv-actiate pyvenv-deactivate pyvenv-workon))
+  :ensure t
+  :pin melpa
+  :hook (python-mode . pyvenv-tracking-mode)
+  :general
+  (:states '(normal visual)
+           :keymaps 'python-mode-map
+           :prefix beyondpie/major-mode-leader-key
+           "va"  #'pyvenv-activate
+           "vd" #'pyvenv-deactivate
+           "vw" #'pyvenv-workon)
+  :config
+  (dolist (func '(pyvenv-actiate pyvenv-deactivate pyvenv-workon))
     (advice-add func :after 'spacemacs/python-setup-everything)
     )
-)
+  )
 
 (use-package python
   :ensure t

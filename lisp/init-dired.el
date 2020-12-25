@@ -23,6 +23,8 @@
    "+" 'dired-create-directory
    "C" 'dired-do-copy
    "R" 'dired-do-rename
+   "(" 'dired-hide-details-mode
+   "!" 'dired-do-shell-command
    )
   
   ;; neeed gnu ls
