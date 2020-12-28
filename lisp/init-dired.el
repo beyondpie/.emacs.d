@@ -25,6 +25,7 @@
    "R" 'dired-do-rename
    "(" 'dired-hide-details-mode
    "!" 'dired-do-shell-command
+   "S" 'hydra-dired-quick-sort/body
    )
   
   ;; neeed gnu ls

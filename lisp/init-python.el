@@ -1,6 +1,6 @@
 ;;; init-python.el --- Initialize python configurations. -*- lexical-binding: t -*-
 ;;; Commentary:
-;; Ref: Seagle and Spacemacs
+;; Ref: pacemacs
 
 ;;; Code:
 
@@ -43,8 +43,8 @@
 (defun spacemacs//python-default ()
   "Default settings for python buffers"
   (setq mode-name "Python"
-        tab-width 2
-        fill-column 79)
+        tab-width 4
+        fill-column 88)
   )
 
 (defun spacemacs/python-start-or-switch-repl ()
