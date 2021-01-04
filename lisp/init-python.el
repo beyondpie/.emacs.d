@@ -123,7 +123,7 @@
   :init
   (progn
     (spacemacs//python-setup-shell)
-    (setq python-indent-offset 2)
+    (setq python-indent-offset 4)
     )
   :config
   (progn

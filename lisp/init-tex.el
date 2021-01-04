@@ -40,7 +40,12 @@
          (LaTeX-mode . TeX-source-correlate-mode)
          (LaTeX-mode . TeX-PDF-mode)
          (LaTeX-mode . turn-on-reftex)
+         (LaTeX-mode . auto-fill-mode)
          )
+  :config
+  (setq TeX-view-program-selection '((output-pdf "pdf-tools"))
+        TeX-view-program-list '(("pdf-tools", "TeX-pdf-tools-sync-view"))
+        )
   )
 
 (use-package magic-latex-buffer

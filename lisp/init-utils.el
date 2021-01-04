@@ -80,9 +80,9 @@
 
 ;; undo-tree
 (use-package undo-tree
-  :ensure t
+  :defer t
   :pin melpa
-  :hook (after-init . global-undo-tree-mode)
+  ;; :hook (after-init . global-undo-tree-mode)
   :bind ("C-x u" . undo-tree-visualize)
 )
 
