@@ -9,6 +9,7 @@
   :pin melpa
   :general
   (:states '(normal visual insert emacs)
+           :keymaps 'override
            :prefix beyondpie/normal-leader-key
            :non-normal-prefix beyondpie/non-normal-leader-key
            "gf" '(magit-file-dispatch :which-key "magit-file-dispatch")

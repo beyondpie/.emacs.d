@@ -13,7 +13,7 @@
   ;; enter will be move to the next line.
   
   (general-define-key
-   :states '(normal visual)
+   :states '(normal visual motion)
    :keymaps 'dired-mode-map
    "RET" 'dired-find-file
    "m" 'dired-mark

@@ -3,8 +3,36 @@
 ;;; Commentary:
 ;; ref from seagle and purcell
 
+;; evil-collection suggest to use the folllowing to
+;; let general override evil-collection binds over SPC.
+;; In my case, I only need to use keymaps 'override in eivl or other module
+;; when using general to define the keys. 
+
+;; https://github.com/emacs-evil/evil-collection
+;; (use-package general
+;;   :ensure t
+;;   :init
+;;   (setq general-override-states '(insert
+;;                                   emacs
+;;                                   hybrid
+;;                                   normal
+;;                                   visual
+;;                                   motion
+;;                                   operator
+;;                                   replace))
+;;   :config
+;;   (general-define-key
+;;    :states '(normal visual motion)
+;;    :keymaps 'override
+;;    "SPC" 'hydra-space/body))
+;;    ;; Replace 'hydra-space/body with your leader function.
+
+
 ;;; Code:
-(use-package general)
+
+(use-package general
+  :ensure t
+  )
 (require 'general)
 (use-package hydra)
 (use-package major-mode-hydra)
@@ -66,6 +94,7 @@
         )
   :general
   (:states '(normal visual insert emacs)
+           :keymaps 'override
            :prefix beyondpie/normal-leader-key
            :non-normal-prefix beyondpie/non-normal-leader-key
            ;; https://github.com/noctuid/general.el/issues/99
@@ -78,6 +107,12 @@
            )
   )
 
+(use-package evil-collection
+  :after evil
+  :ensure t
+  :config
+  (evil-collection-init)
+  )
 
 ;; undo-tree
 (use-package undo-tree
@@ -110,6 +145,7 @@
  :states '(normal visual insert emacs)
  :prefix beyondpie/normal-leader-key
  :non-normal-prefix beyondpie/non-normal-leader-key
+ :keymaps 'override
  "ir" '(indent-region :which-key "indent region")
  "rw" '(delete-trailing-whitespace :which-key "delete trailing whitespace")
  "sr" '(eval-region :which-key "elisp eval-region")
