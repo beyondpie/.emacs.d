@@ -44,6 +44,7 @@
          )
   :config
   (set-evil-insert-state-cursor)
+  (setq evil-want-fine-undo t)
   :bind
   (:map evil-normal-state-map
         ("M-." . nil)
@@ -80,9 +81,7 @@
 
 ;; undo-tree
 (use-package undo-tree
-  :defer t
-  :pin melpa
-  ;; :hook (after-init . global-undo-tree-mode)
+  :hook (after-init . global-undo-tree-mode)
   :bind ("C-x u" . undo-tree-visualize)
 )
 
