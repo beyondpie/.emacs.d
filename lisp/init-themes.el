@@ -10,10 +10,10 @@
   :ensure spacemacs-theme
   :pin melpa
   :defer t
-  :init
-  (set-frame-font "Monaco-16" nil t)
   :hook (after-init . (lambda ()
                         (load-theme 'spacemacs-dark t)
+                        (add-to-list 'default-frame-alist
+                                     '(font . "Monaco-16"))
                         ))
   )
 (provide 'init-themes)
