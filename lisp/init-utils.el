@@ -55,12 +55,14 @@
   :ensure t
   :init
   (setq evil-disable-insert-state-bindings t
-        evil-mode-line-format nil
+        evil-mode-line-format t
         evil-want-integration t
         evil-want-keybinding nil
         evil-visual-state-cursor '(box "#F86155")
         evil-normal-state-cursor '(box "Orange")
-        evil-shift-width 2)
+        evil-shift-width 2
+        evil-collection-company-use-tng nil
+        )
   (defun set-evil-insert-state-cursor ()
     "change evil insert state cusor color based on theme"
     (interactive)
