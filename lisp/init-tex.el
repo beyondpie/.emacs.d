@@ -46,6 +46,7 @@
   (setq TeX-view-program-selection '((output-pdf "pdf-tools"))
         TeX-view-program-list '(("pdf-tools", "TeX-pdf-tools-sync-view"))
         )
+  (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
   )
 
 (use-package magic-latex-buffer
@@ -75,10 +76,13 @@
 
 (use-package pdf-tools
   :ensure t
-  :pin melpa
+  :straight (pdf-tools :type git :host github :rep "politza/pdf-tools"
+                      :fork (:host github :repo "beyondpie/pdf-tools"))
   :mode ("\\.pdf\\'" . pdf-view-mode)
   :config
-  (pdf-tools-install))
+  (pdf-tools-install)
+  (setq auto-revert-interval 0.5)
+  )
 
 
 
