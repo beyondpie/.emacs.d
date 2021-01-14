@@ -67,6 +67,7 @@
   (:states '(normal visual insert emacs)
            :prefix beyondpie/normal-leader-key
            :non-normal-prefix beyondpie/non-normal-leader-key
+           :keymaps 'override
            "hg" '(helm-git-grep :which-key "helm git grep")
            "bf" '(helm-mini :which-key "helm-mini"))
   )
