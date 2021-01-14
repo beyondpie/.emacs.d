@@ -1,12 +1,17 @@
 ;;; init-git.el --- Git support -*- lexical-binding: t -*-
 
 ;;; Commentary:
-;; Ref: Purcell
+;; Ref:
+;; - reduce magit time
+;;   https://jakemccrary.com/blog/2020/11/14/speeding-up-magit/
 
 ;;; Code:
 (use-package magit
   :ensure t
-  :pin melpa
+  :init
+  (use-package with-editor :ensure t)
+  :custom
+  (magit-git-executable "/usr/local/bin/git")
   :general
   (:states '(normal visual insert emacs)
            :keymaps 'override
@@ -18,6 +23,14 @@
            )
   :bind (("C-x g" . magit-status)
          ("C-c g" . magit-file-dispatch))
-        )
+  :config
+  (remove-hook 'magit-status-sections-hook 'magit-insert-tags-header)
+  (remove-hook 'magit-status-sections-hook 'magit-insert-status-headers)
+  (remove-hook 'magit-status-sections-hook 'magit-insert-unpushed-to-pushremote)
+  (remove-hook 'magit-status-sections-hook 'magit-insert-unpulled-from-pushremote)
+  (remove-hook 'magit-status-sections-hook 'magit-insert-unpulled-from-upstream)
+  (remove-hook 'magit-status-sections-hook 'magit-insert-unpushed-to-upstream-or-recent)
+  )
+
 (provide 'init-git)
 ;;; init-git.el ends here
