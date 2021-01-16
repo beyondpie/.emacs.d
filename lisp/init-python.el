@@ -7,10 +7,10 @@
 (defun spacemacs//python-setup-shell (&rest args)
   "Set up python shell"
   (if (executable-find "ipython")
-      (progn (setq python-shell-interpreter "ipython")
-             ;; ipython version >= 5
-             (setq python-shell-interpreter-args "--simple-prompt -i")
-             )
+      (progn
+        (setq python-shell-interpreter "ipython")
+        ;; ipython version >= 5
+        (setq python-shell-interpreter-args "--simple-prompt -i"))
     (progn
       (setq python-shell-interpreter "python")
       (setq python-shell-interpreter-args "-i")
@@ -132,6 +132,7 @@
       (exec-path-from-shell-copy-env "PYTHONPATH"))
     (setq-default python-indent-guess-indent-offset nil)
     )
+  (setq python-shell-completion-native-enable nil)
   :general
   (:states '(normal visual)
            :keymaps 'python-mode-map
