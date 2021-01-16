@@ -113,7 +113,8 @@
   :after evil
   :ensure t
   :config
-  (evil-collection-init)
+  (evil-collection-init 'magit)
+  (evil-collection-init 'pdf-tools)
   )
 
 ;; undo-tree
