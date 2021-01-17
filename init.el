@@ -46,6 +46,7 @@
 (require 'init-path)
 (require 'init-const)
 (require 'init-utils)
+(require 'init-evil)
 (require 'init-helm)
 
 (require 'init-themes)

@@ -109,6 +109,7 @@ file to edit."
  :states '(normal visual insert emacs)
  :prefix beyondpie/normal-leader-key
  :non-normal-prefix beyondpie/non-normal-leader-key
+ :keymaps 'override
  "'" '(eshell-here :which-key "eshell here")
  )
 
