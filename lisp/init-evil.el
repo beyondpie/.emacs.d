@@ -77,12 +77,16 @@
            :prefix beyondpie/normal-leader-key
            :non-normal-prefix beyondpie/non-normal-leader-key
            ;; https://github.com/noctuid/general.el/issues/99
-           "wh" '(evil-window-left :which-key "left window")
-           "wl" '(evil-window-right :which-key "right window")
-           "wj" '(evil-window-down :which-key "down window")
-           "wk" '(evil-window-up :which-key "up window")
+           "wh" '(evil-window-left :which-key "goto left window")
+           "wl" '(evil-window-right :which-key "goto right window")
+           "wj" '(evil-window-down :which-key "goto down window")
+           "wk" '(evil-window-up :which-key "goto up window")
            "fj" '(dired-jump :which-key "jump dired")
            "ff" '(helm-find-files :which-key "find file")
+           "wJ" '(evil-window-move-very-bottom :whick-key "move window upward")
+           "wK" '(evil-window-move-very-top :which-key "move window downward")
+           "wL" '(evil-window-move-far-right :which-key "move window right")
+           "wH" '(evil-window-move-far-left :which-key "move window left")
            )
   )
 
