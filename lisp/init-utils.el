@@ -72,6 +72,9 @@
 
 (add-hook 'find-file-hooks 'read-only-if-symlink)
 
+;; https://www.murilopereira.com/a-rabbit-hole-full-of-lisp/
+(remove-hook 'file-name-at-point-functions 'ffap-guess-file-name-at-point)
+
 ;; y-or-n
 (fset 'yes-or-no-p 'y-or-n-p)
 

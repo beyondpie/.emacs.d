@@ -1,7 +1,9 @@
 ;;; init-treemacs.el --- Initialize treemacs.-*- lexical-binding: t -*-
 
 ;;; Commentary:
-;; Ref: https://github.com/Alexander-Miller/treemacs
+;; Ref:
+;; - https://github.com/Alexander-Miller/treemacs
+;; - spacemacs configs about treemacs
 
 ;;; Code:
 
@@ -75,11 +77,41 @@
         ("C-x t t"   . treemacs)
         ("C-x t B"   . treemacs-bookmark)
         ("C-x t C-t" . treemacs-find-file)
-        ("C-x t M-t" . treemacs-find-tag)))
+        ("C-x t M-t" . treemacs-find-tag))
+  :general
+  (:states '(normal visual insert emacs)
+           :keymaps 'override
+           :prefix beyondpie/normal-leader-key
+           :non-normal-prefix beyondpie/non-normal-leader-key
+           "ft" '(treemacs :which-key "treemacs")
+           "fT" '(treemacs-find-file :which-key "Focus current file in treemacs")
+           )
+  )
 
 (use-package treemacs-projectile
   :after treemacs projectile
-  :ensure t)
+  :ensure t
+  :config
+  (defun spacemacs/treemacs-project-toggle ()
+    "Toggle and add the current project to treemacs if not already added."
+    (interactive)
+    (if (eq (treemacs-current-visibility) 'visible)
+        (delete-window (treemacs-get-local-window))
+      (let ((path (projectile-ensure-project (projectile-project-root)))
+            (name (projectile-project-name)))
+        (unless (treemacs-current-workspace)
+          (treemacs--find-workspace))
+        (treemacs-do-add-project-to-workspace path name)
+        (treemacs-select-window))))
+  :general
+  (:states '(normal visual insert emacs)
+           :keymaps 'override
+           :prefix beyondpie/normal-leader-key
+           :non-normal-prefix beyondpie/non-normal-leader-key
+           "pt" '(spacemacs/treemacs-project-toggle :which-key "treemacs project")
+           )
+  
+  )
 
 ;; Prefer no figures in dired
 ;; (use-package treemacs-icons-dired
@@ -91,8 +123,9 @@
   :after treemacs magit
   :ensure t)
 
-(use-package treemacs-persp ;;treemacs-persective if you use perspective.el vs. persp-mode
-  :after treemacs persp-mode ;;or perspective vs. persp-mode
+;;treemacs-persective if you use perspective.el vs. persp-mode
+(use-package treemacs-persp
+  :after treemacs persp-mode
   :ensure t
   :config (treemacs-set-scope-type 'Perspectives))
 

@@ -8,6 +8,8 @@
   :pin melpa
   :init
   (setq projectile-enable-caching t)
+  (setq projectile-globally-ignored-directories '(".git" "target" "build"))
+  (setq projectile-globally-ignored-files '(".DS_Store"))
   :hook (after-init . projectile-mode)
   :config
   (when (executable-find "ag")
@@ -20,6 +22,10 @@
            :prefix beyondpie/normal-leader-key
            :non-normal-prefix beyondpie/non-normal-leader-key
            "p" '(projectile-command-map :which-key "projectile"))
+  ;; disable projectile on remote buffers
+  ;; https://www.murilopereira.com/a-rabbit-hole-full-of-lisp/
+  (defadvice projectile-project-root (around ignore-remote first activate)
+    (unless (file-remote-p default-directory 'no-identification) ad-do-it))
   )
 
 ;;https://github.com/purcell/ibuffer-projectile
