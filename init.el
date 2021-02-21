@@ -7,6 +7,8 @@
 ;; (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 (defconst *spell-check-support-enabled* t)
 (defconst *is-a-mac* (eq system-type 'darwin))
+;; make echo area showing message for 10s
+(setq suggest-key-bindings 10)
 
 ;; set mac command
 ;; Both command keys are 'Super'
@@ -14,7 +16,6 @@
   (setq mac-right-command-modifier 'super
         mac-command-modifier 'super)
 )
-
 
 ;; garbage collection during startup
 (let ((normal-gc-cons-threshold (* 20 1024 1024))
@@ -28,7 +29,8 @@
 
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 
-;; use straght
+;; use straight
+;; https://github.com/raxod502/straight.el
 (defvar bootstrap-version)
 (let ((bootstrap-file
        (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))

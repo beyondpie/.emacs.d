@@ -23,7 +23,8 @@
   ;; (require 'lsp-mode)
   (setq ess-indent-offset 2
         ess-style 'RStudio
-        ess-fancy-comments nil)
+        ess-fancy-comments nil
+        ess-offset-arguments-newline "prev-line")
   :hook (ess-r-mode . lsp)
   :general
   (:states '(normal visual)
@@ -46,7 +47,9 @@
    "-" '(ess-insert-assign :which-key "ess-assign")
    )
   (:keymaps 'inferior-ess-r-mode-map
-   "C-l" '(comint-clear-buffer :which-key "clear console")))
+            "C-l" '(comint-clear-buffer :which-key "clear console")
+             "-" '(ess-insert-assign :which-key "ess-assign")
+            ))
 
 
 ;; use of stan

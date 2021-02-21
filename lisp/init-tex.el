@@ -47,6 +47,7 @@
         TeX-view-program-list '(("pdf-tools", "TeX-pdf-tools-sync-view"))
         )
   (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
+  (setq-default TeX-engine 'xetex)
   )
 
 (use-package magic-latex-buffer
