@@ -92,9 +92,5 @@
            "b" '(pdf-view-scroll-down-or-previous-page :which-key "scroll-back")
            )
   )
-
-
-
-
 (provide 'init-tex)
 ;;; init-tex.el ends here
