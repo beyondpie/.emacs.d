@@ -59,7 +59,8 @@
         magic-latex-enable-suscript t
         magic-latex-enable-pretty-symbols t
         magic-latex-enable-block-align nil
-        magic-latex-enable-inline-image nil)
+        magic-latex-enable-inline-image nil
+        magic-latex-enable-minibuffer-echo t)
   )
 
 (use-package company-auctex
