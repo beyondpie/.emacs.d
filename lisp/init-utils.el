@@ -78,5 +78,16 @@
 ;; y-or-n
 (fset 'yes-or-no-p 'y-or-n-p)
 
+;; use repeat-mode
+
+;; https://emacs-china.org/t/emacs-builtin-mode/11937/115
+;; conflict with evil-mode, and evil-collection or evil supports the repeat.
+
+;; (use-package repeat
+;;   :ensure nil
+;;   :hook (after-init . repeat-mode)
+;;   :custom
+;;  (repeat-exit-key (kbd "RET")))
+
 (provide 'init-utils)
 ;;; init-utils.el ends here
