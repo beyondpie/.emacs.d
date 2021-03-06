@@ -16,3 +16,14 @@
 /.smex-items
 /custom.el
 /projectile.cache
+/.last-package-update-day
+/url/
+/straight/
+/site-lisp/doggypoo.el~
+/projects
+/lisp/init-yasnippet.el~
+/lisp/init-tex.el~
+/lisp/init-shell.el~
+/lisp/init-evil.el~
+/eshell/
+/elpa/
