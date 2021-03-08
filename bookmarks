@@ -1,0 +1,12 @@
+;;;; Emacs Bookmark Format Version 1;;;; -*- coding: utf-8-emacs; mode: lisp-data -*-
+;;; This format is meant to be slightly human-readable;
+;;; nevertheless, you probably don't want to edit it.
+;;; -*- End Of Bookmark File Format Version Stamp -*-
+(("(eshell) Invocation"
+ (front-context-string . "\n2.1 Invocation\n")
+ (rear-context-string . ",  Up: Commands\n")
+ (position . 6974)
+ (filename . "/usr/local/Cellar/emacs-plus@28/28.0.50/share/info/emacs/eshell")
+ (info-node . "Invocation")
+ (handler . Info-bookmark-jump))
+)
