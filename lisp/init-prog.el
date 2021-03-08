@@ -15,6 +15,7 @@
 (global-set-key (kbd "M-.") 'xref-find-definitions)
 (global-set-key (kbd "M-,") 'xref-pop-marker-stack)
 
+
 ;; general could let me use "," as leader key
 ;; in prog mode under normal state of evil
 (general-define-key

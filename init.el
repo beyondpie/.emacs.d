@@ -10,12 +10,19 @@
 ;; make echo area showing message for 10s
 (setq suggest-key-bindings 10)
 
-;; set mac command
+;; set mac command and env
 ;; Both command keys are 'Super'
 (when *is-a-mac*
   (setq mac-right-command-modifier 'super
         mac-command-modifier 'super)
-)
+  ;; for naive Emacs lisp, not sure if needed.
+  ;; ref: https://emacs-china.org/t/native-emacs-lisp/11165/396
+  ;; apple version: when I use macOS Catalina 10.15.7, it syas darwin19
+  (setenv "LIBRARY_PATH"
+          "/usr/local/opt/gcc/lib/gcc/10:/usr/local/opt/gcc/lib/gcc/10/gcc/x86_64-apple-darwin19/10.2.0")
+
+  
+  )
 
 ;; garbage collection during startup
 (let ((normal-gc-cons-threshold (* 20 1024 1024))
