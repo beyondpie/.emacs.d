@@ -15,6 +15,7 @@
         lsp-enable-xref t
 	      lsp-signature-auto-activate nil
 	      lsp-modeline-code-actions-enable nil
+        lsp-diagnostics-provider :none
 	      lsp-modeline-diagnostics-enable nil
 	      lsp-modeline-workspace-status-enable nil
         ;; https://emacs-china.org/t/spacemacs-c-c/15695

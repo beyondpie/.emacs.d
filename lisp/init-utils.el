@@ -89,5 +89,11 @@
 ;;   :custom
 ;;  (repeat-exit-key (kbd "RET")))
 
+;; use nyan-mode
+(use-package nyan-mode
+  :init
+  (setq-default nyan-animate-nyancat nil
+                nyan-wavy-trail nil))
+
 (provide 'init-utils)
 ;;; init-utils.el ends here
