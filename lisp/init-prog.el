@@ -40,5 +40,9 @@
         try-expand-dabbrev-all-buffers
         try-expand-dabbrev-from-kill))
 
+;; highlight comment annotations
+(use-package fic-mode
+  :hook (prog-mode . fic-mode))
+
 (provide 'init-prog)
 ;;; init-prog.el ends here
