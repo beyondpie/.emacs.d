@@ -6,7 +6,8 @@
 ;; https://github.com/purcell/exec-path-from-shell
 (use-package exec-path-from-shell
   :ensure t
-  :commands  exec-path-from-shell-initialize
+  :init
+  (setq exec-path-from-shell-arguments nil)
   :config
   ;; for conda env in python-mode
   (add-to-list 'exec-path-from-shell-variables "WORKON_HOME" t)
