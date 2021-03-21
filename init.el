@@ -82,6 +82,8 @@
 (require 'init-python)
 (require 'init-tex)
 
+(require 'init-org)
+
 (add-hook 'after-init-hook
           (lambda ()
             (require 'server)
