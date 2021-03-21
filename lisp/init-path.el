@@ -12,7 +12,7 @@
   (add-to-list 'exec-path-from-shell-variables "WORKON_HOME" t)
   )
 
-(when (or (memq window-system '(mac ns x) (daemonp))
+(when (or (memq window-system '(mac ns x)) (daemonp))
   (exec-path-from-shell-initialize))
 
 (provide 'init-path)
