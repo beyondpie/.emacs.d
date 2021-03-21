@@ -26,16 +26,7 @@
    "(" 'dired-hide-details-mode
    "!" 'dired-do-shell-command
    "S" 'hydra-dired-quick-sort/body
-   )
-  
-  ;; neeed gnu ls
-  (when *is-a-mac*
-    (setq dired-use-ls-dired t
-	  insert-directory-program "/usr/local/bin/gls"
-	  dired-listing-switches "-aBhl --group-directories-first"
-	  )
-    )
-  )
+   ))
 
 (use-package diff-hl
   :pin melpa

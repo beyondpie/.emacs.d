@@ -23,11 +23,6 @@
   "Non-normal state leader key."
   )
 
-;;; binding super failed
-;; (when *is-a-mac*
-;;   (setq beyondpie/non-normal-leader-key (kbd "p")))
-
-
 (defconst beyondpie/major-mode-leader-key
   ","
   "Like spacemacs, use a different leader key for 'major-mode'."

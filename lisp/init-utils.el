@@ -38,9 +38,6 @@
   (setq doom-modeline-icon t)
 )
 
-;; for major-mode
-;; (global-set-key (kbd beyondpie/non-normal-leader-key) #'major-mode-hydra)
-
 ;; for mark
 (global-set-key (kbd "C-SPC") 'set-mark-command)
 
@@ -77,17 +74,6 @@
 
 ;; y-or-n
 (fset 'yes-or-no-p 'y-or-n-p)
-
-;; use repeat-mode
-
-;; https://emacs-china.org/t/emacs-builtin-mode/11937/115
-;; conflict with evil-mode, and evil-collection or evil supports the repeat.
-
-;; (use-package repeat
-;;   :ensure nil
-;;   :hook (after-init . repeat-mode)
-;;   :custom
-;;  (repeat-exit-key (kbd "RET")))
 
 ;; use nyan-mode
 (use-package nyan-mode

@@ -14,4 +14,4 @@
   )
 
 (provide 'init-org)
-;;; init-tex.el ends here
+;;; init-org.el ends here
