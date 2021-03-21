@@ -38,8 +38,8 @@
   :pin melpa)
   (use-package helm-projectile
     :ensure t
-    :pin melpa
-    :commands helm-projectile-switch-project
+    :init
+    (setq projectile-switch-project-action 'helm-projectile)
     :config
     (helm-projectile-on)
     )

@@ -10,6 +10,8 @@
   (setq projectile-enable-caching t)
   (setq projectile-globally-ignored-directories '(".git" "target" "build"))
   (setq projectile-globally-ignored-files '(".DS_Store"))
+  (setq projectile-completion-system 'helm)
+  (setq projectile-indexing-method 'alien)
   :hook (after-init . projectile-mode)
   :config
   (when (executable-find "ag")
