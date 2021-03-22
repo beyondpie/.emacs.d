@@ -8,7 +8,7 @@
 
 (use-package grip-mode
   :ensure t
-  :custom
+  :init
   (setq grip-preview-use-webkit nil)
   :hook ((markdown-mode org-mode) . grip-mode)
   )
