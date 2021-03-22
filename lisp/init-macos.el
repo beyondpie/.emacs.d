@@ -34,7 +34,7 @@
 ;; ref: https://emacs-china.org/t/native-emacs-lisp/11165/396
 ;; apple version: when I use macOS Catalina 10.15.7, it syas darwin19
 (setenv "LIBRARY_PATH"
-        "/usr/local/opt/gcc/lib/gcc/10:/usr/local/opt/gcc/lib/gcc/10/gcc/x86_64-apple-darwin19/10.2.0")
+        "/usr/local/opt/gcc/lib/gcc/10:/usr/local/opt/gcc/lib/gcc/10/gcc/x86_64-apple-darwin20/10.2.0")
 
 ;; dired setup
 (with-eval-after-load 'dired
