@@ -35,8 +35,9 @@
 (use-package doom-modeline
   :config
   (doom-modeline-mode 1)
-  (setq doom-modeline-icon t)
-)
+  (when (display-graphic-p)
+    (setq doom-modeline-icon t))
+  )
 
 ;; for mark
 (global-set-key (kbd "C-SPC") 'set-mark-command)
