@@ -82,5 +82,18 @@
   (setq-default nyan-animate-nyancat nil
                 nyan-wavy-trail nil))
 
+;; view large file
+(use-package vlf
+  :ensure t
+  :hook (after-init . (lambda () (require 'vlf-setup)))
+  :general
+  (:states '(normal visual insert emacs)
+           :keymaps 'override
+           :prefix beyondpie/normal-leader-key
+           :non-normal-prefix beyondpie/non-normal-leader-key
+           "fl" '(vlf :which-key "visualize large file"))
+  )
+
+
 (provide 'init-utils)
 ;;; init-utils.el ends here
