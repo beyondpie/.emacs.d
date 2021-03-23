@@ -114,15 +114,14 @@
     )
   )
 
-;; https://github.com/millejoh/emacs-ipython-notebook
 (use-package ein
   :ensure t)
 
+;; https://github.com/millejoh/emacs-ipython-notebook
 (use-package python
   :ensure t
   :pin melpa
   :mode ("\\.py\\'" . python-mode)
-  ;; :magic ("%ipynb" . python-mode)
   :hook ((python-mode . spacemacs//python-setup-backend)
          (python-mode . spacemacs//python-default))
   :init
@@ -130,7 +129,7 @@
     (spacemacs//python-setup-shell)
     (setq python-indent-offset 4)
     )
-  :config
+ :config
   (progn
     ;; Env vars
     (with-eval-after-load 'exec-path-from-shell
