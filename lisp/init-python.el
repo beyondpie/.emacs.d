@@ -114,10 +114,15 @@
     )
   )
 
+;; https://github.com/millejoh/emacs-ipython-notebook
+(use-package ein
+  :ensure t)
+
 (use-package python
   :ensure t
   :pin melpa
   :mode ("\\.py\\'" . python-mode)
+  ;; :magic ("%ipynb" . python-mode)
   :hook ((python-mode . spacemacs//python-setup-backend)
          (python-mode . spacemacs//python-default))
   :init
