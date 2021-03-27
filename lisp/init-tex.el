@@ -41,6 +41,8 @@
          (LaTeX-mode . TeX-PDF-mode)
          (LaTeX-mode . turn-on-reftex)
          (LaTeX-mode . auto-fill-mode)
+         ;; https://emacs.stackexchange.com/questions/30147/disabling-electric-indent-mode-for-one-mode-latex-mode-only/30148#30148
+         (LaTeX-mode . (lambda () (electric-indent-local-mode -1)))
          )
   :config
   (setq TeX-view-program-selection '((output-pdf "pdf-tools"))
@@ -58,7 +60,7 @@
   (setq magic-latex-enable-block-highlight t
         magic-latex-enable-suscript t
         magic-latex-enable-pretty-symbols t
-        magic-latex-enable-block-align nil
+        magic-latex-enable-block-align t
         magic-latex-enable-inline-image nil
         magic-latex-enable-minibuffer-echo t)
   )

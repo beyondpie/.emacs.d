@@ -83,6 +83,7 @@
            "wk" '(evil-window-up :which-key "goto up window")
            "fj" '(dired-jump :which-key "jump dired")
            "ff" '(helm-find-files :which-key "find file")
+           "fs" '(save-buffer :which-key "save file")
            "wJ" '(evil-window-move-very-bottom :whick-key "move window upward")
            "wK" '(evil-window-move-very-top :which-key "move window downward")
            "wL" '(evil-window-move-far-right :which-key "move window right")
