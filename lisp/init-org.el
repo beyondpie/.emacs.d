@@ -10,7 +10,6 @@
   :ensure t
   :init
   (setq grip-preview-use-webkit nil)
-  :hook ((markdown-mode org-mode) . grip-mode)
   )
 
 (provide 'init-org)

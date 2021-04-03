@@ -34,9 +34,9 @@
 (add-hook 'after-init-hook
           (lambda ()
             ;; load spacemacs-dark
-            ;; (load-theme 'spacemacs-dark t)
+            (load-theme 'spacemacs-dark t)
             ;; load  modus-vivendi
-            (modus-themes-load-vivendi)
+            ;; (modus-themes-load-vivendi)
             (add-to-list 'default-frame-alist
                          '(font . "Monaco-16"))
             ))
