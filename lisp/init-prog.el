@@ -44,5 +44,14 @@
 (use-package fic-mode
   :hook (prog-mode . fic-mode))
 
+;; realgud for debugging
+(use-package realgud
+  :ensure t
+  :init
+  (comint-mode)
+  :bind (("<up>" . comint-previous-input)
+         ("<down>" . comint-next-input))
+  )
+
 (provide 'init-prog)
 ;;; init-prog.el ends here
