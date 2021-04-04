@@ -47,10 +47,10 @@
 ;; realgud for debugging
 (use-package realgud
   :ensure t
-  :init
-  (comint-mode)
-  :bind (("<up>" . comint-previous-input)
-         ("<down>" . comint-next-input))
+  ;; :init
+  ;; (comint-mode)
+  ;; :bind (("<up>" . comint-previous-input)
+  ;;        ("<down>" . comint-next-input))
   )
 
 (provide 'init-prog)
