@@ -94,5 +94,9 @@
            "b" '(pdf-view-scroll-down-or-previous-page :which-key "scroll-back")
            )
   )
+
+(use-package image+
+  :ensure t)
+
 (provide 'init-tex)
 ;;; init-tex.el ends here
