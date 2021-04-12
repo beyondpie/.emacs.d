@@ -39,6 +39,7 @@
             ;; (modus-themes-load-vivendi)
             (add-to-list 'default-frame-alist
                          '(font . "Monaco-16"))
+            (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
             ))
 
 (defun enable-transparent ()
