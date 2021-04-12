@@ -41,5 +41,11 @@
                          '(font . "Monaco-16"))
             ))
 
+(defun enable-transparent ()
+  "set frame transparent"
+  (interactive)
+  (set-frame-parameter (selected-frame) 'alpha '(90 90))
+  )
+
 (provide 'init-themes)
 ;;; init-themes.el ends here
