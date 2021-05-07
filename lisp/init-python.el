@@ -128,6 +128,7 @@
   (progn
     (spacemacs//python-setup-shell)
     (setq python-indent-offset 4)
+    (setq python-shell-completion-native-enable nil)
     )
  :config
   (progn
@@ -136,7 +137,6 @@
       (exec-path-from-shell-copy-env "PYTHONPATH"))
     (setq-default python-indent-guess-indent-offset nil)
     )
-  (setq python-shell-completion-native-enable nil)
   :general
   (:states '(normal visual)
            :keymaps 'python-mode-map
@@ -150,6 +150,7 @@
            "'" '(spacemacs/python-start-or-switch-repl :which-key "python repl")
            "sl" '(spacemacs/python-shell-send-line :which-key "send line")
            "sf" '(spacemacs/python-shell-send-defun :which-key "send defun")
+           "sc" '(spacemacs/python-shell-send-defun :which-key "send class") 
            "sr" '(spacemacs/python-shell-send-region :which-key "send region")
            )
   (:states '(insert emacs)
