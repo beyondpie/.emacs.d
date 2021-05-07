@@ -100,5 +100,10 @@
   ;; (evil-collection-init 'pdf-tools)
   )
 
+(use-package evil-surround
+  :ensure t
+  :config
+  (global-evil-surround-mode 1))
+
 (provide 'init-evil)
 ;;; init-evil.el ends here
