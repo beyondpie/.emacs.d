@@ -130,6 +130,16 @@
     (setq python-indent-offset 4)
     (setq python-shell-completion-native-enable nil)
     )
+  (defun spacemacs/python-remove-unused-imports()
+  "Use Autoflake to remove unused function"
+  "autoflake --remove-all-unused-imports -i unused_imports.py"
+  (interactive)
+  (if (executable-find "autoflake")
+      (progn
+        (shell-command (format "autoflake --remove-all-unused-imports -i %s"
+                               (shell-quote-argument (buffer-file-name))))
+        (revert-buffer t t t))
+    (message "Error: Cannot find autoflake executable.")))
  :config
   (progn
     ;; Env vars
@@ -146,6 +156,7 @@
            "go" '(helm-occur :which-key "helm occur")
            "gm" '(helm-all-mark-rings :which-key "helm all mark rings")
            "rn" '(lsp-rename :which-key "lsp rename")
+           "ri" '(spacemacs/python-remove-unused-imports :which-key "remove unused imports")
            "==" '(blacken-buffer :which-key "black buffer")
            "'" '(spacemacs/python-start-or-switch-repl :which-key "python repl")
            "sl" '(spacemacs/python-shell-send-line :which-key "send line")
