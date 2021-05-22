@@ -114,9 +114,6 @@
     )
   )
 
-;; (use-package ein
-;;   :ensure t)
-
 ;; https://github.com/millejoh/emacs-ipython-notebook
 (use-package python
   :ensure t
