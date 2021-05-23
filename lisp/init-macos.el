@@ -9,7 +9,6 @@
   )
 
 (setq mac-option-modifier 'meta
-      mac-right-command-modifier 'super
       mac-command-modifier 'super
       )
 

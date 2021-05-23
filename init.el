@@ -44,9 +44,8 @@
 (require 'init-evil)
 (require 'init-helm)
 (when *is-a-mac*
-  (require 'init-macos))
-
-
+  (require 'init-macos)
+  )
 (require 'init-themes)
 (require 'init-gui-frames)
 (require 'init-dired)
