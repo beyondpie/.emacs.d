@@ -65,7 +65,6 @@
 
 ;; realgud for debugging
 (use-package realgud
-  :ensure t
   ;; :init
   ;; (comint-mode)
   ;; :bind (("<up>" . comint-previous-input)
