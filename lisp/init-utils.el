@@ -42,6 +42,10 @@
     (setq doom-modeline-window-width-limit fill-column)
     (setq doom-modeline-buffer-file-name-style 'relative-from-project)
     (setq doom-modeline-height 20)
+    (setq doom-modeline-checker-simple-format nil)
+    (setq doom-modeline-buffer-encoding nil)
+    (setq doom-modeline-lsp nil)
+    (setq doom-modeline-gnus-timer -1)
     )
   )
 
