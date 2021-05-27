@@ -70,6 +70,7 @@
 (require 'init-tex)
 
 (require 'init-org)
+(require 'init-telega)
 
 (add-hook 'after-init-hook
           (lambda ()

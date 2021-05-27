@@ -33,10 +33,16 @@
 
 ;; doom-mode line
 (use-package doom-modeline
+  :ensure t
   :config
   (doom-modeline-mode 1)
   (when (display-graphic-p)
-    (setq doom-modeline-icon t))
+    (setq doom-modeline-icon t)
+    (setq doom-modeline-hud t)
+    (setq doom-modeline-window-width-limit fill-column)
+    (setq doom-modeline-buffer-file-name-style 'relative-from-project)
+    (setq doom-modeline-height 20)
+    )
   )
 
 ;; for mark
@@ -93,7 +99,6 @@
            :non-normal-prefix beyondpie/non-normal-leader-key
            "fl" '(vlf :which-key "visualize large file"))
   )
-
 
 (provide 'init-utils)
 ;;; init-utils.el ends here
