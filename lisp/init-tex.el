@@ -34,7 +34,11 @@
           ;; Synctex support
           TeX-source-correlate-start-server nil
           ;; Don't insert line-break at inline math
-          LaTeX-fill-break-at-separators nil)
+          LaTeX-fill-break-at-separators nil
+          ;; prevent the title showing big fonts
+          font-latex-fontify-script nil
+          font-latex-fontify-sectioning 'color
+          )
     )
   :hook ((LaTeX-mode . LaTeX-math-mode)
          (LaTeX-mode . TeX-source-correlate-mode)
