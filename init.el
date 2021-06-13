@@ -37,6 +37,9 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
+;; stop use backup files
+(setq make-backup-files nil)
+
 (require 'init-elpa)
 (require 'init-path)
 (require 'init-const)
