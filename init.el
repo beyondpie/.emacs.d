@@ -4,7 +4,8 @@
 ;; Ref: purcell
 
 ;;; Code:
-;; (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
+
+;; this fix error when gpg no public key on rc centos 
 (setq package-check-signature nil)
 (defconst *spell-check-support-enabled* t)
 (defconst *is-a-mac* (eq system-type 'darwin))
