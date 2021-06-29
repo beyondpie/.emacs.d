@@ -34,8 +34,7 @@
 ;; doom-mode line
 (use-package doom-modeline
   :ensure t
-  :config
-  (doom-modeline-mode 1)
+  :init
   (when (display-graphic-p)
     (setq doom-modeline-icon t)
     (setq doom-modeline-hud t)
@@ -46,7 +45,11 @@
     (setq doom-modeline-buffer-encoding nil)
     (setq doom-modeline-lsp nil)
     (setq doom-modeline-gnus-timer -1)
+    (setq doom-modeline-env-version nil)
+    (setq doom-modeline-env-enable-python nil)
+    (setq doom-modeline-env-python-executable "")
     )
+  (doom-modeline-mode 1)
   )
 
 ;; for mark
