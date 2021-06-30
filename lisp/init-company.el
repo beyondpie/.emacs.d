@@ -9,6 +9,7 @@
 
 (use-package company-tabnine
   :ensure t)
+
 (use-package company
   :diminish
   :defines (company-dabbrev-ignore-case company-dabbrev-downcase)
@@ -36,7 +37,8 @@
         company-dabbrev-downcase nil
         company-global-modes '(not erc-mode message-mode help-mode
                                    gud-mode eshell-mode shell-mode)
-        company-backends '((company-tabnine
+        company-backends '((
+                            ;;company-tabnine
                             company-keywords
                             company-files
                             company-dabbrev
