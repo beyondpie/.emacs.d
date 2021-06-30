@@ -25,9 +25,16 @@
            :non-normal-prefix beyondpie/non-normal-leader-key
            :keymaps 'prog-mode-map
            "jj" '(citre-jump :which-key "citre jump")
-           "jp" '(citre-peek :which-key "citre peek")
+           "jJ" '(citre-peek-next-line :which-key "citre peek next line")
+           "jK" '(citre-peek-prev-line :which-key "citre peek prev line")
+           "j[" '(citre-peek-prev-definition :which-key "citre peek prev def")
+           "j]" '(citre-peek-next-definition :which-key "citre peek next def")
+           "j{" '(citre-peek-prev-definition :which-key "citre peek chain backward")
+           "j}" '(citre-peek-chain-forward :which-key "citre peek chain forward")
+           "jp" '(citre-ace-peek :which-key "citre ace peek")
            "jb" '(citre-jump-back :which-key "citre jump back")
-           "jP" '(citre-ace-peek :which-key "citre ace jump")
+           "jP" '(citre-ace-peek :which-key "citre peek through")
+           "jS" '(citre-peek-save-session :which-key "citre peek restore")
            )
   )
 
