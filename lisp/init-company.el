@@ -1,10 +1,14 @@
 ;;; init-company.el --- Completion with company -*- lexical-binding: t -*-
 
 ;;; Commentary:
-;;ref: seagle init-company
+;; ref:
+;; - Seagle init-company
+;; - Lazycat: https://manateelazycat.github.io/emacs/2021/06/30/company-multiple-backends.html
 
 ;;; Code:
 
+(use-package company-tabnine
+  :ensure t)
 (use-package company
   :diminish
   :defines (company-dabbrev-ignore-case company-dabbrev-downcase)
@@ -32,14 +36,13 @@
         company-dabbrev-downcase nil
         company-global-modes '(not erc-mode message-mode help-mode
                                    gud-mode eshell-mode shell-mode)
-        company-backends '((company-dabbrev-code
+        company-backends '((company-tabnine
                             company-keywords
                             company-files
                             company-dabbrev
                             company-capf))
         tab-always-indent 'complete)
   (add-to-list 'completion-styles 'initials t)
-
 
   ;; Better sorting and filtering
   (use-package company-prescient
