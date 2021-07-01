@@ -42,7 +42,11 @@
         lsp-idle-delay 0.800
         lsp-log-io nil
         )
+  :hook
+  (lsp-mode . lsp-enable-which-key-integration)
+  :config
   (setq-default citre-enable-capf-intergration nil)
+  
   (defun lsp-citre-capf-function ()
     "A capf backend that tries lsp first, then Citre."
     (let ((lsp-result (lsp-completion-at-point)))
@@ -55,18 +59,10 @@
   
   (defun enable-lsp-citre-capf-backend ()
     "Enable the lsp + Citre capf backend in current buffer."
-    (interactive)
     (add-hook 'completion-at-point-functions #'lsp-citre-capf-function nil t))
   (define-advice lsp (:around (fn &rest args) lsp-citre-capf)
     (apply fn args)
     (enable-lsp-citre-capf-backend))
-  
-  :hook
-  (lsp-mode . lsp-enable-which-key-integration)
-  ;; :config
-  ;; (define-advice lsp (:around (fn &rest args) lsp-citre-capf)
-  ;;   (apply fn args)
-  ;;   (enable-lsp-citre-capf-backend))
   )
 
 (use-package helm-lsp
