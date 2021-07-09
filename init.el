@@ -77,8 +77,8 @@
 (require 'init-tex)
 
 (require 'init-org)
-(when *is-a-mac* 
-  (require 'init-telega) )
+;; (when *is-a-mac* 
+;;   (require 'init-telega) )
 
 (add-hook 'after-init-hook
           (lambda ()

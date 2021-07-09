@@ -13,7 +13,7 @@
          ("C-x c k" . citre-jump-back)
          ("C-x c p" . citre-peek)
          ("C-x c P" . citre-ace-peek))
-  :hook (prog-mode . citre-auto-enable-citre-mode)
+  ;; :hook (prog-mode . citre-auto-enable-citre-mode)
   :config
   (with-eval-after-load 'projectile
     (setq citre-project-root-function #'projectile-project-root))
@@ -37,6 +37,7 @@
            "jP" '(citre-peek-through :which-key "citre peek through")
            "jS" '(citre-peek-save-session :which-key "citre peek restore")
            )
+  (setq citre-ctags-program "/usr/local/bin/ctags")
   )
 
 (provide 'init-citre)
