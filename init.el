@@ -60,7 +60,7 @@
 (require 'init-flycheck)
 (require 'init-recentf)
 (require 'init-company)
-;; (require 'init-yasnippet)
+(require 'init-yasnippet)
 (require 'init-windows)
 (require 'init-git)
 (require 'init-projectile)

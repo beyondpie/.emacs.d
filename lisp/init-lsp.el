@@ -44,6 +44,8 @@
         )
   :hook
   (lsp-mode . lsp-enable-which-key-integration)
+  :commands
+  lsp
   )
 
 (use-package helm-lsp

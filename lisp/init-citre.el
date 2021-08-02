@@ -7,18 +7,30 @@
 ;;; Code:
 
 (use-package citre
+  :defer t
   :diminish
+  :init
+  (require 'citre-config)
+  ;; Bind your frequently used commands.
+  (global-set-key (kbd "C-x c j") 'citre-jump)
+  (global-set-key (kbd "C-x c J") 'citre-jump-back)
+  (global-set-key (kbd "C-x c p") 'citre-ace-peek)
+  (global-set-key (kbd "C-x c u") 'citre-update-this-tags-file)
   :functions projectile-project-root
-  :bind (("C-x c j" . citre-jump)
-         ("C-x c k" . citre-jump-back)
-         ("C-x c p" . citre-peek)
-         ("C-x c P" . citre-ace-peek))
-  :hook (prog-mode . citre-auto-enable-citre-mode)
   :config
-  (with-eval-after-load 'projectile
-    (setq citre-project-root-function #'projectile-project-root))
-  (with-eval-after-load 'cc-mode (require 'citre-lang-c))
-  (with-eval-after-load 'dired (require 'citre-lang-fileref))
+  (setq
+   ;; Set these if readtags/ctags is not in your path.
+   citre-readtags-program "/usr/local/bin/readtags"
+   citre-ctags-program "/usr/local/bin/ctags"
+   ;; Set this if you use project management plugin like projectile.  It's
+   ;; used for things like displaying paths relatively, see its docstring.
+   citre-project-root-function #'projectile-project-root
+   ;; Set this if you want to always use one location to create a tags file.
+   citre-default-create-tags-file-location 'global-cache
+   ;; See the "Create tags file" section above to know these options
+   citre-use-project-root-when-creating-tags t
+   citre-prompt-language-for-ctags-command t)
+  :hook (prog-mode . citre-auto-enable-citre-mode)
   :general
   (:states '(normal visual insert emacs)
            :prefix beyondpie/normal-leader-key
@@ -37,7 +49,6 @@
            "jP" '(citre-peek-through :which-key "citre peek through")
            "jS" '(citre-peek-save-session :which-key "citre peek restore")
            )
-  (setq citre-ctags-program "/usr/local/bin/ctags")
   )
 
 (provide 'init-citre)
