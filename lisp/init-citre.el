@@ -9,15 +9,15 @@
 (use-package citre
   :defer t
   :diminish
-  :init
+  :functions projectile-project-root
+  :config
+  (citre-auto-enable-citre-mode-modes '(prog-mode))
   (require 'citre-config)
   ;; Bind your frequently used commands.
   (global-set-key (kbd "C-x c j") 'citre-jump)
   (global-set-key (kbd "C-x c J") 'citre-jump-back)
   (global-set-key (kbd "C-x c p") 'citre-ace-peek)
   (global-set-key (kbd "C-x c u") 'citre-update-this-tags-file)
-  :functions projectile-project-root
-  :config
   (setq
    ;; Set these if readtags/ctags is not in your path.
    citre-readtags-program "/usr/local/bin/readtags"

@@ -70,15 +70,13 @@
 (require 'init-prog)
 (require 'init-shell)
 (require 'init-lsp)
-;; (when *is-a-mac*
-;;   (require 'init-citre))
+(when *is-a-mac*
+  (require 'init-citre))
 (require 'init-ess)
 (require 'init-python)
 (require 'init-tex)
 
 (require 'init-org)
-;; (when *is-a-mac* 
-;;   (require 'init-telega) )
 
 (add-hook 'after-init-hook
           (lambda ()
