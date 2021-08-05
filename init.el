@@ -77,6 +77,7 @@
 (require 'init-tex)
 
 (require 'init-org)
+;; (require 'init-orgroam)
 
 (add-hook 'after-init-hook
           (lambda ()
