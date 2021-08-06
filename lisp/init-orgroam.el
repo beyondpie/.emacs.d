@@ -4,11 +4,10 @@
 
 
 ;;; Code:
-
 (use-package org-roam
       :ensure t
       :custom
-      (org-roam-directory (file-truename "~/git-recipes/notes"))
+      (org-roam-directory (file-truename "~/Dropbox/BingLab/notes"))
       :bind (("C-c n l" . org-roam-buffer-toggle)
              ("C-c n f" . org-roam-node-find)
              ("C-c n g" . org-roam-graph)
@@ -21,8 +20,15 @@
       ;; If using org-roam-protocol
       (require 'org-roam-protocol))
 
+;; ref: https://github.com/jkitchin/org-ref
 (use-package org-ref
-  :ensure t)
+  :ensure t
+  :init
+  (setq reftex-default-bibliography '("~/Dropbox/bibliography/atac.bib"))
+  (setq org-ref-default-bibliography '("~/Dropbox/bibliography/atac.bib"))
+  (setq bibtex-completion-bibliography "~/Dropbox/bibliography/atac.bib")
+  )
+
 
 (use-package org-roam-bibtex
   :after org-roam
