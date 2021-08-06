@@ -21,5 +21,21 @@
       ;; If using org-roam-protocol
       (require 'org-roam-protocol))
 
+(use-package org-ref
+  :ensure t)
+
+(use-package org-roam-bibtex
+  :after org-roam
+  :config
+  (require 'org-ref)) ; optional: if Org Ref is not loaded anywhere else, load it here
+
+(use-package helm-bibtex
+  :ensure t)
+
+(use-package anki-connect
+  :ensure t)
+(use-package anki-editor
+  :ensure t)
+
 (provide 'init-orgroam)
 ;;; init-orgroam.el ends here
