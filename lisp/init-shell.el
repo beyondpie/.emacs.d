@@ -8,9 +8,7 @@
 
 ;;; Code:
 
-(use-package vterm
-  :ensure t
-  :pin melpa)
+(use-package vterm)
 
 (setq comint-prompt-read-only t)
 (setq shell-command-completion-mode t)
