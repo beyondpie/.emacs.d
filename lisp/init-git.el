@@ -11,7 +11,9 @@
   :init
   (use-package with-editor :ensure t)
   :custom
-  (magit-git-executable "/usr/local/bin/git")
+  (when *is-a-mac*
+    (magit-git-executable "/usr/local/bin/git")
+    )
   :general
   (:states '(normal visual insert emacs)
            :keymaps 'override
