@@ -70,9 +70,7 @@
 (require 'init-treemacs)
 
 (require 'init-prog)
-(when *is-a-mac*
-  (require 'init-shell)
-  )
+(require 'init-shell)
 (require 'init-lsp)
 (when *is-a-mac*
   (require 'init-citre))
