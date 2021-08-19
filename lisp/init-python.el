@@ -103,7 +103,7 @@
   :hook (python-mode . pyvenv-tracking-mode)
   :general
   (:states '(normal visual)
-           :keymaps 'python-mode-map
+           :keymaps '(python-mode-map ess-r-mode-map)
            :prefix beyondpie/major-mode-leader-key
            "va"  #'pyvenv-activate
            "vd" #'pyvenv-deactivate
