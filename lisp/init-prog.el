@@ -65,10 +65,6 @@
 
 ;; realgud for debugging
 (use-package realgud
-  ;; :init
-  ;; (comint-mode)
-  ;; :bind (("<up>" . comint-previous-input)
-  ;;        ("<down>" . comint-next-input))
   :init
   (setq realgud-window-split-orientation 'horizontal)
   )
