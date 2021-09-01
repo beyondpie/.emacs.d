@@ -9,6 +9,7 @@
   :ensure t
   :pin melpa
   :delight
+  :diminish 'helm-mode
   :hook (after-init . helm-mode)
   :config
   (setq helm-split-window-default-side 'below

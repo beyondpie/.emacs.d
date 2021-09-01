@@ -9,6 +9,7 @@
 (require 'package)
 (require 'cl-lib)
 
+
 ;; HACK: DO NOT copy package-selected-packages to init/custom file forcibly.
 ;; https://github.com/jwiegley/use-package/issues/383#issuecomment-247801751
 ;; from seagle
@@ -50,8 +51,16 @@
 (eval-when-compile
   (require 'use-package))
 (use-package diminish
-  :ensure t)
-(require 'diminish)
+  :ensure t
+  :demand)
+(use-package delight
+  :ensure t
+  :demand)
+;; NOTE: add demand in above, so
+;; require may not be needed
+;; (require 'diminish)
+
+;; TODO: I cannot put this on the top, why?
 (require 'bind-key)
 
 ;; Update GPG keyring for GNU ELPA

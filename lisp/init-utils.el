@@ -29,6 +29,7 @@
 (use-package undo-tree
   :hook (after-init . global-undo-tree-mode)
   :bind ("C-x u" . undo-tree-visualize)
+  :delight
 )
 
 ;; doom-mode line
