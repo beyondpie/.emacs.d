@@ -90,10 +90,10 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 
 ;; use nyan-mode
-(use-package nyan-mode
-  :init
-  (setq-default nyan-animate-nyancat nil
-                nyan-wavy-trail nil))
+;; (use-package nyan-mode
+;;   :init
+;;   (setq-default nyan-animate-nyancat nil
+;;                 nyan-wavy-trail nil))
 
 ;; view large file
 (use-package vlf
