@@ -57,6 +57,13 @@
 ;; Update GPG keyring for GNU ELPA
 (use-package gnu-elpa-keyring-update)
 
+;; set benchmark to record time
+(use-package benchmark-init
+  :ensure t
+  :config
+  (add-hook 'after-init-hook 'benchmark-init/deactivate)
+  )
+
 ;; auto-package-update
 (use-package auto-package-update
   :commands (auto-package-update-now)

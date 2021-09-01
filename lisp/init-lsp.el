@@ -38,7 +38,6 @@
 
 	      lsp-enable-indentation t
 	      lsp-enable-on-type-formatting nil
-        read-process-output-max (* 1024 1024)
         lsp-idle-delay 0.800
         lsp-log-io nil
         )

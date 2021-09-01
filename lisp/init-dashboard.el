@@ -4,9 +4,9 @@
 
 ;;; Code:
 
-(use-package all-the-icons
-  :ensure t
-  :pin melpa)
+;; (use-package all-the-icons
+;;   :ensure t
+;;   :pin melpa)
 
 (use-package page-break-lines
   :ensure t
