@@ -65,6 +65,7 @@
 
 ;; realgud for debugging
 (use-package realgud
+  :defer t
   :init
   (setq realgud-window-split-orientation 'horizontal)
   )
