@@ -14,6 +14,16 @@
 ;; Defer garbage collection further back in the startup process
 (setq gc-cons-threshold most-positive-fixnum)
 
+;; https://emacstalk.github.io/post/004/
+(defvar my/gc-timer
+  (run-with-idle-timer 30 t
+                       (lambda ()
+                         (let ((inhibit-read-only t)
+                               (gc-msg (format "Garbage Collector has run for %.06fsec"
+                                               (garbage-collect))))
+                           (with-current-buffer "*Messages*"
+	                     (insert gc-msg "\n"))))))
+
 ;; Package initialize occurs automatically, before `user-init-file' is
 ;; loaded, but after `early-init-file'. We handle package
 ;; initialization, so we must prevent Emacs from doing it early!
@@ -28,6 +38,8 @@
 (when (featurep 'ns)
   (push '(ns-transparent-titlebar . t) default-frame-alist))
 
+;; for lsp loading json 
+(setq read-process-output-max (* 1024 1024)) ;; 1mb
 
 (provide 'early-init)
 ;;; early-init.el ends here
