@@ -83,9 +83,9 @@
 (require 'init-tex)
 (require 'init-org)
 
-(when *is-a-mac*
-  (require 'init-orgroam)
-  )
+;; (when *is-a-mac*
+;;   (require 'init-orgroam)
+;;   )
 
 (add-hook 'after-init-hook
           (lambda ()
