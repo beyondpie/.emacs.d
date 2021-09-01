@@ -114,9 +114,16 @@
   (visual-line-mode)
   (eldoc-mode)
   (auto-revert-mode)
+  (dired-mode)
+  (winner-mode)
+  (ess-r-mode "R")
+  (windmove-mode)
+  (flymake-mode)
+  (evil-collection-unimpaired-mode)
+  (global-evil-collection-unimpaired-mode)
   )
 
-  
+;; TODO: how to globally shutdown flymake mode?
 (flymake-mode -1)
 
 (provide 'init-utils)

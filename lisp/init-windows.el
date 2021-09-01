@@ -18,6 +18,7 @@
   :ensure t
   :pin melpa
   :bind ("C-x o" . switch-window)
+  :delight
   :config
   (setq-default switch-window-shortcut-style 'alphabet
                 switch-window-timeout nil)
