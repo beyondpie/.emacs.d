@@ -41,6 +41,7 @@
         try-expand-dabbrev-from-kill))
 
 (use-package hl-todo
+  :delight
   :custom
   ;; Better hl-todo colors, taken from spacemacs
   (hl-todo-keyword-faces '(("TODO" . "#dc752f")

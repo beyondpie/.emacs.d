@@ -14,6 +14,7 @@
 ;; https://github.com/justbur/emacs-which-key
 (use-package which-key
   :hook (after-init . which-key-mode)
+  :delight
   :init
   (setq which-key-show-early-on-C-h t)
   (setq which-key-idle-delay 0.4)
@@ -110,7 +111,13 @@
 (use-package emacs
   :delight
   (auto-fill-function " AF")
-  (visual-line-mode))
+  (visual-line-mode)
+  (eldoc-mode)
+  (auto-revert-mode)
+  )
+
+  
+(flymake-mode -1)
 
 (provide 'init-utils)
 ;;; init-utils.el ends here

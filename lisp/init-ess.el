@@ -15,6 +15,7 @@
    "*styler Error Buffer"))
 
 (use-package ess
+  :delight
   :ensure t
   :pin melpa
   :init

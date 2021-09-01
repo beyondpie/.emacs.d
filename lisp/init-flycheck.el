@@ -7,6 +7,7 @@
   :ensure t
   :pin melpa
   :hook (after-init . global-flycheck-mode)
+  :delight
   :init
   (setq flycheck-check-syntax-automatically nil)
   :config

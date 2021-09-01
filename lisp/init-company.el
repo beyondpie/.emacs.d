@@ -7,11 +7,8 @@
 
 ;;; Code:
 
-(use-package company-tabnine
-  :ensure t)
-
 (use-package company
-  :diminish
+  :delight
   :defines (company-dabbrev-ignore-case company-dabbrev-downcase)
   :commands company-cancel
   :bind (("M-/" . company-complete)
@@ -38,7 +35,6 @@
         company-global-modes '(not erc-mode message-mode help-mode
                                    gud-mode eshell-mode shell-mode)
         company-backends '((
-                            ;;company-tabnine
                             company-keywords
                             company-files
                             company-dabbrev
@@ -48,14 +44,16 @@
 
   ;; Better sorting and filtering
   (use-package company-prescient
+    :delight
     :init (company-prescient-mode 1))
   ;; quickhelp
   (use-package company-quickhelp
-      :defines company-quickhelp-delay
-      :bind (:map company-active-map
-             ([remap company-show-doc-buffer] . company-quickhelp-manual-begin))
-      :hook (global-company-mode . company-quickhelp-mode)
-      :init (setq company-quickhelp-delay 5))
+    :delight
+    :defines company-quickhelp-delay
+    :bind (:map company-active-map
+                ([remap company-show-doc-buffer] . company-quickhelp-manual-begin))
+    :hook (global-company-mode . company-quickhelp-mode)
+    :init (setq company-quickhelp-delay 5))
   )
 
 (provide 'init-company)

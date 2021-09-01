@@ -9,6 +9,7 @@
 ;;; Code:
 
 (use-package lsp-mode
+  :delight
   :init
   (setq lsp-keymap-prefix "C-c l"
         lsp-enable-symbol-highlighting t

@@ -8,9 +8,8 @@
 (use-package helm
   :ensure t
   :pin melpa
-  :delight
-  :diminish 'helm-mode
   :hook (after-init . helm-mode)
+  :delight
   :config
   (setq helm-split-window-default-side 'below
         helm-autoresize-max-height 40
@@ -33,18 +32,22 @@
   (use-package helm-git-grep
     :ensure t
     :pin melpa
+    :delight
     :commands helm-git-grep)
   (use-package helm-xref
-  :ensure t
+    :ensure t
+    :delight
   :pin melpa)
   (use-package helm-projectile
     :ensure t
+    :delight
     :init
     (setq projectile-switch-project-action 'helm-projectile)
     :config
     (helm-projectile-on)
     )
   (use-package helm-swoop
+    :delight
     :ensure t
     :pin melpa
     :init

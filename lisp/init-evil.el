@@ -30,6 +30,7 @@
 ;;; Code:
 (use-package evil
   :ensure t
+  :delight
   :init
   (setq evil-disable-insert-state-bindings t
         evil-mode-line-format t
@@ -94,14 +95,17 @@
 (use-package evil-collection
   :after evil
   :ensure t
+  :delight
   :config
   (evil-collection-init)
   ;; (evil-collection-init 'magit)
   ;; (evil-collection-init 'pdf-tools)
+  (evil-collection-unimpaired-mode -1)
   )
 
 (use-package evil-surround
   :ensure t
+  :delight
   :config
   (global-evil-surround-mode 1))
 
