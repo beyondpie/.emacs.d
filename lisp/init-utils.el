@@ -105,7 +105,12 @@
 (use-package elisp-demos
   :config
   (advice-add 'describe-function-1 :after #'elisp-demos-advice-describe-function-1)
-)
+  )
+
+(use-package emacs
+  :delight
+  (auto-fill-function " AF")
+  (visual-line-mode))
 
 (provide 'init-utils)
 ;;; init-utils.el ends here

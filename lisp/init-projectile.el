@@ -6,7 +6,7 @@
 (use-package projectile
   :ensure t
   :pin melpa
-  :delight
+  :delight '(:eval (concat " " (projectile-project-name)))
   :init
   (setq projectile-enable-caching t)
   (setq projectile-globally-ignored-directories '(".git" "target" "build"))
