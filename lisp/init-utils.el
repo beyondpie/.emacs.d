@@ -59,7 +59,8 @@
 
 ;; for tabs
 (setq-default indent-tabs-mode nil
-              default-tab-width 2)
+              default-tab-width 2
+              tab-width 2)
 ;; ** language
 (ispell-change-dictionary "american" t)
 (define-coding-system-alias 'UTF-8 'utf-8)

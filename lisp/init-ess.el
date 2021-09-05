@@ -50,7 +50,10 @@
   (:keymaps 'inferior-ess-r-mode-map
             "C-l" '(comint-clear-buffer :which-key "clear console")
              "-" '(ess-insert-assign :which-key "ess-assign")
-            ))
+             )
+  (when *is-a-mac*
+    (setq inferior-R-program "/usr/local/bin/R"))
+  )
 
 
 ;; use of stan
