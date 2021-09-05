@@ -124,8 +124,5 @@
   (global-evil-collection-unimpaired-mode)
   )
 
-;; TODO: how to globally shutdown flymake mode?
-(flymake-mode -1)
-
 (provide 'init-utils)
 ;;; init-utils.el ends here
