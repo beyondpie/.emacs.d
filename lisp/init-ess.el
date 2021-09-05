@@ -25,7 +25,8 @@
   (setq ess-indent-offset 2
         ess-style 'RStudio
         ess-fancy-comments nil
-        ess-offset-arguments-newline "prev-line")
+        ess-offset-arguments-newline "prev-line"
+        ess-use-flymake nil)
   :hook (ess-r-mode . lsp)
   :general
   (:states '(normal visual)
