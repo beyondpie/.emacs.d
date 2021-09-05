@@ -122,6 +122,7 @@
   (flymake-mode)
   (evil-collection-unimpaired-mode)
   (global-evil-collection-unimpaired-mode)
+  (helm-mode)
   )
 
 (provide 'init-utils)
