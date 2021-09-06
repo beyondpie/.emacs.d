@@ -72,9 +72,7 @@
   )
 
 ;; aggressive indent mode
-(use-package aggressive-indent
-  :hook
-  (prog-mode . aggressive-indent-mode))
+(use-package aggressive-indent)
 
 (provide 'init-prog)
 ;;; init-prog.el ends here
