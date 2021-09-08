@@ -62,10 +62,9 @@
 (require 'init-flycheck)
 (require 'init-recentf)
 (require 'init-company)
-
-;; temp comment yasnippet cause I use it not often and it cost much time in init.
-;; (require 'init-yasnippet)
-
+;; use yasnippet since lsp and company depend on it
+;; though it occupies some time.
+(require 'init-yasnippet)
 (require 'init-windows)
 (require 'init-git)
 (require 'init-projectile)
