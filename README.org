@@ -5,7 +5,7 @@
   The key features I like:
   - Integrate the evil package very well.
   - Use leader keys to simplify key bindings, such as "space" in evil normal mode, "comma" for major mode, and so on.
-  - Jumping among different windows so easy with the support from evil.
+  - Jumping among different windows easily with the support of the evil package.
 
   The reason I left spacemacs because I think it's a good opportunity
   now for me to learn emacs in depth, and make the configurations
