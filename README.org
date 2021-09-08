@@ -3,8 +3,8 @@
   
   I learn a lot from spacemacs, which is a popular emacs configuration. I use it since 2017 till 2020.
   The key features I like:
-  - Integrate the evil package very well
-  - Use leader keys to simply key bindings, such as "space" in evil normal mode, "comma" for major mode, and so on.
+  - Integrate the evil package very well.
+  - Use leader keys to simplify key bindings, such as "space" in evil normal mode, "comma" for major mode, and so on.
   - Jumping among different windows so easy with the support from evil.
 
   The reason I left spacemacs because I think it's a good opportunity
