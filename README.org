@@ -1,14 +1,26 @@
 * My dot emacs
-  This configuration is only used personally for learning emacs in
-  depth. It is influenced heavily by spacemacs, which I use for near 4
-  years. The key features I like:
-  - Key bindings: /SPC/ as the leader key in normal mode; /,/ as the
-    leader key for major mode.
-  - Window-related quick jumps.
+  My configuration for emacs.
+  
+  I learn a lot from spacemacs, which is a popular emacs configuration. I use it since 2017 till 2020.
+  The key features I like:
+  - Integrate the evil package very well
+  - Use leader keys to simply key bindings, such as "space" in evil normal mode, "comma" for major mode, and so on.
+  - Jumping among different windows so easy with the support from evil.
+
+  The reason I left spacemacs because I think it's a good opportunity
+  now for me to learn emacs in depth, and make the configurations
+  light, simple, controllable by myself.
+
+  After reading part of the source codes in spacemacs, I know I can
+  handle the similar experience with the packages:
+  - *general*: leader keybindings
+  - *evil*: vim in emacs
+  - *evil-collection*: make evil more smooth.
+  - *helm*: search anytime, anywhere. 
  
 ** Note for this configuration
   - System: MacOS and Linux
-  - GUI mainly, terminal should be OK
+  - Both GUI and terminal are considered.
   - Emacs verion: >= 27.1
   - Highly used packages:
     - *use-package*: manage the packages
@@ -27,9 +39,10 @@
       - *company*: code completion
       - *flycheck*: check syntax
     - *pdf-tools*: view pdf (GUI mode)
-  - May change a lot.
 
+      
 ** Reference
   - Purcell [[https://github.com/purcell/emacs.d][emacs.d]]
   - Seagle [[https://github.com/seagle0128/.emacs.d][emacs.d]]
   - [[https://github.com/syl20bnr/spacemacs][Spacemacs]]
+
