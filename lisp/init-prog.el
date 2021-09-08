@@ -71,8 +71,5 @@
   (setq realgud-window-split-orientation 'horizontal)
   )
 
-;; aggressive indent mode
-(use-package aggressive-indent)
-
 (provide 'init-prog)
 ;;; init-prog.el ends here
