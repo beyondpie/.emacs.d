@@ -40,7 +40,7 @@
       - *flycheck*: check syntax
     - *pdf-tools*: view pdf (GUI mode)
 
-** Install Emacs.
+** Install Emacs
 
 *** On macOS
 - Use homebrew emacs-plus: see the [[https://github.com/d12frosted/homebrew-emacs-plus][link]] for details. It's easy and
@@ -50,16 +50,16 @@
   links. I tried several ways, still not work. gccemacs is not a must,
   so emacs-plus is definately a good way to install emacs firstly.
 
-- Build emacs by ourself. Recently, I notice the repo:
+- Build emacs by ourself. Recently I find this repo:
   [[https://github.com/jimeh/build-emacs-for-macos][build-emacs-for-macos]]. It works on my machine, and now I can use
   gccemacs to speed up emacs.
 
 *** On Ubuntu
-- If use apt-get in Ubuntu, I can only use the current stable version
+- If using apt-get in Ubuntu, I can only get the current stable version
   27.2, which is OK. But if I want to use the latest dev version like
-  28.05, how? I tryied to configure emacs from source, but still some
+  28.05, how? I tried to configure emacs from source, but still some
   dependencies cannot be installed, which is weired. Later I find the
-  [[https://snapcraft.io/emacs][snapcraft link]], which supports the latest dev version. Great.
+  [[https://snapcraft.io/emacs][snapcraft link]], which supports the latest dev version. Great!
       
 ** Reference
   - Purcell [[https://github.com/purcell/emacs.d][emacs.d]]
