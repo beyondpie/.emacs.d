@@ -1,5 +1,5 @@
 * My dot emacs
-  My configuration for emacs.
+  My configuration for emacs since the end of 2020.
   
   I learn a lot from spacemacs, which is a popular emacs configuration. I use it since 2017 till 2020.
   The key features I like:
