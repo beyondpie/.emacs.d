@@ -37,9 +37,10 @@
             (load-theme 'spacemacs-dark t)
             ;; load  modus-vivendi
             ;; (modus-themes-load-vivendi)
-            (when *is-a-mac* 
+            (if *is-a-mac* 
               (add-to-list 'default-frame-alist
                            '(font . "Monaco-16"))
+              (set-face-attribute 'default nil :height 150)
               )
             (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
             ))
