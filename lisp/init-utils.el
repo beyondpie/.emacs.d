@@ -109,21 +109,23 @@
   (advice-add 'describe-function-1 :after #'elisp-demos-advice-describe-function-1)
   )
 
-(use-package emacs
-  :delight
-  (auto-fill-function " AF")
-  (visual-line-mode)
-  (eldoc-mode)
-  (auto-revert-mode)
-  (dired-mode)
-  (winner-mode)
-  (ess-r-mode "R")
-  (windmove-mode)
-  (flymake-mode)
-  (evil-collection-unimpaired-mode)
-  (global-evil-collection-unimpaired-mode)
-  (helm-mode)
+(defun simplify-minibatch-emacs ()
+  (interactive)
+  (use-package emacs
+    :delight
+    (auto-fill-function " AF")
+    (visual-line-mode)
+    (eldoc-mode)
+    (auto-revert-mode)
+    (dired-mode)
+    (winner-mode)
+    (ess-r-mode "R")
+    (windmove-mode)
+    (flymake-mode)
+    (evil-collection-unimpaired-mode)
+    (global-evil-collection-unimpaired-mode)
+    (helm-mode)
+    )
   )
-
 (provide 'init-utils)
 ;;; init-utils.el ends here
