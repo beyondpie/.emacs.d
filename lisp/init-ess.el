@@ -2,6 +2,11 @@
 
 ;;; Commentary:
 
+;; If we want to close the [R/none] showed in minibuffer
+
+;; You can simply set mode-line-process to nil in ess-mode-hook and/or inferior-ess-mode-hook:
+;; (setq-local mode-line-process nil)
+
 ;;; Code:
 
 (defun beyondpie/format_r_file()
