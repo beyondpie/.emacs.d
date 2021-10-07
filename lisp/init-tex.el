@@ -84,7 +84,7 @@
 
 (use-package pdf-tools
   :ensure t
-  :straight (pdf-tools :type git :host github :rep "politza/pdf-tools"
+  :straight (pdf-tools :type git :host github :repo "politza/pdf-tools"
                       :fork (:host github :repo "beyondpie/pdf-tools"))
   :mode ("\\.pdf\\'" . pdf-view-mode)
   :config
