@@ -76,11 +76,11 @@
 ;;   )
 
 ;; Fix wrong number of argument in Emacs 28.05 at iMac.
-(cl-letf (((symbol-function 'define-obsolete-function-alias) #'defalias))
-   (use-package benchmark-init
-     :config
-     (require 'benchmark-init-modes)
-     (add-hook 'after-init-hook #'benchmark-init/deactivate)))
+;; (cl-letf (((symbol-function 'define-obsolete-function-alias) #'defalias))
+;;    (use-package benchmark-init
+;;      :config
+;;      (require 'benchmark-init-modes)
+;;      (add-hook 'after-init-hook #'benchmark-init/deactivate)))
 
 
 ;; auto-package-update

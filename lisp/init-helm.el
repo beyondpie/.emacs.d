@@ -38,14 +38,14 @@
     :ensure t
     :delight
   :pin melpa)
-  (use-package helm-projectile
-    :ensure t
-    :delight
-    :init
-    (setq projectile-switch-project-action 'helm-projectile)
-    :config
-    (helm-projectile-on)
-    )
+  ;; (use-package helm-projectile
+  ;;   :ensure t
+  ;;   :delight
+  ;;   :init
+  ;;   (setq projectile-switch-project-action 'helm-projectile)
+  ;;   :config
+  ;;   (helm-projectile-on)
+  ;;   )
   (use-package helm-swoop
     :delight
     :ensure t
