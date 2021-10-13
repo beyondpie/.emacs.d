@@ -32,14 +32,14 @@
   :bind ("<f5>" . modus-themes-toggle))
 
 ;; https://github.com/404cn/nano-theme.el
-(use-package nano-theme
-  :straight (nano-theme :type git :host github :repo "404cn/nano-theme.el")
-  :init
-  (setq nano-theme-light/dark 'dark)
-  (setq nano-theme-padded-modeline 1)
-  (setq nano-theme-comment-italic t)
-  (setq nano-theme-overline-modeline t)
-  )
+;; (use-package nano-theme
+;;   :straight (nano-theme :type git :host github :repo "404cn/nano-theme.el")
+;;   :init
+;;   (setq nano-theme-light/dark 'dark)
+;;   (setq nano-theme-padded-modeline 1)
+;;   (setq nano-theme-comment-italic t)
+;;   (setq nano-theme-overline-modeline t)
+;;   )
 
 (add-hook 'after-init-hook
           (lambda ()
