@@ -80,6 +80,7 @@
 (require 'init-haskell)
 (require 'init-tex)
 (require 'init-org)
+(require 'init-elfeed)
 
 ;; (when *is-a-mac*
 ;;   (require 'init-orgroam)
