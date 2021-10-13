@@ -1,5 +1,8 @@
 * My dot emacs
   My configuration for emacs since the end of 2020.
+  - Emacs version: 29.05
+  - gccemacs: True with build-macos-gccemacs on MacOS system
+  - System: MacOS / Ubuntu
   
   I learn a lot from spacemacs, which is a popular emacs configuration. I use it since 2017 till 2020.
   The key features I like:
@@ -29,13 +32,13 @@
     - *magit*: git
     - *helm*: search, match and so on. highly integrated
     - *vterm*: common shell usage
-    - *projectile*: project management
+    - *project* (Emacs package since 29.05): project management
     - *treemacs*: list of files and functions
     - *lsp*: unified programming language server
     - programming language related:
       - *auctex*: Latex
       - *lsp-pyright* + *python-mode*: python
-      - *ess*: R
+      - *ess* + *REditorSupport/languageserver*: R
       - *company*: code completion
       - *flycheck*: check syntax
     - *pdf-tools*: view pdf (GUI mode)

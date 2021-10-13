@@ -67,7 +67,6 @@
 (require 'init-yasnippet)
 (require 'init-windows)
 (require 'init-git)
-(require 'init-projectile)
 (require 'init-dashboard)
 (require 'init-treemacs)
 

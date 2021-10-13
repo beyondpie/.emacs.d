@@ -37,15 +37,7 @@
   (use-package helm-xref
     :ensure t
     :delight
-  :pin melpa)
-  ;; (use-package helm-projectile
-  ;;   :ensure t
-  ;;   :delight
-  ;;   :init
-  ;;   (setq projectile-switch-project-action 'helm-projectile)
-  ;;   :config
-  ;;   (helm-projectile-on)
-  ;;   )
+    :pin melpa)
   (use-package helm-swoop
     :delight
     :ensure t
