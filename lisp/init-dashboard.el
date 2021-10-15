@@ -19,7 +19,7 @@
   :config
   (dashboard-setup-startup-hook)
   (setq dashboard-banner-logo-title "缓慢而坚定地做你想做的事情。"
-        dashboard-startup-banner mybanner
+        dashboard-startup-banner 'official
         dashboard-set-navigator t
         dashboard-center-content nil
         dashboard-show-shortcuts nil

@@ -9,9 +9,9 @@
 	"My Github page.")
 
 ;; figures
-(defconst mybanner
-	(expand-file-name "materials/boston_autumn.png" user-emacs-directory)
-	"Banner for dashboard.")
+;; (defconst mybanner
+;; 	(expand-file-name "materials/boston_autumn.png" user-emacs-directory)
+;; 	"Banner for dashboard.")
 
 (defconst beyondpie/normal-leader-key
   "SPC"
