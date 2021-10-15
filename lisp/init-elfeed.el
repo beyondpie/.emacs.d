@@ -13,9 +13,8 @@
   :init
   (global-set-key (kbd "C-x w") 'elfeed)
   (setq elfeed-feeds
-      '("http://nullprogram.com/feed/"
+      '(
         "https://planet.emacslife.com/atom.xml"
-        ;; "https://www.mail-archive.com/rcpp-devel@lists.r-forge.r-project.org/maillist.xml"
         ))
   :general
   (:states '(normal visual)
