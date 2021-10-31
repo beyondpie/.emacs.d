@@ -89,6 +89,8 @@
            "wK" '(evil-window-move-very-top :which-key "move window downward")
            "wL" '(evil-window-move-far-right :which-key "move window right")
            "wH" '(evil-window-move-far-left :which-key "move window left")
+           "wb" '(previous-window-any-frame :which-key "previous window any-frame")
+           "wB" '(previous-multiframe-window :which-key "previous multiframe window")
            )
   )
 

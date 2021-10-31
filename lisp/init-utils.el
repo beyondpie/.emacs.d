@@ -107,5 +107,16 @@
     (helm-mode)
     )
   )
+
+;; remove up/down case keys due to they usually make my codes typo
+;; upcase-region
+(global-unset-key (kbd "C-x C-u"))
+;; upcase-word
+(global-unset-key (kbd "M-u"))
+;; downcase-word
+(global-unset-key (kbd "M-l"))
+;; downcase-region
+(global-unset-key (kbd "C-x C-l"))
+
 (provide 'init-utils)
 ;;; init-utils.el ends here
