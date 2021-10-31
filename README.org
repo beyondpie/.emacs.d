@@ -1,8 +1,9 @@
 * My dot emacs
   My configuration for emacs since the end of 2020.
-  - Emacs version: 29.05
+  - Emacs version >= 28.06
   - gccemacs: True with build-macos-gccemacs on MacOS system
   - System: MacOS / Ubuntu
+  - GUI and terminal version are supported.
   
   I learn a lot from spacemacs, which is a popular emacs configuration. I use it since 2017 till 2020.
   The key features I like:
@@ -22,9 +23,6 @@
   - *helm*: search anytime, anywhere. 
  
 ** Note for this configuration
-  - System: MacOS and Linux
-  - Both GUI and terminal are considered.
-  - Emacs verion: >= 27.1
   - Highly used packages:
     - *use-package*: manage the packages
     - *general*: key binding, especially useful with use-package

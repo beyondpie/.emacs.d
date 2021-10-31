@@ -23,6 +23,8 @@
 	(push (expand-file-name dir user-emacs-directory) load-path))
 
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+;; close the warnings of gccemacs when compiling packages.
+(setq native-comp-async-report-warnings-errors nil)
 
 ;; use straight
 ;; https://github.com/raxod502/straight.el
