@@ -35,6 +35,7 @@
            :keymaps 'override
            "jl" '(avy-goto-line :which-key "jump to line")
            "jw" '(avy-goto-word-1 :which-key "jump to word")
+           "jp" '(project-switch-project :which-key "jump to projects")
            )
   )
 
