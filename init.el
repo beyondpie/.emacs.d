@@ -48,6 +48,7 @@
 (require 'init-path)
 (require 'init-const)
 (require 'init-utils)
+(require 'init-tramp)
 (require 'init-evil)
 (require 'init-helm)
 (when *is-a-mac*
