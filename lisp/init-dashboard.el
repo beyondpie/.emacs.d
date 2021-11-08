@@ -16,6 +16,8 @@
 (use-package dashboard
   :ensure t
   :pin melpa
+  :init
+  (setq dashboard-projects-backend 'project-el)
   :config
   (dashboard-setup-startup-hook)
   (setq dashboard-banner-logo-title "缓慢而坚定地做你想做的事情。"
