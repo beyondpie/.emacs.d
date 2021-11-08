@@ -72,6 +72,7 @@
 (require 'init-git)
 (require 'init-dashboard)
 (require 'init-treemacs)
+(require 'init-project)
 
 (require 'init-prog)
 (require 'init-shell)
