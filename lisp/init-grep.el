@@ -16,6 +16,7 @@
   (:states '(normal visual insert emacs)
            :prefix beyondpie/normal-leader-key
            :non-normal-prefix beyondpie/non-normal-leader-key
+           :keymaps 'override
            "sa" '(ag-project :which-key "ag search in project")
            "sd" '(grep-find :which-key "grep search in current dir")
            )
