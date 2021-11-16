@@ -34,8 +34,9 @@
   (spacemacs//python-setup-checkers)
   )
 
-(defun spacemacs//python-setup-backend ()
+(defun beyondpie/start-lsp-pyright()
   "Setup python backend"
+  (interactive)
   (require 'lsp-pyright)
   (lsp)
   )
@@ -119,7 +120,7 @@
   :ensure t
   :pin melpa
   :mode ("\\.py\\'" . python-mode)
-  :hook ((python-mode . spacemacs//python-setup-backend)
+  :hook (;; (python-mode . spacemacs//python-setup-backend)
          (python-mode . spacemacs//python-default))
   :init
   (progn
