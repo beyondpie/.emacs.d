@@ -28,6 +28,14 @@
 
 
 ;;; Code:
+
+(defun beyondpie/set-evil-insert-state-cursor ()
+  "change evil insert state cusor color based on theme"
+  (interactive)
+  (if (string= (frame-parameter nil 'background-mode) "light")
+      (setq evil-insert-state-cursor '(bar "Black"))
+    (setq evil-insert-state-cursor '(bar "White"))))
+
 (use-package evil
   :ensure t
   :delight
@@ -41,17 +49,11 @@
         evil-shift-width 2
         evil-collection-company-use-tng nil
         )
-  (defun set-evil-insert-state-cursor ()
-    "change evil insert state cusor color based on theme"
-    (interactive)
-    (if (string= (frame-parameter nil 'background-mode) "light")
-        (setq evil-insert-state-cursor '(bar "Black"))
-      (setq evil-insert-state-cursor '(bar "White"))))
   :hook ((after-init . evil-mode)
          (after-init . set-evil-insert-state-cursor)
          )
   :config
-  (set-evil-insert-state-cursor)
+  (beyondpie/set-evil-insert-state-cursor)
   (setq evil-want-fine-undo t)
   :bind
   (:map evil-normal-state-map
