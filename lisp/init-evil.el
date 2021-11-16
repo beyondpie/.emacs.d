@@ -49,8 +49,8 @@
         evil-shift-width 2
         evil-collection-company-use-tng nil
         )
-  :hook ((after-init . evil-mode)
-         (after-init . set-evil-insert-state-cursor)
+  :hook (
+         (after-init . evil-mode)
          )
   :config
   (beyondpie/set-evil-insert-state-cursor)
