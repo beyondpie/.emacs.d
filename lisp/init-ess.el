@@ -24,15 +24,13 @@
   :ensure t
   :pin melpa
   :init
-  :after lsp-mode
   :config
-  ;; (require 'lsp-mode)
   (setq ess-indent-offset 2
         ess-style 'RStudio
         ess-fancy-comments nil
         ess-offset-arguments-newline "prev-line"
         ess-use-flymake nil)
-  :hook (ess-r-mode . lsp)
+  ;; :hook (ess-r-mode . lsp)
   :general
   (:states '(normal visual)
    :keymaps 'ess-r-mode-map
