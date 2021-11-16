@@ -83,6 +83,8 @@
 (require 'init-tex)
 (require 'init-org)
 (require 'init-elfeed)
+(require 'init-snakemake)
+
 (add-hook 'after-init-hook
           (lambda ()
             (require 'server)
