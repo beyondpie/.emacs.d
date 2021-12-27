@@ -3,14 +3,7 @@
 ;;; Commentary:
 ;;; Code:
 
-;; grid-mode for GitHub Readme Instant Preview
-;; https://github.com/seagle0128/grip-mode
-
-(use-package grip-mode
-  :ensure t
-  :init
-  (setq grip-preview-use-webkit nil)
-  )
+(setq org-agenda-files '("~/Dropbox/plan/general.org"))
 
 (provide 'init-org)
 ;;; init-org.el ends here

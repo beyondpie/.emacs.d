@@ -10,10 +10,11 @@
       (progn
         (setq python-shell-interpreter "ipython")
         ;; ipython version >= 5
-        (setq python-shell-interpreter-args "--simple-prompt -i"))
+        (setq python-shell-interpreter-args "--simple-prompt -i")
+        )
     (progn
       (setq python-shell-interpreter "python")
-      (setq python-shell-interpreter-args "-i")
+      ;; (setq python-shell-interpreter-args "-i")
       )
     )
   )
@@ -129,15 +130,15 @@
     (setq python-shell-completion-native-enable nil)
     )
   (defun spacemacs/python-remove-unused-imports()
-  "Use Autoflake to remove unused function"
-  "autoflake --remove-all-unused-imports -i unused_imports.py"
-  (interactive)
-  (if (executable-find "autoflake")
-      (progn
-        (shell-command (format "autoflake --remove-all-unused-imports -i %s"
-                               (shell-quote-argument (buffer-file-name))))
-        (revert-buffer t t t))
-    (message "Error: Cannot find autoflake executable.")))
+    "Use Autoflake to remove unused function"
+    "autoflake --remove-all-unused-imports -i unused_imports.py"
+    (interactive)
+    (if (executable-find "autoflake")
+        (progn
+          (shell-command (format "autoflake --remove-all-unused-imports -i %s"
+                                 (shell-quote-argument (buffer-file-name))))
+          (revert-buffer t t t))
+      (message "Error: Cannot find autoflake executable.")))
  :config
   (progn
     ;; Env vars
