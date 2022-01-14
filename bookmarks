@@ -3,10 +3,10 @@
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("org-capture-last-stored"
- (filename . "~/Dropbox/BingLab/notes/20210806144528-an_atlas_of_gene_regulatory_elements_in_adult_mouse_cerebrum.org")
- (front-context-string)
- (rear-context-string . " mouse cerebrum\n")
- (position . 175))
+ (filename . "~/.notes")
+ (front-context-string . "** TODO test\n  [")
+ (rear-context-string)
+ (position . 9))
 ("(eintr) Prevent confusion"
  (front-context-string . "‘let’ Prevents C")
  (rear-context-string . "sion,  Up: let\n\n")
