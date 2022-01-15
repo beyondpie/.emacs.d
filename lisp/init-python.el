@@ -45,7 +45,7 @@
 (defun spacemacs//python-default ()
   "Default settings for python buffers"
   (setq mode-name "Python"
-        tab-width 2
+        tab-width 4
         fill-column 88)
   )
 
@@ -126,7 +126,7 @@
   :init
   (progn
     (spacemacs//python-setup-shell)
-    (setq python-indent-offset 2)
+    (setq python-indent-offset 4)
     (setq python-shell-completion-native-enable nil)
     )
   (defun spacemacs/python-remove-unused-imports()
