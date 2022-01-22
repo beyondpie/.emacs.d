@@ -36,8 +36,8 @@
             ;; load spacemacs-dark
             ;; (load-theme 'spacemacs-dark t)
             ;; load  modus-vivendi
-            ;; (modus-themes-load-vivendi)
-            (modus-themes-load-operandi)
+            (modus-themes-load-vivendi)
+            ;; (modus-themes-load-operandi)
             (if *is-a-mac* 
               (add-to-list 'default-frame-alist
                            '(font . "Monaco-16"))
