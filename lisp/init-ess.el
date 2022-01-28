@@ -126,8 +126,8 @@
   ;; No configuration options as of now.
   )
 ;; for .Rmd
-(use-package poly-R
-  :pin melpa)
+;; (use-package poly-R
+;;   :pin melpa)
 
 (provide 'init-ess)
 ;;; init-ess.el ends here
