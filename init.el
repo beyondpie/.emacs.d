@@ -44,6 +44,14 @@
 ;; stop use backup files
 (setq make-backup-files nil)
 
+;; set utf8 to let terminal show the corresonding symbols in the terminal
+;; http://www.skybert.net/emacs/how-to-get-unicode-in-the-terminal/
+(prefer-coding-system       'utf-8)
+(set-default-coding-systems 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
+
 (require 'init-elpa)
 (require 'init-path)
 (require 'init-const)
