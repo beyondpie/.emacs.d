@@ -92,6 +92,7 @@
 (require 'init-org)
 (require 'init-elfeed)
 (require 'init-snakemake)
+(require 'init-conda)
 
 (add-hook 'after-init-hook
           (lambda ()
