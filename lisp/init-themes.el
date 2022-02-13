@@ -52,5 +52,11 @@
   (set-frame-parameter (selected-frame) 'alpha '(90 90))
   )
 
+(defun disable-transparent ()
+  "set frame transparent"
+  (interactive)
+  (set-frame-parameter (selected-frame) 'alpha '(100 100))
+  )
+
 (provide 'init-themes)
 ;;; init-themes.el ends here
