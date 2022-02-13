@@ -24,7 +24,7 @@
         modus-themes-syntax nil
         modus-themes-line '3d
         modus-themes-subtle-line-numbers t
-        modus-themes-paren-match 'subtle-bold
+        ;; modus-themes-paren-match 'subtle-bold
         )
 
   ;; Load the theme files before enabling a theme
