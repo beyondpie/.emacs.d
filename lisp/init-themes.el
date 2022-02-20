@@ -24,7 +24,7 @@
         modus-themes-syntax nil
         modus-themes-line '3d
         modus-themes-subtle-line-numbers t
-        modus-themes-paren-match 'subtle-bold
+        ;; modus-themes-paren-match 'subtle-bold
         )
 
   ;; Load the theme files before enabling a theme
@@ -50,6 +50,12 @@
   "set frame transparent"
   (interactive)
   (set-frame-parameter (selected-frame) 'alpha '(90 90))
+  )
+
+(defun disable-transparent ()
+  "set frame transparent"
+  (interactive)
+  (set-frame-parameter (selected-frame) 'alpha '(100 100))
   )
 
 (provide 'init-themes)

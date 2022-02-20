@@ -72,6 +72,10 @@
 ;; y-or-n
 (fset 'yes-or-no-p 'y-or-n-p)
 
+;; remove compling in the mode-line
+;; ref: https://emacs.stackexchange.com/questions/61957/mode-line-always-shows-compiling-after-compile-a-tex-file-with-typos?newreg=6aa1e0e4e19b423a9bce34c66bacc1e4
+(setq compilation-in-progress nil)
+
 ;; view large file
 (use-package vlf
   :ensure t
