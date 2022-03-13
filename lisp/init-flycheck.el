@@ -9,7 +9,7 @@
   :hook (after-init . global-flycheck-mode)
   :delight
   :init
-  (setq flycheck-check-syntax-automatically nil)
+  (setq flycheck-check-syntax-automatically '(mode-enabled save))
   :config
   (setq flycheck-display-errors-function
         #'flycheck-display-error-messages-unless-error-list)
