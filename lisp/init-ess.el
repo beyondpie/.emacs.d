@@ -37,7 +37,7 @@
   (:states '(normal visual)
    :keymaps 'ess-r-mode-map
    :prefix beyondpie/major-mode-leader-key
-   "sl" '(ess-eval-line :which-key "eval send line")
+   "sl" '(ess-eval-line-and-step :which-key "eval send line")
    "sf" '(ess-eval-function :which-key "eval send function")
    "sr" '(ess-eval-region :which-key "eval send region")
    "gg" '(lsp-find-definition :which-key "lsp find definition")
