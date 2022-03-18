@@ -29,7 +29,9 @@
         ess-style 'RStudio
         ess-fancy-comments nil
         ess-offset-arguments-newline "prev-line"
-        ess-use-flymake nil)
+        ess-use-flymake nil
+        ess-startup-directory 'default-directory
+        )
   ;; :hook (ess-r-mode . lsp)
   :general
   (:states '(normal visual)
