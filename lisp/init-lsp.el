@@ -20,7 +20,7 @@
 	      lsp-signature-auto-activate t
         lsp-signature-render-documentation t
 	      lsp-modeline-code-actions-enable nil
-        lsp-diagnostics-provider :flycheck
+        lsp-diagnostics-provider :auto
 	      lsp-modeline-diagnostics-enable t
 	      lsp-modeline-workspace-status-enable nil
         ;; https://emacs-china.org/t/spacemacs-c-c/15695
