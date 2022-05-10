@@ -15,6 +15,14 @@
   (setq elfeed-feeds
       '(
         "https://planet.emacslife.com/atom.xml"
+        "http://feeds.nature.com/ni/rss/current"
+        "http://feeds.nature.com/neuro/rss/current"
+        "http://feeds.nature.com/ng/rss/current"
+        "http://feeds.nature.com/nmeth/rss/current"
+        "http://feeds.nature.com/nbt/rss/current"
+        "http://feeds.nature.com/nature/rss/current"
+        "http://feeds.nature.com/nri/rss/current"
+        "http://feeds.nature.com/nrg/rss/current"
         ))
   :general
   (:states '(normal visual)

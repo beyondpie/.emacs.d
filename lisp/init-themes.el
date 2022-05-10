@@ -22,7 +22,7 @@
   (setq modus-themes-slanted-constructs t
         modus-themes-bold-constructs t
         modus-themes-syntax nil
-        modus-themes-line '3d
+        ;; modus-themes-line '3d
         modus-themes-subtle-line-numbers t
         ;; modus-themes-paren-match 'subtle-bold
         )
@@ -49,7 +49,7 @@
 (defun enable-transparent ()
   "set frame transparent"
   (interactive)
-  (set-frame-parameter (selected-frame) 'alpha '(90 90))
+  (set-frame-parameter (selected-frame) 'alpha '(x x))
   )
 
 (defun disable-transparent ()
