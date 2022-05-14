@@ -30,13 +30,11 @@
         ;; https://emacs-lsp.github.io/lsp-mode/page/performance/
 	      lsp-enable-file-watchers nil
 	      lsp-enable-folding t
-	      lsp-enable-semantic-highlighting t
+        lsp-semantic-tokens-enable t
 	      lsp-enable-symbol-highlighting t
 	      lsp-enable-text-document-color t
         lsp-enable-imenu t
-
         lsp-eldoc-enable-hover t
-
 	      lsp-enable-indentation t
 	      lsp-enable-on-type-formatting nil
         lsp-idle-delay 0.800
