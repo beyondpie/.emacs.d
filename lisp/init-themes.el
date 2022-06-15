@@ -3,9 +3,9 @@
 ;;; Commentary:
 ;; spacemacs-theme setting
 ;; https://github.com/nashamri/spacemacs-theme/issues/42
+;; https://github.com/nashamri/spacemacs-theme
 ;; modus setting
 ;; https://protesilaos.com/modus-themes
-
 
 ;;; Code:
 
@@ -13,6 +13,10 @@
   :ensure spacemacs-theme
   :pin melpa
   :defer t
+  :init
+  (custom-set-variables '(spacemacs-theme-custom-colors
+                          '((bg2 . "#292b2e")
+                            (bg1 . "#212026"))))
   )
 
 (use-package modus-themes
@@ -40,7 +44,7 @@
             ;; (modus-themes-load-operandi)
             (if *is-a-mac* 
               (add-to-list 'default-frame-alist
-                           '(font . "Monaco-16"))
+                           '(font . "Monaco-18"))
               (set-face-attribute 'default nil :height 150)
               )
             (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
