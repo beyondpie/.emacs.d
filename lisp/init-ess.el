@@ -9,16 +9,6 @@
 
 ;;; Code:
 
-(defun beyondpie/format_r_file()
-  "Format buffer using styler_file.R defined in materials dir."
-  (interactive)
-  (async-shell-command
-   (format "Rscript --verbose --vanilla %s %s"
-           beyondpie/r_styler_path
-           (buffer-file-name))
-   "*styler Out Buffer*"
-   "*styler Error Buffer"))
-
 (use-package ess
   :delight
   :ensure t
@@ -47,7 +37,6 @@
    "rn" '(lsp-rename :which-key "lsp rename")
    "rb" '(lsp-format-buffer :which-key "lsp buffer")
    "rr" '(lsp-format-region :which-key "lsp region")
-   "rf" '(beyondpie/format_r_file :which-key "my format r file")
    "'" '(R :which-key "start repl"))
   (:states '(insert emacs)
    :keymaps 'ess-r-mode-map

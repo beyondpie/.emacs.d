@@ -28,10 +28,5 @@
   "Like spacemacs, use a different leader key for 'major-mode'."
   )
 
-;; others
-(defconst beyondpie/r_styler_path
-  (expand-file-name "materials/styler_file.R" user-emacs-directory)
-  "Format R using styler defined in this script.")
-
 (provide 'init-const)
 ;;; init-const.el ends here
