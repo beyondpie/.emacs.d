@@ -87,7 +87,6 @@
 (require 'init-lsp)
 (require 'init-ess)
 (require 'init-python)
-(require 'init-haskell)
 (require 'init-tex)
 (require 'init-org)
 (require 'init-elfeed)
