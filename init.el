@@ -26,21 +26,6 @@
 ;; close the warnings of gccemacs when compiling packages.
 (setq native-comp-async-report-warnings-errors nil)
 
-;; use straight
-;; https://github.com/raxod502/straight.el
-(defvar bootstrap-version)
-(let ((bootstrap-file
-       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
-      (bootstrap-version 5))
-  (unless (file-exists-p bootstrap-file)
-    (with-current-buffer
-        (url-retrieve-synchronously
-         "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
-         'silent 'inhibit-cookies)
-      (goto-char (point-max))
-      (eval-print-last-sexp)))
-  (load bootstrap-file nil 'nomessage))
-
 ;; stop use backup files
 (setq make-backup-files nil)
 
@@ -52,47 +37,6 @@
 (set-keyboard-coding-system 'utf-8)
 (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
 
-(require 'init-elpa)
-(require 'init-path)
-(require 'init-const)
-(require 'init-utils)
-(require 'init-tramp)
-(require 'init-evil)
-(require 'init-helm)
-(when *is-a-mac*
-  (require 'init-macos)
-  )
-(require 'init-themes)
-(if (display-graphic-p)
-    (require 'init-gui-frames)
-    )
-(require 'init-dired)
-(require 'init-isearch)
-(require 'init-grep)
-(require 'init-ibuffer)
-(require 'init-flycheck)
-(require 'init-recentf)
-(require 'init-company)
-;; use yasnippet since lsp and company depend on it
-;; though it occupies some time.
-(require 'init-yasnippet)
-(require 'init-windows)
-(require 'init-git)
-(require 'init-dashboard)
-(require 'init-treemacs)
-(require 'init-project)
-
-(require 'init-prog)
-(require 'init-shell)
-(require 'init-lsp)
-(require 'init-ess)
-(require 'init-python)
-(require 'init-haskell)
-(require 'init-tex)
-(require 'init-org)
-(require 'init-elfeed)
-(require 'init-snakemake)
-(require 'init-conda)
 
 (add-hook 'after-init-hook
           (lambda ()
