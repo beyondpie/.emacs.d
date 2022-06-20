@@ -6,6 +6,7 @@
   :ensure t
   :pin melpa
   :hook (after-init . global-anzu-mode)
+  :delight
   :general
   (:states '(normal visual insert emacs)
            :prefix beyondpie/normal-leader-key

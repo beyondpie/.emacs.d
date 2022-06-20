@@ -2,6 +2,11 @@
 
 ;;; Commentary:
 
+;; If we want to close the [R/none] showed in minibuffer
+
+;; You can simply set mode-line-process to nil in ess-mode-hook and/or inferior-ess-mode-hook:
+;; (setq-local mode-line-process nil)
+
 ;;; Code:
 
 (defun beyondpie/format_r_file()
@@ -15,22 +20,24 @@
    "*styler Error Buffer"))
 
 (use-package ess
+  :delight
   :ensure t
   :pin melpa
   :init
-  :after lsp-mode
   :config
-  ;; (require 'lsp-mode)
   (setq ess-indent-offset 2
         ess-style 'RStudio
         ess-fancy-comments nil
-        ess-offset-arguments-newline "prev-line")
-  :hook (ess-r-mode . lsp)
+        ess-offset-arguments-newline "prev-line"
+        ess-use-flymake nil
+        ess-startup-directory 'default-directory
+        )
+  ;; :hook (ess-r-mode . lsp)
   :general
   (:states '(normal visual)
    :keymaps 'ess-r-mode-map
    :prefix beyondpie/major-mode-leader-key
-   "sl" '(ess-eval-line :which-key "eval send line")
+   "sl" '(ess-eval-line-and-step :which-key "eval send line")
    "sf" '(ess-eval-function :which-key "eval send function")
    "sr" '(ess-eval-region :which-key "eval send region")
    "gg" '(lsp-find-definition :which-key "lsp find definition")
@@ -49,7 +56,10 @@
   (:keymaps 'inferior-ess-r-mode-map
             "C-l" '(comint-clear-buffer :which-key "clear console")
              "-" '(ess-insert-assign :which-key "ess-assign")
-            ))
+             )
+  (when *is-a-mac*
+    (setq inferior-R-program "/usr/local/bin/R"))
+  )
 
 
 ;; use of stan
@@ -117,6 +127,9 @@
   :config
   ;; No configuration options as of now.
   )
+;; for .Rmd
+;; (use-package poly-R
+;;   :pin melpa)
 
 (provide 'init-ess)
 ;;; init-ess.el ends here

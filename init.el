@@ -4,7 +4,9 @@
 ;; Ref: purcell
 
 ;;; Code:
-;; (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
+
+;; this fix error when gpg no public key on rc centos 
+(setq package-check-signature nil)
 (defconst *spell-check-support-enabled* t)
 (defconst *is-a-mac* (eq system-type 'darwin))
 ;; make echo area showing message for 10s
@@ -21,6 +23,8 @@
 	(push (expand-file-name dir user-emacs-directory) load-path))
 
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+;; close the warnings of gccemacs when compiling packages.
+(setq native-comp-async-report-warnings-errors nil)
 
 ;; use straight
 ;; https://github.com/raxod502/straight.el
@@ -37,18 +41,31 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
+;; stop use backup files
+(setq make-backup-files nil)
+
+;; set utf8 to let terminal show the corresonding symbols in the terminal
+;; http://www.skybert.net/emacs/how-to-get-unicode-in-the-terminal/
+(prefer-coding-system       'utf-8)
+(set-default-coding-systems 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
+
 (require 'init-elpa)
 (require 'init-path)
 (require 'init-const)
 (require 'init-utils)
+(require 'init-tramp)
 (require 'init-evil)
 (require 'init-helm)
 (when *is-a-mac*
-  (require 'init-macos))
-
-
+  (require 'init-macos)
+  )
 (require 'init-themes)
-(require 'init-gui-frames)
+(if (display-graphic-p)
+    (require 'init-gui-frames)
+    )
 (require 'init-dired)
 (require 'init-isearch)
 (require 'init-grep)
@@ -56,21 +73,26 @@
 (require 'init-flycheck)
 (require 'init-recentf)
 (require 'init-company)
+;; use yasnippet since lsp and company depend on it
+;; though it occupies some time.
 (require 'init-yasnippet)
 (require 'init-windows)
 (require 'init-git)
-(require 'init-projectile)
 (require 'init-dashboard)
 (require 'init-treemacs)
+(require 'init-project)
 
 (require 'init-prog)
 (require 'init-shell)
 (require 'init-lsp)
 (require 'init-ess)
 (require 'init-python)
+(require 'init-haskell)
 (require 'init-tex)
-
 (require 'init-org)
+(require 'init-elfeed)
+(require 'init-snakemake)
+(require 'init-conda)
 
 (add-hook 'after-init-hook
           (lambda ()

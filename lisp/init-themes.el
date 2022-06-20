@@ -24,7 +24,7 @@
         modus-themes-syntax nil
         modus-themes-line '3d
         modus-themes-subtle-line-numbers t
-        modus-themes-paren-match 'subtle-bold
+        ;; modus-themes-paren-match 'subtle-bold
         )
 
   ;; Load the theme files before enabling a theme
@@ -37,9 +37,26 @@
             ;; (load-theme 'spacemacs-dark t)
             ;; load  modus-vivendi
             (modus-themes-load-vivendi)
-            (add-to-list 'default-frame-alist
-                         '(font . "Monaco-16"))
+            ;; (modus-themes-load-operandi)
+            (if *is-a-mac* 
+              (add-to-list 'default-frame-alist
+                           '(font . "Monaco-16"))
+              (set-face-attribute 'default nil :height 150)
+              )
+            (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
             ))
+
+(defun enable-transparent ()
+  "set frame transparent"
+  (interactive)
+  (set-frame-parameter (selected-frame) 'alpha '(90 90))
+  )
+
+(defun disable-transparent ()
+  "set frame transparent"
+  (interactive)
+  (set-frame-parameter (selected-frame) 'alpha '(100 100))
+  )
 
 (provide 'init-themes)
 ;;; init-themes.el ends here

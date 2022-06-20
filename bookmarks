@@ -2,7 +2,19 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("(eshell) Invocation"
+(("org-capture-last-stored"
+ (filename . "~/.notes")
+ (front-context-string . "** TODO test\n  [")
+ (rear-context-string)
+ (position . 9))
+("(eintr) Prevent confusion"
+ (front-context-string . "‘let’ Prevents C")
+ (rear-context-string . "sion,  Up: let\n\n")
+ (position . 130657)
+ (filename . "/nix/store/2lzmvd5clkcxa4ddzkc8p85v7kq7vhg6-emacsGccDarwin/share/info/eintr")
+ (info-node . "Prevent confusion")
+ (handler . Info-bookmark-jump))
+("(eshell) Invocation"
  (front-context-string . "\n2.1 Invocation\n")
  (rear-context-string . ",  Up: Commands\n")
  (position . 6974)

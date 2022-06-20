@@ -9,6 +9,7 @@
 ;;; Code:
 
 (use-package lsp-mode
+  :delight
   :init
   (setq lsp-keymap-prefix "C-c l"
         lsp-enable-symbol-highlighting t
@@ -19,7 +20,7 @@
 	      lsp-signature-auto-activate t
         lsp-signature-render-documentation t
 	      lsp-modeline-code-actions-enable nil
-        lsp-diagnostics-provider :flycheck
+        lsp-diagnostics-provider :auto
 	      lsp-modeline-diagnostics-enable t
 	      lsp-modeline-workspace-status-enable nil
         ;; https://emacs-china.org/t/spacemacs-c-c/15695
@@ -38,12 +39,14 @@
 
 	      lsp-enable-indentation t
 	      lsp-enable-on-type-formatting nil
-        read-process-output-max (* 1024 1024)
         lsp-idle-delay 0.800
         lsp-log-io nil
         )
   :hook
-  (lsp-mode . lsp-enable-which-key-integration))
+  (lsp-mode . lsp-enable-which-key-integration)
+  :commands
+  lsp
+  )
 
 (use-package helm-lsp
   :commands (helm-lsp-workspace-symbol

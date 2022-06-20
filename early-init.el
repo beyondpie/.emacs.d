@@ -28,5 +28,9 @@
 (when (featurep 'ns)
   (push '(ns-transparent-titlebar . t) default-frame-alist))
 
+;; for lsp loading json 
+(setq read-process-output-max (* 1024 1024)) ;; 1mb
+(setq package-quickstart t)
+
 (provide 'early-init)
 ;;; early-init.el ends here

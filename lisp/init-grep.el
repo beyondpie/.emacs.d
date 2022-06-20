@@ -16,7 +16,11 @@
   (:states '(normal visual insert emacs)
            :prefix beyondpie/normal-leader-key
            :non-normal-prefix beyondpie/non-normal-leader-key
-           "sa" '(ag-project :which-key "ag search in project")))
+           :keymaps 'override
+           "sa" '(ag-project :which-key "ag search in project")
+           "sd" '(grep-find :which-key "grep search in current dir")
+           )
+  )
 
 (provide 'init-grep)
 ;;; init-grep.el ends here

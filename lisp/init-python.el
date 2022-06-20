@@ -10,10 +10,11 @@
       (progn
         (setq python-shell-interpreter "ipython")
         ;; ipython version >= 5
-        (setq python-shell-interpreter-args "--simple-prompt -i"))
+        (setq python-shell-interpreter-args "--simple-prompt -i")
+        )
     (progn
       (setq python-shell-interpreter "python")
-      (setq python-shell-interpreter-args "-i")
+      ;; (setq python-shell-interpreter-args "-i")
       )
     )
   )
@@ -34,8 +35,9 @@
   (spacemacs//python-setup-checkers)
   )
 
-(defun spacemacs//python-setup-backend ()
+(defun beyondpie/start-lsp-pyright()
   "Setup python backend"
+  (interactive)
   (require 'lsp-pyright)
   (lsp)
   )
@@ -103,7 +105,7 @@
   :hook (python-mode . pyvenv-tracking-mode)
   :general
   (:states '(normal visual)
-           :keymaps 'python-mode-map
+           :keymaps '(python-mode-map ess-r-mode-map)
            :prefix beyondpie/major-mode-leader-key
            "va"  #'pyvenv-activate
            "vd" #'pyvenv-deactivate
@@ -114,25 +116,36 @@
     )
   )
 
+;; https://github.com/millejoh/emacs-ipython-notebook
 (use-package python
   :ensure t
   :pin melpa
   :mode ("\\.py\\'" . python-mode)
-  :hook ((python-mode . spacemacs//python-setup-backend)
+  :hook (;; (python-mode . spacemacs//python-setup-backend)
          (python-mode . spacemacs//python-default))
   :init
   (progn
     (spacemacs//python-setup-shell)
     (setq python-indent-offset 4)
+    (setq python-shell-completion-native-enable nil)
     )
-  :config
+  (defun spacemacs/python-remove-unused-imports()
+    "Use Autoflake to remove unused function"
+    "autoflake --remove-all-unused-imports -i unused_imports.py"
+    (interactive)
+    (if (executable-find "autoflake")
+        (progn
+          (shell-command (format "autoflake --remove-all-unused-imports -i %s"
+                                 (shell-quote-argument (buffer-file-name))))
+          (revert-buffer t t t))
+      (message "Error: Cannot find autoflake executable.")))
+ :config
   (progn
     ;; Env vars
     (with-eval-after-load 'exec-path-from-shell
       (exec-path-from-shell-copy-env "PYTHONPATH"))
     (setq-default python-indent-guess-indent-offset nil)
     )
-  (setq python-shell-completion-native-enable nil)
   :general
   (:states '(normal visual)
            :keymaps 'python-mode-map
@@ -142,10 +155,12 @@
            "go" '(helm-occur :which-key "helm occur")
            "gm" '(helm-all-mark-rings :which-key "helm all mark rings")
            "rn" '(lsp-rename :which-key "lsp rename")
+           "ri" '(spacemacs/python-remove-unused-imports :which-key "remove unused imports")
            "==" '(blacken-buffer :which-key "black buffer")
            "'" '(spacemacs/python-start-or-switch-repl :which-key "python repl")
            "sl" '(spacemacs/python-shell-send-line :which-key "send line")
            "sf" '(spacemacs/python-shell-send-defun :which-key "send defun")
+           "sc" '(spacemacs/python-shell-send-defun :which-key "send class") 
            "sr" '(spacemacs/python-shell-send-region :which-key "send region")
            )
   (:states '(insert emacs)

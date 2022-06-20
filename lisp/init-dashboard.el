@@ -4,9 +4,9 @@
 
 ;;; Code:
 
-(use-package all-the-icons
-  :ensure t
-  :pin melpa)
+;; (use-package all-the-icons
+;;   :ensure t
+;;   :pin melpa)
 
 (use-package page-break-lines
   :ensure t
@@ -16,10 +16,12 @@
 (use-package dashboard
   :ensure t
   :pin melpa
+  :init
+  (setq dashboard-projects-backend 'project-el)
   :config
   (dashboard-setup-startup-hook)
   (setq dashboard-banner-logo-title "缓慢而坚定地做你想做的事情。"
-        dashboard-startup-banner mybanner
+        dashboard-startup-banner 'official
         dashboard-set-navigator t
         dashboard-center-content nil
         dashboard-show-shortcuts nil
@@ -29,10 +31,11 @@
         dashboard-init-info "行你所行，无问西东。"
         dashboard-footer-messages '("吾志所向, 一往无前，愈挫愈奋，再接再厉。")
         initial-buffer-choice (lambda () (get-buffer "*dashboard*"))
-        dashboard-items '((recents . 5)
-                          (bookmarks . 5)
-                          (projects . 5))
-        dashboard-projects-switch-function 'helm-projectile-switch-project
+        dashboard-items '((recents . 20)
+                          (projects . 20)
+                          (bookmarks . 10)
+                          )
+        dashboard-projects-switch-function 'project-switch-project
         )
   )
 

@@ -40,9 +40,36 @@
         try-expand-dabbrev-all-buffers
         try-expand-dabbrev-from-kill))
 
-;; highlight comment annotations
-(use-package fic-mode
-  :hook (prog-mode . fic-mode))
+(use-package hl-todo
+  :delight
+  :custom
+  ;; Better hl-todo colors, taken from spacemacs
+  (hl-todo-keyword-faces '(("TODO" . "#dc752f")
+                           ("NEXT" . "#dc752f")
+                           ("THEM" . "#2d9574")
+                           ("PROG" . "#4f97d7")
+                           ("OKAY" . "#4f97d7")
+                           ("DONT" . "#f2241f")
+                           ("FAIL" . "#f2241f")
+                           ("DONE" . "#86dc2f")
+                           ("NOTE" . "#b1951d")
+                           ("KLUDGE" . "#b1951d")
+                           ("HACK" . "#b1951d")
+                           ("TEMP" . "#b1951d")
+                           ("QUESTION" . "#b1951d")
+                           ("HOLD" . "#dc752f")
+                           ("FIXME" . "#dc752f")
+                           ("XXX+" . "#dc752f")))
+  :hook
+  ((dashboard-after-initialize . global-hl-todo-mode)
+  (prog-mode . hl-todo-mode)))
+
+;; realgud for debugging
+(use-package realgud
+  :defer t
+  :init
+  (setq realgud-window-split-orientation 'horizontal)
+  )
 
 (provide 'init-prog)
 ;;; init-prog.el ends here

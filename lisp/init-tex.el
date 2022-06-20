@@ -34,13 +34,19 @@
           ;; Synctex support
           TeX-source-correlate-start-server nil
           ;; Don't insert line-break at inline math
-          LaTeX-fill-break-at-separators nil)
+          LaTeX-fill-break-at-separators nil
+          ;; prevent the title showing big fonts
+          font-latex-fontify-script nil
+          font-latex-fontify-sectioning 'color
+          )
     )
   :hook ((LaTeX-mode . LaTeX-math-mode)
          (LaTeX-mode . TeX-source-correlate-mode)
          (LaTeX-mode . TeX-PDF-mode)
          (LaTeX-mode . turn-on-reftex)
          (LaTeX-mode . auto-fill-mode)
+         ;; https://emacs.stackexchange.com/questions/30147/disabling-electric-indent-mode-for-one-mode-latex-mode-only/30148#30148
+         (LaTeX-mode . (lambda () (electric-indent-local-mode -1)))
          )
   :config
   (setq TeX-view-program-selection '((output-pdf "pdf-tools"))
@@ -58,7 +64,7 @@
   (setq magic-latex-enable-block-highlight t
         magic-latex-enable-suscript t
         magic-latex-enable-pretty-symbols t
-        magic-latex-enable-block-align nil
+        magic-latex-enable-block-align t
         magic-latex-enable-inline-image nil
         magic-latex-enable-minibuffer-echo t)
   )
@@ -78,7 +84,7 @@
 
 (use-package pdf-tools
   :ensure t
-  :straight (pdf-tools :type git :host github :rep "politza/pdf-tools"
+  :straight (pdf-tools :type git :host github :repo "politza/pdf-tools"
                       :fork (:host github :repo "beyondpie/pdf-tools"))
   :mode ("\\.pdf\\'" . pdf-view-mode)
   :config
@@ -92,5 +98,9 @@
            "b" '(pdf-view-scroll-down-or-previous-page :which-key "scroll-back")
            )
   )
+
+(use-package image+
+  :ensure t)
+
 (provide 'init-tex)
 ;;; init-tex.el ends here

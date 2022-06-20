@@ -9,7 +9,6 @@
   )
 
 (setq mac-option-modifier 'meta
-      mac-right-command-modifier 'super
       mac-command-modifier 'super
       )
 
@@ -29,12 +28,6 @@
 
 ;; what describe-key reports for cmd-option-h
 (global-set-key (kbd "M-ˍ") 'ns-do-hide-others)
-
-;; for naive Emacs lisp, not sure if needed.
-;; ref: https://emacs-china.org/t/native-emacs-lisp/11165/396
-;; apple version: when I use macOS Catalina 10.15.7, it syas darwin19
-(setenv "LIBRARY_PATH"
-        "/usr/local/opt/gcc/lib/gcc/10:/usr/local/opt/gcc/lib/gcc/10/gcc/x86_64-apple-darwin20/10.2.0")
 
 ;; dired setup
 (with-eval-after-load 'dired

@@ -28,8 +28,17 @@
 
 
 ;;; Code:
+
+(defun beyondpie/set-evil-insert-state-cursor ()
+  "change evil insert state cusor color based on theme"
+  (interactive)
+  (if (string= (frame-parameter nil 'background-mode) "light")
+      (setq evil-insert-state-cursor '(bar "Black"))
+    (setq evil-insert-state-cursor '(bar "White"))))
+
 (use-package evil
   :ensure t
+  :delight
   :init
   (setq evil-disable-insert-state-bindings t
         evil-mode-line-format t
@@ -40,17 +49,11 @@
         evil-shift-width 2
         evil-collection-company-use-tng nil
         )
-  (defun set-evil-insert-state-cursor ()
-    "change evil insert state cusor color based on theme"
-    (interactive)
-    (if (string= (frame-parameter nil 'background-mode) "light")
-        (setq evil-insert-state-cursor '(bar "Black"))
-      (setq evil-insert-state-cursor '(bar "White"))))
-  :hook ((after-init . evil-mode)
-         (after-init . set-evil-insert-state-cursor)
+  :hook (
+         (after-init . evil-mode)
          )
   :config
-  (set-evil-insert-state-cursor)
+  (beyondpie/set-evil-insert-state-cursor)
   (setq evil-want-fine-undo t)
   :bind
   (:map evil-normal-state-map
@@ -83,21 +86,32 @@
            "wk" '(evil-window-up :which-key "goto up window")
            "fj" '(dired-jump :which-key "jump dired")
            "ff" '(helm-find-files :which-key "find file")
+           "fs" '(save-buffer :which-key "save file")
            "wJ" '(evil-window-move-very-bottom :whick-key "move window upward")
            "wK" '(evil-window-move-very-top :which-key "move window downward")
            "wL" '(evil-window-move-far-right :which-key "move window right")
            "wH" '(evil-window-move-far-left :which-key "move window left")
+           "wb" '(previous-window-any-frame :which-key "previous window any-frame")
+           "wB" '(previous-multiframe-window :which-key "previous multiframe window")
            )
   )
 
 (use-package evil-collection
   :after evil
   :ensure t
+  :delight
   :config
   (evil-collection-init)
   ;; (evil-collection-init 'magit)
   ;; (evil-collection-init 'pdf-tools)
+  (evil-collection-unimpaired-mode -1)
   )
+
+(use-package evil-surround
+  :ensure t
+  :delight
+  :config
+  (global-evil-surround-mode 1))
 
 (provide 'init-evil)
 ;;; init-evil.el ends here

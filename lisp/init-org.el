@@ -3,15 +3,14 @@
 ;;; Commentary:
 ;;; Code:
 
-;; grid-mode for GitHub Readme Instant Preview
-;; https://github.com/seagle0128/grip-mode
+(setq org-agenda-files '("~/Dropbox/plan/research.org"))
+(global-set-key (kbd "C-c l") #'org-store-link)
+(global-set-key (kbd "C-c a") #'org-agenda)
+(global-set-key (kbd "C-c c") #'org-capture)
 
-(use-package grip-mode
-  :ensure t
-  :custom
-  (setq grip-preview-use-webkit nil)
-  :hook ((markdown-mode org-mode) . grip-mode)
-  )
+(setq org-adapt-indentation t
+      org-hide-leading-stars t
+      org-old-levels-only t)
 
 (provide 'init-org)
 ;;; init-org.el ends here

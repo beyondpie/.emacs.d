@@ -9,6 +9,7 @@
 (require 'package)
 (require 'cl-lib)
 
+
 ;; HACK: DO NOT copy package-selected-packages to init/custom file forcibly.
 ;; https://github.com/jwiegley/use-package/issues/383#issuecomment-247801751
 ;; from seagle
@@ -21,7 +22,9 @@
 
 (setq package-archives
       '(("gnu"   . "http://elpa.gnu.org/packages/")
-        ("melpa" . "http://melpa.org/packages/")))
+        ("melpa" . "http://melpa.org/packages/")
+        ("melpa-stable" . "https://stable.melpa.org/packages/")
+        ))
 
 ;; install into sperate packages
 (setq package-user-dir
@@ -48,12 +51,37 @@
 (eval-when-compile
   (require 'use-package))
 (use-package diminish
-  :ensure t)
-(require 'diminish)
+  :ensure t
+  :demand)
+(use-package delight
+  :ensure t
+  :demand)
+;; NOTE: add demand in above, so
+;; require may not be needed
+;; (require 'diminish)
+
+;; TODO: I cannot put this on the top, why?
 (require 'bind-key)
 
 ;; Update GPG keyring for GNU ELPA
 (use-package gnu-elpa-keyring-update)
+
+;; Work well under Emacs 27.2, Linux/Ubuntu
+;; set benchmark to record time
+;; (use-package benchmark-init
+;;   :ensure t
+;;   :config
+;;   (require 'benchmark-init-modes)
+;;   (add-hook 'after-init-hook #'benchmark-init/deactivate)
+;;   )
+
+;; Fix wrong number of argument in Emacs 28.05 at iMac.
+;; (cl-letf (((symbol-function 'define-obsolete-function-alias) #'defalias))
+;;    (use-package benchmark-init
+;;      :config
+;;      (require 'benchmark-init-modes)
+;;      (add-hook 'after-init-hook #'benchmark-init/deactivate)))
+
 
 ;; auto-package-update
 (use-package auto-package-update

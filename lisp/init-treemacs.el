@@ -1,4 +1,4 @@
-;;; init-treemacs.el --- Initialize treemacs.-*- lexical-binding: t -*-
+ ;;; init-treemacs.el --- Initialize treemacs.-*- lexical-binding: t -*-
 
 ;;; Commentary:
 ;; Ref:
@@ -86,31 +86,6 @@
            "ft" '(treemacs :which-key "treemacs")
            "fT" '(treemacs-find-file :which-key "Focus current file in treemacs")
            )
-  )
-
-(use-package treemacs-projectile
-  :after treemacs projectile
-  :ensure t
-  :config
-  (defun spacemacs/treemacs-project-toggle ()
-    "Toggle and add the current project to treemacs if not already added."
-    (interactive)
-    (if (eq (treemacs-current-visibility) 'visible)
-        (delete-window (treemacs-get-local-window))
-      (let ((path (projectile-ensure-project (projectile-project-root)))
-            (name (projectile-project-name)))
-        (unless (treemacs-current-workspace)
-          (treemacs--find-workspace))
-        (treemacs-do-add-project-to-workspace path name)
-        (treemacs-select-window))))
-  :general
-  (:states '(normal visual insert emacs)
-           :keymaps 'override
-           :prefix beyondpie/normal-leader-key
-           :non-normal-prefix beyondpie/non-normal-leader-key
-           "pt" '(spacemacs/treemacs-project-toggle :which-key "treemacs project")
-           )
-  
   )
 
 ;; Prefer no figures in dired
