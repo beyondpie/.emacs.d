@@ -78,7 +78,7 @@
 (require 'init-yasnippet)
 (require 'init-windows)
 (require 'init-git)
-(require 'init-dashboard)
+;; (require 'init-dashboard)
 (require 'init-treemacs)
 (require 'init-project)
 
