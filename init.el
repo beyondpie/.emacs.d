@@ -37,6 +37,25 @@
 (set-keyboard-coding-system 'utf-8)
 (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
 
+;; elisp
+(global-set-key (kbd "C-c s r") 'eval-region)
+;; set package source
+(setq package-archives
+      '(("gnu"   . "http://elpa.gnu.org/packages/")
+        ("melpa" . "http://melpa.org/packages/")
+        ("melpa-stable" . "https://stable.melpa.org/packages/")
+        ))
+
+;; keys for windows
+(global-set-key (kbd "C-x 2") 'split-window-below)
+(global-set-key (kbd "C-x 3") 'split-window-right)
+(global-set-key (kbd "C-x w f") 'toggle-frame-fullscreen)
+(global-set-key (kbd "C-x w m") 'toggle-frame-maximized)
+(global-set-key (kbd "C-x w M") 'make-frame)
+(global-set-key (kbd "C-x w o") 'other-frame)
+
+;; eshell
+(global-set-key (kbd "C-x '") 'eshell)
 
 (add-hook 'after-init-hook
           (lambda ()
