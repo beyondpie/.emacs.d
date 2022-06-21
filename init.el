@@ -39,6 +39,7 @@
 
 ;; elisp
 (global-set-key (kbd "C-c s r") 'eval-region)
+
 ;; set package source
 (setq package-archives
       '(("gnu"   . "http://elpa.gnu.org/packages/")
@@ -54,8 +55,8 @@
 (global-set-key (kbd "C-x w M") 'make-frame)
 (global-set-key (kbd "C-x w o") 'other-frame)
 
-;; eshell
-(global-set-key (kbd "C-x '") 'eshell)
+;; load eshell
+(require 'init-shell)
 
 (add-hook 'after-init-hook
           (lambda ()

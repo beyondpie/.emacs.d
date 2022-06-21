@@ -8,8 +8,6 @@
 
 ;;; Code:
 
-;; (use-package vterm)
-
 (setq comint-prompt-read-only t)
 (setq shell-command-completion-mode t)
 
@@ -50,10 +48,6 @@ directory to make multiple eshell windows easier."
   (insert "exit")
   (eshell-send-input)
   (delete-window))
-
-(defun eshell/gst (&rest args)
-    (magit-status (pop args) nil)
-    (eshell/echo))   ;; The echo command suppresses output
 
 (defun eshell/f (filename &optional dir try-count)
   "Searches for files matching FILENAME in either DIR or the
@@ -103,14 +97,6 @@ file to edit."
     (erase-buffer)
     (eshell-send-input)))
 
-(general-define-key
- :states '(normal visual insert emacs)
- :prefix beyondpie/normal-leader-key
- :non-normal-prefix beyondpie/non-normal-leader-key
- :keymaps 'override
- "'" '(eshell-here :which-key "eshell here")
- )
-
 (defun curr-dir-git-branch-string (pwd)
   "Returns current git branch as a string, or the empty string if
 PWD is not in a git repo (or the git command is not found)."
@@ -125,6 +111,9 @@ PWD is not in a git repo (or the git command is not found)."
            (git-icon  "\xe0a0")
            (git-icon2 (propertize "\xf020" 'face `(:family "octicons"))))
       (concat git-repo " " git-icon2 " " git-branch))))
+
+;; bind keys
+(global-set-key (kbd "C-x '") 'eshell-here)
 
 (provide 'init-shell)
 ;;; init-shell.el ends here
