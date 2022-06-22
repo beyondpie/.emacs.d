@@ -37,6 +37,8 @@
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
+;; allow TUI with mouse
+(xterm-mouse-mode 1)
 
 ;; elisp
 (global-set-key (kbd "C-c s r") 'eval-region)
