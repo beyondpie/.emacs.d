@@ -11,6 +11,7 @@
 (defconst *is-a-mac* (eq system-type 'darwin))
 ;; make echo area showing message for 10s
 (setq suggest-key-bindings 10)
+(setq initial-buffer-choice 'about-emacs)
 
 ;; garbage collection during startup
 (let ((normal-gc-cons-threshold (* 20 1024 1024))

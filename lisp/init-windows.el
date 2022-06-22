@@ -23,10 +23,10 @@
 (global-set-key (kbd "C-x 1") 'sanityinc/toggle-delete-other-windows)
 (global-set-key (kbd "C-x 2") 'split-window-below)
 (global-set-key (kbd "C-x 3") 'split-window-right)
-(global-set-key (kbd "C-x w f") 'toggle-frame-fullscreen)
-(global-set-key (kbd "C-x w m") 'toggle-frame-maximized)
-(global-set-key (kbd "C-x w M") 'make-frame)
-(global-set-key (kbd "C-x w o") 'other-frame)
+(global-set-key (kbd "C-c w f") 'toggle-frame-fullscreen)
+(global-set-key (kbd "C-c w m") 'toggle-frame-maximized)
+(global-set-key (kbd "C-c w M") 'make-frame)
+(global-set-key (kbd "C-c w o") 'other-frame)
 
 (provide 'init-windows)
 ;;; init-windows.el ends here
