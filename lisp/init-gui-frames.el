@@ -44,11 +44,6 @@
           (lambda ()
             (setq line-spacing 0)))
 
-;; Change global font size easily
-(use-package default-text-scale
-  :ensure t
-  :pin melpa
-  :hook (after-init . default-text-scale-mode))
 
 ;; http://ergoemacs.org/emacs/emacs_customize_default_window_size.html
 (if (display-graphic-p)

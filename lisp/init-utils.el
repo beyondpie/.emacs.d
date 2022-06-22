@@ -4,39 +4,9 @@
 
 ;;; Code:
 
-(use-package general
-  :ensure t
-  )
-(require 'general)
-;; (use-package hydra)
-;; (use-package major-mode-hydra)
 
-;; https://github.com/justbur/emacs-which-key
-(use-package which-key
-  :hook (after-init . which-key-mode)
-  :delight
-  :init
-  (setq which-key-show-early-on-C-h t)
-  (setq which-key-idle-delay 0.4)
-  (setq which-key-idle-secondary-delay 0.01)
-  (setq which-key-popup-type 'side-window)
-  (setq which-key-side-window-location 'bottom)
-  (setq which-key-side-window-max-width 0.33)
-  (setq which-key-side-window-max-height 0.25)
-  (setq which-key-max-description-length 30)
-)
-
-;; undo-tree
-(use-package undo-tree
-  :hook (after-init . global-undo-tree-mode)
-  :bind ("C-x u" . undo-tree-visualize)
-  :delight
-)
-
-
-;; for mark
 (global-set-key (kbd "C-SPC") 'set-mark-command)
-
+ 
 ;; for tabs
 (setq-default indent-tabs-mode nil
               default-tab-width 2
@@ -44,17 +14,6 @@
 ;; ** language
 (ispell-change-dictionary "american" t)
 (define-coding-system-alias 'UTF-8 'utf-8)
-
-;; for text edit
-(general-define-key
- :states '(normal visual insert emacs)
- :prefix beyondpie/normal-leader-key
- :non-normal-prefix beyondpie/non-normal-leader-key
- :keymaps 'override
- "ir" '(indent-region :which-key "indent region")
- "rw" '(delete-trailing-whitespace :which-key "delete trailing whitespace")
- "sr" '(eval-region :which-key "elisp eval-region")
- )
 
 ;; files
 ;; from "writing GNU Emacs Extensions"
@@ -76,22 +35,6 @@
 ;; ref: https://emacs.stackexchange.com/questions/61957/mode-line-always-shows-compiling-after-compile-a-tex-file-with-typos?newreg=6aa1e0e4e19b423a9bce34c66bacc1e4
 (setq compilation-in-progress nil)
 
-;; view large file
-(use-package vlf
-  :ensure t
-  :hook (after-init . (lambda () (require 'vlf-setup)))
-  :general
-  (:states '(normal visual insert emacs)
-           :keymaps 'override
-           :prefix beyondpie/normal-leader-key
-           :non-normal-prefix beyondpie/non-normal-leader-key
-           "fl" '(vlf :which-key "visualize large file"))
-  )
-
-(use-package elisp-demos
-  :config
-  (advice-add 'describe-function-1 :after #'elisp-demos-advice-describe-function-1)
-  )
 
 (defun beyondpie/simplify-minibatch-emacs ()
   (interactive)
@@ -122,29 +65,5 @@
 ;; downcase-region
 (global-unset-key (kbd "C-x C-l"))
 
-;; hide/show modeline
-;; Ref: https://bzg.fr/en/emacs-hide-mode-line/
-(defvar-local hidden-mode-line-mode nil)
-(define-minor-mode hidden-mode-line-mode
-  "Minor mode to hide the mode-line in the current buffer."
-  :init-value nil
-  :global t
-  :variable hidden-mode-line-mode
-  :group 'editing-basics
-  (if hidden-mode-line-mode
-      (setq hide-mode-line mode-line-format
-            mode-line-format nil)
-    (setq mode-line-format hide-mode-line
-          hide-mode-line nil))
-  (force-mode-line-update)
-  ;; Apparently force-mode-line-update is not always enough to
-  ;; redisplay the mode-line
-  (redraw-display)
-  (when (and (called-interactively-p 'interactive)
-             hidden-mode-line-mode)
-    (run-with-idle-timer
-     0 nil 'message
-     (concat "Hidden Mode Line Mode enabled.  "
-             "Use M-x hidden-mode-line-mode to make the mode-line appear."))))
 (provide 'init-utils)
 ;;; init-utils.el ends here

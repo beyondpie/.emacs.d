@@ -113,7 +113,7 @@ PWD is not in a git repo (or the git command is not found)."
       (concat git-repo " " git-icon2 " " git-branch))))
 
 ;; bind keys
-(global-set-key (kbd "C-x '") 'eshell-here)
+(global-set-key (kbd "C-c '") 'eshell-here)
 
 (provide 'init-shell)
 ;;; init-shell.el ends here

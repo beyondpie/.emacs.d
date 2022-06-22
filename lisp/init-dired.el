@@ -5,40 +5,18 @@
 
 (with-eval-after-load 'dired
   (setq-default dired-dwim-target t)
-  (require 'dired-x)
-  ;; Hook up dired-x global bindings without loading it up-front
-  (define-key ctl-x-map "\C-j" 'dired-jump)
-  (define-key ctl-x-4-map "\C-j" 'dired-jump-other-window)
-  ;; otherwise, when using evil norm state in dired-mode
-  ;; enter will be move to the next line.
+  (define-key dired-mode-map (kbd "RET") 'dired-find-file)
+  (define-key dired-mode-map (kbd "m") 'dired-mark)
+  (define-key dired-mode-map (kbd "D") 'dired-do-delete)
+  (define-key dired-mode-map (kbd "g") 'revert-buffer)
+  (define-key dired-mode-map (kbd "u") 'dired-unmark)
+  (define-key dired-mode-map (kbd "+") 'dired-create-directory)
+  (define-key dired-mode-map (kbd "C") 'dired-do-copy)
+  (define-key dired-mode-map (kbd "R") 'dired-do-rename)
+  (define-key dired-mode-map (kbd "(") 'dired-hide-details-mode)
+  (define-key dired-mode-map (kbd "!") 'dired-do-shell-command)
+  )
   
-  (general-define-key
-   :states '(normal visual motion)
-   :keymaps 'dired-mode-map
-   "RET" 'dired-find-file
-   "m" 'dired-mark
-   "D" 'dired-do-delete
-   "g" 'revert-buffer
-   "u" 'dired-unmark
-   "+" 'dired-create-directory
-   "C" 'dired-do-copy
-   "R" 'dired-do-rename
-   "(" 'dired-hide-details-mode
-   "!" 'dired-do-shell-command
-   "S" 'hydra-dired-quick-sort/body
-   ))
-
-(use-package diff-hl
-  :pin melpa
-  :hook (dired-mode . diff-hl-dired-mode)
-  )
-
-(use-package dired-quick-sort
-  :pin melpa
-  :config
-  (with-eval-after-load 'dired
-    (dired-quick-sort-setup))
-  )
 
 (provide 'init-dired)
 ;;; init-dired.el ends here

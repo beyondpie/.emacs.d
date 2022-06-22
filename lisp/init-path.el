@@ -2,6 +2,7 @@
 
 ;;; Commentary:
 ;; Ref: https://xenodium.com/trying-out-gccemacs-on-macos/
+
 ;;; Code:
 
 (use-package exec-path-from-shell

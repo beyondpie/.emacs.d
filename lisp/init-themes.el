@@ -8,41 +8,29 @@
 
 
 ;;; Code:
+(set-face-attribute 'default nil :height 200)
 
-(use-package spacemacs-common
-  :ensure spacemacs-theme
-  :pin melpa
-  :defer t
+(unless (package-installed-p 'spacemacs-theme)
+  (package-refresh-contents)
+  (package-install 'spacemacs-theme)
   )
 
-(use-package modus-themes
-  :ensure
-  :init
   ;; Add all your customizations prior to loading the themes
-  (setq modus-themes-slanted-constructs t
-        modus-themes-bold-constructs t
-        modus-themes-syntax nil
-        modus-themes-line '3d
-        modus-themes-subtle-line-numbers t
-        ;; modus-themes-paren-match 'subtle-bold
-        )
-
-  ;; Load the theme files before enabling a theme
-  (modus-themes-load-themes)
-  :bind ("<f5>" . modus-themes-toggle))
+(setq modus-themes-slanted-constructs t
+      modus-themes-bold-constructs t
+      modus-themes-syntax nil
+      modus-themes-line '3d
+      modus-themes-subtle-line-numbers t
+      ;; modus-themes-paren-match 'subtle-bold
+      )
 
 (add-hook 'after-init-hook
           (lambda ()
             ;; load spacemacs-dark
-            ;; (load-theme 'spacemacs-dark t)
-            ;; load  modus-vivendi
-            (modus-themes-load-vivendi)
-            ;; (modus-themes-load-operandi)
-            (if *is-a-mac* 
-              (add-to-list 'default-frame-alist
-                           '(font . "Monaco-16"))
-              (set-face-attribute 'default nil :height 150)
-              )
+	    (if (display-graphic-p)
+		(load-theme 'spacemacs-dark t)
+	      (modus-themes-load-vivendi)
+	      )
             (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
             ))
 

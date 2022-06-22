@@ -5,39 +5,11 @@
 
 ;;; Code:
 
-(global-set-key (kbd "C-x 2") 'split-window-below)
-(global-set-key (kbd "C-x 3") 'split-window-right)
-
 ;; scroll continuouly one line at a time
 (setq scroll-conservatively 10000)
 
 ;; navigate the windoews with "C-c <left>" or "C-c <right>"
 (add-hook 'after-init-hook 'winner-mode)
-
-(use-package switch-window
-  :ensure t
-  :pin melpa
-  :bind ("C-x o" . switch-window)
-  :delight
-  :config
-  (setq-default switch-window-shortcut-style 'alphabet
-                switch-window-timeout nil)
-  )
-
-(use-package avy
-  :ensure t
-  :pin melpa
-  :bind ("C-:" . avy-goto-char)
-  :general
-  (:states '(normal visual insert emacs)
-           :prefix beyondpie/normal-leader-key
-           :non-normal-prefix beyondpie/non-normal-leader-key
-           :keymaps 'override
-           "jl" '(avy-goto-line :which-key "jump to line")
-           "jw" '(avy-goto-word-1 :which-key "jump to word")
-           "jp" '(project-switch-project :which-key "jump to projects")
-           )
-  )
 
 
 (defun sanityinc/toggle-delete-other-windows ()
@@ -49,16 +21,12 @@
     (delete-other-windows)))
 
 (global-set-key (kbd "C-x 1") 'sanityinc/toggle-delete-other-windows)
-(general-define-key
- :states '(normal visual insert emacs)
- :prefix beyondpie/normal-leader-key
- :non-normal-prefix beyondpie/non-normal-leader-key
- :keymaps 'override
- "wm" '(toggle-frame-maximized :which-key "max window")
- "wf" '(toggle-frame-fullscreen :which-key "full window")
- "wM" '(make-frame :which-key "make frame")
- "wo" '(other-frame :which-key "other frame")
- )
+(global-set-key (kbd "C-x 2") 'split-window-below)
+(global-set-key (kbd "C-x 3") 'split-window-right)
+(global-set-key (kbd "C-x w f") 'toggle-frame-fullscreen)
+(global-set-key (kbd "C-x w m") 'toggle-frame-maximized)
+(global-set-key (kbd "C-x w M") 'make-frame)
+(global-set-key (kbd "C-x w o") 'other-frame)
 
 (provide 'init-windows)
 ;;; init-windows.el ends here
