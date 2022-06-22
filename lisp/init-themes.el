@@ -29,7 +29,7 @@
             ;; load spacemacs-dark
 	    (if (display-graphic-p)
 		(load-theme 'spacemacs-dark t)
-	      (modus-themes-load-vivendi)
+	      (load-theme 'modus-vivendi t)
 	      )
             (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
             ))
