@@ -27,6 +27,10 @@
 (global-set-key (kbd "C-c w m") 'toggle-frame-maximized)
 (global-set-key (kbd "C-c w M") 'make-frame)
 (global-set-key (kbd "C-c w o") 'other-frame)
+(global-set-key (kbd "C-c w k") 'windmove-up)
+(global-set-key (kbd "C-c w j") 'windmove-down)
+(global-set-key (kbd "C-c w h") 'windmove-left)
+(global-set-key (kbd "C-c w l") 'windmove-right)
 
 (provide 'init-windows)
 ;;; init-windows.el ends here
