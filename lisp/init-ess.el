@@ -26,7 +26,7 @@
         )  
   )
 
-(with-eval-after-load 'ess
+(with-eval-after-load 'ess-r-mode
   (define-key ess-r-mode-map (kbd "C-c s l") 'ess-eval-line-and-step)
   (define-key ess-r-mode-map (kbd "C-c s f") 'ess-eval-function)
   (define-key ess-r-mode-map (kbd "C-c s r") 'ess-eval-region)
@@ -35,6 +35,6 @@
   (define-key inferior-ess-r-mode-map (kbd "-") 'ess-insert-assign)
   (define-key ess-r-mode-map (kbd "-") 'ess-insert-assign)
   )
-
+ 
 (provide 'init-ess)
 ;;; init-ess.el ends here
