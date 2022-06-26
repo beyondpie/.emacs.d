@@ -32,5 +32,6 @@
 (global-set-key (kbd "C-c w h") 'windmove-left)
 (global-set-key (kbd "C-c w l") 'windmove-right)
 (global-set-key (kbd "C-c o") 'other-window)
+(global-set-key (kbd "C-c G") 'end-of-buffer)
 (provide 'init-windows)
 ;;; init-windows.el ends here
