@@ -14,7 +14,7 @@
   (package-install 'ess)
   )
 
-(add-to-list 'auto-mode-alist '("\\.R\\'" . ess-mode))
+(add-to-list 'auto-mode-alist '("\\.R\\'" . ess-r-mode))
 
 (with-eval-after-load 'ess
   (setq ess-indent-offset 2
