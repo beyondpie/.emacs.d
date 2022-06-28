@@ -58,11 +58,11 @@
 (require 'init-utils)
 (require 'init-tramp)
 (require 'init-evil)
+(require 'init-themes)
 (require 'init-helm)
 (when *is-a-mac*
   (require 'init-macos)
   )
-(require 'init-themes)
 (if (display-graphic-p)
     (require 'init-gui-frames)
     )
@@ -92,12 +92,16 @@
 (require 'init-elfeed)
 (require 'init-snakemake)
 (require 'init-conda)
+(when *is-a-mac*
+  (beyondpie/simplify-minibatch-emacs)
+  )
 
-(add-hook 'after-init-hook
-          (lambda ()
-            (require 'server)
-            (unless (server-running-p)
-              (server-start))))
+
+;; (add-hook 'after-init-hook
+;;           (lambda ()
+;;             (require 'server)
+;;             (unless (server-running-p)
+;;               (server-start))))
 
 (when (file-exists-p custom-file)
   (load custom-file))

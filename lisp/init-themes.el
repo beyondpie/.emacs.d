@@ -47,6 +47,7 @@
                            '(font . "Monaco-18"))
               (set-face-attribute 'default nil :height 150)
               )
+            (beyondpie/set-evil-insert-state-cursor)
             (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
             ))
 
