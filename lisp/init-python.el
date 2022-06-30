@@ -61,8 +61,7 @@
                (python-shell-get-process)))))
     (unless shell-process
       (error "Failed to start python shell properly"))
-    (pop-to-buffer (process-buffer shell-process))
-    (evil-insert-state)))
+    (pop-to-buffer (process-buffer shell-process))))
 
 (defun spacemacs/python-shell-send-defun ()
   "Send function content to shell and switch to it in insert mode."
