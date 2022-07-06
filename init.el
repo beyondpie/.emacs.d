@@ -78,8 +78,6 @@
 (require 'init-yasnippet)
 (require 'init-windows)
 (require 'init-git)
-;; (require 'init-dashboard)
-(require 'init-treemacs)
 (require 'init-project)
 
 (require 'init-prog)
@@ -90,7 +88,6 @@
 (require 'init-tex)
 (require 'init-org)
 (require 'init-elfeed)
-(require 'init-snakemake)
 (require 'init-conda)
 (when *is-a-mac*
   (beyondpie/simplify-minibatch-emacs)
