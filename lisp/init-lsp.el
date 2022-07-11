@@ -57,8 +57,5 @@
     [remap xref-find-apropos] #'helm-lsp-workspace-symbol)
   )
 
-(use-package lsp-treemacs
-  :commands lsp-treemacs-errors-list)
-
 (provide 'init-lsp)
 ;;; init-lsp.el ends here
