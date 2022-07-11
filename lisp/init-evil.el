@@ -4,7 +4,7 @@
 
 ;; evil-collection suggest to use the folllowing to
 ;; let general override evil-collection binds over SPC.
-;; In my case, I only need to use keymaps 'override in eivl or other module
+;; In my case, I only need to use keymaps 'override in evil or other module
 ;; when using general to define the keys. 
 
 ;; https://github.com/emacs-evil/evil-collection
