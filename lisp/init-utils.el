@@ -4,6 +4,39 @@
 
 ;;; Code:
 
+<<<<<<< HEAD
+=======
+(use-package general
+  :ensure t
+  )
+(require 'general)
+;; (use-package hydra)
+;; (use-package major-mode-hydra)
+
+;; https://github.com/justbur/emacs-which-key
+(use-package which-key
+  :hook (after-init . which-key-mode)
+  :delight
+  :init
+  (setq which-key-show-early-on-C-h t)
+  (setq which-key-idle-delay 0.4)
+  (setq which-key-idle-secondary-delay 0.01)
+  (setq which-key-popup-type 'side-window)
+  (setq which-key-side-window-location 'bottom)
+  (setq which-key-side-window-max-width 0.33)
+  (setq which-key-side-window-max-height 0.25)
+  (setq which-key-max-description-length 30)
+)
+
+;; undo-tree
+(use-package undo-tree
+  :hook (after-init . global-undo-tree-mode)
+  :bind ("C-x u" . undo-tree-visualize)
+  :delight
+  :init
+  (setq undo-tree-auto-save-history nil)
+)
+>>>>>>> 926ea54fb369363506494458e8a682b9766d0e40
 
 (global-set-key (kbd "C-SPC") 'set-mark-command)
  

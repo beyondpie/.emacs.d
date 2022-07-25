@@ -105,6 +105,63 @@
   (define-key python-mode-map (kbd "C-c s r") 'spacemacs/python-shell-send-region)
   )
 
+<<<<<<< HEAD
+=======
+;; https://github.com/millejoh/emacs-ipython-notebook
+(use-package python
+  :ensure t
+  :pin melpa
+  :mode (("\\.py\\'" . python-mode)
+         ("\\.snakefile\\'" . python-mode)
+         ("Snakefile\\'" . python-mode)
+         ("snakefile\\'" . python-mode))
+  :hook (;; (python-mode . spacemacs//python-setup-backend)
+         (python-mode . spacemacs//python-default))
+  :init
+  (progn
+    (spacemacs//python-setup-shell)
+    (setq python-indent-offset 4)
+    (setq python-shell-completion-native-enable nil)
+    )
+  (defun spacemacs/python-remove-unused-imports()
+    "Use Autoflake to remove unused function"
+    "autoflake --remove-all-unused-imports -i unused_imports.py"
+    (interactive)
+    (if (executable-find "autoflake")
+        (progn
+          (shell-command (format "autoflake --remove-all-unused-imports -i %s"
+                                 (shell-quote-argument (buffer-file-name))))
+          (revert-buffer t t t))
+      (message "Error: Cannot find autoflake executable.")))
+ :config
+  (progn
+    ;; Env vars
+    (with-eval-after-load 'exec-path-from-shell
+      (exec-path-from-shell-copy-env "PYTHONPATH"))
+    (setq-default python-indent-guess-indent-offset nil)
+    )
+  :general
+  (:states '(normal visual)
+           :keymaps 'python-mode-map
+           :prefix beyondpie/major-mode-leader-key
+           "gg" '(lsp-find-definition :which-key "lsp find definition")
+           "gf" '(helm-semantic-or-imenu :which-key "helm search semantic")
+           "go" '(helm-occur :which-key "helm occur")
+           "gm" '(helm-all-mark-rings :which-key "helm all mark rings")
+           "rn" '(lsp-rename :which-key "lsp rename")
+           "ri" '(spacemacs/python-remove-unused-imports :which-key "remove unused imports")
+           "==" '(blacken-buffer :which-key "black buffer")
+           "'" '(spacemacs/python-start-or-switch-repl :which-key "python repl")
+           "sl" '(spacemacs/python-shell-send-line :which-key "send line")
+           "sf" '(spacemacs/python-shell-send-defun :which-key "send defun")
+           "sc" '(spacemacs/python-shell-send-defun :which-key "send class") 
+           "sr" '(spacemacs/python-shell-send-region :which-key "send region")
+           )
+  (:states '(insert emacs)
+           :keymaps 'inferior-python-mode-map
+           "C-l" '(spacemacs/comint-clear-buffer :which-key "clear buffer"))
+  )
+>>>>>>> 926ea54fb369363506494458e8a682b9766d0e40
 
 (provide 'init-python)
 ;;; init-python.el ends here

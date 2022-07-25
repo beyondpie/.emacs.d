@@ -42,3 +42,12 @@
 /eww-bookmarks
 /package-quickstart.el
 /package-quickstart.elc
+*.~undo~tree~
+*.*.~undo~tree~
+/.custom.el.~undo-tree~
+/lisp/.init-ess.el.~undo-tree~
+/lisp/.init-lsp.el.~undo-tree~
+/lisp/.init-company.el.~undo-tree~
+/bookmarks
+/elpa-28.1/*
+/tutorial/

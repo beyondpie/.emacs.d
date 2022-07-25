@@ -8,6 +8,11 @@
 (global-set-key (kbd "M-.") 'xref-find-definitions)
 (global-set-key (kbd "M-,") 'xref-pop-marker-stack)
 
+;; add auto-fill-mode
+;; (add-hook 'prog-mode-hook 'auto-fill-mode)
+(setq-default display-fill-column-indicator-column 70)
+(add-hook 'prog-mode-hook 'display-fill-column-indicator-mode)
+
 
 ;; general could let me use "," as leader key
 ;; in prog mode under normal state of evil

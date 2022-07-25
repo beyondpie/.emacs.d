@@ -31,7 +31,6 @@
     - *helm*: search, match and so on. highly integrated
     - *vterm*: common shell usage
     - *project* (Emacs package since 29.05): project management
-    - *treemacs*: list of files and functions
     - *lsp*: unified programming language server
     - programming language related:
       - *auctex*: Latex

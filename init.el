@@ -48,26 +48,31 @@
 (require 'init-elpa)
 (require 'init-utils)
 (require 'init-tramp)
+
 (require 'init-windows)
+
 (if (display-graphic-p)
     (require 'init-gui-frames)
   )
 (require 'init-themes)
 (require 'init-dired)
+
 (require 'init-shell)
 (require 'init-prog)
 (require 'init-python)
+
 (require 'init-ess)
 (require 'init-recentf)
 (require 'init-org)
 (require 'init-grep)
 
 
-(add-hook 'after-init-hook
-          (lambda ()
-            (require 'server)
-            (unless (server-running-p)
-              (server-start))))
+
+;; (add-hook 'after-init-hook
+;;           (lambda ()
+;;             (require 'server)
+;;             (unless (server-running-p)
+;;               (server-start))))
 
 (when (file-exists-p custom-file)
   (load custom-file))
