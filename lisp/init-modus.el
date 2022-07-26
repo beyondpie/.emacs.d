@@ -130,10 +130,11 @@
 (modus-themes-load-themes)
 
 ;; Load the theme of your preference:
-(modus-themes-load-operandi) ; OR (modus-themes-load-vivendi)
+;; (modus-themes-load-operandi) ; OR (modus-themes-load-vivendi)
+(modus-themes-load-vivendi)
 
 ;; Optionally set the `modus-themes-toggle' to a key binding:
-(define-key global-map (kbd "<f5>") #'modus-themes-toggle)
+(define-key global-map (kbd "<f9>") #'modus-themes-toggle)
 
 ;;;; Modus themes "Summertime"
 
