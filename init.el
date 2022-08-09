@@ -79,6 +79,7 @@
 (require 'init-windows)
 (require 'init-git)
 (require 'init-project)
+(require 'init-snakemake)
 
 (require 'init-prog)
 (require 'init-shell)
