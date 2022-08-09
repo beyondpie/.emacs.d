@@ -60,5 +60,11 @@
  "wo" '(other-frame :which-key "other frame")
  )
 
+;; (use-package minimap
+;;   :init (setq minimap-width-fraction 0.2
+;;               minimap-minimum-width 15
+;;               minimap-window-location 'right)
+;;   :hook (after-init . minimap-mode))
+
 (provide 'init-windows)
 ;;; init-windows.el ends here
