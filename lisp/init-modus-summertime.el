@@ -1,142 +1,7 @@
-;;; The Modus themes
+;;; init-modus-summertime.el --- Modus themes "Summertime" -*- lexical-binding: t _*_
 
-;; These are built into Emacs 28 or higher, though I use the package for
-;; my development purposes (I need to make sure it always builds cleanly
-;; and works properly).
-
-;; Read their manual with Emacs' Info reader, or visit:
-;; <https://protesilaos.com/emacs/modus-themes>.
-(require 'modus-themes)
-
-;; Add all your customizations prior to loading the themes
-;;
-;; NOTE: these are not my preferences!  I am always testing various
-;; configurations.  Though I still like what I have here.
-(setq modus-themes-italic-constructs t
-      modus-themes-bold-constructs t
-      modus-themes-mixed-fonts t
-      modus-themes-subtle-line-numbers t
-      modus-themes-intense-mouseovers nil
-      modus-themes-deuteranopia nil
-      modus-themes-tabs-accented nil
-      modus-themes-variable-pitch-ui t
-      modus-themes-inhibit-reload t ; only applies to `customize-set-variable' and related
-
-      modus-themes-fringes nil ; {nil,'subtle,'intense}
-
-      ;; Options for `modus-themes-lang-checkers' are either nil (the
-      ;; default), or a list of properties that may include any of those
-      ;; symbols: `straight-underline', `text-also', `background',
-      ;; `intense' OR `faint'.
-      modus-themes-lang-checkers nil
-
-      ;; Options for `modus-themes-mode-line' are either nil, or a list
-      ;; that can combine any of `3d' OR `moody', `borderless',
-      ;; `accented', a natural number for extra padding (or a cons cell
-      ;; of padding and NATNUM), and a floating point for the height of
-      ;; the text relative to the base font size (or a cons cell of
-      ;; height and FLOAT)
-      modus-themes-mode-line '(accented)
-
-      ;; Options for `modus-themes-markup' are either nil, or a list
-      ;; that can combine any of `bold', `italic', `background',
-      ;; `intense'.
-      modus-themes-markup nil
-
-      ;; Options for `modus-themes-syntax' are either nil (the default),
-      ;; or a list of properties that may include any of those symbols:
-      ;; `faint', `yellow-comments', `green-strings', `alt-syntax'
-      modus-themes-syntax nil
-
-      ;; Options for `modus-themes-hl-line' are either nil (the default),
-      ;; or a list of properties that may include any of those symbols:
-      ;; `accented', `underline', `intense'
-      modus-themes-hl-line nil
-
-      ;; Options for `modus-themes-paren-match' are either nil (the
-      ;; default), or a list of properties that may include any of those
-      ;; symbols: `bold', `intense', `underline'
-      modus-themes-paren-match '(bold)
-
-      ;; Options for `modus-themes-links' are either nil (the default),
-      ;; or a list of properties that may include any of those symbols:
-      ;; `neutral-underline' OR `no-underline', `faint' OR `no-color',
-      ;; `bold', `italic', `background'
-      modus-themes-links '(neutral-underline)
-
-      ;; Options for `modus-themes-box-buttons' are either nil (the
-      ;; default), or a list that can combine any of `flat',
-      ;; `accented', `faint', `variable-pitch', `underline',
-      ;; `all-buttons', the symbol of any font weight as listed in
-      ;; `modus-themes-weights', and a floating point number
-      ;; (e.g. 0.9) for the height of the button's text.
-      modus-themes-box-buttons nil
-
-      ;; Options for `modus-themes-prompts' are either nil (the
-      ;; default), or a list of properties that may include any of those
-      ;; symbols: `background', `bold', `gray', `intense', `italic'
-      modus-themes-prompts nil
-
-      ;; The `modus-themes-completions' is an alist that reads three
-      ;; keys: `matches', `selection', `popup'.  Each accepts a nil
-      ;; value (or empty list) or a list of properties that can include
-      ;; any of the following (for WEIGHT read further below):
-      ;;
-      ;; `matches' - `background', `intense', `underline', `italic', WEIGHT
-      ;; `selection' - `accented', `intense', `underline', `italic', `text-also', WEIGHT
-      ;; `popup' - same as `selected'
-      ;; `t' - applies to any key not explicitly referenced (check docs)
-      ;;
-      ;; WEIGHT is a symbol such as `semibold', `light', or anything
-      ;; covered in `modus-themes-weights'.  Bold is used in the absence
-      ;; of an explicit WEIGHT.
-      modus-themes-completions
-      '((matches . (semibold))
-        (selection . (extrabold accented))
-        (popup . (extrabold accented)))
-
-      modus-themes-mail-citations nil ; {nil,'intense,'faint,'monochrome}
-
-      ;; Options for `modus-themes-region' are either nil (the default),
-      ;; or a list of properties that may include any of those symbols:
-      ;; `no-extend', `bg-only', `accented'
-      modus-themes-region '(accented no-extend)
-
-      ;; Options for `modus-themes-diffs': nil, 'desaturated, 'bg-only
-      modus-themes-diffs nil
-
-      modus-themes-org-blocks 'gray-background ; {nil,'gray-background,'tinted-background}
-
-      modus-themes-org-agenda ; this is an alist: read the manual or its doc string
-      '((header-block . (variable-pitch light 1.6))
-        (header-date . (underline-today grayscale workaholic 1.2))
-        (event . (accented italic varied))
-        (scheduled . rainbow)
-        (habit . simplified))
-
-      ;; The `modus-themes-headings' is an alist with lots of possible
-      ;; combinations, include per-heading-level tweaks: read the
-      ;; manual or its doc string
-      modus-themes-headings
-      '((0 . (variable-pitch light (height 2.2)))
-        (1 . (rainbow variable-pitch light (height 1.6)))
-        (2 . (rainbow variable-pitch light (height 1.4)))
-        (3 . (rainbow variable-pitch regular (height 1.3)))
-        (4 . (rainbow regular (height 1.2)))
-        (5 . (rainbow (height 1.1)))
-        (t . (variable-pitch extrabold))))
-
-;; Load the theme files before enabling a theme (else you get an error).
-(modus-themes-load-themes)
-
-;; Load the theme of your preference:
-;; (modus-themes-load-operandi) ; OR (modus-themes-load-vivendi)
-(modus-themes-load-vivendi)
-
-;; Optionally set the `modus-themes-toggle' to a key binding:
-(define-key global-map (kbd "<f9>") #'modus-themes-toggle)
-
-;;;; Modus themes "Summertime"
+;;; Commentary:
+;; All the contents from pretesilaos blog:
 
 ;; Read the relevant blog post:
 ;; <https://protesilaos.com/codelog/2022-07-26-modus-themes-color-override-demo/>
@@ -145,6 +10,8 @@
 ;; "summertime", (ii) testing variants of this in her setup, and (iii)
 ;; sending me feedback on possible tweaks and refinements.  All errors
 ;; are my own.  (This information is shared with permission.)
+
+;;; Code:
 (define-minor-mode modus-themes-summertime
   "Refashion the Modus themes by overriding their colors.
 
@@ -409,4 +276,8 @@ provide."
               (fg-diff-focus-removed . "#eebdba")))
     (setq modus-themes-operandi-color-overrides nil
           modus-themes-vivendi-color-overrides nil)))
+
+
+(provide 'init-modus-summertime)
+;;; init-modus-summertime.el ends here
 

@@ -64,8 +64,13 @@
   (require 'init-macos)
   )
 (if (display-graphic-p)
-    (require 'init-gui-frames)
-    )
+    (progn 
+      (require 'init-gui-frames)
+      (require 'init-modus-summertime)
+      (modus-themes-summertime)
+      (modus-themes-load-vivendi)
+      )
+  )
 (require 'init-dired)
 (require 'init-isearch)
 (require 'init-grep)
@@ -103,16 +108,16 @@
 
 ;; stat common commands I use.
 ;; http://blog.binchen.org/posts/how-to-be-extremely-efficient-in-emacs.html
-(require 'keyfreq)
-(setq keyfreq-excluded-commands
-      '(self-insert-command
-        abort-recursive-edit
-        forward-char
-        backward-char
-        previous-line
-        next-line))
-(keyfreq-mode 1)
-(keyfreq-autosave-mode 1)
+;; (require 'keyfreq)
+;; (setq keyfreq-excluded-commands
+;;       '(self-insert-command
+;;         abort-recursive-edit
+;;         forward-char
+;;         backward-char
+;;         previous-line
+;;         next-line))
+;; (keyfreq-mode 1)
+;; (keyfreq-autosave-mode 1)
 
 (when (file-exists-p custom-file)
   (load custom-file))
