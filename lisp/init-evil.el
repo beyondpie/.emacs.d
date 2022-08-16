@@ -102,8 +102,6 @@
   :delight
   :config
   (evil-collection-init)
-  ;; (evil-collection-init 'magit)
-  ;; (evil-collection-init 'pdf-tools)
   (evil-collection-unimpaired-mode -1)
   )
 

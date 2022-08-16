@@ -17,7 +17,7 @@
    :keymaps 'dired-mode-map
    "RET" 'dired-find-file
    "m" 'dired-mark
-   "D" 'dired-do-delete
+   "D" nil
    "g" 'revert-buffer
    "u" 'dired-unmark
    "+" 'dired-create-directory
