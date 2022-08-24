@@ -13,15 +13,20 @@
   :delight
   :ensure t
   :pin melpa
-  :init
   :config
-  (setq ess-indent-offset 2
-        ess-style 'RStudio
-        ess-fancy-comments nil
-        ess-offset-arguments-newline "prev-line"
-        ess-use-flymake nil
-        ess-startup-directory 'default-directory
-        )
+  (setq
+   ess-style 'RStudio-
+   ess-indent-offset 2
+   ess-indent-level 2
+   ess-fancy-comments nil
+   ess-offset-arguments-newline '(prev-line 2)
+   ess-offset-block '(prev-line 2)
+   ess-offset-arguments '(prev-line 2)
+   ess-indent-from-lhs '(argument fun-decl-opening)
+   ess-indent-from-chain-start t
+   ess-use-flymake nil
+   ess-startup-directory 'default-directory
+   )
   ;; :hook (ess-r-mode . lsp)
   :general
   (:states '(normal visual)

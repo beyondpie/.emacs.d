@@ -9,9 +9,6 @@
   ;; Hook up dired-x global bindings without loading it up-front
   (define-key ctl-x-map "\C-j" 'dired-jump)
   (define-key ctl-x-4-map "\C-j" 'dired-jump-other-window)
-  ;; otherwise, when using evil norm state in dired-mode
-  ;; enter will be move to the next line.
-  
   (general-define-key
    :states '(normal visual motion)
    :keymaps 'dired-mode-map

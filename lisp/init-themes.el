@@ -54,7 +54,7 @@
 (defun enable-transparent ()
   "set frame transparent"
   (interactive)
-  (set-frame-parameter (selected-frame) 'alpha '(x x))
+  (set-frame-parameter (selected-frame) 'alpha '(70 70))
   )
 
 (defun disable-transparent ()
