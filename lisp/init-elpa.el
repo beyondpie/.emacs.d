@@ -66,38 +66,5 @@
 ;; Update GPG keyring for GNU ELPA
 (use-package gnu-elpa-keyring-update)
 
-;; Work well under Emacs 27.2, Linux/Ubuntu
-;; set benchmark to record time
-;; (use-package benchmark-init
-;;   :ensure t
-;;   :config
-;;   (require 'benchmark-init-modes)
-;;   (add-hook 'after-init-hook #'benchmark-init/deactivate)
-;;   )
-
-;; Fix wrong number of argument in Emacs 28.05 at iMac.
-;; (cl-letf (((symbol-function 'define-obsolete-function-alias) #'defalias))
-;;    (use-package benchmark-init
-;;      :config
-;;      (require 'benchmark-init-modes)
-;;      (add-hook 'after-init-hook #'benchmark-init/deactivate)))
-
-
-;; auto-package-update
-(use-package auto-package-update
-  :commands (auto-package-update-now)
-  :init
-  (setq auto-package-update-delete-old-versions t)
-  (setq auto-package-update-hide-results t)
-  (setq auto-package-update-interval 14)
-  (setq auto-package-update-prompt-before-update t)
-  :ensure t
-  :pin melpa
-  :config
-  (defalias 'upgrade-packages #'auto-package-update-now)
-)
-
-
-
 (provide 'init-elpa)
 ;;; init-elpa.el ends here
