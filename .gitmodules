@@ -1,0 +1,3 @@
+[submodule "lsp-mode"]
+	path = lsp-mode
+	url = https://github.com/emacs-lsp/lsp-mode
