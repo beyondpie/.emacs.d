@@ -4,3 +4,9 @@
 [submodule "helm"]
 	path = helm
 	url = https://github.com/emacs-helm/helm
+[submodule "evil"]
+	path = evil
+	url = https://github.com/emacs-evil/evil
+[submodule "magit"]
+	path = magit
+	url = https://github.com/magit/magit

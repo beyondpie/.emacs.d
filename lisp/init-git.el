@@ -7,6 +7,7 @@
 
 ;;; Code:
 (use-package magit
+  :load-path ("~/.emacs.d/magit/lisp")
   :ensure t
   :init
   (use-package with-editor :ensure t)

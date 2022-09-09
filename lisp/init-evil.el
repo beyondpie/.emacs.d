@@ -37,6 +37,7 @@
     (setq evil-insert-state-cursor '(bar "White"))))
 
 (use-package evil
+  :load-path ("~/.emacs.d/evil")
   :ensure t
   :delight
   :init
