@@ -9,16 +9,6 @@
 
 ;;; Code:
 
-(use-package spacemacs-common
-  :ensure spacemacs-theme
-  :pin melpa
-  :defer t
-  :init
-  (custom-set-variables '(spacemacs-theme-custom-colors
-                          '((bg2 . "#292b2e")
-                            (bg1 . "#212026"))))
-  )
-
 (use-package modus-themes
   :ensure
   :init
@@ -37,11 +27,8 @@
 
 (add-hook 'after-init-hook
           (lambda ()
-            ;; load spacemacs-dark
-            ;; (load-theme 'spacemacs-dark t)
             ;; load  modus-vivendi
             (modus-themes-load-vivendi)
-            ;; (modus-themes-load-operandi)
             (if *is-a-mac* 
               (add-to-list 'default-frame-alist
                            '(font . "Monaco-18"))
