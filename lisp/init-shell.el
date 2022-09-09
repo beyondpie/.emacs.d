@@ -11,7 +11,7 @@
 (setq comint-prompt-read-only t)
 (setq shell-command-completion-mode t)
 
-(add-hook 'eshell-mode-hook (lambda()
+(add-hook 'eshell-mode-hook (lambda ()
                               (setenv "TERM" "xterm-256color")))
 
 (defun eshell-here ()
