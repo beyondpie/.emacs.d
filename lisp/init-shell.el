@@ -13,21 +13,8 @@
 (setq comint-prompt-read-only t)
 (setq shell-command-completion-mode t)
 
-(add-hook 'eshell-mode-hook (lambda ()
-    (eshell/alias "e" "find-file $1")
-    (eshell/alias "ff" "find-file $1")
-    (eshell/alias "emacs" "find-file $1")
-    (eshell/alias "ee" "find-file-other-window $1")
-
-    (eshell/alias "gd" "magit-diff-unstaged")
-    (eshell/alias "gds" "magit-diff-staged")
-    (eshell/alias "d" "dired $1")
-
-    ;; The 'ls' executable requires the Gnu version on the Mac
-    (let ((ls (if (file-exists-p "/usr/local/bin/gls")
-                  "/usr/local/bin/gls"
-                "/bin/ls")))
-      (eshell/alias "ll" (concat ls " -AlohG --color=always")))))
+(add-hook 'eshell-mode-hook (lambda()
+                              (setenv "TERM" "xterm-256color")))
 
 (defun eshell-here ()
   "Opens up a new shell in the directory associated with the
