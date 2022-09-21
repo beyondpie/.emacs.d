@@ -12,5 +12,9 @@
       org-hide-leading-stars t
       org-old-levels-only t)
 
+(setq org-todo-keywords
+      '(
+        (sequence "TODO" "DELAY" "|" "DONE" "CANCEL" "DOING")))
+
 (provide 'init-org)
 ;;; init-org.el ends here

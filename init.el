@@ -60,9 +60,11 @@
 (require 'init-evil)
 (require 'init-themes)
 (require 'init-helm)
+
 (when *is-a-mac*
   (require 'init-macos)
   )
+
 (if (display-graphic-p)
     (progn 
       (require 'init-gui-frames)
