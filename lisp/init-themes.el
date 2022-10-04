@@ -38,10 +38,10 @@
             (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
             ))
 
-(defun enable-transparent ()
+(defun enable-transparent (alpha)
   "set frame transparent"
-  (interactive)
-  (set-frame-parameter (selected-frame) 'alpha '(70 70))
+  (interactive "nalpha:")
+  (set-frame-parameter (selected-frame) 'alpha alpha)
   )
 
 (defun disable-transparent ()
