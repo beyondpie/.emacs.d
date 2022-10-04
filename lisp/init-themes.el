@@ -17,7 +17,7 @@
         modus-themes-bold-constructs t
         modus-themes-syntax nil
         ;; modus-themes-line '3d
-        modus-themes-subtle-line-numbers t
+        modus-themes-subtle-line-numbers nil
         ;; modus-themes-paren-match 'subtle-bold
         )
 
