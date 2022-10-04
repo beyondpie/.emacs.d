@@ -123,8 +123,5 @@
 
 (when (file-exists-p custom-file)
   (load custom-file))
-
-(global-set-key (kbd "s-w") nil)
-
 (provide 'init)
 ;;; init.el ends here
