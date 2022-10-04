@@ -39,15 +39,10 @@
             ))
 
 (defun enable-transparent (alpha)
-  "set frame transparent"
+  "Set current frame transparency.
+ALPHA is numeric value from [0, 100]."
   (interactive "nalpha:")
   (set-frame-parameter (selected-frame) 'alpha alpha)
-  )
-
-(defun disable-transparent ()
-  "set frame transparent"
-  (interactive)
-  (set-frame-parameter (selected-frame) 'alpha '(100 100))
   )
 
 (provide 'init-themes)
