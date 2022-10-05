@@ -64,10 +64,13 @@
 (when *is-a-mac*
   (require 'init-macos)
   )
-(require 'init-gui-frames)
-(require 'init-modus-summertime)
-(modus-themes-summertime)
-(modus-themes-load-vivendi)
+(if (display-graphic-p)
+    (progn
+      (require 'init-gui-frames)
+      (require 'init-modus-summertime)
+      (modus-themes-summertime)
+      (modus-themes-load-vivendi)
+      ))
 (require 'init-dired)
 (require 'init-isearch)
 (require 'init-grep)
