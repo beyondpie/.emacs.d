@@ -24,6 +24,9 @@
 ;; suppress: Remote file error: Forbidden reentrant call of Tramp
 (setq debug-ignored-errors
       (cons 'remote-file-error debug-ignored-errors))
+;; Important: remote PATH is the PATH in login
+;; https://stackoverflow.com/questions/26630640/tramp-ignores-tramp-remote-path
+(add-to-list 'tramp-remote-path 'tramp-own-remote-path)
 
 (provide 'init-tramp)
 ;;; init-tramp.el ends here
