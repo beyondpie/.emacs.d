@@ -7,10 +7,9 @@
 
 ;;; Code:
 (require 'tramp)
-(customize-set-variable 'tramp-syntax 'simplified)
-;; (eval-after-load 'tramp '(setenv "SHELL" "/bin/bash"))
+;; (customize-set-variable 'tramp-syntax 'simplified)
+(eval-after-load 'tramp '(setenv "SHELL" "/bin/bash"))
 (setq tramp-default-method "ssh")
-(customize-set-variable 'tramp-terminal-type "xterm-256color")
 (setq password-cache-expiry 72000)
 ;; use local .ssh/config host setup instead of tramp's
 (customize-set-variable 'tramp-use-ssh-controlmaster-options nil)
@@ -27,6 +26,14 @@
 ;; Important: remote PATH is the PATH in login
 ;; https://stackoverflow.com/questions/26630640/tramp-ignores-tramp-remote-path
 (add-to-list 'tramp-remote-path 'tramp-own-remote-path)
+
+(defun remote-shell ()
+  "Start shell in remote."
+  (interactive)
+  (let ((process-environment
+       (cons "TERM=xterm-256color" process-environment)))
+    (shell))
+  )
 
 (provide 'init-tramp)
 ;;; init-tramp.el ends here
