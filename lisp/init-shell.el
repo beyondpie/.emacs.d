@@ -11,8 +11,8 @@
 (setq comint-prompt-read-only t)
 (setq shell-command-completion-mode t)
 
-(add-hook 'eshell-mode-hook (lambda ()
-                              (setenv "TERM" "xterm-256color")))
+;; (add-hook 'eshell-mode-hook (lambda ()
+;;                               (setenv "TERM" "xterm-256color")))
 
 (defun eshell-here ()
   "Opens up a new shell in the directory associated with the
