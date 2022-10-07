@@ -63,7 +63,19 @@
 
 (when *is-a-mac*
   (require 'init-macos)
+  (setq dictionary-server "dict.org")
+  (use-package osx-dictionary
+    :ensure t)
+  (general-define-key
+   :states '(normal visual motion)
+   :prefix beyondpie/normal-leader-key
+   :keymaps 'override
+   "ds" '(dictionary-search :which-key "dictionary-search")
+   "dd" '(osx-dictionary-search-word-at-point
+          :which-key "osx-dictionary word at paint")
+   )
   )
+
 (if (display-graphic-p)
     (progn
       (require 'init-gui-frames)

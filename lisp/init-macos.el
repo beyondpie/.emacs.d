@@ -3,11 +3,6 @@
 ;;; Commentary:
 ;;; Code:
 
-(use-package osx-dictionary
-  :ensure t
-  :bind ("C-c d" . osx-dictionary-search-word-at-point)
-  )
-
 (setq mac-option-modifier 'meta
       mac-command-modifier 'super
       )
