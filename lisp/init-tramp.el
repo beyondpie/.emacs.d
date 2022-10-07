@@ -8,7 +8,7 @@
 ;;; Code:
 (require 'tramp)
 (customize-set-variable 'tramp-syntax 'simplified)
-(eval-after-load 'tramp '(setenv "SHELL" "/bin/bash"))
+;; (eval-after-load 'tramp '(setenv "SHELL" "/bin/bash"))
 (setq tramp-default-method "ssh")
 (customize-set-variable 'tramp-terminal-type "xterm-256color")
 (setq password-cache-expiry 72000)
