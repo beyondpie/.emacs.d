@@ -141,7 +141,7 @@
   :delight
   :init (company-prescient-mode 1))
   
-  ;; quickhelp
+;;   ;; quickhelp
   ;; (use-package company-quickhelp
   ;;   :delight
   ;;   :defines company-quickhelp-delay
