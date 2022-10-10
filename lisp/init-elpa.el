@@ -30,8 +30,8 @@
 (setq package-user-dir
       (expand-file-name (format "elpa-%s.%s" emacs-major-version emacs-minor-version)
                         user-emacs-directory))
-
 ;; Initialize packages
+;; NOTE: if delete this, use-package will not be found
 (unless (bound-and-true-p package--initialized) ; To avoid warnings in 27
   (setq package-enable-at-startup nil)          ; To prevent initializing twice
   (package-initialize))
@@ -50,6 +50,7 @@
 
 (eval-when-compile
   (require 'use-package))
+
 (use-package diminish
   :ensure t
   :demand)
