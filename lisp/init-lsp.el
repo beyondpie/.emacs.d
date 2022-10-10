@@ -9,7 +9,7 @@
 ;;; Code:
 
 (use-package lsp-mode
-  :load-path ("~/.emacs.d/lsp-mode" "~/.emacs.d/lsp-mode/clients")
+  ;; :load-path ("~/.emacs.d/lsp-mode" "~/.emacs.d/lsp-mode/clients")
   :delight
   :init
   (setq lsp-keymap-prefix "C-c l"

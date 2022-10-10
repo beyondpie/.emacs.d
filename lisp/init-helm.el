@@ -6,7 +6,7 @@
 ;;; Code:
 
 (use-package helm
-  :load-path ("~/.emacs.d/helm")
+  ;; :load-path ("~/.emacs.d/helm")
   :ensure t
   :pin melpa
   :hook (after-init . helm-mode)
