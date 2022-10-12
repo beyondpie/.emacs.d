@@ -25,6 +25,10 @@
   (modus-themes-load-themes)
   :bind ("<f5>" . modus-themes-toggle))
 
+(use-package ef-themes
+  :ensure
+  )
+
 (add-hook 'after-init-hook
           (lambda ()
             ;; load  modus-vivendi

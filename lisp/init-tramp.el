@@ -7,7 +7,7 @@
 
 ;;; Code:
 (require 'tramp)
-;; (customize-set-variable 'tramp-syntax 'simplified)
+(customize-set-variable 'tramp-syntax 'simplified)
 (eval-after-load 'tramp '(setenv "SHELL" "/bin/bash"))
 (setq tramp-default-method "ssh")
 (setq password-cache-expiry 72000)
