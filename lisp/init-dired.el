@@ -15,6 +15,7 @@
    "RET" 'dired-find-file
    "m" 'dired-mark
    "D" nil
+   "d" nil
    "g" 'revert-buffer
    "u" 'dired-unmark
    "+" 'dired-create-directory
