@@ -161,5 +161,21 @@
     (package-install-file (expand-file-name package "~/.emacs.d")))
   )
 
+;; http://blog.binchen.org/posts/how-to-be-extremely-efficient-in-emacs.html
+(defun stat-keyfreq ()
+  "Stat common commands I use."
+  (interactive)
+  (require 'keyfreq)
+  (setq keyfreq-excluded-commands
+        '(self-insert-command
+          abort-recursive-edit
+          forward-char
+          backward-char
+          previous-line
+          next-line))
+  (keyfreq-mode 1)
+  (keyfreq-autosave-mode 1)
+  )
+
 (provide 'init-utils)
 ;;; init-utils.el ends here

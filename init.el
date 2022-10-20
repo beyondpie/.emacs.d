@@ -60,29 +60,6 @@
 (require 'init-evil)
 (require 'init-themes)
 (require 'init-helm)
-
-(when *is-a-mac*
-  (require 'init-macos)
-  (setq dictionary-server "dict.org")
-  (use-package osx-dictionary
-    :ensure t)
-  (general-define-key
-   :states '(normal visual motion)
-   :prefix beyondpie/normal-leader-key
-   :keymaps 'override
-   "ds" '(dictionary-search :which-key "dictionary-search")
-   "dd" '(osx-dictionary-search-word-at-point
-          :which-key "osx-dictionary word at paint")
-   )
-  )
-
-(if (display-graphic-p)
-    (progn
-      (require 'init-gui-frames)
-      (require 'init-modus-summertime)
-      (modus-themes-summertime)
-      (modus-themes-load-vivendi)
-      ))
 (require 'init-dired)
 (require 'init-isearch)
 (require 'init-grep)
@@ -97,7 +74,6 @@
 (require 'init-git)
 (require 'init-project)
 (require 'init-snakemake)
-
 (require 'init-prog)
 (require 'init-shell)
 (require 'init-lsp)
@@ -107,30 +83,33 @@
 (require 'init-org)
 (require 'init-elfeed)
 (require 'init-conda)
+
+;; TODO:
+;; - move is-a-mac configuration in one place
+;;   like in init-macos
+;; - merge init-gui-theme and init-theme into one.
 (when *is-a-mac*
+  (require 'init-macos)
+  (setq dictionary-server "dict.org")
+  (use-package osx-dictionary
+    :ensure t)
+  (general-define-key
+   :states '(normal visual motion)
+   :prefix beyondpie/normal-leader-key
+   :keymaps 'override
+   "ds" '(dictionary-search :which-key "dictionary-search")
+   "dd" '(osx-dictionary-search-word-at-point
+          :which-key "osx-dictionary word at paint")
+   )
+  (add-to-list 'default-frame-alist
+               '(font . "Monaco-18"))
+  (set-face-attribute 'default nil :height 150)
+  (add-to-list 'default-frame-alist
+               '(ns-transparent-titlebar . t))
+  (scroll-bar-mode -1)
   (beyondpie/simplify-minibatch-emacs)
+  (if (display-graphic-p) (require 'init-gui-frames))
   )
-
-
-;; (add-hook 'after-init-hook
-;;           (lambda ()
-;;             (require 'server)
-;;             (unless (server-running-p)
-;;               (server-start))))
-
-;; stat common commands I use.
-;; http://blog.binchen.org/posts/how-to-be-extremely-efficient-in-emacs.html
-;; (require 'keyfreq)
-;; (setq keyfreq-excluded-commands
-;;       '(self-insert-command
-;;         abort-recursive-edit
-;;         forward-char
-;;         backward-char
-;;         previous-line
-;;         next-line))
-;; (keyfreq-mode 1)
-;; (keyfreq-autosave-mode 1)
-
 (when (file-exists-p custom-file)
   (load custom-file))
 (provide 'init)

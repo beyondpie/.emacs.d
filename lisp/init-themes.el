@@ -29,24 +29,49 @@
   :ensure
   )
 
-(add-hook 'after-init-hook
-          (lambda ()
-            ;; load  modus-vivendi
-            (modus-themes-load-vivendi)
-            (if *is-a-mac* 
-              (add-to-list 'default-frame-alist
-                           '(font . "Monaco-18"))
-              (set-face-attribute 'default nil :height 150)
-              )
-            (beyondpie/set-evil-insert-state-cursor)
-            (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
-            ))
 
 (defun enable-transparent (alpha)
   "Set current frame transparency.
 ALPHA is numeric value from [0, 100]."
   (interactive "nalpha:")
   (set-frame-parameter (selected-frame) 'alpha alpha)
+  )
+
+(defun default-light-theme ()
+  "Use EMACS default light theme."
+  (interactive)
+  (set-foreground-color "black")
+  (set-background-color "white")
+  (dolist (theme custom-enabled-themes)
+    (disable-theme theme))
+  (beyondpie/set-evil-insert-state-cursor)
+  )
+(defun default-dark-theme ()
+  "Use EMACS default dark theme."
+  (interactive)
+  (set-foreground-color "white")
+  (set-background-color "black")
+  (dolist (theme custom-enabled-themes)
+    (disable-theme theme))
+  (beyondpie/set-evil-insert-state-cursor)
+  )
+
+(defun load-modus-summertime ()
+  "Load modus summertime theme."
+  (interactive)
+  (if (display-graphic-p)
+      (progn
+        (require 'init-modus-summertime)
+        (modus-themes-summertime)
+        (modus-themes-load-vivendi)
+        ))
+  )
+
+(defun load-modus-dark-theme ()
+  "Load modus dark theme."
+  (interactive)
+  (modus-themes-load-vivendi)
+  (beyondpie/set-evil-insert-state-cursor)
   )
 
 (provide 'init-themes)

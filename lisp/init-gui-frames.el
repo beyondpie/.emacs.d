@@ -59,7 +59,7 @@
               (width . 106) ; chars
               (height . 60) ; lines
               ))
-      (setq default-frame-alist
+      (add-to-list 'default-frame-alist
             '(
               (tool-bar-lines . 0)
               (width . 106)
@@ -67,6 +67,6 @@
               )))
   (progn
     (setq initial-frame-alist '( (tool-bar-lines . 0)))
-    (setq default-frame-alist '( (tool-bar-lines . 0)))))
+    (add-to-list 'default-frame-alist '( (tool-bar-lines . 0)))))
 (provide 'init-gui-frames)
 ;;; init-gui-frames ends here
