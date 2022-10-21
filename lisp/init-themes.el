@@ -65,6 +65,7 @@ ALPHA is numeric value from [0, 100]."
         (modus-themes-summertime)
         (modus-themes-load-vivendi)
         ))
+  (beyondpie/set-evil-insert-state-cursor)
   )
 
 (defun load-modus-dark-theme ()
