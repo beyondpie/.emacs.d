@@ -13,7 +13,8 @@
                                   ((control))))
 (dolist (multiple '("" "double-" "triple-"))
   (dolist (direction '("right" "left"))
-    (global-set-key (read-kbd-macro (concat "<" multiple "wheel-" direction ">")) 'ignore)))
+    (global-set-key (read-kbd-macro
+                     (concat "<" multiple "wheel-" direction ">")) 'ignore)))
 (global-set-key (kbd "M-`") 'ns-next-frame)
 (global-set-key (kbd "M-h") 'ns-do-hide-emacs)
 (global-set-key (kbd "M-˙") 'ns-do-hide-others)
@@ -26,13 +27,11 @@
 
 ;; dired setup
 (with-eval-after-load 'dired
-  ;; need gnu ls
-  (when *is-a-mac*
-    (setq dired-use-ls-dired t
-	        insert-directory-program "/usr/local/bin/gls"
-	        dired-listing-switches "-aBhl --group-directories-first"
-	        )
-    ))
+  (setq dired-use-ls-dired t
+	      insert-directory-program "/usr/local/bin/gls"
+	      dired-listing-switches "-aBhl --group-directories-first"
+	      )
+  )
 
 ;; Ref: purcell
 ;; Stop C-z from minimizing windows under OS X
@@ -41,7 +40,6 @@
   (unless (and *is-a-mac* window-system)
     (suspend-frame)))
 (global-set-key (kbd "C-z") 'sanityinc/maybe-suspend-frame)
-
 
 (provide 'init-macos)
 ;;; init-macos.el ends here

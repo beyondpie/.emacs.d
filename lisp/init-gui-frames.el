@@ -9,7 +9,7 @@
 ;;----------------------------------------------------------------------------
 (setq use-file-dialog nil)
 (setq use-dialog-box nil)
-(setq inhibit-startup-screen t)
+;; (setq inhibit-startup-screen t)
 
 
 ;;----------------------------------------------------------------------------
@@ -28,6 +28,7 @@
 
 (tool-bar-mode -1)
 (menu-bar-mode -1)
+(scroll-bar-mode -1)
 
 (let ((no-border '(internal-border-width . 0)))
   (add-to-list 'default-frame-alist no-border)
@@ -44,12 +45,6 @@
           (lambda ()
             (setq line-spacing 0)))
 
-;; Change global font size easily
-(use-package default-text-scale
-  :ensure t
-  :pin melpa
-  :hook (after-init . default-text-scale-mode))
-
 ;; http://ergoemacs.org/emacs/emacs_customize_default_window_size.html
 (if (display-graphic-p)
     (progn
@@ -58,15 +53,22 @@
               (tool-bar-lines . 0)
               (width . 106) ; chars
               (height . 60) ; lines
+              (font . "Monaco-16")
+              (ns-transparent-titlebar . t)
               ))
       (add-to-list 'default-frame-alist
             '(
               (tool-bar-lines . 0)
               (width . 106)
               (height . 60)
-              )))
+              (font . "Monnaco-16")
+              (ns-transparent-titlebar . t)
+              ))
+       (set-face-attribute 'default nil :font "Monaco-16")
+      )
   (progn
     (setq initial-frame-alist '( (tool-bar-lines . 0)))
-    (add-to-list 'default-frame-alist '( (tool-bar-lines . 0)))))
+    (add-to-list 'default-frame-alist '( (tool-bar-lines . 0)))
+    ))
 (provide 'init-gui-frames)
-;;; init-gui-frames ends here
+;;; init-gui-frames.el ends here

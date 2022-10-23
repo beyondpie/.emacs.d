@@ -101,12 +101,6 @@
    "dd" '(osx-dictionary-search-word-at-point
           :which-key "osx-dictionary word at paint")
    )
-  (add-to-list 'default-frame-alist
-               '(font . "Monaco-18"))
-  (set-face-attribute 'default nil :height 150)
-  (add-to-list 'default-frame-alist
-               '(ns-transparent-titlebar . t))
-  (scroll-bar-mode -1)
   (beyondpie/simplify-minibatch-emacs)
   (if (display-graphic-p) (require 'init-gui-frames))
   )
