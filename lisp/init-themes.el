@@ -56,18 +56,6 @@ ALPHA is numeric value from [0, 100]."
   (beyondpie/set-evil-insert-state-cursor)
   )
 
-(defun load-modus-summertime ()
-  "Load modus summertime theme."
-  (interactive)
-  (if (display-graphic-p)
-      (progn
-        (require 'init-modus-summertime)
-        (modus-themes-summertime)
-        (modus-themes-load-vivendi)
-        ))
-  (beyondpie/set-evil-insert-state-cursor)
-  )
-
 (defun load-modus-dark-theme ()
   "Load modus dark theme."
   (interactive)
