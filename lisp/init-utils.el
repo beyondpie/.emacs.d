@@ -33,6 +33,7 @@
   :delight
   :init
   (setq undo-tree-auto-save-history nil)
+  (setq undo-tree-enable-undo-in-region t)
 )
 
 
