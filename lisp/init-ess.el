@@ -42,7 +42,8 @@
    "rn" '(lsp-rename :which-key "lsp rename")
    "rb" '(lsp-format-buffer :which-key "lsp buffer")
    "rr" '(lsp-format-region :which-key "lsp region")
-   "'" '(R :which-key "start repl"))
+   "'" '(R :which-key "start repl")
+   )
   (:states '(insert emacs)
    :keymaps 'ess-r-mode-map
    "-" '(ess-insert-assign :which-key "ess-assign")
@@ -51,6 +52,8 @@
             "C-l" '(comint-clear-buffer :which-key "clear console")
              "-" '(ess-insert-assign :which-key "ess-assign")
              )
+  (:keymaps 'ess-r-help-mode-map
+            "w" nil)
   (when *is-a-mac*
     (setq inferior-R-program "/usr/local/bin/R"))
   )
