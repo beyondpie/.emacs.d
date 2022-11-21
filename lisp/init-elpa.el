@@ -67,5 +67,19 @@
 ;; Update GPG keyring for GNU ELPA
 (use-package gnu-elpa-keyring-update)
 
+;; auto-package-update
+(use-package auto-package-update
+  :commands (auto-package-update-now)
+  :init
+  (setq auto-package-update-delete-old-versions t)
+  (setq auto-package-update-hide-results t)
+  (setq auto-package-update-interval 14)
+  (setq auto-package-update-prompt-before-update t)
+  :ensure t
+  :pin melpa
+  :config
+  (defalias 'upgrade-packages #'auto-package-update-now)
+)
+
 (provide 'init-elpa)
 ;;; init-elpa.el ends here

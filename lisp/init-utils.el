@@ -159,18 +159,6 @@
      (concat "Hidden Mode Line Mode enabled.  "
              "Use M-x hidden-mode-line-mode to make the mode-line appear."))))
 
-;; TODO:
-;; 1. Seems like submodules depend on packages that are not
-;;  submodules. it will disrupt the install prograss
-;; 2. How to upgrade only packages that are not submoduled?
-(defun update-package-from-submodule ()
-  (interactive)
-  (setq packages '("helm" "lsp-mode" "evil" "magit"))
-  (dolist (package packages)
-    (message "Manually install packages: %s." package)
-    (package-install-file (expand-file-name package "~/.emacs.d")))
-  )
-
 ;; http://blog.binchen.org/posts/how-to-be-extremely-efficient-in-emacs.html
 (defun stat-keyfreq ()
   "Stat common commands I use."
