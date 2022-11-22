@@ -69,10 +69,6 @@
 (require 'init-elfeed)
 (require 'init-conda)
 
-;; TODO:
-;; - move is-a-mac configuration in one place
-;;   like in init-macos
-;; - merge init-gui-theme and init-theme into one.
 (when *is-a-mac*
   (require 'init-macos)
   )
