@@ -33,6 +33,8 @@
 
 (use-package dired-quick-sort
   :pin melpa
+  :init
+  (setq dired-quick-sort-suppress-setup-warning t)
   :config
   (with-eval-after-load 'dired
     (dired-quick-sort-setup))
