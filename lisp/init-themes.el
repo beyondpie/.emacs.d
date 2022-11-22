@@ -9,25 +9,22 @@
 
 ;;; Code:
 
-(use-package modus-themes
-  :ensure
-  :init
-  ;; Add all your customizations prior to loading the themes
-  (setq modus-themes-slanted-constructs t
-        modus-themes-bold-constructs t
-        modus-themes-syntax nil
-        ;; modus-themes-line '3d
-        modus-themes-subtle-line-numbers nil
-        ;; modus-themes-paren-match 'subtle-bold
-        )
+;; (use-package modus-themes
+;;   :init
+;;   ;; Add all your customizations prior to loading the themes
+;;   (setq modus-themes-slanted-constructs t
+;;         modus-themes-bold-constructs t
+;;         modus-themes-syntax nil
+;;         ;; modus-themes-line '3d
+;;         modus-themes-subtle-line-numbers nil
+;;         ;; modus-themes-paren-match 'subtle-bold
+;;         )
 
-  ;; Load the theme files before enabling a theme
-  (modus-themes-load-themes)
-  :bind ("<f5>" . modus-themes-toggle))
+;;   ;; Load the theme files before enabling a theme
+;;   (modus-themes-load-themes)
+;;   :bind ("<f5>" . modus-themes-toggle))
 
-(use-package ef-themes
-  :ensure
-  )
+(use-package ef-themes)
 
 
 (defun enable-transparent (alpha)
@@ -56,12 +53,12 @@ ALPHA is numeric value from [0, 100]."
   (beyondpie/set-evil-insert-state-cursor)
   )
 
-(defun load-modus-dark-theme ()
-  "Load modus dark theme."
-  (interactive)
-  (modus-themes-load-vivendi)
-  (beyondpie/set-evil-insert-state-cursor)
-  )
+;; (defun load-modus-dark-theme ()
+;;   "Load modus dark theme."
+;;   (interactive)
+;;   (modus-themes-load-vivendi)
+;;   (beyondpie/set-evil-insert-state-cursor)
+;;   )
 
 (provide 'init-themes)
 ;;; init-themes.el ends here
