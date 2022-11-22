@@ -76,6 +76,9 @@
 (when *is-a-mac*
   (require 'init-macos)
   )
+(if (display-graphic-p)
+    (require 'init-gui-frames)
+  )
 (when (file-exists-p custom-file)
   (load custom-file))
 (provide 'init)

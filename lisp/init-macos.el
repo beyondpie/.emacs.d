@@ -34,14 +34,14 @@
   )
 
 ;; Ref: purcell
-;; Stop C-z from minimizing windows under OS X
 (defun sanityinc/maybe-suspend-frame ()
+  "Stop Ctrl z from minimizing windows under OS X."
   (interactive)
   (unless (and *is-a-mac* window-system)
     (suspend-frame)))
 (global-set-key (kbd "C-z") 'sanityinc/maybe-suspend-frame)
 
-(setq dictionary-server "dict.org")
+(defvar dictionary-server "dict.org")
 
 (use-package osx-dictionary
   :ensure t)
@@ -55,8 +55,6 @@
         :which-key "osx-dictionary word at paint")
  )
 (beyondpie/simplify-minibatch-emacs)
-(if (display-graphic-p) (require 'init-gui-frames))
-
 
 (provide 'init-macos)
 ;;; init-macos.el ends here
