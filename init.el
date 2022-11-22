@@ -75,19 +75,6 @@
 ;; - merge init-gui-theme and init-theme into one.
 (when *is-a-mac*
   (require 'init-macos)
-  (setq dictionary-server "dict.org")
-  (use-package osx-dictionary
-    :ensure t)
-  (general-define-key
-   :states '(normal visual motion)
-   :prefix beyondpie/normal-leader-key
-   :keymaps 'override
-   "ds" '(dictionary-search :which-key "dictionary-search")
-   "dd" '(osx-dictionary-search-word-at-point
-          :which-key "osx-dictionary word at paint")
-   )
-  (beyondpie/simplify-minibatch-emacs)
-  (if (display-graphic-p) (require 'init-gui-frames))
   )
 (when (file-exists-p custom-file)
   (load custom-file))

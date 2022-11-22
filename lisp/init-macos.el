@@ -41,5 +41,22 @@
     (suspend-frame)))
 (global-set-key (kbd "C-z") 'sanityinc/maybe-suspend-frame)
 
+(setq dictionary-server "dict.org")
+
+(use-package osx-dictionary
+  :ensure t)
+
+(general-define-key
+ :states '(normal visual motion)
+ :prefix beyondpie/normal-leader-key
+ :keymaps 'override
+ "ds" '(dictionary-search :which-key "dictionary-search")
+ "dd" '(osx-dictionary-search-word-at-point
+        :which-key "osx-dictionary word at paint")
+ )
+(beyondpie/simplify-minibatch-emacs)
+(if (display-graphic-p) (require 'init-gui-frames))
+
+
 (provide 'init-macos)
 ;;; init-macos.el ends here
