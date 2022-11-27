@@ -26,6 +26,10 @@
 ;; Important: remote PATH is the PATH in login
 ;; https://stackoverflow.com/questions/26630640/tramp-ignores-tramp-remote-path
 (add-to-list 'tramp-remote-path 'tramp-own-remote-path)
+(setq tramp-default-remote-shell "/bin/bash")
+;; https://www.gnu.org/software/emacs/manual/html_node/tramp/Predefined-connection-information.html
+;; (add-to-list 'tramp-connection-properties
+;;              (list "remote-shell" "/bin/bash"))
 
 (defun remote-shell ()
   "Start shell in remote."
