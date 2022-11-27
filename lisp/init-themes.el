@@ -60,5 +60,14 @@ ALPHA is numeric value from [0, 100]."
 ;;   (beyondpie/set-evil-insert-state-cursor)
 ;;   )
 
+(defun update-evil-cursor (&rest args)
+  "Update evil cursor color after selecting a theme: ARGS."
+  (print args)
+  (beyondpie/set-evil-insert-state-cursor)
+  )
+(advice-add 'ef-themes-select :after #'update-evil-cursor)
+;; (advice-remove 'ef-themes-select #'update-evil-cursor)
+;; (advice-remove 'ef-themes-select #'beyondpie/set-evil-insert-state-cursor)
+
 (provide 'init-themes)
 ;;; init-themes.el ends here
