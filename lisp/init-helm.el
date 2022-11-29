@@ -67,6 +67,23 @@
            :keymaps 'override
            "hg" '(helm-git-grep :which-key "helm git grep")
            "bf" '(helm-mini :which-key "helm-mini"))
+  ;; https://stackoverflow.com/questions/30142296/search-in-current-folder-with-helm-do-grep
+  (defun my/helm-do-grep-current-directory-tree ()
+    "Recursively search current directory.
+   If a parent directory has a `dir-locals-file', use that as the
+   root instead."
+    (interactive)
+    (let ((variables-file (dir-locals-find-file
+                           (or (buffer-file-name) default-directory))))
+      (helm-do-grep-1
+       (list
+        (cond
+         ((stringp variables-file)
+          (file-name-directory variables-file))
+         ((consp variables-file)
+          (nth 0 variables-file))
+         (t default-directory)))
+       t nil '("*"))))
   )
 (provide 'init-helm)
 ;;; init-helm ends here
