@@ -76,5 +76,13 @@
   (setq realgud-window-split-orientation 'horizontal)
   )
 
+(use-package yaml-mode
+  :ensure t
+  :pin melpa
+  :mode
+  (("\\.yml\\'" . yaml-mode)
+   ("\\.yaml\\'" . yaml-mode))
+  )
+
 (provide 'init-prog)
 ;;; init-prog.el ends here
