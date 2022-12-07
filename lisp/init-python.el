@@ -120,10 +120,10 @@
 (use-package python
   :ensure t
   :pin melpa
-  :mode (("\\.py\\'" . python-mode)
-         ("\\.snakefile\\'" . python-mode)
-         ("Snakefile\\'" . python-mode)
-         ("snakefile\\'" . python-mode))
+  :mode (
+         ("\\.py\\'" . python-mode)
+         ;; ("snakefile\\'" . python-mode)
+         )
   :hook (;; (python-mode . spacemacs//python-setup-backend)
          (python-mode . spacemacs//python-default))
   :init
