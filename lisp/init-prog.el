@@ -83,6 +83,17 @@
   (("\\.yml\\'" . yaml-mode)
    ("\\.yaml\\'" . yaml-mode))
   )
+(use-package tree-sitter
+  :ensure t
+  :pin melpa
+  :hook ( (after-init . global-tree-sitter-mode))
+  :config
+  (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode)
+  )
+(use-package tree-sitter-langs
+  :ensure t
+  :pin melpa)
+
 
 (provide 'init-prog)
 ;;; init-prog.el ends here
