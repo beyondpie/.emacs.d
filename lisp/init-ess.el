@@ -8,12 +8,6 @@
 ;; (setq-local mode-line-process nil)
 
 ;;; Code:
-
-(use-package tree-sitter-ess-r
-  :ensure t
-  :pin melpa
-  :hook (ess-r-mode . tree-sitter-ess-r-mode-activate))
-
 (use-package ess
   :delight
   :ensure t
