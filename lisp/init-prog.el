@@ -94,6 +94,10 @@
   :ensure t
   :pin melpa)
 
+(use-package rainbow-delimiters
+  :ensure t
+  :pin melpa
+  :hook ( prog-mode . rainbow-delimiters-mode ))
 
 (provide 'init-prog)
 ;;; init-prog.el ends here
