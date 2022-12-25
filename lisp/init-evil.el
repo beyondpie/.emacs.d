@@ -118,7 +118,7 @@
  :keymaps 'Info-mode-map
  "n" 'Info-next
  "p" 'Info-prev
- "l" 'Info-history-back
+ "b" 'Info-history-back
  "^" 'Info-up
  "d" 'Info-directory
  "r" 'Info-history-forward
