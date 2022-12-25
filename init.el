@@ -20,7 +20,7 @@
             (lambda () (setq gc-cons-threshold normal-gc-cons-threshold))))
 
 (dolist (dir '("site-lisp" "lisp"))
-	(push (expand-file-name dir user-emacs-directory) load-path))
+  (push (expand-file-name dir user-emacs-directory) load-path))
 
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 ;; close the warnings of gccemacs when compiling packages.
@@ -77,5 +77,6 @@
   )
 (when (file-exists-p custom-file)
   (load custom-file))
+
 (provide 'init)
 ;;; init.el ends here

@@ -17,19 +17,27 @@
   "Set `package-selected-packages' to VALUE but don't save to `custom-file'."
   (when value
     (setq package-selected-packages value)))
-(advice-add 'package--save-selected-packages :override #'my-save-selected-packages)
-
+(advice-add 'package--save-selected-packages
+            :override #'my-save-selected-packages)
 
 (setq package-archives
-      '(("gnu"   . "http://elpa.gnu.org/packages/")
-        ("melpa" . "http://melpa.org/packages/")
+      '(("gnu"   . "https://elpa.gnu.org/packages/")
+        ("melpa" . "https://melpa.org/packages/")
         ("melpa-stable" . "https://stable.melpa.org/packages/")
+	      ("nongnu" . "https://elpa.nongnu.org/nongnu/")
         ))
 
-;; install into sperate packages
+;; FIX cannot find package error after updating pacakges
+;; https://www.emacswiki.org/emacs/LoadPath
 (setq package-user-dir
-      (expand-file-name (format "elpa-%s.%s" emacs-major-version emacs-minor-version)
-                        user-emacs-directory))
+      (expand-file-name
+       (format "elpa-%s.%s" emacs-major-version emacs-minor-version)
+       user-emacs-directory))
+(let ((default-directory package-user-dir))
+  (normal-top-level-add-subdirs-to-load-path)
+  )
+
+
 ;; Initialize packages
 ;; NOTE: if delete this, use-package will not be found
 (unless (bound-and-true-p package--initialized) ; To avoid warnings in 27
@@ -37,6 +45,7 @@
   (package-initialize))
 
 ;; Setup `use-package'
+;; Keep the codes for emacs without use-package by default
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
