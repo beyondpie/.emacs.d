@@ -118,10 +118,11 @@
  :keymaps 'Info-mode-map
  "n" 'Info-next
  "p" 'Info-prev
- "b" 'Info-history-back
+ "B" 'Info-history-back
  "^" 'Info-up
  "d" 'Info-directory
  "r" 'Info-history-forward
+ "b" 'evil-backward-word-begin
  )
 
 (provide 'init-evil)
