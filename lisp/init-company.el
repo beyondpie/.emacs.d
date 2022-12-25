@@ -139,7 +139,9 @@
 ;; Better sorting and filtering
 (use-package company-prescient
   :delight
-  :init (company-prescient-mode 1))
+  :init
+  (setq company-prescient-mode 1)
+  )
   
 ;;   ;; quickhelp
   ;; (use-package company-quickhelp
