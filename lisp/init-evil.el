@@ -112,5 +112,17 @@
   :config
   (global-evil-surround-mode 1))
 
+;; Keep Info default key when possible in evil-normal mode
+(general-define-key
+ :states '(normal visual motion)
+ :keymaps 'Info-mode-map
+ "n" 'Info-next
+ "p" 'Info-prev
+ "l" 'Info-history-back
+ "^" 'Info-up
+ "d" 'Info-directory
+ "r" 'Info-history-forward
+ )
+
 (provide 'init-evil)
 ;;; init-evil.el ends here
