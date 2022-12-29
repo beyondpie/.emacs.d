@@ -1,18 +1,19 @@
 ;;; init-path.el --- set PATH -*- lexical-binding: t -*-
 
 ;;; Commentary:
-;; Ref: https://xenodium.com/trying-out-gccemacs-on-macos/
+;; Ref:
+;; - https://xenodium.com/trying-out-gccemacs-on-macos/
+;; - https://emacs-china.org/t/init-exec-path/23202/3
 ;;; Code:
 
 (use-package exec-path-from-shell
   :ensure t
-  :init
-  (setq exec-path-from-shell-arguments nil)
+  :custom (exec-path-from-shell-arguments '("-l"))
   :config
-  ;; for conda env in python-mode
-  (setq exec-path-from-shell-variables '("PATH" "MANPATH"))
-  (add-to-list 'exec-path-from-shell-variables "WORKON_HOME" t)
-  (add-to-list 'exec-path-from-shell-variables "LDFLAGS" t)
+  (dolist (var '("PATH" "MANPATH" "WORKON_HOME"
+                 "LDFLAGS" "LANG" "LC_CTYPE"))
+    (add-to-list 'exec-path-from-shell-variables var)
+    )
   (exec-path-from-shell-initialize)
   )
 
