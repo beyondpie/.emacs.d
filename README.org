@@ -1,9 +1,9 @@
 * My dot emacs
   My configuration for emacs since the end of 2020.
-  - Emacs version >= 28.06
-  - gccemacs: True with build-macos-gccemacs on MacOS system
-  - System: MacOS / Ubuntu
-  - GUI and terminal version are supported.
+  - Emacs version: latest (current 30.05 in development)
+  - System: MacOS (mainly) / Ubuntu
+  - GUI (mainly) and terminal version are supported.
+  - Now maintained at: https://codeberg.org/szu/.emacs.d
   
   I learn a lot from spacemacs, which is a popular emacs configuration. I use it since 2017 till 2020.
   The key features I like:

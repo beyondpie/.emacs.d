@@ -29,29 +29,8 @@
   ;; used for helm-man-woman in shell
   (add-to-list 'helm-sources-using-default-as-input 'helm-source-man-pages)
   (helm-autoresize-mode 1)
-  (helm-mode 1)
-  (use-package helm-git-grep
-    :ensure t
-    :pin melpa
-    :delight
-    :commands helm-git-grep)
-  (use-package helm-xref
-    :ensure t
-    :delight
-    :pin melpa)
-  (use-package helm-swoop
-    :delight
-    :ensure t
-    :pin melpa
-    :init
-    (setq helm-swoop-split-with-multiple-windows t
-          helm-swoop-split-direction 'split-window-vertically)
-    (setq helm-swoop-pre-input-function
-      (lambda () ""))
-    :bind
-    ("C-s" . helm-swoop)
-    )
-  :bind (("M-x" . helm-M-x)
+  :bind (
+         ("M-x" . helm-M-x)
          ;; ("C-x C-f" . helm-find-files)
          ("M-y" . helm-show-kill-ring)
          ("C-x b" . helm-mini)
@@ -59,7 +38,8 @@
          ("C-c g" . helm-git-grep-from-helm)
          ("C-i" . helm-execute-persistent-action)
          ("C-z" . helm-select-action)
-         ([tab] . helm-execute-persistent-action))
+         ([tab] . helm-execute-persistent-action)
+         )
   :general
   (:states '(normal visual insert emacs)
            :prefix beyondpie/normal-leader-key
@@ -85,5 +65,28 @@
          (t default-directory)))
        t nil '("*"))))
   )
+
+(use-package helm-git-grep
+  :ensure t
+  :pin melpa
+  :delight
+  :commands helm-git-grep)
+(use-package helm-xref
+  :ensure t
+  :delight
+  :pin melpa)
+(use-package helm-swoop
+  :delight
+  :ensure t
+  :pin melpa
+  :init
+  (setq helm-swoop-split-with-multiple-windows t
+        helm-swoop-split-direction 'split-window-vertically)
+  (setq helm-swoop-pre-input-function
+        (lambda () ""))
+  :bind
+  ("C-s" . helm-swoop)
+  )
+
 (provide 'init-helm)
-;;; init-helm ends here
+;;; init-helm.el ends here
