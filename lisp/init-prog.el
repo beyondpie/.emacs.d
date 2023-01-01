@@ -83,6 +83,7 @@
   (("\\.yml\\'" . yaml-mode)
    ("\\.yaml\\'" . yaml-mode))
   )
+
 (use-package tree-sitter
   :ensure t
   :pin melpa

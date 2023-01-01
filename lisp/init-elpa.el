@@ -39,16 +39,17 @@
 
 
 ;; Initialize packages
-;; NOTE: if delete this, use-package will not be found
 (unless (bound-and-true-p package--initialized) ; To avoid warnings in 27
   (setq package-enable-at-startup nil)          ; To prevent initializing twice
   (package-initialize))
 
 ;; Setup `use-package'
 ;; Keep the codes for emacs without use-package by default
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
+;; use-package is in Emacs-code in Emacs29.
+
+;; (unless (package-installed-p 'use-package)
+;;   (package-refresh-contents)
+;;   (package-install 'use-package))
 
 ;; Should set before loading `use-package'
 (eval-and-compile
