@@ -25,7 +25,6 @@
 ;;   :bind ("<f5>" . modus-themes-toggle))
 
 (use-package ef-themes)
-(use-package spacemacs-theme)
 
 (defun enable-transparent (alpha)
   "Set current frame transparency.
