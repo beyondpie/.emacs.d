@@ -275,6 +275,16 @@ fontified."
             "w" nil)
   (when *is-a-mac*
     (setq inferior-R-program "/usr/local/bin/R"))
+  (defun r--treesit-defun-name (node)
+  "Return the defun name of NODE.
+Return nil if there is no name or if NODE is not a defun node."
+  (pcase (treesit-node-type node)
+    ((or "function_definition" "class_definition")
+     (treesit-node-text
+      (treesit-node-child-by-field-name
+       node "name")
+      t))))
+
   (define-derived-mode r-ts-mode ess-r-mode "r"
     "Major mode for editing r files, using tree-sitter library.
 
