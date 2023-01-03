@@ -115,7 +115,7 @@
     (auto-revert-mode)
     (dired-mode)
     (winner-mode)
-    ;; (ess-r-mode "R")
+    (ess-r-mode "R")
     (windmove-mode)
     (flymake-mode)
     (evil-collection-unimpaired-mode)
@@ -187,7 +187,6 @@
           (and
            (not (equal "*Ilist*" (buffer-name (window-buffer win))))
            (not (eq  (selected-window)  win))
-
            )
           )
         )
