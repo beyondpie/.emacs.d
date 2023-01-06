@@ -35,5 +35,20 @@
  "wo" '(other-frame :which-key "other frame")
  )
 
+(use-package avy
+  :ensure t
+  :pin melpa
+  :bind ("C-:" . avy-goto-char)
+  :general
+  (:states '(normal visual insert emacs)
+           :prefix beyondpie/normal-leader-key
+           :non-normal-prefix beyondpie/non-normal-leader-key
+           :keymaps 'override
+           "jl" '(avy-goto-line :which-key "jump to line")
+           "jw" '(avy-goto-word-1 :which-key "jump to word")
+           "jp" '(project-switch-project :which-key "jump to projects")
+           )
+  )
+
 (provide 'init-windows)
 ;;; init-windows.el ends here
