@@ -19,9 +19,11 @@
 
 ;; add auto-fill-mode
 ;; (add-hook 'prog-mode-hook 'auto-fill-mode)
-(setq-default display-fill-column-indicator-column 70)
-(add-hook 'prog-mode-hook 'display-fill-column-indicator-mode)
-
+;; add Emacs default fill indicator
+;; (setq-default display-fill-column-indicator-column 80)
+;; (add-hook 'prog-mode-hook 'display-fill-column-indicator-mode)
+;; use column number to instead of display fill column
+(add-hook 'prog-mode-hook 'column-number-mode)
 
 ;; general could let me use "," as leader key
 ;; in prog mode under normal state of evil
