@@ -68,6 +68,7 @@
 (require 'init-org)
 (require 'init-elfeed)
 (require 'init-conda)
+(require 'init-treemacs)
 
 (when *is-a-mac*
   (require 'init-macos)
