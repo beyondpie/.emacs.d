@@ -9,6 +9,9 @@
 (require 'package)
 (require 'cl-lib)
 
+;; https://emacs-china.org/t/native-compilation/23316
+;; Stop native comp for 3rd packages, and only use it for native packages.
+(setq native-comp-deferred-compilation nil)
 
 ;; HACK: DO NOT copy package-selected-packages to init/custom file forcibly.
 ;; https://github.com/jwiegley/use-package/issues/383#issuecomment-247801751
