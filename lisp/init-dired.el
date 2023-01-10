@@ -39,6 +39,9 @@
   (with-eval-after-load 'dired
     (dired-quick-sort-setup))
   )
+(use-package all-the-icons)
+(use-package all-the-icons-dired
+  :hook (dired-mode . all-the-icons-dired-mode))
 
 (provide 'init-dired)
 ;;; init-dired.el ends here
