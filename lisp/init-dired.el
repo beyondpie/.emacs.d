@@ -39,9 +39,18 @@
   (with-eval-after-load 'dired
     (dired-quick-sort-setup))
   )
-(use-package all-the-icons)
+
+(use-package all-the-icons
+  :pin melpa
+  :if (display-graphic-p))
+
 (use-package all-the-icons-dired
-  :hook (dired-mode . all-the-icons-dired-mode))
+  :pin melpa
+  :init
+  (setq all-the-icons-dired-monochrome t)
+  :if (display-graphic-p)
+  :hook (dired-mode . all-the-icons-dired-mode)
+  )
 
 (provide 'init-dired)
 ;;; init-dired.el ends here
