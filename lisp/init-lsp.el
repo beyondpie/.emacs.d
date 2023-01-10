@@ -23,9 +23,9 @@
 	      lsp-modeline-code-actions-enable t
         lsp-diagnostics-provider :auto
 	      lsp-modeline-diagnostics-enable t
-	      lsp-modeline-workspace-status-enable t
+	      lsp-modeline-workspace-status-enable nil
         ;; https://emacs-china.org/t/spacemacs-c-c/15695
-        lsp-headerline-breadcrumb-enable t
+        lsp-headerline-breadcrumb-enable nil
         lsp-completion-show-detail t
         lsp-completion-show-kind t
         ;; https://emacs-lsp.github.io/lsp-mode/page/performance/
