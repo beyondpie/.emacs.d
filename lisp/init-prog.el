@@ -40,6 +40,8 @@
   (add-hook 'after-init-hook 'global-eldoc-mode))
 
 (global-set-key (kbd "M-/") 'hippie-expand)
+(global-set-key (kbd "C-M-/") 'comint-dynamic-complete-filename)
+
 (setq hippie-expand-try-functions-list
       '(try-complete-file-name-partially
         try-complete-file-name
