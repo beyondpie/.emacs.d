@@ -46,9 +46,8 @@
 
 (use-package all-the-icons-dired
   :pin melpa
-  :delight
   :init
-  (setq all-the-icons-dired-monochrome t)
+  (setq all-the-icons-dired-monochrome nil)
   :if (display-graphic-p)
   :hook (dired-mode . all-the-icons-dired-mode)
   )
