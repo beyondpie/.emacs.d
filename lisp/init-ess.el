@@ -33,6 +33,12 @@
         (ess-fl-keyword:matrix-labels . t)
         ))
   :config
+  ;; (defvar ess-R-package-regexp
+  ;;   (concat "\\(" "\\sw+"  "\\)" "::")
+  ;;   )
+  ;; (defvar ess-R-fl-package-name
+  ;;   '(eval . (cons (regexp-opt ess-R-package-regexp) 'ess-keyword-face)))
+  ;; (append ess-R-font-lock-keywords '((ess-R-fl-package-name . t)))
   (setq
    ess-style 'RStudio-
    ess-indent-offset 2
@@ -76,6 +82,12 @@
   (when *is-a-mac*
     (setq inferior-R-program "/usr/local/bin/R"))
   )
+
+(defvar ess-R-package-regexp
+  (concat "\\(" "\\sw+"  "\\)" "::")
+  )
+(defvar ess-R-fl-package-name
+  '(eval . (cons (regexp-opt ess-R-package-regexp) 'ess-keyword-face)))
 
 (provide 'init-ess)
 ;;; init-ess.el ends here
