@@ -12,6 +12,26 @@
   :delight
   :ensure t
   :pin melpa
+  :init
+  ;; ESS highlighting
+  ;; https://emacs.stackexchange.com/questions/60924/how-to-add-function-call-highlighting-in-ess
+  (setq ess-R-font-lock-keywords
+      '((ess-R-fl-keyword:keywords   . t)
+        (ess-R-fl-keyword:constants  . t)
+        (ess-R-fl-keyword:modifiers  . t)
+        (ess-R-fl-keyword:fun-defs   . t)
+        (ess-R-fl-keyword:assign-ops . t)
+        (ess-R-fl-keyword:%op%       . t)
+        (ess-R-fl-keyword:F&T . t)
+        (ess-R-fl-keyword:F&T . t)
+        (ess-R-fl-keyword:messages . t)
+        (ess-fl-keyword:fun-calls    . t)
+        (ess-fl-keyword:numbers . t)
+        (ess-fl-keyword:operators . t)
+        (ess-fl-keyword:delimiters . t)
+        (ess-fl-keyword:= . t)
+        (ess-fl-keyword:matrix-labels . t)
+        ))
   :config
   (setq
    ess-style 'RStudio-
