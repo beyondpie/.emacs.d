@@ -33,26 +33,8 @@
         (ess-fl-keyword:matrix-labels . t)
         ))
   :config
-  ;; (defvar ess-R-package-regexp
-  ;;   (concat "\\(" "\\sw+"  "\\)" "::")
-  ;;   )
-  ;; (defvar ess-R-fl-package-name
-  ;;   '(eval . (cons (regexp-opt ess-R-package-regexp) 'ess-keyword-face)))
-  ;; (append ess-R-font-lock-keywords '((ess-R-fl-package-name . t)))
-  (setq
-   ess-style 'RStudio-
-   ess-indent-offset 2
-   ess-indent-level 2
-   ess-fancy-comments nil
-   ess-offset-arguments-newline '(prev-line 2)
-   ess-offset-block '(prev-line 2)
-   ess-offset-arguments '(prev-line 2)
-   ess-indent-from-lhs '(argument fun-decl-opening)
-   ess-indent-from-chain-start t
-   ess-use-flymake nil
-   ess-startup-directory 'default-directory
-   )
-  ;; :hook (ess-r-mode . lsp)
+  (setq ess-fl-keyword:numbers
+        (cons "\\b\\.?[0-9]+[.eEL]?[0-9]*\\b\\|\\(\\sw+\\)[:@\$]+" 'ess-numbers-face))
   :general
   (:states '(normal visual)
            :keymaps 'ess-r-mode-map
