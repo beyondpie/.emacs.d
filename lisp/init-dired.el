@@ -45,6 +45,7 @@
   :if (display-graphic-p))
 
 (use-package all-the-icons-dired
+  :diminish
   :pin melpa
   :init
   (setq all-the-icons-dired-monochrome nil)

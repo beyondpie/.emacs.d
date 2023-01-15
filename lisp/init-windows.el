@@ -50,5 +50,32 @@
            )
   )
 
+(use-package winum
+  :pin melpa
+  :hook (after-init . winum-mode)
+  :config
+  (setq winum-format "%s")
+  (setq winum-mode-line-position 0)
+  (set-face-attribute 'winum-face nil
+                      :foreground "DeepPink"
+                      :underline "DeepPink"
+                      :weight 'bold)
+  :general
+  (:states '(normal visual insert emacs)
+           :prefix beyondpie/normal-leader-key
+           :non-normal-prefix beyondpie/non-normal-leader-key
+           :keymaps 'override
+           "j1" '(winum-select-window-1 :which-key "1w")
+           "j2" '(winum-select-window-2 :which-key "2w")
+           "j3" '(winum-select-window-3 :which-key "3w")
+           "j4" '(winum-select-window-4 :which-key "4w")
+           "j5" '(winum-select-window-5 :which-key "5w")
+           "j6" '(winum-select-window-6 :which-key "6w")
+           "j7" '(winum-select-window-7 :which-key "7w")
+           "j8" '(winum-select-window-8 :which-key "8w")
+           "j9" '(winum-select-window-9 :which-key "9w")
+           )
+  )
+
 (provide 'init-windows)
 ;;; init-windows.el ends here
