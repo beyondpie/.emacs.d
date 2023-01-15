@@ -103,6 +103,5 @@
   :ensure t
   :pin melpa
   :hook ( prog-mode . rainbow-delimiters-mode ))
-(flymake-mode 0)
 (provide 'init-prog)
 ;;; init-prog.el ends here
