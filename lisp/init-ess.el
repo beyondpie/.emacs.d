@@ -63,6 +63,7 @@
            "rb" '(lsp-format-buffer :which-key "lsp buffer")
            "rr" '(lsp-format-region :which-key "lsp region")
            "'" '(R :which-key "start repl")
+           "rd" '(ess-rdired :which-key "rdired")
            )
   (:states '(insert emacs)
            :keymaps 'ess-r-mode-map
