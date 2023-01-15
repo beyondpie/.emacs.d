@@ -65,11 +65,5 @@
     (setq inferior-R-program "/usr/local/bin/R"))
   )
 
-(defvar ess-R-package-regexp
-  (concat "\\(" "\\sw+"  "\\)" "::")
-  )
-(defvar ess-R-fl-package-name
-  '(eval . (cons (regexp-opt ess-R-package-regexp) 'ess-keyword-face)))
-
 (provide 'init-ess)
 ;;; init-ess.el ends here
