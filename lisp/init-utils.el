@@ -117,7 +117,7 @@
     (winner-mode)
     (ess-r-mode "R")
     (windmove-mode)
-    (flymake-mode)
+    ;; (flymake-mode)
     (evil-collection-unimpaired-mode)
     (global-evil-collection-unimpaired-mode)
     (helm-mode)
