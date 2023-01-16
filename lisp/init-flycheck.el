@@ -4,7 +4,6 @@
 ;;; Code:
 
 (use-package flycheck
-  :ensure t
   :pin melpa
   :hook (after-init . global-flycheck-mode)
   :delight

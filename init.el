@@ -49,7 +49,7 @@
 (require 'init-isearch)
 (require 'init-grep)
 (require 'init-ibuffer)
-(require 'init-flycheck)
+;; (require 'init-flycheck)
 (require 'init-recentf)
 (require 'init-company)
 ;; use yasnippet since lsp and company depend on it

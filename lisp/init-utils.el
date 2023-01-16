@@ -122,6 +122,8 @@
     (global-evil-collection-unimpaired-mode)
     (helm-mode)
     (tree-sitter-mode)
+    (flymake-mode)
+    (flycheck-mode)
     )
   )
 
@@ -232,6 +234,13 @@
 
 ;; (global-set-key (kbd "C-x 1") '
 ;; delete-other-windows-exclude-imenu-list)
+
+(eval-after-load "flymake"
+  '(progn
+     (defun flymake-after-change-function (start stop len)
+      "Start syntax check for current buffer if it isn't already running."
+      ;; Do nothing, don't want to run checks until I save.
+       )))
 
 (provide 'init-utils)
 ;;; init-utils.el ends here
