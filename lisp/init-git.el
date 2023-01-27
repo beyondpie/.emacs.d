@@ -12,8 +12,10 @@
   :init
   (use-package with-editor :ensure t)
   :custom
+  ;; https://emacs-china.org/t/macos-git-magit/23467
+  ;; use default git in mac system due to speed
   (when *is-a-mac*
-    (magit-git-executable "/usr/local/bin/git")
+    (magit-git-executable "/usr/bin/git")
     )
   :general
   (:states '(normal visual insert emacs)
