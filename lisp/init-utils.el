@@ -119,6 +119,7 @@
     (windmove-mode)
     ;; (flymake-mode)
     (evil-collection-unimpaired-mode)
+    (Evil-Collection-unimparied-mode)
     (global-evil-collection-unimpaired-mode)
     (helm-mode)
     (tree-sitter-mode)
