@@ -125,6 +125,7 @@
     (tree-sitter-mode)
     (flymake-mode)
     (flycheck-mode)
+    (helm-minibuffer-history-mode)
     )
   )
 
