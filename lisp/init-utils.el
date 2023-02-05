@@ -128,6 +128,10 @@
     (helm-minibuffer-history-mode)
     )
   )
+(use-package minions
+  :pin melpa
+  :hook (after-init . minions-mode)
+  )
 
 ;; remove up/down case keys due to they usually make my codes typo
 ;; upcase-region

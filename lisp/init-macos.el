@@ -54,7 +54,9 @@
  "dd" '(osx-dictionary-search-word-at-point
         :which-key "osx-dictionary word at paint")
  )
-(beyondpie/simplify-minibatch-emacs)
+
+;; use minions instead
+;; (beyondpie/simplify-minibatch-emacs)
 
 (provide 'init-macos)
 ;;; init-macos.el ends here
