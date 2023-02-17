@@ -58,9 +58,9 @@
 ;; use minions instead
 ;; (beyondpie/simplify-minibatch-emacs)
 
-(use-package nyan-mode
-  :pin melpa
-  :hook (after-init . nyan-mode))
+;; (use-package nyan-mode
+;;   :pin melpa
+;;   :hook (after-init . nyan-mode))
 
 (provide 'init-macos)
 ;;; init-macos.el ends here
