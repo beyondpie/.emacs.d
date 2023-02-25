@@ -9,7 +9,7 @@
   :delight
   :init
   (if (eq system-type 'darwin)
-      (setq conda-anaconda-home (expand-file-name "~/miniconda"))
+      (setq conda-anaconda-home (expand-file-name "~/mambaforge"))
     (setq conda-anaconda-home (expand-file-name "~/miniconda3"))
     )
   :config
