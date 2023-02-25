@@ -26,7 +26,8 @@
       (when pylint
         (flycheck-set-checker-executable "python-pylint" pylint))
       (when flake8
-        (flycheck-set-checker-executable "python-flake8" flake8)))))
+        (flycheck-set-checker-executable "python-flake8" flake8)))
+  ))
 
 
 (defun spacemacs/python-setup-everything (&rest args)
@@ -106,11 +107,11 @@
   :hook (python-mode . pyvenv-tracking-mode)
   :general
   (:states '(normal visual)
-           :keymaps '(python-mode-map ess-r-mode-map)
+           :keymaps 'python-mode-map
            :prefix beyondpie/major-mode-leader-key
-           "va"  #'pyvenv-activate
-           "vd" #'pyvenv-deactivate
-           "vw" #'pyvenv-workon)
+           "va"  '(pyvenv-activate :which-key "pyvenv activate")
+           "vd" '(pyvenv-deactivate :which-key "pyvenv deactivate")
+           "vw" '(pyvenv-workon :which-key "pyvenv workon"))
   :config
   (dolist (func '(pyvenv-actiate pyvenv-deactivate pyvenv-workon))
     (advice-add func :after 'spacemacs/python-setup-everything)
