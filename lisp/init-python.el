@@ -126,7 +126,8 @@
          ("\\.py\\'" . python-mode)
          ;; ("snakefile\\'" . python-mode)
          )
-  :hook (;; (python-mode . spacemacs//python-setup-backend)
+  :hook (
+         ;;(python-mode . spacemacs//python-setup-backend)
          (python-mode . spacemacs//python-default))
   :init
   (progn
