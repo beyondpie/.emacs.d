@@ -116,7 +116,8 @@
            "tm" '(tree-sitter-mark-bigger-node :which-key "tree-sitter mark")
            )
   )
-
+;; (use-package outshine
+;;   :pin melpa)
 (use-package tree-sitter-langs
   :ensure t
   :pin melpa)

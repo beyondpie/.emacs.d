@@ -12,6 +12,10 @@
   :delight
   :ensure t
   :pin melpa
+  :hook (ess-r-mode . (lambda ()
+                        (progn (setq-local outline-regexp "^#+ + *+")
+                               (outline-minor-mode)
+                               )))
   :init
   ;; ESS highlighting
   ;; https://emacs.stackexchange.com/questions/60924/how-to-add-function-call-highlighting-in-ess
@@ -75,6 +79,20 @@
             )
   (:keymaps 'ess-r-help-mode-map
             "w" nil)
+  (:states 'normal
+           :keymaps 'outline-minor-mode-map
+           :prefix beyondpie/major-mode-leader-key
+           "ha" '(outline-hide-body :which-key "hide body")
+           "he" '(outline-hide-entry :which-key "hide entry")
+           "ho" '(outline-hide-other :which-key "hide other")
+           "hl" '(outline-hide-leaves :which-key "hide-leaves")
+           "hs" '(outline-hide-subtree :which-key "hide-subtree")
+           "sa" '(show-all :which-key "show all")
+           "se" '(outline-show-entry :which-key "show entry")
+           "si" '(outline-show-children :which-key "show children")
+           "sk" '(outline-show-branches :which-key "show branches")
+           "ss" '(outline-show-subtree :which-key "show subtree")
+           )
   (when *is-a-mac*
     (setq inferior-R-program "/usr/local/bin/R"))
   )
