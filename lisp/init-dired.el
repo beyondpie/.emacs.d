@@ -5,6 +5,8 @@
 
 (with-eval-after-load 'dired
   (setq-default dired-dwim-target t)
+  ;; https://emacs-china.org/t/emacs/23850/8
+  (add-hook 'dired-mode-hook #'dired-hide-details-mode)
   (require 'dired-x)
   ;; Hook up dired-x global bindings without loading it up-front
   (define-key ctl-x-map "\C-j" 'dired-jump)
