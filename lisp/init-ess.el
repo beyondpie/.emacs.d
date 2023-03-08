@@ -13,7 +13,7 @@
   :ensure t
   :pin melpa
   :hook (ess-r-mode . (lambda ()
-                        (progn (setq-local outline-regexp "^#+ + \\*+")
+                        (progn (setq-local outline-regexp "^#+ +\\*+")
                                (outline-minor-mode)
                                )))
   :init
