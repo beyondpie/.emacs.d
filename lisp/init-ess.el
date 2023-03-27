@@ -14,6 +14,7 @@
   :pin melpa
   :hook (ess-r-mode . (lambda ()
                         (setq-local outline-regexp "^#+ +\\*+")))
+  :hook (err-r-mode . outline-minor-mode)
   :init
   ;; ESS highlighting
   ;; https://emacs.stackexchange.com/questions/60924/how-to-add-function-call-highlighting-in-ess
