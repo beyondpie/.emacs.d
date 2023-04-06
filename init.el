@@ -25,6 +25,11 @@
 (dolist (dir '("site-lisp" "lisp"))
   (push (expand-file-name dir user-emacs-directory) load-path))
 
+;; allow eww to open video when emacs versin >= 29.1
+
+(if (not (version< emacs-version "29.1"))
+    (setq shr-use-xwidgets-for-media t))
+
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 ;; close the warnings of gccemacs when compiling packages.
 (setq native-comp-async-report-warnings-errors nil)
