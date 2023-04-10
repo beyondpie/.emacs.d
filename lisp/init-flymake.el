@@ -2,7 +2,6 @@
 ;;; Code:
 (use-package flymake
   :delight
-  :hook (after-init . global-flycheck-mode)
   :init
   (setq flymake-start-on-flymake-mode t)
   (setq flymake-start-on-save-buffer t)
@@ -12,6 +11,7 @@
   :general
   (:states '(normal visual)
            :prefix beyondpie/normal-leader-key
+           :keymaps 'override
            "eb" '(flymake-show-buffer-diagnostics :whick-key "flymake buffer")
            "ep" '(flymake-show-project-diagnostics :which-key "flymake project"))
   )
