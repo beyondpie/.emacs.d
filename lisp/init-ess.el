@@ -14,7 +14,8 @@
   :pin melpa
   :hook (ess-r-mode . (lambda ()
                         (setq-local outline-regexp "^#+ +\\*+")))
-  :hook (err-r-mode . outline-minor-mode)
+  :hook (ess-r-mode . outline-minor-mode)
+  ;; :hook (ess-r-mode . eglot-ensure)
   :init
   ;; ESS highlighting
   ;; https://emacs.stackexchange.com/questions/60924/how-to-add-function-call-highlighting-in-ess
@@ -58,15 +59,9 @@
            "sl" '(ess-eval-line-and-step :which-key "eval send line")
            "sf" '(ess-eval-function :which-key "eval send function")
            "sr" '(ess-eval-region :which-key "eval send region")
-           "gg" '(lsp-find-definition :which-key "lsp find definition")
            "gf" '(helm-semantic-or-imenu :which-key "helm search semantic")
            "go" '(helm-occur :which-key "helm occur")
-           "gm" '(helm-all-mark-rings :which-key "helm all mark rings")
-           "rn" '(lsp-rename :which-key "lsp rename")
-           "rb" '(lsp-format-buffer :which-key "lsp buffer")
-           "rr" '(lsp-format-region :which-key "lsp region")
            "'" '(R :which-key "start repl")
-           "rd" '(ess-rdired :which-key "rdired")
            )
   (:states '(insert emacs)
            :keymaps 'ess-r-mode-map

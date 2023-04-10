@@ -40,7 +40,8 @@
   "Setup python backend"
   (interactive)
   (require 'lsp-pyright)
-  (lsp)
+  ;; (lsp)
+  (eglot)
   )
 
 (defun spacemacs//python-default ()
@@ -156,11 +157,7 @@
   (:states '(normal visual)
            :keymaps 'python-mode-map
            :prefix beyondpie/major-mode-leader-key
-           "gg" '(lsp-find-definition :which-key "lsp find definition")
-           "gf" '(helm-semantic-or-imenu :which-key "helm search semantic")
            "go" '(helm-occur :which-key "helm occur")
-           "gm" '(helm-all-mark-rings :which-key "helm all mark rings")
-           "rn" '(lsp-rename :which-key "lsp rename")
            "ri" '(spacemacs/python-remove-unused-imports :which-key "remove unused imports")
            "==" '(blacken-buffer :which-key "black buffer")
            "'" '(spacemacs/python-start-or-switch-repl :which-key "python repl")
