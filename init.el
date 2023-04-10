@@ -68,6 +68,7 @@
 (require 'init-project)
 (require 'init-snakemake)
 (require 'init-prog)
+(require 'init-treesitter)
 (require 'init-shell)
 (require 'init-lsp)
 (require 'init-ess)
