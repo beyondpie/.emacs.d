@@ -14,9 +14,6 @@
         highlight-indent-guides-method 'character)
   )
 
-(global-set-key (kbd "M-.") 'xref-find-definitions)
-(global-set-key (kbd "M-,") 'xref-pop-marker-stack)
-
 ;; add auto-fill-mode
 ;; (add-hook 'prog-mode-hook 'auto-fill-mode)
 ;; add Emacs default fill indicator
@@ -30,17 +27,30 @@
 (general-define-key
  :states 'normal
  :keymaps 'prog-mode-map
- :prefix ","
+ :prefix beyondpie/major-mode-leader-key
+ "rn" '(eglot-rename :which-key "eglot rename")
+ "rf" '(eglot-format :which-key "eglot format")
+ "ri" '(eglot-code-action-organize-imports :which-key "eglot import")
+ "ra" '(eglot-code-actions :which-key "eglot code actions")
+ "gh" '(eldoc :which-key "eldoc")
+ "gi" '(eglot-inlay-hints-mode :which-key "toggle eglot inlay hints")
  "gg" '(xref-find-definitions :which-key "xref find def")
- "el" '(flycheck-list-errors :which-key "flycheck list of errors")
- )
+ "M-." '(xref-find-definitions :which-key "xref find def")
+ "M-," '(xref-pop-to-location :which-key "xref back")
+ "gm" '(imenu :which-key "imenu")
+ "eb" '(flymake-show-buffer-diagnostics :whick-key "flymake buffer")
+ "ep" '(flymake-show-project-diagnostics :which-key "flymake project")
+ "en" '(flymake-goto-next-error :which-key "flymake next err")
+ "M-n" '(flymake-goto-next-error :which-key "flymake next err")
+ "ep" '(flymake-goto-prev-error :which-key "flymake prev err")
+ "M-p" '(flymake-goto-prev-error :which-key "flymake prev err")
+ "M-/" '(hippe-expand :which-key "hippie-expand")
+ "C-M-/" '(comint-dynamic-complete-filename :which-key "comint dynamic complete filenm")
+)
 
 ;; eldoc
 (when (fboundp 'global-eldoc-mode)
   (add-hook 'after-init-hook 'global-eldoc-mode))
-
-(global-set-key (kbd "M-/") 'hippie-expand)
-(global-set-key (kbd "C-M-/") 'comint-dynamic-complete-filename)
 
 (setq hippie-expand-try-functions-list
       '(try-complete-file-name-partially
