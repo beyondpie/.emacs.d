@@ -36,5 +36,14 @@
   :ensure t
   :pin melpa)
 
+;; https://github.com/ShuguangSun/tree-sitter-ess-r/issues/4
+;; tree-sitter-ess-r helps to set tree-sitter-hl-default-patterns
+;; from nil to right ones.
+(use-package tree-sitter-ess-r
+  :delight
+  :pin melpa
+  :hook (ess-r-mode . tree-sitter-ess-r-mode-activate)
+  )
+
 (provide 'init-treesitter)
 ;;; init-treesitter.el ends here
