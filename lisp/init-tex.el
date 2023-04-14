@@ -61,7 +61,7 @@
   :pin melpa
   :hook (TeX-update-style . magic-latex-buffer)
   :init
-  (setq magic-latex-enable-block-highlight t
+  (setq magic-latex-enable-block-highlight nil
         magic-latex-enable-suscript t
         magic-latex-enable-pretty-symbols t
         magic-latex-enable-block-align nil

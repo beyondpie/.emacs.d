@@ -45,7 +45,6 @@
           (lambda ()
             (setq line-spacing 0)))
 
-;; http://xahlee.info/emacs/emacs/emacs_customize_default_window_size.html
 (if (display-graphic-p)
     (progn
       (set-face-attribute 'default nil :font "Monaco-16")
@@ -63,10 +62,7 @@
               (height . 60)
               (ns-transparent-titlebar . t)
               )))
-  (progn
-    (set-face-attribute 'default nil :font "Monaco-16")
-    (setq initial-frame-alist '( (tool-bar-lines . 0)))
-    (setq default-frame-alist '( (tool-bar-lines . 0))))
   )
+
 (provide 'init-gui-frames)
 ;;; init-gui-frames.el ends here

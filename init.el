@@ -83,9 +83,14 @@
 (when *is-a-mac*
   (require 'init-macos)
   )
+
 (if (display-graphic-p)
-    (require 'init-gui-frames)
+    (progn 
+      (beyondpie/setgui)
+      (beyondpie/set-evil-insert-state-cursor)
+      )
   )
+
 (when (file-exists-p custom-file)
   (load custom-file))
 
