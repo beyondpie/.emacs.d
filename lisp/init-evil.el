@@ -125,30 +125,5 @@
  "b" 'evil-backward-word-begin
  )
 
-;; https://emacs-china.org/t/evil-modeline/21879
-;; {{ change modeline color by evil&ime state
-(defconst my-default-color (cons (face-background 'mode-line)
-                                 (face-foreground 'mode-line)))
-
-(defun my-show-evil-state ()
-  "Change modeline color to notify user evil current state."
-  (let ((color (cond
-                ((minibufferp)
-                 my-default-color)
-                (current-input-method
-                 '("#e80074" . "#ffffff"))
-                ((evil-insert-state-p)
-                 '("#bc3f67" . "#ffffff"))
-                ((evil-emacs-state-p)
-                 '("#444488" . "#ffffff"))
-                ((buffer-modified-p)
-                 '("#006fa0" . "#ffffff"))
-                (t
-                 my-default-color))))
-    (set-face-background 'mode-line (car color))
-    (set-face-foreground 'mode-line (cdr color))))
-(add-hook 'post-command-hook #'my-show-evil-state)
-;; }}
-
 (provide 'init-evil)
 ;;; init-evil.el ends here
