@@ -306,5 +306,9 @@
     )
   (beyondpie/set-evil-insert-state-cursor)
   )
+;; eww
+;; Auto-rename new eww buffers
+;; C-u M-x eww
+
 (provide 'init-utils)
 ;;; init-utils.el ends here

@@ -17,6 +17,7 @@
       ;; (setq python-shell-interpreter-args "-i")
       )
     )
+  ;; (setq python-shell-interpreter "python")
   )
 
 (defun spacemacs//python-setup-checkers (&rest args)
