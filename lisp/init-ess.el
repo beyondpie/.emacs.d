@@ -15,7 +15,6 @@
   :hook (ess-r-mode . (lambda ()
                         (setq-local outline-regexp "^#+ +\\*+")))
   :hook (ess-r-mode . outline-minor-mode)
-  ;; :hook (ess-r-mode . eglot-ensure)
   :init
   ;; ESS highlighting
   ;; https://emacs.stackexchange.com/questions/60924/how-to-add-function-call-highlighting-in-ess

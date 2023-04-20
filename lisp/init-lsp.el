@@ -47,16 +47,5 @@
   lsp
   )
 
-(use-package helm-lsp
-  :commands (helm-lsp-workspace-symbol
-             helm-lsp-global-workspace-symbol
-             helm-lsp-code-actions
-             helm-lsp-switch-project
-             )
-  :config
-  (define-key lsp-mode-map
-    [remap xref-find-apropos] #'helm-lsp-workspace-symbol)
-  )
-
 (provide 'init-lsp)
 ;;; init-lsp.el ends here

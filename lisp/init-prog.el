@@ -28,13 +28,11 @@
  :states 'normal
  :keymaps 'prog-mode-map
  :prefix beyondpie/major-mode-leader-key
- "rn" '(eglot-rename :which-key "eglot rename")
- "rf" '(eglot-format :which-key "eglot format")
- "ri" '(eglot-code-action-organize-imports :which-key "eglot import")
- "ra" '(eglot-code-actions :which-key "eglot code actions")
+ "rn" '(lsp-rename :which-key "lsp rename")
+ "rb" '(lsp-format-buffer :which-key "lsp format buffer")
+ "rr" '(lsp-format-region :which-key "lsp format region")
  "gh" '(eldoc :which-key "eldoc")
- "gi" '(eglot-inlay-hints-mode :which-key "toggle eglot inlay hints")
- "gg" '(xref-find-definitions :which-key "xref find def")
+ "gg" '(lsp-find-definition :which-key "lsp find def")
  "M-." '(xref-find-definitions :which-key "xref find def")
  "M-," '(xref-pop-to-location :which-key "xref back")
  "gm" '(imenu :which-key "imenu")

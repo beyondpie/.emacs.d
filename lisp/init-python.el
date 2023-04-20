@@ -37,13 +37,6 @@
   (spacemacs//python-setup-checkers)
   )
 
-(defun beyondpie/start-lsp-pyright()
-  "Setup python backend"
-  (interactive)
-  (require 'lsp-pyright)
-  ;; (lsp)
-  (eglot)
-  )
 
 (defun spacemacs//python-default ()
   "Default settings for python buffers"
