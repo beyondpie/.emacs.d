@@ -31,6 +31,20 @@ directory to make multiple eshell windows easier."
     (insert (concat "ls"))
     (eshell-send-input)))
 
+(defun myeshell ()
+  "eshell with window size "
+  (interactive)
+  (let* (
+         (height (/ (window-total-height) 3))
+         )
+    (split-window-vertically (- height))
+    (other-window 1)
+    (eshell)
+    (insert (concat "ls"))
+    (eshell-send-input))
+  )
+
+
 (defun eshell/eexit ()
   (insert "exit")
   (eshell-send-input)
@@ -93,7 +107,8 @@ file to edit."
  :prefix beyondpie/normal-leader-key
  :non-normal-prefix beyondpie/non-normal-leader-key
  :keymaps 'override
- "'" '(eshell-here :which-key "eshell here")
+ "'" '(myeshell :which-key "eshell")
+ ";" '(eshell-here :which-key "eshell-here")
  )
 
 (defun curr-dir-git-branch-string (pwd)
