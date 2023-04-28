@@ -40,7 +40,7 @@
 
 (defun spacemacs//python-default ()
   "Default settings for python buffers"
-  (setq mode-name "Python"
+  (setq mode-name "py"
         tab-width 4
         fill-column 88)
   )
@@ -85,10 +85,16 @@
   (let ((comint-buffer-maximum-size 0))
     (comint-truncate-buffer)))
 
-(use-package blacken
-  :ensure t
-  :pin melpa
-  :commands (blacken-buffer))
+(defun spacemacs/python-remove-unused-imports()
+  "Use Autoflake to remove unused function"
+  "autoflake --remove-all-unused-imports -i unused_imports.py"
+  (interactive)
+  (if (executable-find "autoflake")
+      (progn
+        (shell-command (format "autoflake --remove-all-unused-imports -i %s"
+                               (shell-quote-argument (buffer-file-name))))
+        (revert-buffer t t t))
+    (message "Error: Cannot find autoflake executable.")))
 
 (use-package lsp-pyright
   :ensure t
@@ -125,35 +131,17 @@
          ;;(python-mode . spacemacs//python-setup-backend)
          (python-mode . spacemacs//python-default))
   :init
-  (progn
-    (spacemacs//python-setup-shell)
-    (setq python-indent-offset 4)
-    (setq python-shell-completion-native-enable nil)
-    )
-  (defun spacemacs/python-remove-unused-imports()
-    "Use Autoflake to remove unused function"
-    "autoflake --remove-all-unused-imports -i unused_imports.py"
-    (interactive)
-    (if (executable-find "autoflake")
-        (progn
-          (shell-command (format "autoflake --remove-all-unused-imports -i %s"
-                                 (shell-quote-argument (buffer-file-name))))
-          (revert-buffer t t t))
-      (message "Error: Cannot find autoflake executable.")))
- :config
-  (progn
-    ;; Env vars
-    (with-eval-after-load 'exec-path-from-shell
-      (exec-path-from-shell-copy-env "PYTHONPATH"))
-    (setq-default python-indent-guess-indent-offset nil)
-    )
+  (spacemacs//python-setup-shell)
+  (setq python-indent-offset 4)
+  (setq python-shell-completion-native-enable nil)
+  (setq python-flymake-command '("ruff" "--quiet" "--stdin-filename=stdin" "-"))
+  :config
+  (setq-default python-indent-guess-indent-offset nil)
   :general
   (:states '(normal visual)
            :keymaps 'python-mode-map
            :prefix beyondpie/major-mode-leader-key
            "go" '(helm-occur :which-key "helm occur")
-           "ri" '(spacemacs/python-remove-unused-imports :which-key "remove unused imports")
-           "==" '(blacken-buffer :which-key "black buffer")
            "'" '(spacemacs/python-start-or-switch-repl :which-key "python repl")
            "sl" '(spacemacs/python-shell-send-line :which-key "send line")
            "sf" '(spacemacs/python-shell-send-defun :which-key "send defun")

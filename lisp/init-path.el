@@ -12,7 +12,7 @@
   :config
   (dolist (var '("PATH" "MANPATH" "WORKON_HOME"
                  "LDFLAGS" "LANG" "LC_CTYPE" 
-                 "LSP_USE_PLISTS"))
+                 "LSP_USE_PLISTS" "PYTHONPATH"))
     (add-to-list 'exec-path-from-shell-variables var)
     )
   (exec-path-from-shell-initialize)
