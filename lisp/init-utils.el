@@ -27,14 +27,22 @@
 )
 
 ;; undo-tree
-(use-package undo-tree
-  :hook (after-init . global-undo-tree-mode)
-  :bind ("C-x u" . undo-tree-visualize)
+;; (use-package undo-tree
+;;   :hook (after-init . global-undo-tree-mode)
+;;   :bind ("C-x u" . undo-tree-visualize)
+;;   :delight
+;;   :init
+;;   (setq undo-tree-auto-save-history nil)
+;;   (setq undo-tree-enable-undo-in-region t)
+;;   )
+
+;; vundo
+(use-package vundo
+  :commands (vundo)
+  :bind ("C-x u" . vundo)
   :delight
-  :init
-  (setq undo-tree-auto-save-history nil)
-  (setq undo-tree-enable-undo-in-region t)
-)
+  :config
+  (setq vundo-compact-display t))
 
 
 ;; for mark
