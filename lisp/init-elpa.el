@@ -81,5 +81,45 @@
 ;; Update GPG keyring for GNU ELPA
 (use-package gnu-elpa-keyring-update)
 
+;; TMP: upgrade built-in package as well if they are also in elpa
+;; such as eldoc, eglot, use-package and others.
+;; Error: package-install-upgrade-built-in <= no such function
+;; From emacs-devel discussion
+
+;; (defun package-menu--find-upgrades-tmp ()
+;;   "In Package Menu, return an alist of packages that can be upgraded.
+;; The alist has the same form as `package-alist', namely a list
+;; of (PKG . DESCS), but where DESCS is the `package-desc' object
+;; corresponding to the newer version."
+;;   (let (installed available upgrades)
+;;     ;; Build list of installed/available packages in this buffer.
+;;     (dolist (entry tabulated-list-entries)
+;;       ;; ENTRY is (PKG-DESC [NAME VERSION STATUS DOC])
+;;       (let ((pkg-desc (car entry))
+;;             (status (aref (cadr entry) 2)))
+;;         (cond (
+;;                ;; allow build in
+;;                (member status (append '("installed" "dependency" "unsigned" "external")
+;;                                       (and package-install-upgrade-built-in '("built-in"))))
+;;                (push pkg-desc installed))
+;;               ((member status '("available" "new"))
+;;                (setq available (package--append-to-alist pkg-desc available))))))
+;;     ;; Loop through list of installed packages, finding upgrades.
+;;     (dolist (pkg-desc installed)
+;;       (let* ((name (package-desc-name pkg-desc))
+;;              (avail-pkg (cadr (assq name available))))
+;;         (and avail-pkg
+;;              ;; update build-in as well
+;;              (or (version-list-< (package-desc-priority-version pkg-desc)
+;;                                  (package-desc-priority-version avail-pkg))
+;;                  (and package-install-upgrade-built-in
+;;                       (package--active-built-in-p pkg-desc)))
+             
+;;              (push (cons name avail-pkg) upgrades))))
+;;     upgrades))
+
+;; (advice-add 'package-menu--find-upgrades :override #'package-menu--find-upgrades-tmp)
+;; (advice-remove 'package-menu--find-upgrades #'package-menu--find-upgrades-tmp)
+
 (provide 'init-elpa)
 ;;; init-elpa.el ends here

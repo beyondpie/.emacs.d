@@ -14,27 +14,14 @@
         )
     (progn
       (setq python-shell-interpreter "python")
-      ;; (setq python-shell-interpreter-args "-i")
       )
     )
-  ;; (setq python-shell-interpreter "python")
   )
-
-(defun spacemacs//python-setup-checkers (&rest args)
-  (when (fboundp 'flycheck-set-checker-executable)
-    (let ((pylint (executable-find "pylint"))
-          (flake8 (executable-find "flake8")))
-      (when pylint
-        (flycheck-set-checker-executable "python-pylint" pylint))
-      (when flake8
-        (flycheck-set-checker-executable "python-flake8" flake8)))
-  ))
 
 
 (defun spacemacs/python-setup-everything (&rest args)
   "Set up python env"
   (spacemacs//python-setup-shell)
-  (spacemacs//python-setup-checkers)
   )
 
 
@@ -99,6 +86,10 @@
 (use-package lsp-pyright
   :ensure t
   :pin melpa
+  :init
+  (setq lsp-pyright-use-library-code-for-types t)
+  (setq lsp-pyright-stub-path
+        (concat (getenv "HOME") "/softwares/python-type-stubs"))
   )
 
 
@@ -120,17 +111,13 @@
   )
 
 ;; https://github.com/millejoh/emacs-ipython-notebook
-(use-package python
+(use-package python-mode
   :ensure t
   :pin melpa
-  :mode (
-         ("\\.py\\'" . python-mode)
-         ;; ("snakefile\\'" . python-mode)
-         )
   :hook (
-         ;;(python-mode . spacemacs//python-setup-backend)
          (python-mode . spacemacs//python-default))
   :init
+  (setq python-ts-mode-hook python-mode-hook) 
   (spacemacs//python-setup-shell)
   (setq python-indent-offset 4)
   (setq python-shell-completion-native-enable nil)
@@ -151,7 +138,19 @@
   (:states '(insert emacs)
            :keymaps 'inferior-python-mode-map
            "C-l" '(spacemacs/comint-clear-buffer :which-key "clear buffer"))
+  :general
+  (:states '(normal visual)
+           :keymaps 'python-ts-mode-map
+           :prefix beyondpie/major-mode-leader-key
+           "go" '(helm-occur :which-key "helm occur")
+           "'" '(spacemacs/python-start-or-switch-repl :which-key "python repl")
+           "sl" '(spacemacs/python-shell-send-line :which-key "send line")
+           "sf" '(spacemacs/python-shell-send-defun :which-key "send defun")
+           "sc" '(spacemacs/python-shell-send-defun :which-key "send class")
+           "sr" '(spacemacs/python-shell-send-region :which-key "send region")
+           )
   )
+
 
 (provide 'init-python)
 ;;; init-python.el ends here
