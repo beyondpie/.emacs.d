@@ -125,5 +125,12 @@
  "b" 'evil-backward-word-begin
  )
 
+(general-define-key
+ :states '(normal visual)
+ :keymaps 'override
+ "C-w" '(kill-region :which-key "cut region")
+ "C-y" '(yank :which-key "paste")
+ )
+
 (provide 'init-evil)
 ;;; init-evil.el ends here
