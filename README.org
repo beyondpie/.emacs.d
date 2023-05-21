@@ -1,22 +1,18 @@
 * My dot emacs
-  My configuration for emacs since the end of 2020.
+  My configuration for emacs since Dec, 2020 till now.
   - Emacs version: latest (current 30.05 in development)
-  - System: MacOS (mainly) / Ubuntu
+  - System: MacOS (mainly) / Ubuntu [not often]
   - GUI (mainly) and terminal version are supported.
   - Now maintained at:
-    - https://codeberg.org/szu/.emacs.d (deprecated due to speed)
-    - https://git.sr.ht/~szu/.emacs.d (prefer)
+    - https://git.sr.ht/~szu/.emacs.d (major)
+    - https://github.com/beyondpie/.emacs.d (mirror)
     
   
-  I learn a lot from spacemacs, which is a popular emacs configuration. I use it since 2017 till 2020.
+  I learn a lot from spacemacs, which is a popular emacs configuration. I used it during 2017-2020.
   The key features I like:
   - Integrate the evil package very well.
   - Use leader keys to simplify key bindings, such as "space" in evil normal mode, "comma" for major mode, and so on.
   - Jumping among different windows easily with the support of the evil package.
-
-  The reason I left spacemacs because I think it's a good opportunity
-  now for me to learn emacs in depth, and make the configurations
-  light, simple, controllable by myself.
 
   After reading part of the source codes in spacemacs, I know I can
   handle the similar experience with the packages:
@@ -24,45 +20,9 @@
   - *evil*: vim in emacs
   - *evil-collection*: make evil more smooth.
   - *helm*: search anytime, anywhere. 
- 
-** Note for this configuration
-  - Highly used packages:
-    - *use-package*: manage the packages
-    - *general*: key binding, especially useful with use-package
-    - *evil*: my vim editor (hybrid: insert mode use emacs command)
-    - *magit*: git
-    - *helm*: search, match and so on. highly integrated
-    - *vterm*: common shell usage
-    - *project* (Emacs package since 29.05): project management
-    - *lsp*: unified programming language server
-    - programming language related:
-      - *auctex*: Latex
-      - *lsp-pyright* + *python-mode*: python
-      - *ess* + *REditorSupport/languageserver*: R
-      - *company*: code completion
-      - *flycheck*: check syntax
-    - *pdf-tools*: view pdf (GUI mode)
 
 ** Install Emacs
-
-*** On macOS
-- Use homebrew emacs-plus: see the [[https://github.com/d12frosted/homebrew-emacs-plus][link]] for details. It's easy and
-  great. The only trouble I face is when I try to install the
-  gccemacs with it. Though it supports this, I cannot make it
-  work. The installed emacs cannot find the libgcc related dynamic
-  links. I tried several ways, still not work. gccemacs is not a must,
-  so emacs-plus is definately a good way to install emacs firstly.
-
-- Build emacs by ourself. Recently I find this repo:
-  [[https://github.com/jimeh/build-emacs-for-macos][build-emacs-for-macos]]. It works on my machine, and now I can use
-  gccemacs to speed up emacs.
-
-*** On Ubuntu
-- If using apt-get in Ubuntu, I can only get the current stable version
-  27.2, which is OK. But if I want to use the latest dev version like
-  28.05, how? I tried to configure emacs from source, but still some
-  dependencies cannot be installed, which is weired. Later I find the
-  [[https://snapcraft.io/emacs][snapcraft link]], which supports the latest dev version. Great!
+   - macOS: [[https://github.com/d12frosted/homebrew-emacs-plus][emacs-plus]]
       
 ** Reference
   - Purcell [[https://github.com/purcell/emacs.d][emacs.d]]
