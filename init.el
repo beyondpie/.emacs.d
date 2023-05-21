@@ -67,6 +67,7 @@
 (require 'init-git)
 (require 'init-project)
 (require 'init-lsp)
+(require 'init-citre)
 (require 'init-snakemake)
 (require 'init-prog)
 (require 'init-treesitter)

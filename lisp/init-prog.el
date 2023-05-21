@@ -44,6 +44,11 @@
  "M-p" '(flymake-goto-prev-error :which-key "flymake prev err")
  "M-/" '(hippe-expand :which-key "hippie-expand")
  "C-M-/" '(comint-dynamic-complete-filename :which-key "comint dynamic complete filenm")
+ "tu" '(citre-update-this-tags-file :which-key "tag update")
+ "tj" '(citre-jump :which-key "tag jump")
+ "tb" '(citre-jump-back :which-key "tag jump back")
+ "tp" '(citre-peek :which-key "tag peek")
+ "ta" '(citre-peek :which-key "tag ace peak")
 )
 
 ;; eldoc
