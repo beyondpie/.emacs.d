@@ -45,5 +45,10 @@
   :hook (ess-r-mode . tree-sitter-ess-r-mode-activate)
   )
 
+;; program fold
+(use-package ts-fold
+  :init (slot/vc-install :fetcher "github" :repo "emacs-tree-sitter/ts-fold")
+  )
+
 (provide 'init-treesitter)
 ;;; init-treesitter.el ends here

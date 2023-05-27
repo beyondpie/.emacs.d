@@ -21,7 +21,7 @@
 ;; (add-hook 'prog-mode-hook 'display-fill-column-indicator-mode)
 ;; use column number to instead of display fill column
 (add-hook 'prog-mode-hook 'column-number-mode)
-
+(add-hook 'prog-mode-hook 'ts-fold-mode)
 ;; general could let me use "," as leader key
 ;; in prog mode under normal state of evil
 (general-define-key
@@ -49,6 +49,7 @@
  "tb" '(citre-jump-back :which-key "tag jump back")
  "tp" '(citre-peek :which-key "tag peek")
  "ta" '(citre-peek :which-key "tag ace peak")
+ "tt" '(ts-fold-toggle :which-key "fold toggle")
 )
 
 ;; eldoc
