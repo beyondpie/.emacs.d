@@ -115,9 +115,9 @@
   :ensure t
   :pin melpa
   :hook (
-         (python-mode . spacemacs//python-default))
+         ((python-mode python-ts-mode). spacemacs//python-default))
   :init
-  (setq python-ts-mode-hook python-mode-hook) 
+  (setq python-ts-mode-hook python-mode-hook)
   (spacemacs//python-setup-shell)
   (setq python-indent-offset 4)
   (setq python-shell-completion-native-enable nil)
