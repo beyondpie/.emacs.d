@@ -96,7 +96,7 @@
 (use-package pyvenv
   :ensure t
   :pin melpa
-  :hook (python-mode . pyvenv-tracking-mode)
+  :hook ((python-mode python-ts-mode) . pyvenv-tracking-mode)
   :general
   (:states '(normal visual)
            :keymaps 'python-mode-map
@@ -104,6 +104,13 @@
            "va"  '(pyvenv-activate :which-key "pyvenv activate")
            "vd" '(pyvenv-deactivate :which-key "pyvenv deactivate")
            "vw" '(pyvenv-workon :which-key "pyvenv workon"))
+  (:states '(normal visual)
+           :keymaps 'python-ts-mode-map
+           :prefix beyondpie/major-mode-leader-key
+           "va"  '(pyvenv-activate :which-key "pyvenv activate")
+           "vd" '(pyvenv-deactivate :which-key "pyvenv deactivate")
+           "vw" '(pyvenv-workon :which-key "pyvenv workon"))
+  
   :config
   (dolist (func '(pyvenv-actiate pyvenv-deactivate pyvenv-workon))
     (advice-add func :after 'spacemacs/python-setup-everything)
