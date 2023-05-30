@@ -128,7 +128,8 @@
   (spacemacs//python-setup-shell)
   (setq python-indent-offset 4)
   (setq python-shell-completion-native-enable nil)
-  (setq python-flymake-command '("ruff" "--quiet" "--stdin-filename=stdin" "-"))
+  (setq python-flymake-command '("ruff"
+                                 "--quiet" "--stdin-filename=stdin" "-"))
   :config
   (setq-default python-indent-guess-indent-offset nil)
   :general
