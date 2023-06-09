@@ -8,7 +8,7 @@
 
 (use-package exec-path-from-shell
   :ensure t
-  :custom (exec-path-from-shell-arguments '("-l"))
+  :custom (exec-path-from-shell-arguments nil)
   :config
   (dolist (var '("PATH" "MANPATH" "WORKON_HOME"
                  "LDFLAGS" "LANG" "LC_CTYPE" 

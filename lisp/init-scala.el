@@ -25,6 +25,26 @@
   (setq ammonite-term-repl-auto-detect-predef-file nil)
   )
 
+;; use treesit-install-language-grammar to install scala tree-sitter
+(use-package scala-ts-mode
+  :init
+  (slot/vc-install :fetcher "github" :repo "KaranAhlawat/scala-ts-mode")
+  :interpreter
+  ("scala" . scala-ts-mode)
+  :hook
+  (
+   (scala-ts-mode . (lambda() (ammonite-term-repl-minor-mode t)))
+   )
+  :general
+  (:states '(normal)
+           :keymaps 'scala-ts-mode-map
+           :prefix beyondpie/major-mode-leader-key
+           "'" '(ammonite-term-repl :which-key "scala repl")
+           "sf" '(ammonite-term-repl-send-defun :which-key "eval fun")
+           "sr" '(ammonite-term-repl-send-region :which-key "eval region")
+           "lf" '(ammonite-term-repl-load-file :which-key "load file"))
+
+  )
 
 (use-package scala-mode
   :interpreter
