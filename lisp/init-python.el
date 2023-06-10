@@ -117,6 +117,9 @@
     )
   )
 
+(use-package python-black
+  :after python
+  :commands (python-black-buffer python-black-region))
 ;; https://github.com/millejoh/emacs-ipython-notebook
 (use-package python-mode
   :ensure t
@@ -142,6 +145,9 @@
            "sf" '(spacemacs/python-shell-send-defun :which-key "send defun")
            "sc" '(spacemacs/python-shell-send-defun :which-key "send class")
            "sr" '(spacemacs/python-shell-send-region :which-key "send region")
+           "ri" '(spacemacs/python-remove-unused-imports :which-key "clean import")
+           "rB" '(python-black-buffer :which-key "black buffer")
+           "rR" '(python-black-region :which-key "black region")
            )
   (:states '(insert emacs)
            :keymaps 'inferior-python-mode-map
@@ -156,6 +162,9 @@
            "sf" '(spacemacs/python-shell-send-defun :which-key "send defun")
            "sc" '(spacemacs/python-shell-send-defun :which-key "send class")
            "sr" '(spacemacs/python-shell-send-region :which-key "send region")
+           "ri" '(spacemacs/python-remove-unused-imports :which-key "clean import")
+           "rB" '(python-black-buffer :which-key "black buffer")
+           "rR" '(python-black-region :which-key "black region")
            )
   )
 
