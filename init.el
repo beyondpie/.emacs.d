@@ -79,7 +79,6 @@
 (require 'init-elfeed)
 (require 'init-conda)
 (require 'init-treemacs)
-(require 'init-scala)
 
 (when *is-a-mac*
   (require 'init-macos)
