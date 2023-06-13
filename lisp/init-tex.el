@@ -82,23 +82,5 @@
   :pin melpa
   :hook (LaTeX-mode . my-reftex-company-setup))
 
-(use-package pdf-tools
-  :ensure t
-  :mode ("\\.pdf\\'" . pdf-view-mode)
-  :config
-  (pdf-tools-install)
-  (setq auto-revert-interval 0.5)
-  :general
-  (:states '(normal)
-           :keymaps 'pdf-view-mode-map
-           "d" '(pdf-view-scroll-up-or-next-page :which-key "scroll-next")
-           "u" '(pdf-view-scroll-down-or-previous-page :which-key "scroll-back")
-           "b" '(pdf-view-scroll-down-or-previous-page :which-key "scroll-back")
-           )
-  )
-
-(use-package image+
-  :ensure t)
-
 (provide 'init-tex)
 ;;; init-tex.el ends here
