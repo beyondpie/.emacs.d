@@ -11,7 +11,7 @@
   :custom (exec-path-from-shell-arguments nil)
   :config
   (dolist (var '("PATH" "MANPATH" "WORKON_HOME"
-                 "LDFLAGS" "LANG" "LC_CTYPE" 
+                 "LANG" "LC_CTYPE" 
                  "LSP_USE_PLISTS" "PYTHONPATH"))
     (add-to-list 'exec-path-from-shell-variables var)
     )

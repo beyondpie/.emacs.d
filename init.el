@@ -46,7 +46,7 @@
 (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
 
 (require 'init-elpa)
-(require 'init-path)
+;;(require 'init-path)
 (require 'init-const)
 (require 'init-utils)
 (require 'init-tramp)
