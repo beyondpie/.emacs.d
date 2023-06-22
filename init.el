@@ -94,5 +94,14 @@
 (when (file-exists-p custom-file)
   (load custom-file))
 
+;; collect GC stat
+;; (use-package emacs-gc-stats
+;;   :init
+;;   (slot/srht-install :repo "emacs-gc-stats" :name "yantar92")
+;;   (setq emacs-gc-stats-gc-defaults 'emacs-defaults)
+;;   (setq emacs-gc-stats-remind t)
+;;   )
+
+
 (provide 'init)
 ;;; init.el ends here
