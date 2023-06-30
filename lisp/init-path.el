@@ -15,7 +15,8 @@
                  "LSP_USE_PLISTS" "PYTHONPATH"))
     (add-to-list 'exec-path-from-shell-variables var)
     )
-  (exec-path-from-shell-initialize)
+  :hook
+  (after-init . (lambda() (exec-path-from-shell-initialize)))
   )
 
 (provide 'init-path)
