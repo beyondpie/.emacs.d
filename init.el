@@ -74,11 +74,13 @@
 (require 'init-shell)
 (require 'init-ess)
 (require 'init-python)
+(require 'init-scala)
 (require 'init-tex)
 (require 'init-org)
 (require 'init-elfeed)
 (require 'init-conda)
 (require 'init-treemacs)
+
 
 (when *is-a-mac*
   (require 'init-macos)
