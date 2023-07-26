@@ -10,9 +10,9 @@
 (customize-set-variable 'tramp-syntax 'simplified)
 (eval-after-load 'tramp '(setenv "SHELL" "/bin/bash"))
 (setq tramp-default-method "ssh")
-(setq password-cache-expiry 72000)
+;; (setq password-cache-expiry 72000)
 ;; use local .ssh/config host setup instead of tramp's
-(customize-set-variable 'tramp-use-ssh-controlmaster-options nil)
+(customize-set-variable 'tramp-use-ssh-controlmaster-options t)
 ;; direct copy between remote
 (customize-set-variable 'tramp-use-scp-direct-remote-copying t)
 ;; This inhibits tramp continue to open with git when refresh the buffer
