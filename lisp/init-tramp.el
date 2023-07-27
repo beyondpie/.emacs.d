@@ -7,10 +7,9 @@
 
 ;;; Code:
 (require 'tramp)
-(customize-set-variable 'tramp-syntax 'simplified)
 (eval-after-load 'tramp '(setenv "SHELL" "/bin/bash"))
 (setq tramp-default-method "ssh")
-;; (setq password-cache-expiry 72000)
+(setq password-cache-expiry 72000)
 ;; use local .ssh/config host setup instead of tramp's
 (customize-set-variable 'tramp-use-ssh-controlmaster-options t)
 ;; direct copy between remote
@@ -38,6 +37,14 @@
        (cons "TERM=xterm-256color" process-environment)))
     (shell))
   )
+
+;; how to run python-repl remotely
+;; https://emacs.stackexchange.com/questions/13385/running-ipython-remotely
+;; One way is to use *eshell*.
+;; M-x eshell
+;; cd /ssh:<server_name>:~
+;; run-python /usr/bin/ipython
+;; Switch to *Python* buffer.
 
 (provide 'init-tramp)
 ;;; init-tramp.el ends here
