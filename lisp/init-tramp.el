@@ -43,7 +43,7 @@
 ;; One way is to use *eshell*.
 ;; M-x eshell
 ;; cd /ssh:<server_name>:~
-;; run-python /usr/bin/ipython
+;; run-python /usr/bin/ipython 
 ;; Switch to *Python* buffer.
 
 (provide 'init-tramp)
