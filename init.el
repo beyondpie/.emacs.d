@@ -77,7 +77,6 @@
 (require 'init-tex)
 (require 'init-org)
 (require 'init-elfeed)
-(require 'init-conda)
 (require 'init-treemacs)
 
 
