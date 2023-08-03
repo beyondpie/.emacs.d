@@ -54,3 +54,5 @@
 /epkgs/
 /tree-sitter/
 /.emacs.desktop
+/.dap-breakpoints
+/elpa-29.1/
