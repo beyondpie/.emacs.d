@@ -117,13 +117,26 @@
     )
   )
 
+(defun remote-python-repl ()
+  "Start and/or switch to the REPL remotely.
+  FIXME: how to avoid exploring the variables we have."
+  (interactive)
+  (let ((shell-process
+         (or (python-shell-get-process)
+             (run-python "/home/szu/mambaforge/envs/sa2/bin/ipython")
+             (python-shell-get-process)
+             )))
+    (unless shell-process
+      (error "Failed to start python shell properly"))
+    (pop-to-buffer (process-buffer shell-process))
+    (evil-insert-state)))
+
 (use-package python-black
   :after python
   :commands (python-black-buffer python-black-region))
+
 ;; https://github.com/millejoh/emacs-ipython-notebook
 (use-package python-mode
-  :ensure t
-  :pin melpa
   :hook (
          ((python-mode python-ts-mode). spacemacs//python-default))
   :init
@@ -140,7 +153,8 @@
            :keymaps 'python-mode-map
            :prefix beyondpie/major-mode-leader-key
            "go" '(helm-occur :which-key "helm occur")
-           "'" '(spacemacs/python-start-or-switch-repl :which-key "python repl")
+           "'" '(spacemacs/python-start-or-switch-repl :which-key "repl")
+           ";" '(remote-python-repl :which-key "remote repl")
            "sl" '(spacemacs/python-shell-send-line :which-key "send line")
            "sf" '(spacemacs/python-shell-send-defun :which-key "send defun")
            "sc" '(spacemacs/python-shell-send-defun :which-key "send class")
@@ -158,6 +172,7 @@
            :prefix beyondpie/major-mode-leader-key
            "go" '(helm-occur :which-key "helm occur")
            "'" '(spacemacs/python-start-or-switch-repl :which-key "python repl")
+           ";" '(remote-python-repl :which-key "remote repl")
            "sl" '(spacemacs/python-shell-send-line :which-key "send line")
            "sf" '(spacemacs/python-shell-send-defun :which-key "send defun")
            "sc" '(spacemacs/python-shell-send-defun :which-key "send class")
@@ -167,6 +182,7 @@
            "rR" '(python-black-region :which-key "black region")
            )
   )
+
 
 
 (provide 'init-python)

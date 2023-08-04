@@ -25,7 +25,6 @@
 ;; https://stackoverflow.com/questions/26630640/tramp-ignores-tramp-remote-path
 (add-to-list 'tramp-remote-path 'tramp-own-remote-path)
 
-;; FIXME: how to avoid exploring the variables we have.
 ;; how to run python-repl remotely
 ;; https://emacs.stackexchange.com/questions/13385/running-ipython-remotely
 ;; One way is to use *eshell*.
@@ -33,11 +32,8 @@
 ;; cd /ssh:<server_name>:~
 ;; run-python /usr/bin/ipython 
 ;; Switch to *Python* buffer.
-(defun remote-python-repl ()
-  "A dirty way to run remote python temporally"
-  (interactive)
-  (run-python "/home/szu/mambaforge/envs/sa2/bin/ipython")
-  )
+;; NOTE: I add one hacked function in init-python.el
+
 
 (provide 'init-tramp)
 ;;; init-tramp.el ends here
