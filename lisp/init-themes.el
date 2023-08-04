@@ -65,6 +65,7 @@ ALPHA is numeric value from [0, 100]."
   (beyondpie/set-evil-insert-state-cursor)
   )
 (advice-add 'ef-themes-select :after #'update-evil-cursor)
+(advice-add 'load-theme :after #'update-evil-cursor)
 ;; (advice-remove 'ef-themes-select #'update-evil-cursor)
 ;; (advice-remove 'ef-themes-select #'beyondpie/set-evil-insert-state-cursor)
 
