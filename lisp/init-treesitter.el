@@ -31,7 +31,8 @@
            "tm" '(tree-sitter-mark-bigger-node :which-key "tree-sitter mark")
            )
   )
-
+;; TODO: how can we update the langs
+;; some links from tree-sitter-langs is old
 (use-package tree-sitter-langs
   :ensure t
   :pin melpa)
@@ -50,16 +51,6 @@
   :init (slot/vc-install :fetcher "github" :repo "emacs-tree-sitter/ts-fold")
   )
 
-;; treesit based move and edit
-(use-package combobulate
-  :init (slot/vc-install :fetcher "github" :repo "mickeynp/combobulate")
-  :hook ((python-ts-mode . combobulate-mode)
-         (js-ts-mode . combobulate-mode)
-         (css-ts-mode . combobulate-mode)
-         (yaml-ts-mode . combobulate-mode)
-         (typescript-ts-mode . combobulate-mode)
-         (tsx-ts-mode . combobulate-mode))
-  )
 
 (provide 'init-treesitter)
 ;;; init-treesitter.el ends here
