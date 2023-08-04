@@ -106,12 +106,6 @@
   (evil-collection-unimpaired-mode -1)
   )
 
-(use-package evil-surround
-  :ensure t
-  :delight
-  :config
-  (global-evil-surround-mode 1))
-
 ;; Keep Info default key when possible in evil-normal mode
 (general-define-key
  :states '(normal visual motion)
