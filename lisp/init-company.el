@@ -9,6 +9,10 @@
 ;;; Code:
 
 (use-package company
+  :hook ((emacs-lisp-mode . company-mode)
+         (ess-r-mode . company-mode)
+         (inferior-ess-r-mode . company-mode)
+         (scala-mode . company-mode))
   :delight
   :defines (company-dabbrev-ignore-case company-dabbrev-downcase)
   :commands company-cancel

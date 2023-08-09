@@ -2,7 +2,7 @@
 ;;; Commentary:
 ;; Ref: Purcell
 ;;; Code:
-
+(setq dired-listing-switches "-aBhl --group-directories-first")
 (with-eval-after-load 'dired
   (setq-default dired-dwim-target t)
   ;; https://emacs-china.org/t/emacs/23850/8

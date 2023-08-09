@@ -22,7 +22,6 @@
  "pq" '(project-find-regexp :which-key "project regrex search")
  )
 
-
 (use-package find-file-in-project
   :init (slot/vc-install :fetcher "github" :repo "redguardtoo/find-file-in-project")
   
