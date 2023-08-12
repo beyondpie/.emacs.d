@@ -106,5 +106,18 @@
   :ensure t
   :pin melpa
   :hook ( prog-mode . rainbow-delimiters-mode ))
+
+;; Github copilot
+(use-package copilot
+  :init (slot/vc-install :fetcher "github" :repo "zerolfx/copilot.el")
+  ;; :hook (prog-mode . copilot-mode)
+  :bind (:map copilot-completion-map
+              ("<tab>" . 'copilot-accept-completion)
+              ("TAB" . 'copilot-accept-completion)
+              ("C-TAB" . 'copilot-accept-completion-by-word)
+              ("C-<tab>" . 'copilot-accept-completion-by-word))
+  )
+
+
 (provide 'init-prog)
 ;;; init-prog.el ends here
