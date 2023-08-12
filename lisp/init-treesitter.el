@@ -1,7 +1,9 @@
 ;;; init-treesitter.el --- Initialize treesitter configurations. -*- lexical-binding: t -*-
 
 ;;; Commentary:
-;; Use tree-sitter as a minor mode, not the one in default Emacs 29
+;; a minor-mode with tree-sitter hightlight support for any language.
+;; NOTE: may be removed from config in the near future
+;; since we now have default tree-sitter in Emacs 29
 ;;; Code:
 (use-package tree-sitter
   :ensure t
