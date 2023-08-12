@@ -6,7 +6,8 @@
 (use-package tree-sitter
   :ensure t
   :pin melpa
-  :hook ( (after-init . global-tree-sitter-mode))
+  ;; remove global tree-sitter-mode
+  ;; :hook ( (after-init . global-tree-sitter-mode))
   :config
   (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode)
   ;; https://github.com/emacs-tree-sitter/elisp-tree-sitter/issues/20#issuecomment-1352675350
@@ -31,20 +32,13 @@
            "tm" '(tree-sitter-mark-bigger-node :which-key "tree-sitter mark")
            )
   )
-;; TODO: how can we update the langs
+
 ;; some links from tree-sitter-langs is old
+;; have to install them manually by following the README.
+;; then copy the binary to ~/.emacs.d/[local dir]
 (use-package tree-sitter-langs
   :ensure t
   :pin melpa)
-
-;; https://github.com/ShuguangSun/tree-sitter-ess-r/issues/4
-;; tree-sitter-ess-r helps to set tree-sitter-hl-default-patterns
-;; from nil to right ones.
-(use-package tree-sitter-ess-r
-  :delight
-  :pin melpa
-  :hook (ess-r-mode . tree-sitter-ess-r-mode-activate)
-  )
 
 ;; program fold
 (use-package ts-fold
