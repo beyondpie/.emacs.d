@@ -89,5 +89,14 @@
   (when *is-a-mac*
     (setq inferior-R-program "/usr/local/bin/R"))
   )
+
+(defun remoteR (&optional start-args)
+  "Start R REPL remotely.
+  FIXME: how to avoid exploring the conda path we have.
+  "
+  (interactive "P")
+  (let ((inferior-R-program-name "/home/szu/mambaforge/envs/seurat/bin/R"))
+      (set-buffer (run-ess-r start-args)))
+  )
 (provide 'init-ess)
 ;;; init-ess.el ends here
