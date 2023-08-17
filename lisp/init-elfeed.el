@@ -23,6 +23,7 @@
         "http://feeds.nature.com/nature/rss/current"
         "http://feeds.nature.com/nri/rss/current"
         "http://feeds.nature.com/nrg/rss/current"
+        "https://www.jottr.org/index.xml"
         ))
   :general
   (:states '(normal visual)
