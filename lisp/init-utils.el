@@ -314,9 +314,45 @@
     )
   (beyondpie/set-evil-insert-state-cursor)
   )
+
+;; temp stop asking file is too large when open it
+(defvar my-original-large-file-threshold 10000000
+  "Original value of large-file-warning-threshold.")
+
+(defun toggle-large-file-warning ()
+  "Toggle the large file warning threshold."
+  (interactive)
+  (if large-file-warning-threshold
+      (progn
+        (setq my-original-large-file-threshold large-file-warning-threshold)
+        (setq large-file-warning-threshold nil)
+        (message "Large file warning disabled."))
+    (setq large-file-warning-threshold my-original-large-file-threshold)
+    (message "Large file warning enabled.")))
+(global-set-key (kbd "C-c t") 'toggle-large-file-warning)
+
 ;; eww
 ;; Auto-rename new eww buffers
 ;; C-u M-x eww
+
+;;; Commentary:
+;; ref:
+;; https://github.com/necaris/conda.el
+
+(use-package conda
+  :delight
+  :init
+  (if (eq system-type 'darwin)
+      (setq conda-anaconda-home (expand-file-name "~/mambaforge"))
+    (setq conda-anaconda-home (expand-file-name "~/miniconda3"))
+    )
+  :config
+  (conda-env-initialize-eshell)
+  (conda-env-autoactivate-mode nil)
+  :commands
+  (conda-env-activate conda-env-deactivate conda-env-activate-for-buffer
+                      conda-env-initialize-eshell)
+)
 
 (provide 'init-utils)
 ;;; init-utils.el ends here
