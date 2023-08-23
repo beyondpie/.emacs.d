@@ -45,14 +45,6 @@
   (lsp-mode . lsp-enable-which-key-integration)
   :commands
   lsp
-  :config
-  (lsp-register-client
-   (make-lsp-client :new-connection
-                    (lsp-tramp-connection '("/home/szu/mambaforge/envs/seurat/bin/R" "--slave" "-e" "languageserver::run()"))
-                    :major-modes '(ess-r-mode inferior-ess-r-mode)
-                    :remote? t
-                    :server-id 'lsp-R))
-  
   )
 
 (provide 'init-lsp)
