@@ -46,7 +46,9 @@
 (use-package ts-fold
   :init (slot/vc-install :fetcher "github" :repo "emacs-tree-sitter/ts-fold")
   )
-
+;; Ref: https://manateelazycat.github.io/2023/09/02/treesit/
+(add-to-list 'treesit-language-source-alist '(r . ("https://github.com/r-lib/tree-sitter-r.git")))
+(add-hook 'ess-r-mode-hook #'(lambda () (treesit-parser-create 'r)))
 
 (provide 'init-treesitter)
 ;;; init-treesitter.el ends here
