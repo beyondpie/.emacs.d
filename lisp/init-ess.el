@@ -99,20 +99,6 @@
       (set-buffer (run-ess-r start-args)))
   )
 
-;; FIXME: does not work in remoteR mode
-(setq lsp-clients-r-remote-command
-      '("/home/szu/mambaforge/envs/seurat/bin/R" "--slave" "-e" "languageserver::run()"))
-(defun remoteRlsp ()
-  (interactive)
-  (with-eval-after-load 'lsp-mode
-    (lsp-register-client
-     (make-lsp-client
-      :new-connection (lsp-tramp-connection "/home/szu/mambaforge/envs/seurat/bin/R --slave -e languageserver::run()")
-      :major-modes '(ess-r-mode)
-      :remote? t
-      :server-id 'lsp-r)))
-  )
-
 ;; Eglot works
 (defun remoteREglot()
   (interactive)
