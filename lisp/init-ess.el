@@ -98,5 +98,17 @@
   (let ((inferior-R-program-name "/home/szu/mambaforge/envs/seurat/bin/R"))
       (set-buffer (run-ess-r start-args)))
   )
+
+;; works for eglot in remote
+(defun remoteREglot()
+  (interactive)
+  (with-eval-after-load 'eglot
+    (add-to-list 'eglot-server-programs
+                 '( (R-mode ess-r-mode)
+                    "/home/szu/mambaforge/envs/seurat/bin/R" "--slave" "-e" "languageserver::run()")))
+  
+  )
+
+
 (provide 'init-ess)
 ;;; init-ess.el ends here
