@@ -99,17 +99,6 @@
       (set-buffer (run-ess-r start-args)))
   )
 
-;; Eglot works
-;; but too slow: no completion, no refactor
-(defun remoteREglot()
-  (interactive)
-  (with-eval-after-load 'eglot
-    (add-to-list 'eglot-server-programs
-                 '( (R-mode ess-r-mode)
-                    "/home/szu/mambaforge/envs/seurat/bin/R" "--slave" "-e" "languageserver::run()")))
-  
-  )
-
 
 (provide 'init-ess)
 ;;; init-ess.el ends here
