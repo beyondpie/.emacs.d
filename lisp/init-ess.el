@@ -100,6 +100,7 @@
   )
 
 ;; Eglot works
+;; but too slow: no completion, no refactor
 (defun remoteREglot()
   (interactive)
   (with-eval-after-load 'eglot
