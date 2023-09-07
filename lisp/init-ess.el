@@ -132,10 +132,14 @@
               (setq-local company-backends
                           '(company-files company-R-library company-R-objects))))
   :config
-  (defun setTrampR ()
-    (interactive)
-    (setq-local inferior-ess-r-program "/home/szu/mambaforge/envs/seurat/bin/R")
+  (defun remoteR (&optional start-args)
+    "Start R REPL remotely.
+     FIXME: how to avoid exploring the conda path we have."
+    (interactive "P")
+    (let ((inferior-R-program-name "/home/szu/mambaforge/envs/seurat/bin/R"))
+      (set-buffer (run-ess-r start-args)))
     )
+
   )
 
 (provide 'init-ess)
