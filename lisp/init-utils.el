@@ -154,6 +154,7 @@
 ;; hide/show modeline
 ;; Ref: https://bzg.fr/en/emacs-hide-mode-line/
 (defvar-local hidden-mode-line-mode nil)
+(setq mode-line-percent-position nil)
 (define-minor-mode hidden-mode-line-mode
   "Minor mode to hide the mode-line in the current buffer."
   :init-value nil
