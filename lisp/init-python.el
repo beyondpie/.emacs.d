@@ -181,9 +181,16 @@
            "rB" '(python-black-buffer :which-key "black buffer")
            "rR" '(python-black-region :which-key "black region")
            )
+  ;; FIXME: cannot work automatically
+  ;; but M-x eglot
+  ;; then insert /home/szu/mambaforge/envs/sa2/bin/pyright-langserver --stdio
+  ;; this works in remote-mode
+  ;; NOTE: pyright needs nodejs (install by conda)
+  ;; :config
+  ;; (with-eval-after-load 'eglot
+  ;;   (add-to-list 'eglot-server-programs
+  ;;                `((python-mode python-ts-mode) . ,(eglot-alternatives
+  ;;                                                   '("/home/szu/mambaforge/envs/sa2/bin/pyright-langserver" "--stdio")))))
   )
-
-
-
 (provide 'init-python)
 ;;; init-python.el ends here
