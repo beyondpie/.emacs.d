@@ -1,6 +1,6 @@
 ;;; init-python.el --- Initialize python configurations. -*- lexical-binding: t -*-
 ;;; Commentary:
-;; Ref: pacemacs
+;; Ref: spacemacs
 
 ;;; Code:
 
