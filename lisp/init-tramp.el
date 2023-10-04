@@ -24,6 +24,7 @@
 ;; Important: remote PATH is the PATH in login
 ;; https://stackoverflow.com/questions/26630640/tramp-ignores-tramp-remote-path
 (add-to-list 'tramp-remote-path 'tramp-own-remote-path)
+(setq tramp-auto-save-directory "~/.emacs.d/tramp-autosave")
 
 ;; how to run python-repl remotely
 ;; https://emacs.stackexchange.com/questions/13385/running-ipython-remotely

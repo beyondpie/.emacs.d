@@ -139,6 +139,14 @@
     (let ((inferior-R-program-name "/home/szu/mambaforge/envs/seurat/bin/R"))
       (set-buffer (run-ess-r start-args)))
     )
+  
+  (defun mediatorR (&optional start-args)
+    "Start R REPL remotely.
+     FIXME: how to avoid exploring the conda path we have."
+    (interactive "P")
+    (let ((inferior-R-program-name "/home/szu/miniforge3/envs/r/bin/R"))
+      (set-buffer (run-ess-r start-args)))
+    )
 
   )
 
