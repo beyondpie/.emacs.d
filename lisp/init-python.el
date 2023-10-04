@@ -131,6 +131,20 @@
     (pop-to-buffer (process-buffer shell-process))
     (evil-insert-state)))
 
+(defun mediator-python ()
+  "Start and/or switch to the REPL remotely.
+  FIXME: how to avoid exploring the variables we have."
+  (interactive)
+  (let ((shell-process
+         (or (python-shell-get-process)
+             (run-python "/home/szu/miniforge3/envs/sa2/bin/ipython")
+             (python-shell-get-process)
+             )))
+    (unless shell-process
+      (error "Failed to start python shell properly"))
+    (pop-to-buffer (process-buffer shell-process))
+    (evil-insert-state)))
+
 (use-package python-black
   :after python
   :commands (python-black-buffer python-black-region))
@@ -181,16 +195,6 @@
            "rB" '(python-black-buffer :which-key "black buffer")
            "rR" '(python-black-region :which-key "black region")
            )
-  ;; FIXME: cannot work automatically
-  ;; but M-x eglot
-  ;; then insert /home/szu/mambaforge/envs/sa2/bin/pyright-langserver --stdio
-  ;; this works in remote-mode
-  ;; NOTE: pyright needs nodejs (install by conda)
-  ;; :config
-  ;; (with-eval-after-load 'eglot
-  ;;   (add-to-list 'eglot-server-programs
-  ;;                `((python-mode python-ts-mode) . ,(eglot-alternatives
-  ;;                                                   '("/home/szu/mambaforge/envs/sa2/bin/pyright-langserver" "--stdio")))))
   )
 (provide 'init-python)
 ;;; init-python.el ends here
