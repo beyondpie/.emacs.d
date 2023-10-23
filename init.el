@@ -5,7 +5,22 @@
 
 ;;; Code:
 
-;; this fix error when gpg no public key on rc centos 
+;; better defaults
+;; https://idiomdrottning.org/bad-emacs-defaults
+(make-directory "~/.emacs_backups/" t)
+(make-directory "~/.emacs_autosave/" t)
+(setq auto-save-file-name-transforms '((".*" "~/.emacs_autosave/" t)))
+(setq backup-directory-alist '(("." . "~/.emacs_backups/")))
+(setq backup-by-copying t)
+(setq sentence-end-double-space nil)
+(setq require-final-newline t)
+(setq frame-inhibit-implied-resize t)
+(setq pixel-scroll-precision-mode t)
+(setq show-trailing-whitespace t)
+(setq kill-whole-line t)
+
+
+;; this fix error when gpg no public key on rc centos
 (setq package-check-signature nil)
 (defconst *spell-check-support-enabled* t)
 (defconst *is-a-mac* (eq system-type 'darwin))
@@ -85,7 +100,7 @@
   )
 
 (if (display-graphic-p)
-    (progn 
+    (progn
       (beyondpie/setgui)
       (beyondpie/set-evil-insert-state-cursor)
       )
@@ -93,14 +108,6 @@
 
 (when (file-exists-p custom-file)
   (load custom-file))
-
-;; collect GC stat
-;; (use-package emacs-gc-stats
-;;   :init
-;;   (slot/srht-install :repo "emacs-gc-stats" :name "yantar92")
-;;   (setq emacs-gc-stats-gc-defaults 'emacs-defaults)
-;;   (setq emacs-gc-stats-remind t)
-;;   )
 
 
 (provide 'init)

@@ -137,7 +137,8 @@
   (interactive)
   (let ((shell-process
          (or (python-shell-get-process)
-             (run-python "/home/szu/miniforge3/envs/sa2/bin/ipython")
+             ;;(run-python "/home/szu/miniforge3/envs/sa2/bin/ipython")
+             (run-python "/home/szu/miniforge3/envs/scenicplus/bin/ipython")
              (python-shell-get-process)
              )))
     (unless shell-process
