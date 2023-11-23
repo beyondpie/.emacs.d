@@ -4,53 +4,10 @@
 ;; Ref: purcell
 
 ;;; Code:
-
-;; better defaults
-;; https://idiomdrottning.org/bad-emacs-defaults
-(make-directory "~/.emacs_backups/" t)
-(make-directory "~/.emacs_autosave/" t)
-(setq auto-save-file-name-transforms '((".*" "~/.emacs_autosave/" t)))
-(setq backup-directory-alist '(("." . "~/.emacs_backups/")))
-(setq backup-by-copying t)
-(setq sentence-end-double-space nil)
-(setq require-final-newline t)
-(setq frame-inhibit-implied-resize t)
-(setq pixel-scroll-precision-mode t)
-(setq show-trailing-whitespace t)
-(setq kill-whole-line t)
-
-
-;; this fix error when gpg no public key on rc centos
-(setq package-check-signature nil)
-(defconst *spell-check-support-enabled* t)
 (defconst *is-a-mac* (eq system-type 'darwin))
-;; make echo area showing message for 10s
-(setq suggest-key-bindings 10)
-;; https://emacs-china.org/t/emacs/21053/13
-(setq read-process-output-max (* 1024 1024))
-(setq process-adaptive-read-buffering nil)
-
-;; garbage collection during startup
-(let ((normal-gc-cons-threshold (* 16 1024 1024))
-      (init-gc-cons-threshold (* 32 1024 1024)))
-  (setq gc-cons-threshold init-gc-cons-threshold)
-  (add-hook 'emacs-startup-hook
-            (lambda () (setq gc-cons-threshold normal-gc-cons-threshold))))
-
 (dolist (dir '("site-lisp" "lisp"))
   (push (expand-file-name dir user-emacs-directory) load-path))
-
-;; allow eww to open video when emacs versin >= 29.1
-
-(if (not (version< emacs-version "29.1"))
-    (setq shr-use-xwidgets-for-media t))
-
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-;; close the warnings of gccemacs when compiling packages.
-(setq native-comp-async-report-warnings-errors nil)
-
-;; stop use backup files
-(setq make-backup-files nil)
 
 ;; set utf8 to let terminal show the corresonding symbols in the terminal
 ;; http://www.skybert.net/emacs/how-to-get-unicode-in-the-terminal/
@@ -63,6 +20,7 @@
 (require 'init-elpa)
 (require 'init-const)
 (require 'init-utils)
+(require 'init-better-defaults)
 (require 'init-tramp)
 (require 'init-evil)
 (require 'init-themes)
