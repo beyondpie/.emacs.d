@@ -8,8 +8,6 @@
   :ensure t
   )
 (require 'general)
-;; (use-package hydra)
-;; (use-package major-mode-hydra)
 
 ;; https://github.com/justbur/emacs-which-key
 (use-package which-key

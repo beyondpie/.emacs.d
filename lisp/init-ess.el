@@ -8,6 +8,8 @@
 ;; (setq-local mode-line-process nil)
 
 ;;; Code:
+(require 'init-const)
+
 (use-package ess
   :delight
   :ensure t
@@ -89,21 +91,19 @@
            "ss" '(outline-show-subtree :which-key "show subtree")
            )
   (when *is-a-mac*
-    (setq inferior-R-program "/usr/local/bin/R"))
+    (setq inferior-R-program default-R))
   :config
   (defun remoteR (&optional start-args)
-    "Start R REPL remotely.
-     FIXME: how to avoid exploring the conda path we have."
+    "Start R REPL remotely."
     (interactive "P")
-    (let ((inferior-R-program-name "/home/szu/mambaforge/envs/seurat/bin/R"))
+    (let ((inferior-R-program-name encoder-R))
       (set-buffer (run-ess-r start-args)))
     )
   
   (defun mediatorR (&optional start-args)
-    "Start R REPL remotely.
-     FIXME: how to avoid exploring the conda path we have."
+    "Start R REPL remotely."
     (interactive "P")
-    (let ((inferior-R-program-name "/home/szu/miniforge3/envs/r/bin/R"))
+    (let ((inferior-R-program-name mediator-R))
       (set-buffer (run-ess-r start-args)))
     )
   )

@@ -71,13 +71,9 @@
 (use-package delight
   :ensure t
   :demand)
-;; NOTE: add demand in above, so
-;; require may not be needed
-;; (require 'diminish)
 
 ;; TODO: I cannot put this on the top, why?
 (require 'bind-key)
-
 ;; Update GPG keyring for GNU ELPA
 (use-package gnu-elpa-keyring-update)
 
@@ -103,13 +99,5 @@ named arguments:
     (unless (package-installed-p pac-name)
       (package-vc-install url iname rev backend))))
 
-;; FIXME: not work
-;; (cl-defun slot/srht-install (&key (fetcher "github") repo name rev backend)
-;;   "Install a package from srht"
-;;   (let* ((url (format "https://git.sr.ht/~%s/%s" name repo))
-;;          (iname (when name (intern name)))
-;;          (pac-name (or iname (intern (file-name-base repo)))))
-;;     (unless (package-installed-p pac-name)
-;;       (package-vc-install url iname rev backend))))
 (provide 'init-elpa)
 ;;; init-elpa.el ends here

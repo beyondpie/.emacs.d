@@ -6,8 +6,8 @@
 ;;   https://jakemccrary.com/blog/2020/11/14/speeding-up-magit/
 
 ;;; Code:
+(require 'init-const)
 (use-package magit
-  ;; :load-path ("~/.emacs.d/magit/lisp")
   :ensure t
   :init
   (use-package with-editor :ensure t)
@@ -15,7 +15,7 @@
   ;; https://emacs-china.org/t/macos-git-magit/23467
   ;; use default git in mac system due to speed
   (when *is-a-mac*
-    (magit-git-executable "/usr/bin/git")
+    (magit-git-executable mac-git)
     )
   :general
   (:states '(normal visual insert emacs)

@@ -37,7 +37,29 @@
   :type 'string
   :group 'beyondpie-program
   )
-()
+
+(defcustom default-R
+  "/usr/local/bin/R"
+  "R REPL default"
+  :type 'string
+  :group 'beyondpie-program)
+(defcustom encoder-R
+  "/home/szu/mambaforge/envs/seurat/bin/R"
+  "R REPL under TSCC encoder"
+  :type 'string
+  :group 'beyondpie-program)
+
+(defcustom mediator-R
+  "/home/szu/miniforge3/envs/r/bin/R"
+  "R REPL under TSCC mediator"
+  :type 'string
+  :group 'beyondpie-program)
+
+(defcustom mac-git
+  "/usr/bin/git"
+  "git in macOS"
+  :type 'string
+  :group 'beyondpie-program)
 
 (provide 'init-const)
 ;;; init-const.el ends here
