@@ -11,12 +11,6 @@
   :ensure t
   :init
   (use-package with-editor :ensure t)
-  :custom
-  ;; https://emacs-china.org/t/macos-git-magit/23467
-  ;; use default git in mac system due to speed
-  (when *is-a-mac*
-    (magit-git-executable mac-git)
-    )
   :general
   (:states '(normal visual insert emacs)
            :keymaps 'override
@@ -41,11 +35,6 @@
   (remove-hook 'magit-refs-sections-hook 'magit-insert-tags)
   (remove-hook 'server-switch-hook 'magit-commit-diff)
   (remove-hook 'magit-status-sections-hook 'magit-insert-tags-header)
-  ;; (remove-hook 'magit-status-sections-hook 'magit-insert-status-headers)
-  ;; (remove-hook 'magit-status-sections-hook 'magit-insert-unpushed-to-pushremote)
-  ;; (remove-hook 'magit-status-sections-hook 'magit-insert-unpulled-from-pushremote)
-  ;; (remove-hook 'magit-status-sections-hook 'magit-insert-unpulled-from-upstream)
-  ;; (remove-hook 'magit-status-sections-hook 'magit-insert-unpushed-to-upstream-or-recent)
   )
 
 (provide 'init-git)

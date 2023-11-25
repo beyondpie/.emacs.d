@@ -3,6 +3,7 @@
 ;;; Commentary:
 ;;; Code:
 
+(require 'init-const)
 (setq mac-option-modifier 'meta
       mac-command-modifier 'super
       )
@@ -28,7 +29,7 @@
 ;; dired setup
 (with-eval-after-load 'dired
   (setq dired-use-ls-dired t
-	      insert-directory-program "/usr/local/bin/gls"
+	      insert-directory-program mac-ls
 	      dired-listing-switches "-aBhl --group-directories-first"
 	      )
   )
@@ -55,12 +56,14 @@
         :which-key "osx-dictionary word at paint")
  )
 
-;; use minions instead
-;; (beyondpie/simplify-minibatch-emacs)
-
-;; (use-package nyan-mode
-;;   :pin melpa
-;;   :hook (after-init . nyan-mode))
+;; set safety delete file
+(setq trash-directory  "~/.Trash")
+ ;;  See ` trash-directory ' as it requires defining ` trash '.
+(defun trash (file)
+   "Use \"trash\" to move FILE to the system trash."
+   (cl-assert (executable-find  "trash") nil
+              "' trash ' must be installed. Needs \"brew install trash\"")
+  (call-process  "trash" nil 0 nil  "-F"  file))
 
 (provide 'init-macos)
 ;;; init-macos.el ends here

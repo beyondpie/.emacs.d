@@ -26,9 +26,7 @@
 ;;    "SPC" 'hydra-space/body))
 ;;    ;; Replace 'hydra-space/body with your leader function.
 
-
 ;;; Code:
-
 (defun beyondpie/set-evil-insert-state-cursor ()
   "Change evil insert state cusor color based on theme."
   (interactive)

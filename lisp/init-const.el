@@ -55,11 +55,35 @@
   :type 'string
   :group 'beyondpie-program)
 
-(defcustom mac-git
-  "/usr/bin/git"
-  "git in macOS"
+(defcustom mac-ls
+  "/usr/local/bin/gls"
+  "insert-directory-program in macos for dired"
   :type 'string
   :group 'beyondpie-program)
+
+(defcustom encoder-ipython
+  "/home/szu/mambaforge/envs/sa2/bin/ipython"
+  "ipython REPL in TSCC encoder"
+  :type 'string
+  :group 'beyondpie-program)
+
+(defcustom mediator-ipython
+  "/home/szu/miniforge3/envs/sa2/bin/ipython"
+  "ipython REPL in TSCC mediator"
+  :type 'string
+  :group 'beyondpie-program)
+
+(defcustom python-flymake-command
+  '("ruff" "--quiet" "--stdin-filename=stdin" "-")
+  "flymake command for python"
+  :type 'list
+  :group 'beyondpie-program)
+
+(defcustom research-agenda
+  "/Users/szu/Dropbox/plan/research.org"
+  "research agenda file for org-mode"
+  :type 'string
+  :group 'beyondpie-file)
 
 (provide 'init-const)
 ;;; init-const.el ends here

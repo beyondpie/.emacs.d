@@ -3,7 +3,9 @@
 ;;; Commentary:
 ;;; Code:
 
-(setq org-agenda-files '("~/Dropbox/plan/research.org"))
+(require 'init-const)
+
+(setq org-agenda-files '(research-agenda))
 (global-set-key (kbd "C-c l") #'org-store-link)
 (global-set-key (kbd "C-c a") #'org-agenda)
 (global-set-key (kbd "C-c c") #'org-capture)

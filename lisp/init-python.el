@@ -3,6 +3,7 @@
 ;; Ref: spacemacs
 
 ;;; Code:
+(require 'init-const)
 
 (defun spacemacs//python-setup-shell (&rest args)
   "Set up python shell"
@@ -17,13 +18,6 @@
       )
     )
   )
-
-
-(defun spacemacs/python-setup-everything (&rest args)
-  "Set up python env"
-  (spacemacs//python-setup-shell)
-  )
-
 
 (defun spacemacs//python-default ()
   "Default settings for python buffers"
@@ -74,7 +68,6 @@
 
 (defun spacemacs/python-remove-unused-imports()
   "Use Autoflake to remove unused function"
-  "autoflake --remove-all-unused-imports -i unused_imports.py"
   (interactive)
   (if (executable-find "autoflake")
       (progn
@@ -113,17 +106,16 @@
   
   :config
   (dolist (func '(pyvenv-actiate pyvenv-deactivate pyvenv-workon))
-    (advice-add func :after 'spacemacs/python-setup-everything)
+    (advice-add func :after 'spacemacs//python-setup-shell)
     )
   )
 
-(defun remote-python-repl ()
-  "Start and/or switch to the REPL remotely.
-  FIXME: how to avoid exploring the variables we have."
+(defun encoder-ipython ()
+  "Start and/or switch to the REPL remotely."
   (interactive)
   (let ((shell-process
          (or (python-shell-get-process)
-             (run-python "/home/szu/mambaforge/envs/sa2/bin/ipython")
+             (run-python encoder-ipython)
              (python-shell-get-process)
              )))
     (unless shell-process
@@ -132,13 +124,11 @@
     (evil-insert-state)))
 
 (defun mediator-python ()
-  "Start and/or switch to the REPL remotely.
-  FIXME: how to avoid exploring the variables we have."
+  "Start and/or switch to the REPL remotely."
   (interactive)
   (let ((shell-process
          (or (python-shell-get-process)
-             ;;(run-python "/home/szu/miniforge3/envs/sa2/bin/ipython")
-             (run-python "/home/szu/miniforge3/envs/scenicplus/bin/ipython")
+             (run-python mediator-ipython)
              (python-shell-get-process)
              )))
     (unless shell-process
@@ -159,8 +149,9 @@
   (spacemacs//python-setup-shell)
   (setq python-indent-offset 4)
   (setq python-shell-completion-native-enable nil)
-  (setq python-flymake-command '("ruff"
-                                 "--quiet" "--stdin-filename=stdin" "-"))
+  (if (executable-find (nth 0 python-flymake-command))
+      (setq python-flymake-command python-flymake-command)
+    )
   :config
   (setq-default python-indent-guess-indent-offset nil)
   :general
@@ -169,7 +160,6 @@
            :prefix beyondpie/major-mode-leader-key
            "go" '(helm-occur :which-key "helm occur")
            "'" '(spacemacs/python-start-or-switch-repl :which-key "repl")
-           ";" '(remote-python-repl :which-key "remote repl")
            "sl" '(spacemacs/python-shell-send-line :which-key "send line")
            "sf" '(spacemacs/python-shell-send-defun :which-key "send defun")
            "sc" '(spacemacs/python-shell-send-defun :which-key "send class")
@@ -187,7 +177,6 @@
            :prefix beyondpie/major-mode-leader-key
            "go" '(helm-occur :which-key "helm occur")
            "'" '(spacemacs/python-start-or-switch-repl :which-key "python repl")
-           ";" '(remote-python-repl :which-key "remote repl")
            "sl" '(spacemacs/python-shell-send-line :which-key "send line")
            "sf" '(spacemacs/python-shell-send-defun :which-key "send defun")
            "sc" '(spacemacs/python-shell-send-defun :which-key "send class")

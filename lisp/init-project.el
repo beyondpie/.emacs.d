@@ -8,6 +8,7 @@
 ;; https://github.com/redguardtoo/find-file-in-project
 ;;; Code:
 
+(require 'init-const)
 (general-define-key
  :states '(normal visual insert emacs)
  :prefix beyondpie/normal-leader-key
@@ -23,7 +24,8 @@
  )
 
 (use-package find-file-in-project
-  :init (slot/vc-install :fetcher "github" :repo "redguardtoo/find-file-in-project")
+  :init (slot/vc-install :fetcher "github"
+                         :repo "redguardtoo/find-file-in-project")
   
   )
 

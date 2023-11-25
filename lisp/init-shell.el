@@ -126,15 +126,5 @@ PWD is not in a git repo (or the git command is not found)."
            (git-icon2 (propertize "\xf020" 'face `(:family "octicons"))))
       (concat git-repo " " git-icon2 " " git-branch))))
 
-;; set safety delete file
-(setq trash-directory  "~/.Trash")
- ;;  See ` trash-directory ' as it requires defining ` trash '.
-(defun trash (file)
-   "Use \"trash\" to move FILE to the system trash."
-   (cl-assert (executable-find  "trash") nil
-              "' trash ' must be installed. Needs \"brew install trash\"")
-  (call-process  "trash" nil 0 nil  "-F"  file))
-
-
 (provide 'init-shell)
 ;;; init-shell.el ends here

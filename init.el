@@ -46,7 +46,6 @@
 (require 'init-shell)
 (require 'init-ess)
 (require 'init-python)
-(require 'init-scala)
 (require 'init-tex)
 (require 'init-org)
 (require 'init-elfeed)
@@ -58,10 +57,7 @@
   )
 
 (if (display-graphic-p)
-    (progn
-      (beyondpie/setgui)
-      (beyondpie/set-evil-insert-state-cursor)
-      )
+    (beyondpie/setgui)
   )
 
 (when (file-exists-p custom-file)

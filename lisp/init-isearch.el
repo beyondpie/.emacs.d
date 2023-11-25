@@ -1,7 +1,7 @@
 ;;; init-isearch.el --- isearch settings -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
-
+(require 'init-const)
 (use-package anzu
   :ensure t
   :pin melpa

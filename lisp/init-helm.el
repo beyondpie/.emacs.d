@@ -4,9 +4,8 @@
 ;; Ref: http://tuhdo.github.io/helm-intro.html
 
 ;;; Code:
-
+(require 'init-const)
 (use-package helm
-  ;; :load-path ("~/.emacs.d/helm")
   :ensure t
   :pin melpa
   :hook (after-init . helm-mode)

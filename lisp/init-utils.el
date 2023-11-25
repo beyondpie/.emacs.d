@@ -24,16 +24,6 @@
   (setq which-key-max-description-length 30)
 )
 
-;; undo-tree
-;; (use-package undo-tree
-;;   :hook (after-init . global-undo-tree-mode)
-;;   :bind ("C-x u" . undo-tree-visualize)
-;;   :delight
-;;   :init
-;;   (setq undo-tree-auto-save-history nil)
-;;   (setq undo-tree-enable-undo-in-region t)
-;;   )
-
 ;; vundo
 (use-package vundo
   :commands (vundo)
@@ -254,6 +244,7 @@
       "Start syntax check for current buffer if it isn't already running."
       ;; Do nothing, don't want to run checks until I save.
       )))
+
 ;; http://xahlee.info/emacs/emacs/emacs_customize_default_window_size.html
 (defun beyondpie/setgui ()
   (interactive)
@@ -284,8 +275,20 @@
                    "%b"))))
   (progn
     (set-face-attribute 'default nil :font "Monaco-16")
-    (setq initial-frame-alist '( (tool-bar-lines . 0)))
-    (setq default-frame-alist '( (tool-bar-lines . 0)))
+    (setq initial-frame-alist
+          '(
+            (tool-bar-lines . 0)
+            (width . 106) ; chars
+            (height . 60) ; lines
+            (ns-transparent-titlebar . t)
+            ))
+    (setq default-frame-alist
+          '(
+            (tool-bar-lines . 0)
+            (width . 106) ; chars
+            (height . 60) ; lines
+            (ns-transparent-titlebar . t)
+            ))
     )
 
   ;; Non-zero values for `line-spacing' can mess up ansi-term and co,
@@ -293,25 +296,6 @@
   (add-hook 'term-mode-hook
             (lambda ()
               (setq line-spacing 0)))
-  (if (display-graphic-p)
-      (progn
-        (set-face-attribute 'default nil :font "Monaco-16")
-        (setq initial-frame-alist
-              '(
-                (tool-bar-lines . 0)
-                (width . 106) ; chars
-                (height . 60) ; lines
-                (ns-transparent-titlebar . t)
-                ))
-        (setq default-frame-alist
-              '(
-                (tool-bar-lines . 0)
-                (width . 106)
-                (height . 60)
-                (ns-transparent-titlebar . t)
-                )))
-    )
-  (beyondpie/set-evil-insert-state-cursor)
   )
 
 ;; temp stop asking file is too large when open it
