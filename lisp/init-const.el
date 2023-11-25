@@ -4,24 +4,40 @@
 
 ;;; Code:
 
-(defconst beyondpie-homepage
-	"https://github.com/beyondpie"
-	"My Github page.")
+(defcustom beyondpie/github-link
+  "https://github.com/beyondpie"
+  "Github page"
+  :type 'string
+  :group 'beyondpie
+  )
 
-(defconst beyondpie/normal-leader-key
+(defcustom beyondpie/normal-leader-key
   "SPC"
   "Evil normal state leader key used as a global leader key."
+  :type 'string
+  :group 'beyondpie-key
   )
 
-(defconst beyondpie/non-normal-leader-key
+(defcustom beyondpie/non-normal-leader-key
   "M-SPC"
-  "Non-normal state leader key."
+  "Non Evil-nomral state leader key"
+  :type 'string
+  :group 'beyondpie-key
+  )
+(defcustom beyondpie/major-mode-leader-key
+  ","
+  "Like spacemacs, use a different leader key for major-mode"
+  :type 'string
+  :group 'beyondpie-key
   )
 
-(defconst beyondpie/major-mode-leader-key
-  ","
-  "Like spacemacs, use a different leader key for 'major-mode'."
+(defcustom beyondpie/citre-readtags-program
+  "/usr/local/bin/readtags"
+  "citre program"
+  :type 'string
+  :group 'beyondpie-program
   )
+()
 
 (provide 'init-const)
 ;;; init-const.el ends here

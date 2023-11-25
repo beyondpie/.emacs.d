@@ -4,6 +4,7 @@
 
 
 ;;; Code:
+(require 'init-const)
 (use-package citre
   :defer t
   :init
@@ -18,7 +19,7 @@
   :config
   (setq
    ;; Set these if readtags/ctags is not in your PATH.
-   citre-readtags-program "/usr/local/bin/readtags"
+   citre-readtags-program beyondpie/citre-readtags-program
    citre-ctags-program "/usr/local/bin/ctags"
    ;; Set these if gtags/global is not in your PATH (and you want to use the
    ;; global backend)
