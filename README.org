@@ -3,10 +3,6 @@
   - Emacs version: latest (current 30.05 in development)
   - System: MacOS (mainly) / Ubuntu [not often]
   - GUI (mainly) and terminal version are supported.
-  - Now maintained at:
-    - https://git.sr.ht/~szu/.emacs.d (major)
-    - https://github.com/beyondpie/.emacs.d (mirror)
-    
   
   I learn a lot from spacemacs, which is a popular emacs configuration. I used it during 2017-2020.
   The key features I like:
