@@ -80,7 +80,7 @@
   :group 'beyondpie-program)
 
 (defcustom research-agenda
-  "/Users/szu/Dropbox/plan/research.org"
+  "/Users/szu/Library/Mobile Documents/com~apple~CloudDocs/AP/plan/research.org"
   "research agenda file for org-mode"
   :type 'string
   :group 'beyondpie-file)
