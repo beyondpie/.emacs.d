@@ -17,6 +17,11 @@
 (set-keyboard-coding-system 'utf-8)
 (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
 
+;; for magit, which requires 'transient' >= 0.5.0
+(setq package-install-upgrade-built-in t)
+;; (progn (unload-feature 'transient t) (require 'transient))
+
+
 (require 'init-elpa)
 (require 'init-const)
 (require 'init-utils)
