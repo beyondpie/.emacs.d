@@ -68,6 +68,7 @@
 (when (file-exists-p custom-file)
   (load custom-file))
 
+(load-theme 'modus-vivendi t)
 
 (provide 'init)
 ;;; init.el ends here
