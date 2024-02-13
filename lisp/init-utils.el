@@ -335,7 +335,7 @@
   :commands
   (conda-env-activate conda-env-deactivate conda-env-activate-for-buffer
                       conda-env-initialize-eshell)
-)
+  )
 
 (provide 'init-utils)
 ;;; init-utils.el ends here
