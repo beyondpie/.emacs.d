@@ -103,6 +103,13 @@
   (evil-collection-unimpaired-mode -1)
   )
 
+(use-package evil-terminal-cursor-changer
+  :after evil
+  :delight
+  :config
+  (unless (display-graphic-p)
+    (evil-terminal-cursor-changer-activate)))
+
 ;; Keep Info default key when possible in evil-normal mode
 (general-define-key
  :states '(normal visual motion)
