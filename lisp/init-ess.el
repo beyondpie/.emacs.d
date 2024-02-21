@@ -17,6 +17,21 @@
   :hook (ess-r-mode . (lambda ()
                         (setq-local outline-regexp "^#+ +\\*+")))
   :hook (ess-r-mode . outline-minor-mode)
+  :hook (ess-r-mode . (lambda ()
+                        (when (not (file-remote-p default-directory))
+                          (setq-local company-backends
+                                      '(company-files
+                                        company-capf-with-R-objects
+                                        company-R-library
+                                        company-R-args
+                                        (company-R-objects :separate)
+                                        (company-capf :with company-yasnippet)
+                                        company-dabbrev-code
+                                        company-keywords
+                                        company-dabbrev))
+                            )
+                        )
+                    )
   :init
   ;; ESS highlighting
   ;; https://emacs.stackexchange.com/questions/60924/how-to-add-function-call-highlighting-in-ess

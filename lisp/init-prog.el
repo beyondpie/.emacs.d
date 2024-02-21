@@ -4,6 +4,10 @@
 
 ;;; Code:
 
+(use-package eglot
+  :init
+  (setq eglot-stay-out-of '(company)))
+
 (use-package highlight-indent-guides
   ;; not load highlight indent guides by default since it may slow emacs.
   ;; https://emacs-china.org/t/highlight-indent-guides/16532/3
