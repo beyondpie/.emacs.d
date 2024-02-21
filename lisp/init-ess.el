@@ -20,12 +20,12 @@
   :hook (ess-r-mode . (lambda ()
                         (when (not (file-remote-p default-directory))
                           (setq-local company-backends
-                                      '(company-files
+                                      '(campany-capf
+                                        company-files
                                         company-capf-with-R-objects
                                         company-R-library
                                         company-R-args
                                         (company-R-objects :separate)
-                                        (company-capf :with company-yasnippet)
                                         company-dabbrev-code
                                         company-keywords
                                         company-dabbrev))
