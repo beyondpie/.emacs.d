@@ -13,8 +13,8 @@
 ;; Defer garbage collection further back in the startup process
 ;; (setq gc-cons-threshold most-positive-fixnum)
 
-;; Inhibit resizing frame
-(setq frame-inhibit-implied-resize t)
+;; Stop inhibitting resizing frame
+(setq frame-inhibit-implied-resize nil)
 
 ;; Faster to disable these here (before they've been initialized)
 (push '(menu-bar-lines . 0) default-frame-alist)
@@ -23,6 +23,7 @@
   (push '(ns-transparent-titlebar . t) default-frame-alist))
 
 ;; for lsp loading json
+;; now just keep it.
 (setq read-process-output-max (* 1024 1024)) ;; 1mb
 (setq package-quickstart t)
 

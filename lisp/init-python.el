@@ -76,15 +76,6 @@
         (revert-buffer t t t))
     (message "Error: Cannot find autoflake executable.")))
 
-(use-package lsp-pyright
-  :ensure t
-  :pin melpa
-  :init
-  (setq lsp-pyright-use-library-code-for-types t)
-  (setq lsp-pyright-stub-path
-        (concat (getenv "HOME") "/softwares/python-type-stubs"))
-  )
-
 
 (use-package pyvenv
   :ensure t

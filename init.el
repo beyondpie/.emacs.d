@@ -43,9 +43,12 @@
 (require 'init-windows)
 (require 'init-git)
 (require 'init-project)
-(require 'init-lsp)
+;; Use eglot instead of lsp-mode
+;; (require 'init-lsp)
 (require 'init-treesitter)
-(require 'init-citre)
+;; Deprecated citre since we almost
+;; did not use it
+;; (require 'init-citre)
 (require 'init-snakemake)
 (require 'init-prog)
 (require 'init-shell)

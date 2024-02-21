@@ -14,6 +14,17 @@
         highlight-indent-guides-method 'character)
   )
 
+;; eldoc
+(when (fboundp 'global-eldoc-mode)
+  (add-hook 'after-init-hook 'global-eldoc-mode))
+
+(setq hippie-expand-try-functions-list
+      '(try-complete-file-name-partially
+        try-complete-file-name
+        try-expand-dabbrev
+        try-expand-dabbrev-all-buffers
+        try-expand-dabbrev-from-kill))
+
 ;; add auto-fill-mode
 ;; (add-hook 'prog-mode-hook 'auto-fill-mode)
 ;; add Emacs default fill indicator
@@ -28,11 +39,11 @@
  :states 'normal
  :keymaps 'prog-mode-map
  :prefix beyondpie/major-mode-leader-key
- "rn" '(lsp-rename :which-key "lsp rename")
- "rb" '(lsp-format-buffer :which-key "lsp format buffer")
- "rr" '(lsp-format-region :which-key "lsp format region")
+ "rn" '(eglot-rename :which-key "eglot rename")
+ "rb" '(eglot-format-buffer :which-key "eglot format buffer")
+ "rf" '(eglot-format :which-key "eglot format")
  "gh" '(eldoc :which-key "eldoc")
- "gg" '(lsp-find-definition :which-key "lsp find def")
+ "gg" '(eglot-find-implementation :which-key "eglot find imp")
  "M-." '(xref-find-definitions :which-key "xref find def")
  "M-," '(xref-pop-to-location :which-key "xref back")
  "gm" '(imenu :which-key "imenu")
@@ -43,25 +54,9 @@
  "ep" '(flymake-goto-prev-error :which-key "flymake prev err")
  "M-p" '(flymake-goto-prev-error :which-key "flymake prev err")
  "M-/" '(hippe-expand :which-key "hippie-expand")
- "C-M-/" '(comint-dynamic-complete-filename :which-key "comint dynamic complete filenm")
- "tu" '(citre-update-this-tags-file :which-key "tag update")
- "tj" '(citre-jump :which-key "tag jump")
- "tb" '(citre-jump-back :which-key "tag jump back")
- "tp" '(citre-peek :which-key "tag peek")
- "ta" '(citre-peek :which-key "tag ace peak")
- "tt" '(ts-fold-toggle :which-key "fold toggle")
+ "C-M-/" '(comint-dynamic-complete-filename :which-key "complete filenm")
+ "tf" '(ts-fold-toggle :which-key "treesitter fold")
 )
-
-;; eldoc
-(when (fboundp 'global-eldoc-mode)
-  (add-hook 'after-init-hook 'global-eldoc-mode))
-
-(setq hippie-expand-try-functions-list
-      '(try-complete-file-name-partially
-        try-complete-file-name
-        try-expand-dabbrev
-        try-expand-dabbrev-all-buffers
-        try-expand-dabbrev-from-kill))
 
 (use-package hl-todo
   :delight
@@ -105,18 +100,6 @@
   :ensure t
   :pin melpa
   :hook ( prog-mode . rainbow-delimiters-mode ))
-
-;; Github copilot
-(use-package copilot
-  :init (slot/vc-install :fetcher "github" :repo "zerolfx/copilot.el")
-  ;; :hook (prog-mode . copilot-mode)
-  :bind (:map copilot-completion-map
-              ("<tab>" . 'copilot-accept-completion)
-              ("TAB" . 'copilot-accept-completion)
-              ("C-TAB" . 'copilot-accept-completion-by-word)
-              ("C-<tab>" . 'copilot-accept-completion-by-word))
-  )
-
 
 (provide 'init-prog)
 ;;; init-prog.el ends here
