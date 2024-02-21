@@ -33,6 +33,13 @@
                         )
                     )
   :init
+  ;; (defvar ess-R-fl-keyword:assign-vars
+  ;;       (cons "\\(\\(?2:\\s\"\\).+\\2\\|\\sw+\\)\\s-*\\(<-\\)"
+              ;; '(1 font-lock-function-name-face nil)))
+  (defvar ess-R-fl-keyword:assign-vars
+    (cons (concat "\\(" "\\sw+" "\\)"
+                  "[ \t]*" "\\(<-\\)")
+          '(1 font-lock-function-name-face nil)))
   ;; ESS highlighting
   ;; https://emacs.stackexchange.com/questions/60924/how-to-add-function-call-highlighting-in-ess
   (setq ess-R-font-lock-keywords
@@ -51,10 +58,12 @@
           (ess-fl-keyword:delimiters . t)
           (ess-fl-keyword:= . t)
           (ess-fl-keyword:matrix-labels . t)
+          (ess-R-fl-keyword:assign-vars . t)
           ))
   :config
   (setq ess-fl-keyword:numbers
-        (cons "\\b\\.?[0-9]+[.eEL]?[0-9]*\\b\\|\\(\\sw+\\)[:@\$]+" 'ess-numbers-face))
+        (cons "\\b\\.?[0-9]+[.eEL]?[0-9]*\\b\\|\\(\\sw+\\)[:@\$]+"
+              'ess-numbers-face))
   (setq
    ess-style 'RStudio-
    ess-indent-offset 2
