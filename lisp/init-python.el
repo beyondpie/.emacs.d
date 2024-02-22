@@ -21,7 +21,7 @@
 
 (defun spacemacs//python-default ()
   "Default settings for python buffers"
-  (setq mode-name "py"
+  (setq-local mode-name "py"
         tab-width 4
         fill-column 88)
   )
@@ -133,11 +133,11 @@
 
 ;; https://github.com/millejoh/emacs-ipython-notebook
 (use-package python-mode
-  :hook (
-         ((python-mode python-ts-mode). spacemacs//python-default))
+  :hook ((python-mode python-ts-mode) . (lambda () (progn
+                                                     (spacemacs//python-default)
+                                                     (spacemacs//python-setup-shell))))
   :init
   (setq python-ts-mode-hook python-mode-hook)
-  (spacemacs//python-setup-shell)
   (setq python-indent-offset 4)
   (setq python-shell-completion-native-enable nil)
   (if (executable-find (nth 0 python-flymake-command))
