@@ -12,8 +12,8 @@
   :hook ((emacs-lisp-mode . company-mode)
          (ess-r-mode . company-mode)
          (inferior-ess-r-mode . company-mode)
-         (scala-mode . company-mode)
          (python-mode . company-mode)
+         (eshell-mode . company-mode)
          )  
   :delight
   :defines (company-dabbrev-ignore-case company-dabbrev-downcase)
