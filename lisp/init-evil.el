@@ -46,6 +46,7 @@
         evil-normal-state-cursor '(box "Orange")
         evil-shift-width 2
         evil-collection-company-use-tng nil
+        evil-want-C-i-jump nil
         )
   :hook (
          (after-init . evil-mode)
