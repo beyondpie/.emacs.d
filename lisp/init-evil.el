@@ -52,6 +52,10 @@
          (after-init . evil-mode)
          )
   :config
+  ;; https://emacs.stackexchange.com/questions/46371/how-can-i-get-ret-to-follow-org-mode-links-when-using-evil-mode
+  (define-key evil-motion-state-map (kbd "SPC") nil)
+  (define-key evil-motion-state-map (kbd "TAB") nil)
+  (define-key evil-motion-state-map (kbd "RET") nil)
   (beyondpie/set-evil-insert-state-cursor)
   (setq evil-want-fine-undo t)
   :bind
