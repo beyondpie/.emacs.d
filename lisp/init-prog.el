@@ -6,7 +6,14 @@
 
 (use-package eglot
   :init
-  (setq eglot-stay-out-of '(company)))
+  (setq eglot-stay-out-of '(company))
+  :config
+  (setq-default eglot-workspace-configuration
+                '( :pylsp (:plugins (:ruff ( :enabled t
+                                             :lineLength 88
+                                             :indent-stype "space"
+                                            )))))
+  )
 
 (use-package highlight-indent-guides
   ;; not load highlight indent guides by default since it may slow emacs.
