@@ -321,20 +321,30 @@
 ;;; Commentary:
 ;; ref:
 ;; https://github.com/necaris/conda.el
-
 (use-package conda
   :delight
   :init
   (if (eq system-type 'darwin)
       (setq conda-anaconda-home (expand-file-name "~/mambaforge"))
-    (setq conda-anaconda-home (expand-file-name "~/miniconda3"))
+    (if (string= system-name "mediator.sdsc.edu")
+        (setq conda-anaconda-home (expand-file-name "~/miniforge3"))
+      )
     )
+  :hook
+  ((find-file . (lambda ()
+                  (when (bound-and-true-p conda-project-env-path)
+                    (conda-env-activate-for-buffer))))
+   (prog-mode . (lambda ()
+                  (setq mode-line-format (cons '(:exec conda-env-current-name) mode-line-format))))
+   )
   :config
   (conda-env-initialize-eshell)
   (conda-env-autoactivate-mode nil)
   :commands
-  (conda-env-activate conda-env-deactivate conda-env-activate-for-buffer
-                      conda-env-initialize-eshell)
+  (conda-env-activate
+   conda-env-deactivate
+   conda-env-activate-for-buffer
+   )
   )
 
 (provide 'init-utils)
