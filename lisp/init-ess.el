@@ -17,20 +17,20 @@
   :hook (ess-r-mode . (lambda ()
                         (setq-local outline-regexp "^#+ +\\*+")))
   :hook (ess-r-mode . outline-minor-mode)
-  :hook (ess-r-mode . (lambda ()
-                        (when (not (file-remote-p default-directory))
-                          (setq-local company-backends
-                                      '(campany-capf
-                                        company-files
-                                        company-capf-with-R-objects
-                                        company-R-library
-                                        company-R-args
-                                        (company-R-objects :separate)
-                                        company-dabbrev-code
-                                        company-keywords
-                                        company-dabbrev))
-                            )
-                        )
+  ;; :hook (ess-r-mode . (lambda ()
+  ;;                       (when (not (file-remote-p default-directory))
+  ;;                         (setq-local company-backends
+  ;;                                     '(campany-capf
+  ;;                                       company-files
+  ;;                                       company-capf-with-R-objects
+  ;;                                       company-R-library
+  ;;                                       company-R-args
+  ;;                                       (company-R-objects :separate)
+  ;;                                       company-dabbrev-code
+  ;;                                       company-keywords
+  ;;                                       company-dabbrev))
+  ;;                           )
+  ;;                       )
                     )
   :init
   ;; (defvar ess-R-fl-keyword:assign-vars
