@@ -31,7 +31,7 @@
   ;;                                       company-dabbrev))
   ;;                           )
   ;;                       )
-                    )
+  ;;                  )
   :init
   ;; (defvar ess-R-fl-keyword:assign-vars
   ;;       (cons "\\(\\(?2:\\s\"\\).+\\2\\|\\sw+\\)\\s-*\\(<-\\)"
@@ -100,6 +100,7 @@
             )
   (:keymaps 'ess-r-help-mode-map
             "w" nil)
+  :general
   (:states 'normal
            :keymaps 'outline-minor-mode-map
            :prefix beyondpie/major-mode-leader-key

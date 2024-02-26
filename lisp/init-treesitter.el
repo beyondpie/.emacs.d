@@ -2,14 +2,13 @@
 
 ;;; Commentary:
 ;; a minor-mode with tree-sitter hightlight support for any language.
-;; NOTE: may be removed from config in the near future
-;; since we now have default tree-sitter in Emacs 29
 ;;; Code:
 (use-package tree-sitter
   :ensure t
   :pin melpa
   ;; remove global tree-sitter-mode
   ;; :hook ( (after-init . global-tree-sitter-mode))
+  :hook ( (python-mode . tree-sitter-mode) )
   :config
   (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode)
   ;; https://github.com/emacs-tree-sitter/elisp-tree-sitter/issues/20#issuecomment-1352675350
