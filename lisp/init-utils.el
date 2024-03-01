@@ -347,5 +347,7 @@
    )
   )
 
+(define-key global-map (kbd "M-j") nil)
+(define-key global-map (kbd "M-k") nil)
 (provide 'init-utils)
 ;;; init-utils.el ends here

@@ -1,3 +1,4 @@
+
 ;;; init.el --- start emacs configuration  -*- lexical-binding: t -*-
 
 ;;; Commentary:
@@ -19,8 +20,11 @@
 
 ;; for magit, which requires 'transient' >= 0.5.0
 (setq package-install-upgrade-built-in t)
-;; (progn (unload-feature 'transient t) (require 'transient))
+;;(progn (unload-feature 'transient t) (require 'transient))
+;; remove naive comp function
+(setq native-comp-speed -1)
 
+ 
 
 (require 'init-elpa)
 (require 'init-const)

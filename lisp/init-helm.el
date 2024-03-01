@@ -10,21 +10,24 @@
   :pin melpa
   :hook (after-init . helm-mode)
   :delight
-  :config
+  :init
   (setq helm-split-window-default-side 'below
         helm-autoresize-max-height 40
         helm-autoresize-min-height 10
         helm-echo-input-in-header-line nil
         history-delete-duplicates t
         helm-M-x-fuzzy-match t
-        helm-buffers-fuzzy-matching nil
-        helm-recentf-fuzzy-match nil
-        helm-semantic-fuzzy-match nil
-        helm-imenu-fuzzy-match nil
-        helm-locate-fuzzy-match nil
-        helm-apropos-fuzzy-match nil
+        helm-buffers-fuzzy-matching t
+        helm-recentf-fuzzy-match t
+        helm-semantic-fuzzy-match t
+        helm-imenu-fuzzy-match t
+        helm-locate-fuzzy-match t
+        helm-apropos-fuzzy-match t
         helm-lisp-fuzzy-completion t
+        helm-move-to-line-cycle-in-source nil
         )
+  
+  :config
   ;; used for helm-man-woman in shell
   (add-to-list 'helm-sources-using-default-as-input 'helm-source-man-pages)
   (helm-autoresize-mode 1)
