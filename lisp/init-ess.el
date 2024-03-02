@@ -90,6 +90,7 @@
            "gf" '(helm-semantic-or-imenu :which-key "helm search semantic")
            "go" '(helm-occur :which-key "helm occur")
            "'" '(R :which-key "start repl")
+           "rb" '(format-all-buffer :which-key "format-all buffer")
            )
   (:states '(insert emacs)
            :keymaps 'ess-r-mode-map

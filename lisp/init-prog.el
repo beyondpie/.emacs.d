@@ -112,5 +112,9 @@
   :pin melpa
   :hook ( prog-mode . rainbow-delimiters-mode ))
 
+(use-package format-all
+  :commands format-all-mode
+  :hook (prog-mode . format-all-mode))
+
 (provide 'init-prog)
 ;;; init-prog.el ends here
