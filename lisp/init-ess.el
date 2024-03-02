@@ -35,7 +35,8 @@
   :init
   ;; (defvar ess-R-fl-keyword:assign-vars
   ;;       (cons "\\(\\(?2:\\s\"\\).+\\2\\|\\sw+\\)\\s-*\\(<-\\)"
-              ;; '(1 font-lock-function-name-face nil)))
+  ;; '(1 font-lock-function-name-face nil)))
+  (add-to-list 'process-environment "_R_USE_PIPEBIND_=true")
   (defvar ess-R-fl-keyword:assign-vars
     (cons (concat "\\(" "\\sw+" "\\)"
                   "[ \t]*" "\\(<-\\)")
