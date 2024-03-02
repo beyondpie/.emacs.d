@@ -62,7 +62,8 @@
 (require 'init-org)
 (require 'init-elfeed)
 (require 'init-treemacs)
-(require 'init-scala)
+;; scala-mode cause emacs in Linux start unmormally
+;;(require 'init-scala)
 
 (when *is-a-mac*
   (require 'init-macos)
