@@ -43,7 +43,7 @@
 (require 'init-company)
 ;; use yasnippet since lsp and company depend on it
 ;; though it occupies some time.
-(require 'init-yasnippet)
+;; (require 'init-yasnippet)
 (require 'init-windows)
 (require 'init-git)
 (require 'init-project)
@@ -62,7 +62,7 @@
 (require 'init-org)
 (require 'init-elfeed)
 (require 'init-treemacs)
-
+(require 'init-scala)
 
 (when *is-a-mac*
   (require 'init-macos)
