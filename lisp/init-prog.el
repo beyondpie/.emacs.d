@@ -117,6 +117,10 @@
   :hook (prog-mode . format-all-mode)
   :config
   (remove-hook 'before-save-hook 'format-all--buffer-from-hook t)
+  (defun remove-format-all-from-save-hook ()
+    (interactive)
+    (remove-hook 'before-save-hook 'format-all--buffer-from-hook t))
+  (advice-add 'format-all-buffer :after 'remove-format-all-from-save-hook)
   )
 
 (provide 'init-prog)
