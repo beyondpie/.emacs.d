@@ -25,6 +25,7 @@
         helm-apropos-fuzzy-match t
         helm-lisp-fuzzy-completion t
         helm-move-to-line-cycle-in-source nil
+        helm-allow-mouse nil
         )
   
   :config
