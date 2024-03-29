@@ -42,7 +42,7 @@
    "g" 'revert-buffer
    "u" 'dired-unmark
    "+" 'dired-create-directory
-   "C" 'my/rsync
+   "C" 'dired-do-copy
    "R" 'dired-do-rename
    "(" 'dired-hide-details-mode
    "!" 'dired-do-shell-command
