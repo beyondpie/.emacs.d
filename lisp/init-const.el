@@ -54,6 +54,11 @@
   "R REPL under TSCC mediator"
   :type 'string
   :group 'beyondpie-program)
+(defcustom tscc2-ipython
+  "/tscc/nfs/home/szu/miniforge3/envs/sa2/bin/ipython"
+  "ipython REPL in TSCC2"
+  :type 'string
+  :group 'beyondpie-program)
 
 (defcustom mac-ls
   "/usr/local/bin/gls"

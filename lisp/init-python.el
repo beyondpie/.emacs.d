@@ -127,6 +127,19 @@
     (pop-to-buffer (process-buffer shell-process))
     (evil-insert-state)))
 
+(defun tscc2-python ()
+  "Start and/or switch to the REPL remotely."
+  (interactive)
+  (let ((shell-process
+         (or (python-shell-get-process)
+             (run-python tscc2-ipython)
+             (python-shell-get-process)
+             )))
+    (unless shell-process
+      (error "Failed to start python shell properly"))
+    (pop-to-buffer (process-buffer shell-process))
+    (evil-insert-state)))
+
 (use-package python-black
   :after python
   :commands (python-black-buffer python-black-region))
