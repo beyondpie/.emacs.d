@@ -82,7 +82,8 @@
 ;; stop use backup files
 ;; (setq make-backup-files nil)
 
-
+;; allow buffer undo with larger undo info
+(setq undo-outer-limit 500000000)
 
 (provide 'init-better-defaults)
 ;;; init-better-defaults.el ends here
