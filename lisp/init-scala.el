@@ -4,7 +4,6 @@
 ;; https://scalameta.org/metals/docs/editors/emacs/
 ;;; Code:
 
-;; FIXME: make emacs crash
 (use-package ensime-mode
   :ensure nil
   :load-path "~/softwares/ensime-tng-3.0.15/lisp"
@@ -16,10 +15,14 @@
         ("C-c C-i s" . ensime-symbol-at-point)
         ("C-c C-r i" . ensime-import-symbol-at-point)))
 
-
 (use-package scala-mode
   :interpreter ("scala" . scala-mode)
   :hook (scala-mode . ensime-mode)
+  :general
+  (:states '(nomrmal visual)
+           :keymaps 'scala-mode-map
+           :prefix beyondpie/major-mode-leader-key
+           "sr" '(sbt-send-region :which-key "sbt-send-region"))
   )
 
 
@@ -33,7 +36,8 @@
 (use-package sbt-mode
   :commands sbt-start sbt-command
   :config
-  (setq sbt:program-options '("-Dsbt.supershell=false")))
+  (setq sbt:program-options '("-Dsbt.supershell=false"))
+  )
 
 
 (provide 'init-scala)

@@ -1,5 +1,4 @@
 ;;; init-utils.el --- Initialize ultilities.	-*- lexical-binding: t -*-
-
 ;;; Commentary:
 
 ;;; Code:
@@ -349,5 +348,6 @@
 
 (define-key global-map (kbd "M-j") nil)
 (define-key global-map (kbd "M-k") nil)
+
 (provide 'init-utils)
 ;;; init-utils.el ends here
