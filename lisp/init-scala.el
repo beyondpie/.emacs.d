@@ -19,10 +19,12 @@
   :interpreter ("scala" . scala-mode)
   :hook (scala-mode . ensime-mode)
   :general
-  (:states '(nomrmal visual)
+  (:states '(normal visual)
            :keymaps 'scala-mode-map
            :prefix beyondpie/major-mode-leader-key
-           "sr" '(sbt-send-region :which-key "sbt-send-region"))
+           "sr" '(sbt-send-region :which-key "sbt-send-region")
+           "sl" '(sbt-send-line :which-key "sbt-send-line")
+           )
   )
 
 
@@ -34,9 +36,13 @@
 ;; minibuffer-local-completion-map)
 ;; sbt-supershell kills sbt-mode:  https://github.com/hvesalai/emacs-sbt-mode/issues/152
 (use-package sbt-mode
-  :commands sbt-start sbt-command
+  :commands sbt-start sbt-command sbt-send-region sbt-send-line
   :config
   (setq sbt:program-options '("-Dsbt.supershell=false"))
+  (defun sbt-send-line ()
+    (interactive)
+    (sbt:send-region (line-beginning-position)
+                     (line-end-position)))
   )
 
 
