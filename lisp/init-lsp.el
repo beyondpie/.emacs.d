@@ -40,6 +40,7 @@
 	      lsp-enable-on-type-formatting nil
         lsp-idle-delay 0.200
         lsp-log-io nil
+        lsp-modeline-code-actions-enable nil
         )
   :hook
   (lsp-mode . lsp-enable-which-key-integration)
