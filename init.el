@@ -41,9 +41,7 @@
 (require 'init-flymake)
 (require 'init-recentf)
 (require 'init-company)
-;; use yasnippet since lsp and company depend on it
-;; though it occupies some time.
-;; (require 'init-yasnippet)
+(require 'init-yasnippet)
 (require 'init-windows)
 (require 'init-git)
 (require 'init-project)
