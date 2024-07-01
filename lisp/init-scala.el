@@ -17,7 +17,12 @@
 ;;         ("C-c C-i s" . ensime-symbol-at-point)
 ;;         ("C-c C-r i" . ensime-import-symbol-at-point)))
 
-(use-package lsp-metals)
+(use-package lsp-metals
+  :init
+  (setq lsp-metals-java-home (expand-file-name "~/miniforge3/lib/jvm"))
+  (setq lsp-metals-install-scala-version "3.4.2")
+  (setq lsp-metals-install-version "1.3.2")
+  )
 
 (use-package scala-mode
   :interpreter ("scala" . scala-mode)
