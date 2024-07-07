@@ -21,7 +21,9 @@
   :init
   (slot/vc-install :fetcher "github"
                    :repo "emacs-lsp/lsp-metals")
-  (setq lsp-metals-java-home (expand-file-name "~/miniforge3/lib/jvm"))
+  (setq lsp-metals-java-home (if (string-match "mediator" (system-name))
+                                 (expand-file-name "~/miniforge3")
+                               (expand-file-name "~/miniforge3/lib/jvm")))
   (setq lsp-metals-install-scala-version "3.4.2")
   (setq lsp-metals-install-version "1.3.2")
   )
