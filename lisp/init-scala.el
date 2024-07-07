@@ -19,12 +19,17 @@
 
 (use-package lsp-metals
   :init
+  (slot/vc-install :fetcher "github"
+                   :repo "emacs-lsp/lsp-metals")
   (setq lsp-metals-java-home (expand-file-name "~/miniforge3/lib/jvm"))
   (setq lsp-metals-install-scala-version "3.4.2")
   (setq lsp-metals-install-version "1.3.2")
   )
 
 (use-package scala-mode
+  :init
+  (slot/vc-install :fetcher "github"
+                   :repo "hvesalai/emacs-scala-mode")
   :interpreter ("scala" . scala-mode)
   :hook (scala-mode . tree-sitter-hl-mode)
   :general
@@ -49,6 +54,9 @@
 ;; minibuffer-local-completion-map)
 ;; sbt-supershell kills sbt-mode:  https://github.com/hvesalai/emacs-sbt-mode/issues/152
 (use-package sbt-mode
+  :init
+  (slot/vc-install :fetcher "github"
+                   :repo "hvesalai/emacs-sbt-mode")
   :commands sbt-start sbt-command sbt-send-region sbt-send-line
   :config
   (setq sbt:program-options '("-Dsbt.supershell=false"))
@@ -57,6 +65,15 @@
     (sbt:send-region (line-beginning-position)
                      (line-end-position)))
   )
+
+;; test scala-ts-mode
+;; tscc2 emacs has no treesit support
+;; (use-package scala-ts-mode
+;;   :init (slot/vc-install :fetcher "github"
+;;                          :repo "KaranAhlawat/scala-ts-mode")
+;;   :config
+;;   (setq treesit-font-lock-level 4)
+;;   )
 
 
 (provide 'init-scala)
