@@ -5,8 +5,10 @@
 ;;; Code:
 
 (use-package eglot
+  :pin melpa-stable
   :init
   (setq eglot-stay-out-of '(company))
+  :hook (scala-mode . eglot-ensure)
   :config
   (setq-default eglot-workspace-configuration
                 '( :pylsp (:plugins (:ruff ( :enabled t

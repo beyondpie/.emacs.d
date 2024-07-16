@@ -46,7 +46,7 @@
 (require 'init-git)
 (require 'init-project)
 ;; use both eglot and lsp
-(require 'init-lsp)
+;; (require 'init-lsp)
 (require 'init-treesitter)
 ;; Deprecated citre since we almost
 ;; did not use it

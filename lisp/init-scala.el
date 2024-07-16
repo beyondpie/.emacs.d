@@ -4,30 +4,6 @@
 ;; https://scalameta.org/metals/docs/editors/emacs/
 ;;; Code:
 
-
-;; we can load ensime but no response as expected
-;; (use-package ensime-mode
-;;   :ensure nil
-;;   :load-path "~/softwares/ensime-tng-3.0.15/lisp"
-;;   :commands ensime-mode
-;;   :bind
-;;   (:map ensime-mode-map
-;;         ("M-." . ensime-jump-to-definition)
-;;         ("C-c C-i t" . ensime-type-at-point)
-;;         ("C-c C-i s" . ensime-symbol-at-point)
-;;         ("C-c C-r i" . ensime-import-symbol-at-point)))
-
-(use-package lsp-metals
-  :init
-  (slot/vc-install :fetcher "github"
-                   :repo "emacs-lsp/lsp-metals")
-  (setq lsp-metals-java-home (if (string-match "mediator" (system-name))
-                                 (expand-file-name "~/miniforge3")
-                               (expand-file-name "~/miniforge3/lib/jvm")))
-  (setq lsp-metals-install-scala-version "3.4.2")
-  (setq lsp-metals-install-version "1.3.2")
-  )
-
 (use-package scala-mode
   :init
   (slot/vc-install :fetcher "github"
@@ -48,13 +24,6 @@
   )
 
 
-;; ;; WORKAROUND: https://github.com/ensime/emacs-sbt-mode/issues/31
-;; ;; allows using SPACE when in the minibuffer
-;; (substitute-key-definition
-;;  'minibuffer-complete-word
-;;  'self-insert-command
-;; minibuffer-local-completion-map)
-;; sbt-supershell kills sbt-mode:  https://github.com/hvesalai/emacs-sbt-mode/issues/152
 (use-package sbt-mode
   :init
   (slot/vc-install :fetcher "github"
@@ -67,16 +36,6 @@
     (sbt:send-region (line-beginning-position)
                      (line-end-position)))
   )
-
-;; test scala-ts-mode
-;; tscc2 emacs has no treesit support
-;; (use-package scala-ts-mode
-;;   :init (slot/vc-install :fetcher "github"
-;;                          :repo "KaranAhlawat/scala-ts-mode")
-;;   :config
-;;   (setq treesit-font-lock-level 4)
-;;   )
-
 
 (provide 'init-scala)
 ;;; init-scala.el ends here
