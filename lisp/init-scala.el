@@ -9,7 +9,10 @@
   (slot/vc-install :fetcher "github"
                    :repo "hvesalai/emacs-scala-mode")
   :interpreter ("scala" . scala-mode)
-  :hook (scala-mode . tree-sitter-hl-mode)
+  :hook (
+         (scala-mode . tree-sitter-hl-mode)
+         (scala-mode . company-mode)
+         )
   :general
   (:states '(normal visual)
            :keymaps 'scala-mode-map
@@ -17,9 +20,9 @@
            "sr" '(sbt-send-region :which-key "sbt-send-region")
            "sl" '(sbt-send-line :which-key "sbt-send-line")
            "gg" '(lsp-find-implementation :which-key "lsp find imp")
-           "rn" '(lsp-rename :which-key "lsp rename")
-           "rf" '(lsp-format-region :which-key "lsp format")
-           "rb" '(lsp-format-buffer :which-key "lsp format buffer")
+           ;; "rn" '(lsp-rename :which-key "lsp rename")
+           ;; "rf" '(lsp-format-region :which-key "lsp format")
+           ;; "rb" '(lsp-format-buffer :which-key "lsp format buffer")
            )
   )
 

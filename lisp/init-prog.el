@@ -6,8 +6,8 @@
 
 (use-package eglot
   :pin melpa-stable
-  :init
-  (setq eglot-stay-out-of '(company))
+  ;; :init
+  ;; (setq eglot-stay-out-of '(company))
   :hook (scala-mode . eglot-ensure)
   :config
   (setq-default eglot-workspace-configuration

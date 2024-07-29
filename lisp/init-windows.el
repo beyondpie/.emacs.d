@@ -29,6 +29,7 @@
  :prefix beyondpie/normal-leader-key
  :non-normal-prefix beyondpie/non-normal-leader-key
  :keymaps 'override
+ "wr" '(window-configuration-to-register :which-key "register window")
  "wm" '(toggle-frame-maximized :which-key "max window")
  "wf" '(toggle-frame-fullscreen :which-key "full window")
  "wM" '(make-frame :which-key "make frame")
