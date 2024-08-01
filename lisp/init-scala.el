@@ -14,7 +14,9 @@
    (buffer-face-mode))
 
 (defun my-pretty-mode ()
+  (interactive)
   (setq prettify-symbols-alist scala-prettify-symbols-alist)
+  (setq prettify-symbols-unprettify-at-point t)
   (prettify-symbols-mode)
   )
 
@@ -22,9 +24,9 @@
   :init
   (slot/vc-install :fetcher "github"
                    :repo "hvesalai/emacs-scala-mode")
-  (setq scala-indent:indent-value-expression t
-        scala-indent:align-parameters t
-        scala-indent:align-forms t)
+  ;; (setq scala-indent:indent-value-expression t
+  ;;       scala-indent:align-parameters t
+  ;;      scala-indent:align-forms t)
   :interpreter ("scala" . scala-mode)
   :hook (
          (scala-mode . tree-sitter-hl-mode)
