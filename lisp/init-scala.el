@@ -4,14 +4,33 @@
 ;; https://scalameta.org/metals/docs/editors/emacs/
 ;;; Code:
 
+
+;; Use monospaced font faces in current buffer
+;; https://emacs.stackexchange.com/questions/3038/using-a-different-font-for-each-major-mode
+ (defun my-buffer-face-mode-fixed ()
+   "Sets a fixed width (monospace) font in current buffer"
+   (interactive)
+   (setq buffer-face-mode-face '(:family "SourceCodePro" :height 100))
+   (buffer-face-mode))
+
+(defun my-pretty-mode ()
+  (setq prettify-symbols-alist scala-prettify-symbols-alist)
+  (prettify-symbols-mode)
+  )
+
 (use-package scala-mode
   :init
   (slot/vc-install :fetcher "github"
                    :repo "hvesalai/emacs-scala-mode")
+  (setq scala-indent:indent-value-expression t
+        scala-indent:align-parameters t
+        scala-indent:align-forms t)
   :interpreter ("scala" . scala-mode)
   :hook (
          (scala-mode . tree-sitter-hl-mode)
          (scala-mode . company-mode)
+         (scala-mode . my-buffer-face-mode-fixed)
+         (scala-mode . my-pretty-mode)
          )
   :general
   (:states '(normal visual)
