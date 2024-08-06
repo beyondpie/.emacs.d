@@ -10,7 +10,6 @@
 
 (use-package lsp-mode
   :delight
-  :hook (scala-mode . lsp)
   :init
   (setq lsp-keymap-prefix "C-c l"
         lsp-enable-symbol-highlighting t

@@ -8,7 +8,7 @@
   :pin melpa
   ;; remove global tree-sitter-mode
   ;; :hook ( (after-init . global-tree-sitter-mode))
-  :hook ( (python-mode . tree-sitter-mode) )
+  ;; :hook ( (python-mode . tree-sitter-mode) )
   :config
   (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode)
   ;; https://github.com/emacs-tree-sitter/elisp-tree-sitter/issues/20#issuecomment-1352675350
