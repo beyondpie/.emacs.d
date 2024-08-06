@@ -40,11 +40,39 @@
            :prefix beyondpie/major-mode-leader-key
            "sr" '(sbt-send-region :which-key "sbt-send-region")
            "sl" '(sbt-send-line :which-key "sbt-send-line")
+           "sR" '(my-sbt-send-region :which-key "my-sbt-send-region")
            "gg" '(lsp-find-implementation :which-key "lsp find imp")
            ;; "rn" '(lsp-rename :which-key "lsp rename")
            ;; "rf" '(lsp-format-region :which-key "lsp format")
            ;; "rb" '(lsp-format-buffer :which-key "lsp format buffer")
            )
+  :config
+  (defun my-sbt:send-region (start end)
+    (unless (comint-check-proc (sbt:buffer-name))
+      (error "sbt is not running in buffer %s" (sbt:buffer-name)))
+    (save-excursion
+      (goto-char end)
+      (skip-syntax-forward ">")
+      (forward-comment (- (point-max)))
+      (setq end (point)))
+    (save-excursion
+      (goto-char start)
+      (forward-comment (point-max))
+      (setq start (point)))
+    (unless (> end start) (error "mark a region of code first"))
+    (display-buffer (sbt:buffer-name))
+    (let ((submode (buffer-local-value 'sbt:submode
+                                       (get-buffer (sbt:buffer-name)))))
+      (comint-send-region (sbt:buffer-name) start end)
+      (comint-send-string (sbt:buffer-name) "\n")))
+
+  (defun my-sbt-send-region (start end)
+        "Send the selected region (between the mark and the current
+    point) to the sbt process of the current buffer's sbt
+    project. Whitespace and comments at the beginning or end of the
+    region are not sent."
+    (interactive "r")
+    (my-sbt:send-region start end))
   )
 
 
