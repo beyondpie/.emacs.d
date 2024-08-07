@@ -39,10 +39,10 @@
   (:states '(normal visual)
            :keymaps 'scala-mode-map
            :prefix beyondpie/major-mode-leader-key
-           "sr" '(sbt-send-region :which-key "sbt-send-region")
-           "sl" '(sbt-send-line :which-key "sbt-send-line")
-           "sR" '(my-sbt-send-region :which-key "my-sbt-send-region")
-           "sL" '(my-sbt-send-line :which-key "my-sbt-send-line")
+           "sR" '(sbt-send-region :which-key "sbt-send-region")
+           "sL" '(sbt-send-line :which-key "sbt-send-line")
+           "sr" '(my-sbt-send-region :which-key "my-sbt-send-region")
+           "sl" '(my-sbt-send-line :which-key "my-sbt-send-line")
            "gg" '(lsp-find-implementation :which-key "lsp find imp")
            ;; "rn" '(lsp-rename :which-key "lsp rename")
            ;; "rf" '(lsp-format-region :which-key "lsp format")
