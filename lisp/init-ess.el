@@ -78,8 +78,6 @@
    ess-use-flymake t
    ess-startup-directory 'default-directory
    )
-  (setq tree-sitter-mode nil)
-  (setq tree-sitter-hl-mode nil)
   :general
   (:states '(normal visual)
            :keymaps 'ess-r-mode-map
