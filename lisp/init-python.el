@@ -22,8 +22,8 @@
 (defun spacemacs//python-default ()
   "Default settings for python buffers"
   (setq-local mode-name "py"
-        tab-width 4
-        fill-column 88)
+        tab-width 2
+        fill-column 80)
   )
 
 (defun spacemacs/python-start-or-switch-repl ()
