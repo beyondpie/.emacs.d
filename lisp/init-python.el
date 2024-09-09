@@ -114,32 +114,6 @@
     (pop-to-buffer (process-buffer shell-process))
     (evil-insert-state)))
 
-(defun mediator-python ()
-  "Start and/or switch to the REPL remotely."
-  (interactive)
-  (let ((shell-process
-         (or (python-shell-get-process)
-             (run-python mediator-ipython)
-             (python-shell-get-process)
-             )))
-    (unless shell-process
-      (error "Failed to start python shell properly"))
-    (pop-to-buffer (process-buffer shell-process))
-    (evil-insert-state)))
-
-(defun tscc2-python ()
-  "Start and/or switch to the REPL remotely."
-  (interactive)
-  (let ((shell-process
-         (or (python-shell-get-process)
-             (run-python tscc2-ipython)
-             (python-shell-get-process)
-             )))
-    (unless shell-process
-      (error "Failed to start python shell properly"))
-    (pop-to-buffer (process-buffer shell-process))
-    (evil-insert-state)))
-
 (use-package python-black
   :after python
   :commands (python-black-buffer python-black-region))
@@ -151,11 +125,13 @@
                                                      (spacemacs//python-setup-shell))))
   :init
   (setq python-ts-mode-hook python-mode-hook)
-  (setq python-indent-offset 4)
+  (setq python-indent-offset 2)
   (setq python-shell-completion-native-enable nil)
   (if (executable-find (nth 0 python-flymake-command))
       (setq python-flymake-command python-flymake-command)
     )
+  (setq python-indent-def-block-scale 1)
+  
   :config
   (setq-default python-indent-guess-indent-offset nil)
   :general
