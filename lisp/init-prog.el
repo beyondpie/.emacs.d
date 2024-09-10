@@ -46,6 +46,13 @@
                 )
   )
 
+(eval-after-load "flymake"
+  '(progn
+     (defun flymake-after-change-function (start stop len)
+      "Start syntax check for current buffer if it isn't already running."
+      ;; Do nothing, don't want to run checks until I save.
+      )))
+
 (use-package highlight-indent-guides
   ;; not load highlight indent guides by default since it may slow emacs.
   ;; https://emacs-china.org/t/highlight-indent-guides/16532/3
@@ -170,7 +177,6 @@
            "rg" '(anzu-query-replace-regexp :which-key "anzu-query-replace-regexp")
            "rc" '(anzu-replace-at-cursor-thing :which-key "anzu-replace-at-cursor")
            ))
-
 
 (provide 'init-prog)
 ;;; init-prog.el ends here

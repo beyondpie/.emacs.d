@@ -31,18 +31,6 @@
   :config
   (setq vundo-compact-display t))
 
-
-;; for mark
-(global-set-key (kbd "C-SPC") 'set-mark-command)
-
-;; for tabs
-(setq-default indent-tabs-mode nil
-              default-tab-width 2
-              tab-width 2)
-;; ** language
-(ispell-change-dictionary "american" t)
-(define-coding-system-alias 'UTF-8 'utf-8)
-
 ;; for text edit
 (general-define-key
  :states '(normal visual insert emacs)
@@ -54,42 +42,11 @@
  "sr" '(eval-region :which-key "elisp eval-region")
  )
 
-;; files
-;; from "writing GNU Emacs Extensions"
-(defun read-only-if-symlink ()
-  (if (file-symlink-p buffer-file-name)
-      (progn (setq buffer-read-only t)
-             (message "File is a symlink."))
-    ))
-
-(add-hook 'find-file-hooks 'read-only-if-symlink)
-
-;; https://www.murilopereira.com/a-rabbit-hole-full-of-lisp/
-(remove-hook 'file-name-at-point-functions 'ffap-guess-file-name-at-point)
-
-;; y-or-n
-(fset 'yes-or-no-p 'y-or-n-p)
-
-;; remove compling in the mode-line
-;; ref: https://emacs.stackexchange.com/questions/61957/mode-line-always-shows-compiling-after-compile-a-tex-file-with-typos?newreg=6aa1e0e4e19b423a9bce34c66bacc1e4
-(setq compilation-in-progress nil)
-
-;; view large file
-(use-package vlf
-  :ensure t
-  :hook (after-init . (lambda () (require 'vlf-setup)))
-  :general
-  (:states '(normal visual insert emacs)
-           :keymaps 'override
-           :prefix beyondpie/normal-leader-key
-           :non-normal-prefix beyondpie/non-normal-leader-key
-           "fl" '(vlf :which-key "visualize large file"))
-  )
-
 (use-package elisp-demos
   :config
   (advice-add 'describe-function-1 :after #'elisp-demos-advice-describe-function-1)
   )
+
 (use-package helpful
   :config
   (global-set-key (kbd "C-h f") #'helpful-callable)
@@ -112,14 +69,12 @@
     (winner-mode)
     (ess-r-mode "R")
     (windmove-mode)
-    ;; (flymake-mode)
     (evil-collection-unimpaired-mode)
     (Evil-Collection-unimparied-mode)
     (global-evil-collection-unimpaired-mode)
     (helm-mode)
     (tree-sitter-mode)
     (flymake-mode)
-    (flycheck-mode)
     (helm-minibuffer-history-mode)
     )
   )
@@ -127,16 +82,6 @@
   :pin melpa
   :hook (after-init . minions-mode)
   )
-
-;; remove up/down case keys due to they usually make my codes typo
-;; upcase-region
-(global-unset-key (kbd "C-x C-u"))
-;; upcase-word
-(global-unset-key (kbd "M-u"))
-;; downcase-word
-(global-unset-key (kbd "M-l"))
-;; downcase-region
-(global-unset-key (kbd "C-x C-l"))
 
 ;; hide/show modeline
 ;; Ref: https://bzg.fr/en/emacs-hide-mode-line/
@@ -179,13 +124,6 @@
   (keyfreq-mode 1)
   (keyfreq-autosave-mode 1)
   )
-
-(eval-after-load "flymake"
-  '(progn
-     (defun flymake-after-change-function (start stop len)
-      "Start syntax check for current buffer if it isn't already running."
-      ;; Do nothing, don't want to run checks until I save.
-      )))
 
 ;; http://xahlee.info/emacs/emacs/emacs_customize_default_window_size.html
 (defun beyondpie/setgui ()
@@ -240,6 +178,29 @@
               (setq line-spacing 0)))
   )
 
+;; === file-related ===
+;; from "writing GNU Emacs Extensions"
+(defun read-only-if-symlink ()
+  (if (file-symlink-p buffer-file-name)
+      (progn (setq buffer-read-only t)
+             (message "File is a symlink."))
+    ))
+
+(add-hook 'find-file-hooks 'read-only-if-symlink)
+
+;; https://www.murilopereira.com/a-rabbit-hole-full-of-lisp/
+(remove-hook 'file-name-at-point-functions 'ffap-guess-file-name-at-point)
+;; view large file
+(use-package vlf
+  :ensure t
+  :hook (after-init . (lambda () (require 'vlf-setup)))
+  :general
+  (:states '(normal visual insert emacs)
+           :keymaps 'override
+           :prefix beyondpie/normal-leader-key
+           :non-normal-prefix beyondpie/non-normal-leader-key
+           "fl" '(vlf :which-key "visualize large file"))
+  )
 ;; temp stop asking file is too large when open it
 (defvar my-original-large-file-threshold 10000000
   "Original value of large-file-warning-threshold.")
@@ -256,12 +217,11 @@
     (message "Large file warning enabled.")))
 (global-set-key (kbd "C-c t") 'toggle-large-file-warning)
 
+;; === end of file-related ===
+
 ;; eww
 ;; Auto-rename new eww buffers
 ;; C-u M-x eww
-
-(define-key global-map (kbd "M-j") nil)
-(define-key global-map (kbd "M-k") nil)
 
 (provide 'init-utils)
 ;;; init-utils.el ends here

@@ -1,4 +1,3 @@
-
 ;;; init.el --- start emacs configuration  -*- lexical-binding: t -*-
 
 ;;; Commentary:
@@ -16,13 +15,36 @@
 (set-default-coding-systems 'utf-8)
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
+(define-coding-system-alias 'UTF-8 'utf-8)
 (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
+(ispell-change-dictionary "american" t)
 
 ;; for magit, which requires 'transient' >= 0.5.0
 (setq package-install-upgrade-built-in t)
 ;; (progn (unload-feature 'transient t) (require 'transient))
 ;; remove naive comp function
 (setq native-comp-speed -1)
+
+(setq-default indent-tabs-mode nil
+              default-tab-width 2
+              tab-width 2)
+(global-set-key (kbd "C-SPC") 'set-mark-command)
+(fset 'yes-or-no-p 'y-or-n-p)
+;; remove compling in the mode-line
+;; ref: https://emacs.stackexchange.com/questions/61957/mode-line-always-shows-compiling-after-compile-a-tex-file-with-typos?newreg=6aa1e0e4e19b423a9bce34c66bacc1e4
+(setq compilation-in-progress nil)
+
+;; remove up/down case keys due to they usually make my codes typo
+;; upcase-region
+(global-unset-key (kbd "C-x C-u"))
+;; upcase-word
+(global-unset-key (kbd "M-u"))
+;; downcase-word
+(global-unset-key (kbd "M-l"))
+;; downcase-region
+(global-unset-key (kbd "C-x C-l"))
+(define-key global-map (kbd "M-j") nil)
+(define-key global-map (kbd "M-k") nil)
 
 (require 'init-elpa)
 (require 'init-const)
