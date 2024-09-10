@@ -54,12 +54,19 @@
                 )
   )
 
-(eval-after-load "flymake"
-  '(progn
-     (defun flymake-after-change-function (start stop len)
+(use-package flymake
+  :delight
+  :init
+  (setq flymake-start-on-flymake-mode t)
+  (setq flymake-start-on-save-buffer t)
+  ;; added in 1.3.6
+  (setq flymake-show-diagnostics-at-end-of-line t)
+  :config
+   (defun flymake-after-change-function (start stop len)
       "Start syntax check for current buffer if it isn't already running."
       ;; Do nothing, don't want to run checks until I save.
-      )))
+      ) 
+  )
 
 (use-package highlight-indent-guides
   ;; not load highlight indent guides by default since it may slow emacs.
