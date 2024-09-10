@@ -37,6 +37,15 @@
       (expand-file-name
        (format "elpa-%s.%s" emacs-major-version emacs-minor-version)
        user-emacs-directory))
+;; FIX under new version of Emacs, no package dir exists.
+(unless (file-exists-p package-user-dir)
+  (progn
+    (message "package user dir %s does not exist." package-user-dir)
+    (make-directory package-user-dir)
+    (message "I've created it.")
+    )
+  )
+
 (let ((default-directory package-user-dir))
   (normal-top-level-add-subdirs-to-load-path)
   )
@@ -72,7 +81,7 @@
   :ensure t
   :demand)
 
-;; TODO: I cannot put this on the top, why?
+;; NOTE: cannot put this on the top.
 (require 'bind-key)
 ;; Update GPG keyring for GNU ELPA
 (use-package gnu-elpa-keyring-update)
