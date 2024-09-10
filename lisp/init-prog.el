@@ -3,6 +3,7 @@
 ;;; Commentary:
 
 ;;; Code:
+(require 'init-const)
 
 ;; common functions
 (defun spacemacs/comint-clear-buffer ()
@@ -40,9 +41,10 @@
   :config
   (setq-default eglot-workspace-configuration
                 '( :pylsp (:plugins (:ruff ( :enabled t
-                                             :lineLength 88
+                                             :lineLength python-line-length
                                              :indent-stype "space"
-                                            )))))
+                                             ))))
+                )
   )
 
 (use-package highlight-indent-guides
@@ -83,6 +85,7 @@
  "rn" '(eglot-rename :which-key "eglot rename")
  "rb" '(eglot-format-buffer :which-key "eglot format buffer")
  "rf" '(eglot-format :which-key "eglot format")
+ "rc" '(spacemacs/comint-clear-buffer :which-key "manual clear buffer")
  "gh" '(eldoc :which-key "eldoc")
  "gg" '(eglot-find-implementation :which-key "eglot find imp")
  "M-." '(xref-find-definitions :which-key "xref find def")
@@ -97,6 +100,8 @@
  "M-/" '(hippe-expand :which-key "hippie-expand")
  "C-M-/" '(comint-dynamic-complete-filename :which-key "complete filenm")
  "tf" '(ts-fold-toggle :which-key "treesitter fold")
+ "va" '(conda-env-activate :which-key "activate conda env")
+ "vd" '(conda-env-deactivate :which-key "deactivate conda env")
 )
 
 (use-package hl-todo

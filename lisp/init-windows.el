@@ -24,6 +24,7 @@
   (setq-default switch-window-shortcut-style 'alphabet
                 switch-window-timeout nil)
   )
+
 (general-define-key
  :states '(normal visual insert emacs)
  :prefix beyondpie/normal-leader-key

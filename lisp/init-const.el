@@ -56,5 +56,10 @@
   :type 'list
   :group 'beyondpie-program)
 
+(defcustom python-line-length
+  80
+  "max line length for python"
+  :type 'int
+  :group 'beyondpie-program)
 (provide 'init-const)
 ;;; init-const.el ends here
