@@ -58,7 +58,6 @@
 (require 'init-helm)
 (require 'init-dired)
 (require 'init-ibuffer)
-(require 'init-flymake)
 (require 'init-recentf)
 (require 'init-company)
 (require 'init-windows)

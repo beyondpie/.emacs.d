@@ -81,6 +81,11 @@
   :ensure t
   :demand)
 
+(use-package general
+  :ensure t
+  )
+(require 'general)
+
 ;; NOTE: cannot put this on the top.
 (require 'bind-key)
 ;; Update GPG keyring for GNU ELPA

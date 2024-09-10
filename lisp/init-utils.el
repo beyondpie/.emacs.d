@@ -3,11 +3,6 @@
 
 ;;; Code:
 
-(use-package general
-  :ensure t
-  )
-(require 'general)
-
 ;; https://github.com/justbur/emacs-which-key
 (use-package which-key
   :hook (after-init . which-key-mode)
