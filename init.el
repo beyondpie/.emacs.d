@@ -24,8 +24,6 @@
 ;; remove naive comp function
 (setq native-comp-speed -1)
 
- 
-
 (require 'init-elpa)
 (require 'init-const)
 (require 'init-utils)
@@ -51,11 +49,12 @@
 ;; Deprecated citre since we almost
 ;; did not use it
 ;; (require 'init-citre)
-(require 'init-snakemake)
+;; prog should be put before other languages
 (require 'init-prog)
 (require 'init-shell)
 (require 'init-ess)
 (require 'init-python)
+(require 'init-snakemake)
 (require 'init-tex)
 (require 'init-org)
 (require 'init-elfeed)

@@ -4,6 +4,34 @@
 
 ;;; Code:
 
+;; common functions
+(defun spacemacs/comint-clear-buffer ()
+  (interactive)
+  (let ((comint-buffer-maximum-size 0))
+    (comint-truncate-buffer)))
+
+
+;; ref:
+;; https://github.com/necaris/conda.el
+(use-package conda
+  :delight
+  :hook
+  ((find-file . (lambda ()
+                  (when (bound-and-true-p conda-project-env-path)
+                    (conda-env-activate-for-buffer))))
+   (prog-mode . (lambda ()
+                  (setq mode-line-format (cons '(:exec conda-env-current-name) mode-line-format))))
+   )
+  :config
+  (conda-env-initialize-eshell)
+  (conda-env-autoactivate-mode nil)
+  :commands
+  (conda-env-activate
+   conda-env-deactivate
+   conda-env-activate-for-buffer
+   )
+  )
+
 (use-package eglot
   :pin melpa-stable
   ;; :init

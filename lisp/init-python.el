@@ -4,9 +4,12 @@
 
 ;;; Code:
 (require 'init-const)
+(require 'init-prog)
 
-(defun spacemacs//python-setup-shell (&rest args)
-  "Set up python shell"
+(defun spacemacs//python-setup-shell ()
+  "Set up python shell
+   Note: need to re-run after conda activation."
+  (interactive)
   (if (executable-find "ipython")
       (progn
         (setq python-shell-interpreter "ipython")
@@ -17,6 +20,7 @@
       (setq python-shell-interpreter "python")
       )
     )
+  (message "python interpreter is %s." python-shell-interpreter)
   )
 
 (defun spacemacs//python-default ()
@@ -61,11 +65,6 @@
 	       (end (point-at-eol)))
 	  (python-shell-send-region start end)))
 
-(defun spacemacs/comint-clear-buffer ()
-  (interactive)
-  (let ((comint-buffer-maximum-size 0))
-    (comint-truncate-buffer)))
-
 (defun spacemacs/python-remove-unused-imports()
   "Use Autoflake to remove unused function"
   (interactive)
@@ -75,44 +74,6 @@
                                (shell-quote-argument (buffer-file-name))))
         (revert-buffer t t t))
     (message "Error: Cannot find autoflake executable.")))
-
-
-(use-package pyvenv
-  :ensure t
-  :pin melpa
-  :hook ((python-mode python-ts-mode) . pyvenv-tracking-mode)
-  :general
-  (:states '(normal visual)
-           :keymaps 'python-mode-map
-           :prefix beyondpie/major-mode-leader-key
-           "va"  '(pyvenv-activate :which-key "pyvenv activate")
-           "vd" '(pyvenv-deactivate :which-key "pyvenv deactivate")
-           "vw" '(pyvenv-workon :which-key "pyvenv workon"))
-  (:states '(normal visual)
-           :keymaps 'python-ts-mode-map
-           :prefix beyondpie/major-mode-leader-key
-           "va"  '(pyvenv-activate :which-key "pyvenv activate")
-           "vd" '(pyvenv-deactivate :which-key "pyvenv deactivate")
-           "vw" '(pyvenv-workon :which-key "pyvenv workon"))
-  
-  :config
-  (dolist (func '(pyvenv-actiate pyvenv-deactivate pyvenv-workon))
-    (advice-add func :after 'spacemacs//python-setup-shell)
-    )
-  )
-
-(defun encoder-ipython ()
-  "Start and/or switch to the REPL remotely."
-  (interactive)
-  (let ((shell-process
-         (or (python-shell-get-process)
-             (run-python encoder-ipython)
-             (python-shell-get-process)
-             )))
-    (unless shell-process
-      (error "Failed to start python shell properly"))
-    (pop-to-buffer (process-buffer shell-process))
-    (evil-insert-state)))
 
 (use-package python-black
   :after python
@@ -131,7 +92,6 @@
       (setq python-flymake-command python-flymake-command)
     )
   (setq python-indent-def-block-scale 1)
-  
   :config
   (setq-default python-indent-guess-indent-offset nil)
   :general
@@ -147,6 +107,7 @@
            "ri" '(spacemacs/python-remove-unused-imports :which-key "clean import")
            "rB" '(python-black-buffer :which-key "black buffer")
            "rR" '(python-black-region :which-key "black region")
+           "rp" '(spacemacs//python-setup-shell :which-key "setup python shell")
            )
   (:states '(insert emacs)
            :keymaps 'inferior-python-mode-map
@@ -164,6 +125,7 @@
            "ri" '(spacemacs/python-remove-unused-imports :which-key "clean import")
            "rB" '(python-black-buffer :which-key "black buffer")
            "rR" '(python-black-region :which-key "black region")
+           "rp" '(spacemacs//python-setup-shell :which-key "setup python shell")
            )
   )
 (provide 'init-python)
