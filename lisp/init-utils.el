@@ -180,63 +180,6 @@
   (keyfreq-autosave-mode 1)
   )
 
-;; delete other windows while keeping imenu
-;; https://emacs-china.org/t/c-x-1-imenu-list-buffer/23162/4
-(require 'dash)
-(defun delete-other-windows-exclude-imenu-list  ()
-  (interactive)
-  (->> (window-list)
-       (-filter
-        (lambda (win)
-          (and
-           (not (equal "*Ilist*" (buffer-name (window-buffer win))))
-           (not (eq  (selected-window)  win))
-           )
-          )
-        )
-       (-map
-        (lambda (bekill-win)
-          (delete-window bekill-win)
-          )
-        )
-       )
-  )
-
-(defun delete-other-windows-R-repl ()
-  (interactive)
-  (->> (window-list)
-       (-filter
-        (lambda (win)
-          (and
-           (not (string-match "*R:" (buffer-name (window-buffer win))))
-           (not (eq  (selected-window)  win))
-
-           )
-          )
-        )
-       (-map
-        (lambda (bekill-win)
-          (delete-window bekill-win)
-          )
-        )
-       )
-  )
-
-
-;; https://stackoverflow.com/questions/18325973/a-smarter-alternative-to-delete-window
-(defun delete-extra-windows ()
-  (interactive)
-  (let* ((selwin  (selected-window))
-         (buf     (window-buffer selwin)))
-    (walk-windows (lambda (ww)
-                    (unless (eq ww selwin)
-                      (when (eq (window-buffer ww) buf)
-                        (delete-window ww))))
-                  'NO-MINI 'THIS-FRAME)))
-
-;; (global-set-key (kbd "C-x 1") '
-;; delete-other-windows-exclude-imenu-list)
-
 (eval-after-load "flymake"
   '(progn
      (defun flymake-after-change-function (start stop len)
