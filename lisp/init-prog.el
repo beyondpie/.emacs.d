@@ -32,6 +32,14 @@
    )
   )
 
+(use-package yasnippet
+  :diminish yas-minor-mode
+  :hook (prog-mode . yas-global-mode)
+  )
+
+(use-package yasnippet-snippets
+  :after yasnippet)
+
 (use-package eglot
   :pin melpa-stable
   ;; :init
@@ -177,6 +185,22 @@
            "rg" '(anzu-query-replace-regexp :which-key "anzu-query-replace-regexp")
            "rc" '(anzu-replace-at-cursor-thing :which-key "anzu-replace-at-cursor")
            ))
+
+;; mamba install --channel conda-forge the_silver_searcher
+(use-package ag
+  :ensure t
+  :pin melpa
+  :config
+  (setq-default ag-highlight-search t)
+  :general
+  (:states '(normal visual insert emacs)
+           :prefix beyondpie/normal-leader-key
+           :non-normal-prefix beyondpie/non-normal-leader-key
+           :keymaps 'override
+           "sa" '(ag-project :which-key "ag search in project")
+           "sd" '(grep-find :which-key "grep search in current dir")
+           )
+  )
 
 (provide 'init-prog)
 ;;; init-prog.el ends here

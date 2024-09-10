@@ -46,6 +46,9 @@
 (define-key global-map (kbd "M-j") nil)
 (define-key global-map (kbd "M-k") nil)
 
+(setq-default grep-highlight-matches t
+              grep-scroll-output t)
+
 (require 'init-elpa)
 (require 'init-const)
 (require 'init-utils)
@@ -54,12 +57,10 @@
 (require 'init-themes)
 (require 'init-helm)
 (require 'init-dired)
-(require 'init-grep)
 (require 'init-ibuffer)
 (require 'init-flymake)
 (require 'init-recentf)
 (require 'init-company)
-(require 'init-yasnippet)
 (require 'init-windows)
 (require 'init-git)
 (require 'init-project)
