@@ -11,7 +11,6 @@
   (let ((comint-buffer-maximum-size 0))
     (comint-truncate-buffer)))
 
-
 ;; ref:
 ;; https://github.com/necaris/conda.el
 (use-package conda
@@ -157,6 +156,21 @@
     (remove-hook 'before-save-hook 'format-all--buffer-from-hook t))
   (advice-add 'format-all-buffer :after 'remove-format-all-from-save-hook)
   )
+
+(use-package anzu
+  :ensure t
+  :pin melpa
+  :hook (after-init . global-anzu-mode)
+  :delight
+  :general
+  (:states '(normal visual insert emacs)
+           :prefix beyondpie/normal-leader-key
+           :non-normal-prefix beyondpie/non-normal-leader-key
+           "rq" '(anzu-query-replace :which-key "anzu-query-replace")
+           "rg" '(anzu-query-replace-regexp :which-key "anzu-query-replace-regexp")
+           "rc" '(anzu-replace-at-cursor-thing :which-key "anzu-replace-at-cursor")
+           ))
+
 
 (provide 'init-prog)
 ;;; init-prog.el ends here
