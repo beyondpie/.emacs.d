@@ -26,7 +26,7 @@
 (defun spacemacs//python-default ()
   "Default settings for python buffers"
   (setq-local mode-name "py"
-        tab-width 2
+        tab-width 4
         fill-column python-line-length)
   )
 
@@ -86,7 +86,7 @@
                                                      (spacemacs//python-setup-shell))))
   :init
   (setq python-ts-mode-hook python-mode-hook)
-  (setq python-indent-offset 2)
+  (setq python-indent-offset 4)
   (setq python-shell-completion-native-enable nil)
   (if (executable-find (nth 0 python-flymake-command))
       (setq python-flymake-command python-flymake-command)

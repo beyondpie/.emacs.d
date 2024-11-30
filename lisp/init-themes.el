@@ -52,6 +52,18 @@ ALPHA is numeric value from [0, 100]."
   (beyondpie/set-evil-insert-state-cursor)
   )
 
+(use-package spacemacs-common
+  :ensure spacemacs-theme
+  :pin melpa
+  :defer t
+  ;; only works on GUI, in terminal the background is blue.
+  ;; :init
+  ;; (custom-set-variables '(spacemacs-theme-custom-colors
+  ;;                         '((bg2 . "#292b2e")
+  ;;                           (bg1 . "#212026"))))
+  )
+
+
 ;; (defun load-modus-dark-theme ()
 ;;   "Load modus dark theme."
 ;;   (interactive)
