@@ -11,9 +11,10 @@
   (let ((comint-buffer-maximum-size 0))
     (comint-truncate-buffer)))
 
-;; diable auto indent after starting new line
-(when (fboundp 'electric-indent-mode) (electric-indent-mode -1))
-
+;; keep global electric-indent-mode
+;; (when (fboundp 'electric-indent-mode) (electric-indent-mode -1))
+;; diable auto reindent previous line
+(setq-default electric-indent-inhibit t)
 ;; ref:
 ;; https://github.com/necaris/conda.el
 (use-package conda
