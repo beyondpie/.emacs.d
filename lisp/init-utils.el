@@ -212,6 +212,18 @@
     (message "Large file warning enabled.")))
 (global-set-key (kbd "C-c t") 'toggle-large-file-warning)
 
+;; more editings
+
+;; using chatgpt
+(defun decrement-numbers-in-region (start end)
+  "Decrement all numbers in the selected region by 1."
+  (interactive "r")
+  (save-excursion
+    (goto-char start)
+    (while (re-search-forward "\\b[0-9]+\\b" end t)
+      (replace-match
+       (number-to-string (1- (string-to-number (match-string 0))))))))
+
 ;; === end of file-related ===
 
 ;; eww
