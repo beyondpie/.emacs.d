@@ -31,5 +31,6 @@
   - [[https://github.com/syl20bnr/spacemacs][Spacemacs]]
   - [[https://github.com/doomemacs/doomemacs][Doom Emacs]]
   - [[https://github.com/redguardtoo/mastering-emacs-in-one-year-guide/blob/master/guide-en.org][Why and how to learn emacs]]
+    [[https://github.com/redguardtoo/mastering-emacs-in-one-year-guide/blob/master/guide-zh.org][Chinese version]], which I learnt at first
   - [[https://www.masteringemacs.org][The Book of Mastering Emacs]]
 
