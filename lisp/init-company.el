@@ -1,10 +1,6 @@
 ;;; init-company.el --- Completion with company -*- lexical-binding: t -*-
 
 ;;; Commentary:
-;; ref:
-;; - Major: Seagle init-company
-;;   https://github.com/seagle0128/.emacs.d/blob/master/lisp/init-company.el
-;; - Minor: Lazycat: https://manateelazycat.github.io/emacs/2021/06/30/company-multiple-backends.html
 
 ;;; Code:
 
