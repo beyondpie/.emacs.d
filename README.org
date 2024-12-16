@@ -17,7 +17,7 @@
   - [[https://github.com/emacs-evil/evil][evil]]: vim in emacs
   - [[https://github.com/emacs-evil/evil-collection][evil-collection]]: make evil more smooth.
   - [[https://github.com/emacs-helm/helm][helm]]: search anytime, anywhere.
-  - [[https://github.com/joaotavora/eglot][eglot (default in Emacs)]] or [[https://github.com/emacs-lsp/lsp-mode][lsp (provide majority of utitilies)]]:
+  - [[https://github.com/joaotavora/eglot][eglot (default in Emacs)]] or [[https://github.com/emacs-lsp/lsp-mode][lsp (provide majority of utilities)]]:
     provide powerful, unified programming language support.
 
 ** Install Emacs
