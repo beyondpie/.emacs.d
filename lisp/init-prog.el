@@ -58,6 +58,16 @@
                 )
   )
 
+;; https://github.com/blahgeek/emacs-appimage
+;; (use-package eglot-booster
+;;   :init
+;;   (slot/vc-install :fetcher "github"
+;;                    :repo "jdtsmith/eglot-booster")
+;;   :after eglot
+;;   :config (eglot-booster-mode)
+;;   )
+
+
 (use-package flymake
   :delight
   :init
