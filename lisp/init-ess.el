@@ -75,7 +75,7 @@
    ess-offset-arguments '(prev-line 2)
    ess-indent-from-lhs '(argument fun-decl-opening)
    ess-indent-from-chain-start t
-   ess-use-flymake t
+   ess-use-flymake nil
    ess-startup-directory 'default-directory
    )
   :general

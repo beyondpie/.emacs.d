@@ -64,7 +64,7 @@
   (setq flymake-start-on-flymake-mode t)
   (setq flymake-start-on-save-buffer t)
   ;; added in 1.3.6
-  (setq flymake-show-diagnostics-at-end-of-line t)
+  (setq flymake-show-diagnostics-at-end-of-line nil)
   :config
    (defun flymake-after-change-function (start stop len)
       "Start syntax check for current buffer if it isn't already running."
