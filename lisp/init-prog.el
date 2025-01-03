@@ -50,12 +50,12 @@
   ;; (setq eglot-stay-out-of '(company))
   ;; :hook (scala-mode . eglot-ensure)
   :config
-  (setq-default eglot-workspace-configuration
-                '( :pylsp (:plugins (:ruff ( :enabled t
-                                             :lineLength python-line-length
-                                             :indent-stype "space"
-                                             ))))
-                )
+  ;; (setq-default eglot-workspace-configuration
+  ;;               '( :pylsp (:plugins (:ruff ( :enabled t
+  ;;                                            :lineLength python-line-length
+  ;;                                            :indent-stype "space"
+  ;;                                            ))))
+  ;;               )
   )
 
 (use-package flymake
