@@ -1,27 +1,36 @@
-* My dot emacs
+* 29 Garden Street Emacs
   My configuration for emacs since Dec, 2020 till now.
   - Emacs version: latest (current 30.05 in development)
-  - System: MacOS (mainly) / Ubuntu [not often]
-  - GUI (mainly) and terminal version are supported.
+  - System: MacOS and Linux
   
-  I learn a lot from spacemacs, which is a popular emacs configuration. I used it during 2017-2020.
-  The key features I like:
+  I learn a lot from spacemacs, which is a popular emacs
+  configuration. I used it during 2017-2020. The key features I like:
   - Integrate the evil package very well.
-  - Use leader keys to simplify key bindings, such as "space" in evil normal mode, "comma" for major mode, and so on.
-  - Jumping among different windows easily with the support of the evil package.
+  - Use leader keys to simplify key bindings, such as "space" in evil
+    normal mode, "comma" for major mode, and so on.
+  - Jumping among different windows easily with the support of the
+    evil package.
 
   After reading part of the source codes in spacemacs, I know I can
   handle the similar experience with the packages:
-  - *general*: leader keybindings
-  - *evil*: vim in emacs
-  - *evil-collection*: make evil more smooth.
-  - *helm*: search anytime, anywhere. 
+  - [[https://github.com/noctuid/general.el][general]]: leader keybindings
+  - [[https://github.com/emacs-evil/evil][evil]]: vim in emacs
+  - [[https://github.com/emacs-evil/evil-collection][evil-collection]]: make evil more smooth.
+  - [[https://github.com/emacs-helm/helm][helm]]: search anytime, anywhere.
+  - [[https://github.com/joaotavora/eglot][eglot (default in Emacs)]] or [[https://github.com/emacs-lsp/lsp-mode][lsp (provide majority of utilities)]]:
+    provide powerful, unified programming language support.
 
 ** Install Emacs
    - macOS: [[https://github.com/d12frosted/homebrew-emacs-plus][emacs-plus]]
-      
+   - Linux: follow the instruction from the official website
+     
 ** Reference
-  - Purcell [[https://github.com/purcell/emacs.d][emacs.d]]
-  - Seagle [[https://github.com/seagle0128/.emacs.d][emacs.d]]
+  - [[https://github.com/purcell/emacs.d][Purcell's emacs.d]]
+  - [[https://github.com/seagle0128/.emacs.d][Seagle's Centaur Emacs]]
+  - [[https://github.com/manateelazycat/lazycat-emacs][Lazy cat's Emacs]]
   - [[https://github.com/syl20bnr/spacemacs][Spacemacs]]
+  - [[https://github.com/doomemacs/doomemacs][Doom Emacs]]
+  - [[https://github.com/redguardtoo/mastering-emacs-in-one-year-guide/blob/master/guide-en.org][Why and how to learn emacs]]
+    [[https://github.com/redguardtoo/mastering-emacs-in-one-year-guide/blob/master/guide-zh.org][Chinese version]], which I learnt at first
+  - [[https://www.masteringemacs.org][The Book of Mastering Emacs]]
 

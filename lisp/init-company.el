@@ -1,10 +1,6 @@
 ;;; init-company.el --- Completion with company -*- lexical-binding: t -*-
 
 ;;; Commentary:
-;; ref:
-;; - Major: Seagle init-company
-;;   https://github.com/seagle0128/.emacs.d/blob/master/lisp/init-company.el
-;; - Minor: Lazycat: https://manateelazycat.github.io/emacs/2021/06/30/company-multiple-backends.html
 
 ;;; Code:
 
@@ -18,19 +14,9 @@
   :delight
   :defines (company-dabbrev-ignore-case company-dabbrev-downcase)
   :commands company-cancel
-  :bind (("M-/" . company-complete)
-         ("C-M-i" . company-complete)
-         :map company-mode-map
-         ("<backtab>" . company-yasnippet)
-         :map company-active-map
-         ("C-p" . company-select-previous)
-         ("C-n" . company-select-next)
-         ("<tab>" . company-complete-common-or-cycle)
-         ("<backtab>" . my-company-yasnippet)
-         :map company-search-map
-         ("C-p" . company-select-previous)
-         ("C-n" . company-select-next))
+  :bind (("M-/" . company-complete))
   :init
+  (global-set-key (kbd "<tab>") #'company-indent-or-complete-common)
   (setq company-tooltip-align-annotations nil
         company-tooltip-limit 10
         company-idle-delay 0.2
@@ -46,6 +32,5 @@
   :config
   (add-to-list 'company-transformers #'delete-dups)
   )
-
 (provide 'init-company)
 ;;; init-company.el ends here

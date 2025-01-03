@@ -46,17 +46,17 @@
 
 (use-package eglot
   :pin melpa-stable
-  ;; :init
-  ;; (setq eglot-stay-out-of '(company))
-  ;; :hook (scala-mode . eglot-ensure)
-  :config
-  ;; (setq-default eglot-workspace-configuration
-  ;;               '( :pylsp (:plugins (:ruff ( :enabled t
-  ;;                                            :lineLength python-line-length
-  ;;                                            :indent-stype "space"
-  ;;                                            ))))
-  ;;               )
   )
+
+;; https://github.com/blahgeek/emacs-appimage
+;; (use-package eglot-booster
+;;   :init
+;;   (slot/vc-install :fetcher "github"
+;;                    :repo "jdtsmith/eglot-booster")
+;;   :after eglot
+;;   :config (eglot-booster-mode)
+;;   )
+
 
 (use-package flymake
   :delight
@@ -64,7 +64,7 @@
   (setq flymake-start-on-flymake-mode t)
   (setq flymake-start-on-save-buffer t)
   ;; added in 1.3.6
-  (setq flymake-show-diagnostics-at-end-of-line t)
+  (setq flymake-show-diagnostics-at-end-of-line nil)
   :config
    (defun flymake-after-change-function (start stop len)
       "Start syntax check for current buffer if it isn't already running."
