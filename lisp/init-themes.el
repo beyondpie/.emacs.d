@@ -1,11 +1,12 @@
 ;;; init-themes.el --- set themes -*- lexical-binding: t -*-
 
 ;;; Commentary:
-;; spacemacs-theme setting
+;; - spacemacs-theme setting
 ;; https://github.com/nashamri/spacemacs-theme/issues/42
 ;; https://github.com/nashamri/spacemacs-theme
-;; modus setting
-;; https://protesilaos.com/modus-themes
+;; - modus setting: https://protesilaos.com/modus-themes
+;; NOTE: Under TUI(terminal, for example, iTerm2), cursors are controled
+;; by it not by emacs.
 
 ;;; Code:
 
@@ -21,8 +22,7 @@
 ;;         )
 
 ;;   ;; Load the theme files before enabling a theme
-;;   (modus-themes-load-themes)
-;;   :bind ("<f5>" . modus-themes-toggle))
+;;   (modus-themes-load-themes))
 
 (use-package ef-themes)
 
@@ -57,19 +57,19 @@ ALPHA is numeric value from [0, 100]."
   :pin melpa
   :defer t
   ;; only works on GUI, in terminal the background is blue.
-  ;; :init
-  ;; (custom-set-variables '(spacemacs-theme-custom-colors
-  ;;                         '((bg2 . "#292b2e")
-  ;;                           (bg1 . "#212026"))))
+  :init
+  (custom-set-variables '(spacemacs-theme-custom-colors
+                          '((bg2 . "#292b2e")
+                            (bg1 . "#212026"))))
   )
 
 
-;; (defun load-modus-dark-theme ()
-;;   "Load modus dark theme."
-;;   (interactive)
-;;   (modus-themes-load-vivendi)
-;;   (beyondpie/set-evil-insert-state-cursor)
-;;   )
+(defun load-modus-dark-theme ()
+  "Load modus dark theme."
+  (interactive)
+  (modus-themes-load-vivendi)
+  (beyondpie/set-evil-insert-state-cursor)
+  )
 
 (defun update-evil-cursor (&rest args)
   "Update evil cursor color after selecting a theme: ARGS."
