@@ -32,9 +32,16 @@
         magit-diff-highlight-hunk-body nil
         magit-diff-refine-hunk nil)
   (setq magit-revision-insert-related-refs nil)
-  (remove-hook 'magit-refs-sections-hook 'magit-insert-tags)
-  (remove-hook 'server-switch-hook 'magit-commit-diff)
-  (remove-hook 'magit-status-sections-hook 'magit-insert-tags-header)
+  ;;(remove-hook 'magit-refs-sections-hook 'magit-insert-tags)
+  ;;(remove-hook 'server-switch-hook 'magit-commit-diff)
+  ;;(remove-hook 'magit-status-sections-hook 'magit-insert-tags-header)
+
+  ;; from StackExchange Emacs
+  (defun magit-remove-git-lock-file ()
+    "Remove git's index lock file, if it exists."
+    (interactive)
+    (let ((base (magit-toplevel)))
+      (delete-file (concat base "/.git/index.lock"))))
   )
 
 (provide 'init-git)
