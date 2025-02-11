@@ -51,12 +51,12 @@
 
 (require 'init-elpa)
 (require 'init-const)
+(require 'init-dired)
 (require 'init-utils)
 (require 'init-better-defaults)
 (require 'init-evil)
 (require 'init-themes)
 (require 'init-helm)
-(require 'init-dired)
 (require 'init-ibuffer)
 (require 'init-recentf)
 (require 'init-company)

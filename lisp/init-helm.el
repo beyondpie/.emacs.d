@@ -75,10 +75,12 @@
   :pin melpa
   :delight
   :commands helm-git-grep)
+
 (use-package helm-xref
   :ensure t
   :delight
   :pin melpa)
+
 (use-package helm-swoop
   :delight
   :ensure t

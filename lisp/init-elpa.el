@@ -37,6 +37,7 @@
       (expand-file-name
        (format "elpa-%s.%s" emacs-major-version emacs-minor-version)
        user-emacs-directory))
+
 ;; FIX under new version of Emacs, no package dir exists.
 (unless (file-exists-p package-user-dir)
   (progn
@@ -53,26 +54,17 @@
 
 ;; Initialize packages
 (unless (bound-and-true-p package--initialized) ; To avoid warnings in 27
-  (setq package-enable-at-startup nil)          ; To prevent initializing twice
-  (package-initialize))
-
-;; Setup `use-package'
-;; Keep the codes for emacs without use-package by default
-;; use-package is in Emacs-code in Emacs29.
-
-;; (unless (package-installed-p 'use-package)
-;;   (package-refresh-contents)
-;;   (package-install 'use-package))
+   (setq package-enable-at-startup nil)          ; To prevent initializing twice
+   (package-initialize))
 
 ;; Should set before loading `use-package'
-(eval-and-compile
-  (setq use-package-always-ensure t)
-  (setq use-package-always-defer nil)
-  (setq use-package-expand-minimally t)
-  (setq use-package-enable-imenu-support t))
-
-(eval-when-compile
-  (require 'use-package))
+ (eval-and-compile
+   (setq use-package-always-ensure t)
+   (setq use-package-always-defer nil)
+   (setq use-package-expand-minimally t)
+   (setq use-package-enable-imenu-support t))
+ (eval-when-compile
+   (require 'use-package))
 
 (use-package diminish
   :ensure t
