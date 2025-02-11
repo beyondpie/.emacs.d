@@ -26,7 +26,7 @@
 ;;  :ensure t)
 
 (with-eval-after-load 'dired
-  ;; (dired-async-mode 1)
+  (dired-async-mode 1)
   (setq-default dired-dwim-target t)
   ;; https://emacs-china.org/t/emacs/23850/8
   (add-hook 'dired-mode-hook #'dired-hide-details-mode)
@@ -56,16 +56,16 @@
   :hook (dired-mode . diff-hl-dired-mode)
   )
 
-;;(use-package dired-quick-sort
-;;  :pin melpa
-;;  :ensure t
-;;  :after dired-async
-;;  :init
-;;  (setq dired-quick-sort-suppress-setup-warning t)
-;;  :config
-;;  (with-eval-after-load 'dired
-;;    (dired-quick-sort-setup))
-;;  )
+(use-package dired-quick-sort
+ :pin melpa
+ :ensure t
+ :after dired-async
+ :init
+ (setq dired-quick-sort-suppress-setup-warning t)
+ :config
+ (with-eval-after-load 'dired
+   (dired-quick-sort-setup))
+ )
 
 (use-package all-the-icons
   :pin melpa
