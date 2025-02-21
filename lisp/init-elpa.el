@@ -31,27 +31,6 @@
 	      ("nongnu" . "https://elpa.nongnu.org/nongnu/")
         ))
 
-;; FIX cannot find package error after updating pacakges
-;; https://www.emacswiki.org/emacs/LoadPath
-(setq package-user-dir
-      (expand-file-name
-       (format "elpa-%s.%s" emacs-major-version emacs-minor-version)
-       user-emacs-directory))
-
-;; FIX under new version of Emacs, no package dir exists.
-(unless (file-exists-p package-user-dir)
-  (progn
-    (message "package user dir %s does not exist." package-user-dir)
-    (make-directory package-user-dir)
-    (message "I've created it.")
-    )
-  )
-
-(let ((default-directory package-user-dir))
-  (normal-top-level-add-subdirs-to-load-path)
-  )
-
-
 ;; Initialize packages
 (unless (bound-and-true-p package--initialized) ; To avoid warnings in 27
    (setq package-enable-at-startup nil)          ; To prevent initializing twice

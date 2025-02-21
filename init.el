@@ -4,9 +4,24 @@
 ;; Ref: purcell
 
 ;;; Code:
+(setq package-quickstart nil)
 (defconst *is-a-mac* (eq system-type 'darwin))
+
+;; https://www.emacswiki.org/emacs/LoadPath
+(setq package-user-dir
+      (expand-file-name
+       (format "elpa-%s.%s" emacs-major-version emacs-minor-version)
+       user-emacs-directory))
+(unless (file-exists-p package-user-dir)
+  (make-directory package-user-dir)
+  )
+(let ((default-directory package-user-dir))
+  (normal-top-level-add-subdirs-to-load-path)
+  )
+
 (dolist (dir '("site-lisp" "lisp"))
   (push (expand-file-name dir user-emacs-directory) load-path))
+
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 
 ;; set utf8 to let terminal show the corresonding symbols in the terminal

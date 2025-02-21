@@ -45,18 +45,8 @@
   :after yasnippet)
 
 (use-package eglot
-  :pin melpa-stable
+  :pin melpa
   )
-
-;; https://github.com/blahgeek/emacs-appimage
-;; (use-package eglot-booster
-;;   :init
-;;   (slot/vc-install :fetcher "github"
-;;                    :repo "jdtsmith/eglot-booster")
-;;   :after eglot
-;;   :config (eglot-booster-mode)
-;;   )
-
 
 (use-package flymake
   :delight
@@ -65,6 +55,7 @@
   (setq flymake-start-on-save-buffer t)
   ;; added in 1.3.6
   (setq flymake-show-diagnostics-at-end-of-line nil)
+  (setq flymake-indicator-type nil)
   :config
    (defun flymake-after-change-function (start stop len)
       "Start syntax check for current buffer if it isn't already running."
