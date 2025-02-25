@@ -4,6 +4,12 @@
 ;; Ref:
 ;; - reduce magit time
 ;;   https://jakemccrary.com/blog/2020/11/14/speeding-up-magit/
+;;   https://magit.vc/manual/magit/Performance.html
+;; BUG:
+;; - type 'c' for git commit under magit buffer leads error:
+;; transient-setup: Wrong type argument: number-or-marker-p, nil
+;; I have to re-install transient, magit, and magit-sections after deleting them.
+;; Then it works but if I re-start emacs, it still happens.
 
 ;;; Code:
 (require 'init-const)
@@ -23,8 +29,7 @@
   :bind (("C-x g" . magit-status)
          ("C-c g" . magit-file-dispatch))
   :config
-  ;; ref: https://magit.vc/manual/magit/Performance.html
-  (setq magit-refresh-status-buffer nil)
+  (setq magit-refresh-status-buffer t)
   (setq auto-revert-buffer-list-filter 'magit-auto-revert-repository-buffer-p)
   (setq magit-diff-highlight-indentation nil
         magit-diff-highlight-trailing nil

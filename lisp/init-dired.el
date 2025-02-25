@@ -22,8 +22,10 @@
     (dired-revert)
     (revert-buffer nil t nil)))
 
-;;(use-package dired-async
-;;  :ensure t)
+;; used by dired-quick-sort
+(use-package async
+  :ensure t
+  :pin melpa)
 
 (with-eval-after-load 'dired
   (dired-async-mode 1)

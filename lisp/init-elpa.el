@@ -28,8 +28,8 @@
       '(("gnu"   . "https://elpa.gnu.org/packages/")
         ("melpa" . "https://melpa.org/packages/")
         ("melpa-stable" . "https://stable.melpa.org/packages/")
-	      ("nongnu" . "https://elpa.nongnu.org/nongnu/")
-        ))
+	      ("nongnu" . "https://elpa.nongnu.org/nongnu/"))
+      )
 
 ;; Initialize packages
 (unless (bound-and-true-p package--initialized) ; To avoid warnings in 27
