@@ -35,6 +35,7 @@
       '(("gnu"   . "https://elpa.gnu.org/packages/")
         ("melpa" . "https://melpa.org/packages/")
       ))
+
 ;; Initialize packages
 (unless (bound-and-true-p package--initialized) ; To avoid warnings in 27
    (setq package-enable-at-startup nil)          ; To prevent initializing twice

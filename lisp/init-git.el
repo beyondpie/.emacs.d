@@ -10,9 +10,14 @@
 ;; transient-setup: Wrong type argument: number-or-marker-p, nil
 ;; I have to re-install transient, magit, and magit-sections after deleting them.
 ;; Then it works but if I re-start emacs, it still happens.
+;;   - I FIXME this issue by manually remove all the .elc files in transient, magit,
+;;     and magit-section, even after reinstalling them.
 
 ;;; Code:
 (require 'init-const)
+(use-package transient
+  :ensure t
+  :pin melpa)
 (use-package magit
   :ensure t
   :init
