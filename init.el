@@ -36,7 +36,7 @@
 
 ;; for magit, which requires 'transient' >= 0.5.0
 (setq package-install-upgrade-built-in t)
-;; (progn (unload-feature 'transient t) (require 'transient))
+
 ;; remove naive comp function
 (setq native-comp-speed -1)
 
@@ -45,8 +45,8 @@
               tab-width 2)
 (global-set-key (kbd "C-SPC") 'set-mark-command)
 (fset 'yes-or-no-p 'y-or-n-p)
+
 ;; remove compling in the mode-line
-;; ref: https://emacs.stackexchange.com/questions/61957/mode-line-always-shows-compiling-after-compile-a-tex-file-with-typos?newreg=6aa1e0e4e19b423a9bce34c66bacc1e4
 (setq compilation-in-progress nil)
 
 ;; remove up/down case keys due to they usually make my codes typo
