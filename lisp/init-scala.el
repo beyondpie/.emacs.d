@@ -20,6 +20,12 @@
   (prettify-symbols-mode)
   )
 
+(defun scala-eglot-capabilities ()
+  (interactive)
+  (setq-local eglot-ignored-server-capabilities
+              '())
+  )
+
 (use-package scala-mode
   :init
   (slot/vc-install :fetcher "github"
@@ -34,6 +40,7 @@
          (scala-mode . company-mode)
          (scala-mode . my-buffer-face-mode-fixed)
          (scala-mode . my-pretty-mode)
+         (scala-mode . scala-eglot-capabilities)
          )
   :general
   (:states '(normal visual)
