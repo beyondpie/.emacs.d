@@ -51,16 +51,12 @@
 (use-package flymake
   :delight
   :init
-  (setq flymake-start-on-flymake-mode t)
+  (setq flymake-start-on-flymake-mode nil)
   (setq flymake-start-on-save-buffer t)
+  (setq flymake-no-changes-timeout 3)
   ;; added in 1.3.6
   (setq flymake-show-diagnostics-at-end-of-line nil)
   (setq flymake-indicator-type nil)
-  :config
-   (defun flymake-after-change-function (start stop len)
-      "Start syntax check for current buffer if it isn't already running."
-      ;; Do nothing, don't want to run checks until I save.
-      ) 
   )
 
 (use-package highlight-indent-guides
