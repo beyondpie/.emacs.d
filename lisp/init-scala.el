@@ -26,6 +26,11 @@
               '())
   )
 
+(defun scala-left-margin-width ()
+  (interactive)
+  (lambda ()
+    (setq-local left-margin-width nil)))
+
 (use-package scala-mode
   :init
   (slot/vc-install :fetcher "github"
@@ -41,6 +46,7 @@
          (scala-mode . my-buffer-face-mode-fixed)
          (scala-mode . my-pretty-mode)
          (scala-mode . scala-eglot-capabilities)
+         (scala-mode . scala-left-margin-width)
          )
   :general
   (:states '(normal visual)
