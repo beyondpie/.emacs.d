@@ -53,10 +53,10 @@
   :init
   (setq flymake-start-on-flymake-mode nil)
   (setq flymake-start-on-save-buffer t)
-  (setq flymake-no-changes-timeout 3)
+  (setq flymake-no-changes-timeout 1)
   ;; added in 1.3.6
   (setq flymake-show-diagnostics-at-end-of-line nil)
-  (setq flymake-indicator-type nil)
+  (setq flymake-indicator-type 'margins)
   )
 
 (use-package highlight-indent-guides
