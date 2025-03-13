@@ -5,13 +5,8 @@
 ;; - reduce magit time
 ;;   https://jakemccrary.com/blog/2020/11/14/speeding-up-magit/
 ;;   https://magit.vc/manual/magit/Performance.html
-;; BUG:
-;; - type 'c' for git commit under magit buffer leads error:
-;; transient-setup: Wrong type argument: number-or-marker-p, nil
-;; I have to re-install transient, magit, and magit-sections after deleting them.
-;; Then it works but if I re-start emacs, it still happens.
-;;   - I FIXME this issue by manually remove all the .elc files in transient, magit,
-;;     and magit-section, even after reinstalling them.
+;; BUG: when typing 'l' to show logs, it will have errors
+;; transient-setup: No applicable method: transient-format, #s(transient-column 1 nil nil nil nil nil nil nil nil ...)
 
 ;;; Code:
 (require 'init-const)
@@ -22,6 +17,7 @@
   :ensure t
   :init
   (use-package with-editor :ensure t)
+  (advice-add 'vc-git-mode-line-string :override (lambda (file) ""))
   :general
   (:states '(normal visual insert emacs)
            :keymaps 'override
