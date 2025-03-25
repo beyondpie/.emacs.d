@@ -4,9 +4,24 @@
 ;; Ref: purcell
 
 ;;; Code:
+(setq package-quickstart nil)
 (defconst *is-a-mac* (eq system-type 'darwin))
+
+;; https://www.emacswiki.org/emacs/LoadPath
+(setq package-user-dir
+      (expand-file-name
+       (format "elpa-%s.%s" emacs-major-version emacs-minor-version)
+       user-emacs-directory))
+(unless (file-exists-p package-user-dir)
+  (make-directory package-user-dir)
+  )
+(let ((default-directory package-user-dir))
+  (normal-top-level-add-subdirs-to-load-path)
+  )
+
 (dolist (dir '("site-lisp" "lisp"))
   (push (expand-file-name dir user-emacs-directory) load-path))
+
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 
 ;; set utf8 to let terminal show the corresonding symbols in the terminal
@@ -21,7 +36,7 @@
 
 ;; for magit, which requires 'transient' >= 0.5.0
 (setq package-install-upgrade-built-in t)
-;; (progn (unload-feature 'transient t) (require 'transient))
+
 ;; remove naive comp function
 (setq native-comp-speed -1)
 
@@ -30,8 +45,8 @@
               tab-width 2)
 (global-set-key (kbd "C-SPC") 'set-mark-command)
 (fset 'yes-or-no-p 'y-or-n-p)
+
 ;; remove compling in the mode-line
-;; ref: https://emacs.stackexchange.com/questions/61957/mode-line-always-shows-compiling-after-compile-a-tex-file-with-typos?newreg=6aa1e0e4e19b423a9bce34c66bacc1e4
 (setq compilation-in-progress nil)
 
 ;; remove up/down case keys due to they usually make my codes typo
@@ -51,12 +66,12 @@
 
 (require 'init-elpa)
 (require 'init-const)
+(require 'init-dired)
 (require 'init-utils)
 (require 'init-better-defaults)
 (require 'init-evil)
 (require 'init-themes)
 (require 'init-helm)
-(require 'init-dired)
 (require 'init-ibuffer)
 (require 'init-recentf)
 (require 'init-company)

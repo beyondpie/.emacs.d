@@ -4,13 +4,20 @@
 ;; Ref:
 ;; - reduce magit time
 ;;   https://jakemccrary.com/blog/2020/11/14/speeding-up-magit/
+;;   https://magit.vc/manual/magit/Performance.html
+;; BUG: when typing 'l' to show logs, it will have errors
+;; transient-setup: No applicable method: transient-format, #s(transient-column 1 nil nil nil nil nil nil nil nil ...)
 
 ;;; Code:
 (require 'init-const)
+(use-package transient
+  :ensure t
+  :pin melpa)
 (use-package magit
   :ensure t
   :init
   (use-package with-editor :ensure t)
+  (advice-add 'vc-git-mode-line-string :override (lambda (file) ""))
   :general
   (:states '(normal visual insert emacs)
            :keymaps 'override
@@ -23,8 +30,7 @@
   :bind (("C-x g" . magit-status)
          ("C-c g" . magit-file-dispatch))
   :config
-  ;; ref: https://magit.vc/manual/magit/Performance.html
-  (setq magit-refresh-status-buffer nil)
+  (setq magit-refresh-status-buffer t)
   (setq auto-revert-buffer-list-filter 'magit-auto-revert-repository-buffer-p)
   (setq magit-diff-highlight-indentation nil
         magit-diff-highlight-trailing nil

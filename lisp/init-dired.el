@@ -22,6 +22,10 @@
     (dired-revert)
     (revert-buffer nil t nil)))
 
+;; used by dired-quick-sort
+(use-package async
+  :ensure t
+  :pin melpa)
 
 (with-eval-after-load 'dired
   (dired-async-mode 1)
@@ -55,13 +59,15 @@
   )
 
 (use-package dired-quick-sort
-  :pin melpa
-  :init
-  (setq dired-quick-sort-suppress-setup-warning t)
-  :config
-  (with-eval-after-load 'dired
-    (dired-quick-sort-setup))
-  )
+ :pin melpa
+ :ensure t
+ :after dired-async
+ :init
+ (setq dired-quick-sort-suppress-setup-warning t)
+ :config
+ (with-eval-after-load 'dired
+   (dired-quick-sort-setup))
+ )
 
 (use-package all-the-icons
   :pin melpa

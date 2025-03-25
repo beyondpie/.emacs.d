@@ -17,62 +17,38 @@
 ;; HACK: DO NOT copy package-selected-packages to init/custom file forcibly.
 ;; https://github.com/jwiegley/use-package/issues/383#issuecomment-247801751
 ;; from seagle
-(defun my-save-selected-packages (&optional value)
-  "Set `package-selected-packages' to VALUE but don't save to `custom-file'."
-  (when value
-    (setq package-selected-packages value)))
-(advice-add 'package--save-selected-packages
-            :override #'my-save-selected-packages)
+;; (defun my-save-selected-packages (&optional value)
+;;   "Set `package-selected-packages' to VALUE but don't save to `custom-file'."
+;;   (when value
+;;     (setq package-selected-packages value)))
+;; (advice-add 'package--save-selected-packages
+;;             :override #'my-save-selected-packages)
+
+;; (setq package-archives
+;;       '(("gnu"   . "https://elpa.gnu.org/packages/")
+;;         ("melpa" . "https://melpa.org/packages/")
+;;         ("melpa-stable" . "https://stable.melpa.org/packages/")
+;; 	      ("nongnu" . "https://elpa.nongnu.org/nongnu/"))
+;;       )
 
 (setq package-archives
       '(("gnu"   . "https://elpa.gnu.org/packages/")
         ("melpa" . "https://melpa.org/packages/")
-        ("melpa-stable" . "https://stable.melpa.org/packages/")
-	      ("nongnu" . "https://elpa.nongnu.org/nongnu/")
-        ))
-
-;; FIX cannot find package error after updating pacakges
-;; https://www.emacswiki.org/emacs/LoadPath
-(setq package-user-dir
-      (expand-file-name
-       (format "elpa-%s.%s" emacs-major-version emacs-minor-version)
-       user-emacs-directory))
-;; FIX under new version of Emacs, no package dir exists.
-(unless (file-exists-p package-user-dir)
-  (progn
-    (message "package user dir %s does not exist." package-user-dir)
-    (make-directory package-user-dir)
-    (message "I've created it.")
-    )
-  )
-
-(let ((default-directory package-user-dir))
-  (normal-top-level-add-subdirs-to-load-path)
-  )
-
+      ))
 
 ;; Initialize packages
 (unless (bound-and-true-p package--initialized) ; To avoid warnings in 27
-  (setq package-enable-at-startup nil)          ; To prevent initializing twice
-  (package-initialize))
-
-;; Setup `use-package'
-;; Keep the codes for emacs without use-package by default
-;; use-package is in Emacs-code in Emacs29.
-
-;; (unless (package-installed-p 'use-package)
-;;   (package-refresh-contents)
-;;   (package-install 'use-package))
+   (setq package-enable-at-startup nil)          ; To prevent initializing twice
+   (package-initialize))
 
 ;; Should set before loading `use-package'
-(eval-and-compile
-  (setq use-package-always-ensure t)
-  (setq use-package-always-defer nil)
-  (setq use-package-expand-minimally t)
-  (setq use-package-enable-imenu-support t))
-
-(eval-when-compile
-  (require 'use-package))
+ (eval-and-compile
+   (setq use-package-always-ensure t)
+   (setq use-package-always-defer nil)
+   (setq use-package-expand-minimally t)
+   (setq use-package-enable-imenu-support t))
+ (eval-when-compile
+   (require 'use-package))
 
 (use-package diminish
   :ensure t
