@@ -19,16 +19,6 @@
 ;; https://github.com/necaris/conda.el
 (use-package conda
   ;; :delight
-  :init
-  ;; https://github.com/necaris/conda.el/issues/30
-  (setq remote-conda-env-home-directory-list
-        '(("encoder" "/ssh:encoder:/home/szu/mambaforge")
-          ("mediator" "/ssh:mediator:/home/szu/miniforge3")))
-
-  (setq remote-conda-env-subdirectory-list
-        '(("encoder" "envs")
-          ("mediator" "envs")))
-
   :hook
   ((find-file . (lambda ()
                   (when (bound-and-true-p conda-project-env-path)
@@ -40,24 +30,6 @@
   (conda-env-initialize-eshell)
   (conda-env-autoactivate-mode nil)
   
-  (defun conda-tramp-activate (conda-env)
-    "Activate a conda environment on a remote host."
-    (interactive "sConda environment: ")
-    (let ((hostname (file-remote-p default-directory 'host)))
-      (setq conda-env-home-directory (cadr (assoc hostname remote-conda-env-home-directory-list)))
-      (setq conda-env-subdirectory (cadr (assoc hostname remote-conda-env-subdirectory-list)))
-
-      ;; check if dir conda-env exists in conda-env-home-directory/conda-env-subdirectory
-      (if (not (file-exists-p (f-join conda-env-home-directory conda-env-subdirectory conda-env)))
-          (error "Conda environment %s does not exist on remote host %s" conda-env hostname))
-
-      (setq conda-env-current-path (f-join conda-env-subdirectory conda-env))
-      (setq conda-tramp-path (replace-regexp-in-string ".*:" ""
-                                                       (format "%s/bin" conda-env-current-path)))
-      (add-to-list 'tramp-remote-path conda-tramp-path)
-      (add-to-list 'tramp-remote-path 'tramp-own-remote-path)
-      (tramp-cleanup-this-connection))
-    )
   :commands
   (conda-env-activate
    conda-env-deactivate
