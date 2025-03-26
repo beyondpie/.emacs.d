@@ -18,7 +18,7 @@
 ;; ref:
 ;; https://github.com/necaris/conda.el
 (use-package conda
-  ;; :delight
+  :delight
   :hook
   ((find-file . (lambda ()
                   (when (bound-and-true-p conda-project-env-path)
