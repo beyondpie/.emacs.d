@@ -46,6 +46,8 @@
 
 (use-package eglot
   :pin melpa
+  :init
+  (advice-add 'eglot--mode-line-format :override (lambda () ""))
   )
 
 (use-package flymake
