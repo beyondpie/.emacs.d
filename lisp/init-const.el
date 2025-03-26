@@ -38,12 +38,6 @@
   :group 'beyondpie-program
   )
 
-(defcustom default-R
-  "/usr/local/bin/R"
-  "R REPL default"
-  :type 'string
-  :group 'beyondpie-program)
-
 (defcustom mac-ls
   "/usr/local/bin/gls"
   "insert-directory-program in macos for dired"

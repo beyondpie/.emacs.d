@@ -68,6 +68,7 @@
 (require 'init-const)
 (require 'init-dired)
 (require 'init-utils)
+(require 'init-tramp)
 (require 'init-better-defaults)
 (require 'init-evil)
 (require 'init-themes)
