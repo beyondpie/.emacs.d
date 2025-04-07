@@ -43,6 +43,7 @@
 (setq-default indent-tabs-mode nil
               default-tab-width 2
               tab-width 2)
+
 (global-set-key (kbd "C-SPC") 'set-mark-command)
 (fset 'yes-or-no-p 'y-or-n-p)
 

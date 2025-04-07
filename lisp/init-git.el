@@ -5,18 +5,26 @@
 ;; - reduce magit time
 ;;   https://jakemccrary.com/blog/2020/11/14/speeding-up-magit/
 ;;   https://magit.vc/manual/magit/Performance.html
+
 ;; BUG: when typing 'l' to show logs, it will have errors
-;; transient-setup: No applicable method: transient-format, #s(transient-column 1 nil nil nil nil nil nil nil nil ...)
+;; - transient-setup: No applicable method: transient-format,
+;;    #s(transient-column 1 nil nil nil nil nil nil nil nil ...)
+;; - How to fix it
+;;   This need us to install magit right under elpha
+
+
 
 ;;; Code:
 (require 'init-const)
+
 (use-package transient
   :ensure t
   :pin melpa)
+
 (use-package magit
   :ensure t
   :init
-  (use-package with-editor :ensure t)
+  ;; remove git info in mode-line to save space
   (advice-add 'vc-git-mode-line-string :override (lambda (file) ""))
   :general
   (:states '(normal visual insert emacs)

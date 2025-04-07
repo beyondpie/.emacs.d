@@ -145,6 +145,8 @@
   (prog-mode . hl-todo-mode)))
 
 ;; realgud for debugging
+;; this will put realgud at first position of load path.
+;; TODO: should we remove it?
 (use-package realgud
   :defer t
   :init
