@@ -263,17 +263,13 @@
 (require 'init-python)
 (require 'init-snakemake)
 (require 'init-tex)
-(require 'init-org)
 (require 'init-elfeed)
 (require 'init-treemacs)
 (require 'init-scala)
 
+
 (when *is-a-mac*
   (require 'init-macos)
-  )
-
-(if (display-graphic-p)
-    (beyondpie/setgui)
   )
 
 (when (file-exists-p custom-file)
