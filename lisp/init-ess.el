@@ -8,8 +8,6 @@
 ;; (setq-local mode-line-process nil)
 
 ;;; Code:
-(require 'init-const)
-
 (use-package ess
   :delight
   :ensure t

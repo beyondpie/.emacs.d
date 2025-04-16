@@ -3,7 +3,6 @@
 ;; Ref: Purcell
 
 ;;; Code:
-(require 'init-const)
 (use-package ibuffer
   :ensure t
   :pin melpa

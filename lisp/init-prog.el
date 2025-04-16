@@ -3,7 +3,6 @@
 ;;; Commentary:
 
 ;;; Code:
-(require 'init-const)
 
 ;; common functions
 (defun spacemacs/comint-clear-buffer ()

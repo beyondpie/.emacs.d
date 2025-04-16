@@ -7,6 +7,7 @@
 ;;   - doom emacs's doom-start.el L37-L43
 
 ;;; Global variables
+(defconst *is-a-mac* (eq system-type 'darwin))
 (defcustom beyondpie/normal-leader-key
   "SPC"
   "Evil normal state leader key used as a global leader key."
@@ -105,7 +106,6 @@
 (setq process-adaptive-read-buffering nil)
 
 (setq package-quickstart nil)
-(defconst *is-a-mac* (eq system-type 'darwin))
 
 ;; https://www.emacswiki.org/emacs/LoadPath
 (setq package-user-dir
@@ -166,7 +166,6 @@
               grep-scroll-output t)
 
 (require 'init-elpa)
-(require 'init-const)
 (require 'init-dired)
 
 (use-package which-key
@@ -267,6 +266,18 @@
 (require 'init-treemacs)
 (require 'init-scala)
 
+(setq org-agenda-files '(research-agenda))
+(global-set-key (kbd "C-c l") #'org-store-link)
+(global-set-key (kbd "C-c a") #'org-agenda)
+(global-set-key (kbd "C-c c") #'org-capture)
+
+(setq org-adapt-indentation t
+      org-hide-leading-stars t
+      org-old-levels-only t)
+
+(setq org-todo-keywords
+      '(
+        (sequence "TODO" "DELAY" "|" "DONE" "CANCEL" "DOING")))
 
 (when *is-a-mac*
   (require 'init-macos)

@@ -3,7 +3,6 @@
 ;; Ref: spacemacs
 
 ;;; Code:
-(require 'init-const)
 (require 'init-prog)
 
 (defun spacemacs//python-setup-shell ()

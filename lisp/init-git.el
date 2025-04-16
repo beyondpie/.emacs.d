@@ -15,7 +15,6 @@
 
 
 ;;; Code:
-(require 'init-const)
 
 (use-package transient
   :ensure t

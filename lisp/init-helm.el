@@ -4,7 +4,6 @@
 ;; Ref: http://tuhdo.github.io/helm-intro.html
 
 ;;; Code:
-(require 'init-const)
 (use-package helm
   :ensure t
   :pin melpa

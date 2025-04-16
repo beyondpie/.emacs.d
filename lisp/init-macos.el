@@ -3,7 +3,6 @@
 ;;; Commentary:
 ;;; Code:
 
-(require 'init-const)
 (setq mac-option-modifier 'meta
       mac-command-modifier 'super
       )
