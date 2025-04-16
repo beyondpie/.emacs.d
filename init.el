@@ -2,7 +2,14 @@
 
 ;;; Commentary:
 
-;;; Global variables
+;;; Codes:
+
+;;; === Requires / dependencies ===
+(require 'package)
+(require 'cl-lib)
+(require 'bind-key)
+
+;;; === Global variables ===
 (defconst *is-a-mac* (eq system-type 'darwin))
 
 (defcustom beyondpie/normal-leader-key
@@ -50,7 +57,104 @@
   :type 'int
   :group 'beyondpie-program)
 
-;;; better default
+;;; === Functions ===
+(cl-defun slot/vc-install (&key (fetcher "github") repo name rev backend)
+  "Install a package from a remote if it's not already installed.
+This is a thin wrapper around `package-vc-install' in order to
+make non-interactive usage more ergonomic.  Takes the following
+named arguments:
+
+- FETCHER the remote where to get the package (e.g., \"gitlab\").
+  If omitted, this defaults to \"github\".
+
+- REPO should be the name of the repository (e.g.,
+  \"slotThe/arXiv-citation\".
+
+- NAME, REV, and BACKEND are as in `package-vc-install' (which
+  see).
+
+ Only owrks with emacs >= 29.
+ From: https://tony-zorman.com/posts/package-vc-install.html"
+  (let* ((url (format "https://www.%s.com/%s" fetcher repo))
+         (iname (when name (intern name)))
+         (pac-name (or iname (intern (file-name-base repo)))))
+    (unless (package-installed-p pac-name)
+      (package-vc-install url iname rev backend))))
+
+(defun read-only-if-symlink ()
+  (if (file-symlink-p buffer-file-name)
+      (progn (setq buffer-read-only t)
+             (message "File is a symlink."))
+    ))
+
+;;; === Key bindings ===
+(global-set-key (kbd "C-SPC") 'set-mark-command)
+(fset 'yes-or-no-p 'y-or-n-p)
+(add-hook 'find-file-hooks 'read-only-if-symlink)
+;; https://www.murilopereira.com/a-rabbit-hole-full-of-lisp/
+(remove-hook 'file-name-at-point-functions 'ffap-guess-file-name-at-point)
+(global-set-key (kbd "C-c l") #'org-store-link)
+(global-set-key (kbd "C-c a") #'org-agenda)
+(global-set-key (kbd "C-c c") #'org-capture)
+;; remove up/down case keys due to they usually make my codes typo
+;; upcase-region
+(global-unset-key (kbd "C-x C-u"))
+;; upcase-word
+(global-unset-key (kbd "M-u"))
+;; downcase-word
+(global-unset-key (kbd "M-l"))
+;; downcase-region
+(global-unset-key (kbd "C-x C-l"))
+(define-key global-map (kbd "M-j") nil)
+(define-key global-map (kbd "M-k") nil)
+
+;;; === Hooks ===
+(add-hook 'find-file-hooks 'read-only-if-symlink)
+;; https://www.murilopereira.com/a-rabbit-hole-full-of-lisp/
+(remove-hook 'file-name-at-point-functions 'ffap-guess-file-name-at-point)
+
+;;; === Org ===
+(setq org-adapt-indentation t
+      org-hide-leading-stars t
+      org-old-levels-only t)
+
+(setq org-todo-keywords
+      '(
+        (sequence "TODO" "DELAY" "|" "DONE" "CANCEL" "DOING")))
+;;; === Dired ===
+(setq dired-listing-switches "-aBhl --group-directories-first")
+(with-eval-after-load 'dired
+  (setq-default dired-dwim-target t)
+  ;; https://emacs-china.org/t/emacs/23850/8
+  (add-hook 'dired-mode-hook #'dired-hide-details-mode)
+  (require 'dired-x)
+  ;; Hook up dired-x global bindings without loading it up-front
+  (define-key ctl-x-map "\C-j" 'dired-jump)
+  (define-key ctl-x-4-map "\C-j" 'dired-jump-other-window)
+  (general-define-key
+   :states '(normal visual motion)
+   :keymaps 'dired-mode-map
+   "RET" 'dired-find-file
+   "m" 'dired-mark
+   "D" 'dired-do-delete
+   "d" nil
+   "g" 'revert-buffer
+   "u" 'dired-unmark
+   "+" 'dired-create-directory
+   "C" 'dired-do-copy
+   "R" 'dired-do-rename
+   "(" 'dired-hide-details-mode
+   "!" 'dired-do-shell-command
+   ))
+
+
+;;; === better default ===
+(load-theme 'modus-vivendi t)
+(setq-default grep-highlight-matches t
+              grep-scroll-output t)
+;; Do not show menu and too bar.
+(push '(menu-bar-lines . 0) default-frame-alist)
+(push '(tool-bar-lines . 0) default-frame-alist)
 ;; https://idiomdrottning.org/bad-emacs-defaults
 (make-directory "~/.emacs_backups/" t)
 (make-directory "~/.emacs_autosave/" t)
@@ -92,9 +196,6 @@
   (add-hook 'emacs-startup-hook
             (lambda () (setq gc-cons-threshold normal-gc-cons-threshold))))
 
-;; close the warnings of gccemacs when compiling packages.
-(setq native-comp-async-report-warnings-errors nil)
-
 ;; allow buffer undo with larger undo info
 (setq undo-outer-limit 500000000)
 
@@ -102,8 +203,25 @@
 (setq read-process-output-max (* 1024 1024))
 (setq process-adaptive-read-buffering nil)
 
-(setq package-quickstart nil)
+;; set utf8 to let terminal show the corresonding symbols in the terminal
+;; http://www.skybert.net/emacs/how-to-get-unicode-in-the-terminal/
+(prefer-coding-system       'utf-8)
+(set-default-coding-systems 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(define-coding-system-alias 'UTF-8 'utf-8)
+(setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
+(ispell-change-dictionary "american" t)
 
+;; === Native Compile ===
+(setq native-comp-speed -1)
+(setq native-comp-deferred-compilation nil)
+(setq native-comp-async-report-warnings-errors nil)
+
+;; === Package Setup ===
+(setq package-quickstart nil)
+;; for magit, which requires 'transient' >= 0.5.0
+(setq package-install-upgrade-built-in t)
 ;; https://www.emacswiki.org/emacs/LoadPath
 (setq package-user-dir
       (expand-file-name
@@ -120,129 +238,31 @@
   (push (expand-file-name dir user-emacs-directory) load-path))
 
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-
-;; set utf8 to let terminal show the corresonding symbols in the terminal
-;; http://www.skybert.net/emacs/how-to-get-unicode-in-the-terminal/
-(prefer-coding-system       'utf-8)
-(set-default-coding-systems 'utf-8)
-(set-terminal-coding-system 'utf-8)
-(set-keyboard-coding-system 'utf-8)
-(define-coding-system-alias 'UTF-8 'utf-8)
-(setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
-(ispell-change-dictionary "american" t)
-
-;; for magit, which requires 'transient' >= 0.5.0
-(setq package-install-upgrade-built-in t)
-
-;; remove naive comp function
-(setq native-comp-speed -1)
-
-(setq-default indent-tabs-mode nil
-              default-tab-width 2
-              tab-width 2)
-
-(global-set-key (kbd "C-SPC") 'set-mark-command)
-(fset 'yes-or-no-p 'y-or-n-p)
-
+(setq package-archives
+      '(("gnu"   . "https://elpa.gnu.org/packages/")
+        ("melpa" . "https://melpa.org/packages/")
+      ))
 ;; remove compling in the mode-line
 (setq compilation-in-progress nil)
+;; Initialize packages
+(unless (bound-and-true-p package--initialized) ; To avoid warnings in 27
+   (setq package-enable-at-startup nil)          ; To prevent initializing twice
+   (package-initialize))
 
-;; remove up/down case keys due to they usually make my codes typo
-;; upcase-region
-(global-unset-key (kbd "C-x C-u"))
-;; upcase-word
-(global-unset-key (kbd "M-u"))
-;; downcase-word
-(global-unset-key (kbd "M-l"))
-;; downcase-region
-(global-unset-key (kbd "C-x C-l"))
-(define-key global-map (kbd "M-j") nil)
-(define-key global-map (kbd "M-k") nil)
+;; Should set before loading `use-package'
+ (eval-and-compile
+   (setq use-package-always-ensure t)
+   (setq use-package-always-defer nil)
+   (setq use-package-expand-minimally t)
+   (setq use-package-enable-imenu-support t))
+ (eval-when-compile
+   (require 'use-package))
 
-(setq-default grep-highlight-matches t
-              grep-scroll-output t)
-
-(require 'init-elpa)
-(require 'init-dired)
-;; keep init-elpa and init-dired here the codes below
-
-(use-package which-key
-  :hook (after-init . which-key-mode)
-  :delight
-  :init
-  (setq which-key-show-early-on-C-h t)
-  (setq which-key-idle-delay 0.4)
-  (setq which-key-idle-secondary-delay 0.01)
-  (setq which-key-popup-type 'side-window)
-  (setq which-key-side-window-location 'bottom)
-  (setq which-key-side-window-max-width 0.33)
-  (setq which-key-side-window-max-height 0.25)
-  (setq which-key-max-description-length 30)
-)
-
-;; a better undo
-(use-package vundo
-  :commands (vundo)
-  :bind ("C-x u" . vundo)
-  :delight
-  :config
-  (setq vundo-compact-display t))
-
-;; for text edit
-(general-define-key
- :states '(normal visual insert emacs)
- :prefix beyondpie/normal-leader-key
- :non-normal-prefix beyondpie/non-normal-leader-key
- :keymaps 'override
- "ir" '(indent-region :which-key "indent region")
- "rw" '(delete-trailing-whitespace :which-key "delete trailing whitespace")
- "sr" '(eval-region :which-key "elisp eval-region")
- )
-
-;; provide better explanations for elisp
-(use-package elisp-demos
-  :config
-  (advice-add 'describe-function-1 :after #'elisp-demos-advice-describe-function-1)
-  )
-
-;; better helpful mode
-(use-package helpful
-  :config
-  (global-set-key (kbd "C-h f") #'helpful-callable)
-  (global-set-key (kbd "C-h v") #'helpful-variable)
-  (global-set-key (kbd "C-h k") #'helpful-key)
-  (global-set-key (kbd "C-c C-d") #'helpful-at-point)
-  (global-set-key (kbd "C-h F") #'helpful-function)
-  (global-set-key (kbd "C-h C") #'helpful-command)
-)
-;; a minor-mode menu
-(use-package minions
-  :pin melpa
-  :hook (after-init . minions-mode)
-  )
-
-(defun read-only-if-symlink ()
-  (if (file-symlink-p buffer-file-name)
-      (progn (setq buffer-read-only t)
-             (message "File is a symlink."))
-    ))
-(add-hook 'find-file-hooks 'read-only-if-symlink)
-
-
-;; https://www.murilopereira.com/a-rabbit-hole-full-of-lisp/
-(remove-hook 'file-name-at-point-functions 'ffap-guess-file-name-at-point)
-;; view large file
-(use-package vlf
+(use-package general
   :ensure t
-  :hook (after-init . (lambda () (require 'vlf-setup)))
-  :general
-  (:states '(normal visual insert emacs)
-           :keymaps 'override
-           :prefix beyondpie/normal-leader-key
-           :non-normal-prefix beyondpie/non-normal-leader-key
-           "fl" '(vlf :which-key "visualize large file"))
-  )
+  :demand t)
 
+;;; === Local Settings ===
 (require 'init-tramp)
 (require 'init-evil)
 (require 'init-themes)
@@ -263,28 +283,12 @@
 (require 'init-elfeed)
 (require 'init-treemacs)
 (require 'init-scala)
-
-(setq org-agenda-files '(research-agenda))
-(global-set-key (kbd "C-c l") #'org-store-link)
-(global-set-key (kbd "C-c a") #'org-agenda)
-(global-set-key (kbd "C-c c") #'org-capture)
-
-(setq org-adapt-indentation t
-      org-hide-leading-stars t
-      org-old-levels-only t)
-
-(setq org-todo-keywords
-      '(
-        (sequence "TODO" "DELAY" "|" "DONE" "CANCEL" "DOING")))
-
 (when *is-a-mac*
   (require 'init-macos)
   )
 
 (when (file-exists-p custom-file)
   (load custom-file))
-
-(load-theme 'modus-vivendi t)
 
 (provide 'init)
 ;;; init.el ends here

@@ -4,18 +4,126 @@
 
 ;;; Code:
 
+;;; === Functions ===
 ;; common functions
 (defun spacemacs/comint-clear-buffer ()
   (interactive)
   (let ((comint-buffer-maximum-size 0))
     (comint-truncate-buffer)))
 
+;;; === variable sets ===
+
 ;; keep global electric-indent-mode
 ;; (when (fboundp 'electric-indent-mode) (electric-indent-mode -1))
 ;; diable auto reindent previous line
 (setq-default electric-indent-inhibit t)
-;; ref:
-;; https://github.com/necaris/conda.el
+
+(setq-default indent-tabs-mode nil
+              default-tab-width 2
+              tab-width 2)
+
+(setq hippie-expand-try-functions-list
+      '(try-complete-file-name-partially
+        try-complete-file-name
+        try-expand-dabbrev
+        try-expand-dabbrev-all-buffers
+        try-expand-dabbrev-from-kill))
+
+(setq-default display-fill-column-indicator-column 78)
+
+;; === hooks ===
+(when (fboundp 'global-eldoc-mode)
+  (add-hook 'after-init-hook 'global-eldoc-mode))
+;; (add-hook 'prog-mode-hook 'auto-fill-mode)
+;; (add-hook 'prog-mode-hook 'display-fill-column-indicator-mode)
+(add-hook 'prog-mode-hook 'column-number-mode)
+
+
+;;; === key bindings ===
+(general-define-key
+ :states 'normal
+ :keymaps 'prog-mode-map
+ :prefix beyondpie/major-mode-leader-key
+ "rn" '(eglot-rename :which-key "eglot rename")
+ "rb" '(eglot-format-buffer :which-key "eglot format buffer")
+ "rf" '(eglot-format :which-key "eglot format")
+ "rc" '(spacemacs/comint-clear-buffer :which-key "manual clear buffer")
+ "gh" '(eldoc :which-key "eldoc")
+ "gg" '(eglot-find-implementation :which-key "eglot find imp")
+ "M-." '(xref-find-definitions :which-key "xref find def")
+ "M-," '(xref-pop-to-location :which-key "xref back")
+ "gm" '(imenu :which-key "imenu")
+ "eb" '(flymake-show-buffer-diagnostics :whick-key "flymake buffer")
+ "ep" '(flymake-show-project-diagnostics :which-key "flymake project")
+ "en" '(flymake-goto-next-error :which-key "flymake next err")
+ "M-n" '(flymake-goto-next-error :which-key "flymake next err")
+ "ep" '(flymake-goto-prev-error :which-key "flymake prev err")
+ "M-p" '(flymake-goto-prev-error :which-key "flymake prev err")
+ "M-/" '(hippe-expand :which-key "hippie-expand")
+ "C-M-/" '(comint-dynamic-complete-filename :which-key "complete filenm")
+)
+
+(general-define-key
+ :states '(normal visual insert emacs)
+ :prefix beyondpie/normal-leader-key
+ :non-normal-prefix beyondpie/non-normal-leader-key
+ :keymaps 'override
+ "ir" '(indent-region :which-key "indent region")
+ "rw" '(delete-trailing-whitespace :which-key "delete trailing whitespace")
+ "sr" '(eval-region :which-key "elisp eval-region")
+ )
+
+;; === Pakcages ===
+;; Update GPG keyring for GNU ELPA
+(use-package gnu-elpa-keyring-update)
+
+(use-package diminish
+  :ensure t
+  :demand t)
+(use-package delight
+  :ensure t
+  :demand t)
+
+(use-package async
+  :ensure t
+  :pin melpa)
+
+(use-package dired-quick-sort
+ :pin melpa
+ :ensure t
+ ;; depend on async
+ :after dired-async
+ :init
+ (setq dired-quick-sort-suppress-setup-warning t)
+ :config
+ (with-eval-after-load 'dired
+   (dired-quick-sort-setup))
+ :general
+ (:states '(normal visual)
+          :keymaps 'override
+           :prefix beyondpie/normal-leader-key
+           :non-normal-prefix beyondpie/non-normal-leader-key
+           "dS" '(hydra-dired-quick-sort/body "dired-sort")  
+          )
+ )
+
+(use-package diff-hl
+  :pin melpa
+  :hook (dired-mode . diff-hl-dired-mode)
+  )
+(use-package all-the-icons
+  :pin melpa
+  :if (display-graphic-p))
+
+(use-package all-the-icons-dired
+  :diminish
+  :pin melpa
+  :init
+  (setq all-the-icons-dired-monochrome nil)
+  :if (display-graphic-p)
+  :hook (dired-mode . all-the-icons-dired-mode)
+  )
+
 (use-package conda
   :delight
   :hook
@@ -23,17 +131,25 @@
                   (when (bound-and-true-p conda-project-env-path)
                     (conda-env-activate-for-buffer))))
    (prog-mode . (lambda ()
-                  (setq mode-line-format (cons '(:exec conda-env-current-name) mode-line-format))))
+                  (setq mode-line-format
+                        (cons '(:exec conda-env-current-name) mode-line-format))))
    )
   :config
   (conda-env-initialize-eshell)
   (conda-env-autoactivate-mode nil)
-  
   :commands
   (conda-env-activate
    conda-env-deactivate
    conda-env-activate-for-buffer
    )
+  :general
+  (:states '(normal)
+           :keymaps 'prog-mode-map
+           :prefix beyondpie/normal-leader-key
+           :non-normal-prefix beyondpie/non-normal-leader-key
+           "va" '(conda-env-activate :which-key "activate conda env")
+           "vd" '(conda-env-deactivate :which-key "deactivate conda env")
+           )
   )
 
 
@@ -72,52 +188,6 @@
         highlight-indent-guides-method 'character)
   )
 
-;; eldoc
-(when (fboundp 'global-eldoc-mode)
-  (add-hook 'after-init-hook 'global-eldoc-mode))
-
-(setq hippie-expand-try-functions-list
-      '(try-complete-file-name-partially
-        try-complete-file-name
-        try-expand-dabbrev
-        try-expand-dabbrev-all-buffers
-        try-expand-dabbrev-from-kill))
-
-;; add auto-fill-mode
-;; (add-hook 'prog-mode-hook 'auto-fill-mode)
-;; add Emacs default fill indicator
-;; (setq-default display-fill-column-indicator-column 80)
-;; (add-hook 'prog-mode-hook 'display-fill-column-indicator-mode)
-;; use column number to instead of display fill column
-(add-hook 'prog-mode-hook 'column-number-mode)
-(add-hook 'prog-mode-hook 'ts-fold-mode)
-;; general could let me use "," as leader key
-;; in prog mode under normal state of evil
-(general-define-key
- :states 'normal
- :keymaps 'prog-mode-map
- :prefix beyondpie/major-mode-leader-key
- "rn" '(eglot-rename :which-key "eglot rename")
- "rb" '(eglot-format-buffer :which-key "eglot format buffer")
- "rf" '(eglot-format :which-key "eglot format")
- "rc" '(spacemacs/comint-clear-buffer :which-key "manual clear buffer")
- "gh" '(eldoc :which-key "eldoc")
- "gg" '(eglot-find-implementation :which-key "eglot find imp")
- "M-." '(xref-find-definitions :which-key "xref find def")
- "M-," '(xref-pop-to-location :which-key "xref back")
- "gm" '(imenu :which-key "imenu")
- "eb" '(flymake-show-buffer-diagnostics :whick-key "flymake buffer")
- "ep" '(flymake-show-project-diagnostics :which-key "flymake project")
- "en" '(flymake-goto-next-error :which-key "flymake next err")
- "M-n" '(flymake-goto-next-error :which-key "flymake next err")
- "ep" '(flymake-goto-prev-error :which-key "flymake prev err")
- "M-p" '(flymake-goto-prev-error :which-key "flymake prev err")
- "M-/" '(hippe-expand :which-key "hippie-expand")
- "C-M-/" '(comint-dynamic-complete-filename :which-key "complete filenm")
- "tf" '(ts-fold-toggle :which-key "treesitter fold")
- "va" '(conda-env-activate :which-key "activate conda env")
- "vd" '(conda-env-deactivate :which-key "deactivate conda env")
-)
 
 (use-package hl-todo
   :delight
@@ -205,5 +275,57 @@
            )
   )
 
+(use-package vlf
+  :ensure t
+  :hook (after-init . (lambda () (require 'vlf-setup)))
+  :general
+  (:states '(normal visual insert emacs)
+           :keymaps 'override
+           :prefix beyondpie/normal-leader-key
+           :non-normal-prefix beyondpie/non-normal-leader-key
+           "fl" '(vlf :which-key "visualize large file"))
+  )
+
+(use-package minions
+  :pin melpa
+  :hook (after-init . minions-mode)
+  )
+
+(use-package helpful
+  :config
+  (global-set-key (kbd "C-h f") #'helpful-callable)
+  (global-set-key (kbd "C-h v") #'helpful-variable)
+  (global-set-key (kbd "C-h k") #'helpful-key)
+  (global-set-key (kbd "C-c C-d") #'helpful-at-point)
+  (global-set-key (kbd "C-h F") #'helpful-function)
+  (global-set-key (kbd "C-h C") #'helpful-command)
+)
+
+(use-package elisp-demos
+  :config
+  (advice-add 'describe-function-1
+              :after #'elisp-demos-advice-describe-function-1)
+  )
+
+(use-package which-key
+  :hook (after-init . which-key-mode)
+  :delight
+  :init
+  (setq which-key-show-early-on-C-h t)
+  (setq which-key-idle-delay 0.4)
+  (setq which-key-idle-secondary-delay 0.01)
+  (setq which-key-popup-type 'side-window)
+  (setq which-key-side-window-location 'bottom)
+  (setq which-key-side-window-max-width 0.33)
+  (setq which-key-side-window-max-height 0.25)
+  (setq which-key-max-description-length 30)
+)
+
+(use-package vundo
+  :commands (vundo)
+  :bind ("C-x u" . vundo)
+  :delight
+  :config
+  (setq vundo-compact-display t))
 (provide 'init-prog)
 ;;; init-prog.el ends here
