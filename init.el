@@ -167,6 +167,7 @@
 
 (require 'init-elpa)
 (require 'init-dired)
+;; keep init-elpa and init-dired here the codes below
 
 (use-package which-key
   :hook (after-init . which-key-mode)
