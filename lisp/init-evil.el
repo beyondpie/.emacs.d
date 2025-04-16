@@ -7,25 +7,6 @@
 ;; In my case, I only need to use keymaps 'override in evil or other module
 ;; when using general to define the keys. 
 
-;; https://github.com/emacs-evil/evil-collection
-;; (use-package general
-;;   :ensure t
-;;   :init
-;;   (setq general-override-states '(insert
-;;                                   emacs
-;;                                   hybrid
-;;                                   normal
-;;                                   visual
-;;                                   motion
-;;                                   operator
-;;                                   replace))
-;;   :config
-;;   (general-define-key
-;;    :states '(normal visual motion)
-;;    :keymaps 'override
-;;    "SPC" 'hydra-space/body))
-;;    ;; Replace 'hydra-space/body with your leader function.
-
 ;;; Code:
 (defun beyondpie/set-evil-insert-state-cursor ()
   "Change evil insert state cusor color based on theme."
