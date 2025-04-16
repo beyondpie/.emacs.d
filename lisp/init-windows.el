@@ -5,15 +5,6 @@
 
 ;;; Code:
 
-(global-set-key (kbd "s-w") nil)
-(global-set-key (kbd "C-x 2") 'split-window-below)
-(global-set-key (kbd "C-x 3") 'split-window-right)
-
-;; scroll continuouly one line at a time
-(setq scroll-conservatively 10000)
-
-;; navigate the windows with "C-c <left>" or "C-c <right>"
-(add-hook 'after-init-hook 'winner-mode)
 
 (use-package switch-window
   :ensure t

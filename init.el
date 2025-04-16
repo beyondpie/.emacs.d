@@ -88,11 +88,12 @@ named arguments:
     ))
 
 ;;; === Key bindings ===
+(global-set-key (kbd "s-w") nil)
+(global-set-key (kbd "C-x 2") 'split-window-below)
+(global-set-key (kbd "C-x 3") 'split-window-right)
+
 (global-set-key (kbd "C-SPC") 'set-mark-command)
 (fset 'yes-or-no-p 'y-or-n-p)
-(add-hook 'find-file-hooks 'read-only-if-symlink)
-;; https://www.murilopereira.com/a-rabbit-hole-full-of-lisp/
-(remove-hook 'file-name-at-point-functions 'ffap-guess-file-name-at-point)
 (global-set-key (kbd "C-c l") #'org-store-link)
 (global-set-key (kbd "C-c a") #'org-agenda)
 (global-set-key (kbd "C-c c") #'org-capture)
@@ -112,6 +113,11 @@ named arguments:
 (add-hook 'find-file-hooks 'read-only-if-symlink)
 ;; https://www.murilopereira.com/a-rabbit-hole-full-of-lisp/
 (remove-hook 'file-name-at-point-functions 'ffap-guess-file-name-at-point)
+;; navigate the windows with "C-c <left>" or "C-c <right>"
+(add-hook 'after-init-hook 'winner-mode)
+(add-hook 'find-file-hooks 'read-only-if-symlink)
+;; https://www.murilopereira.com/a-rabbit-hole-full-of-lisp/
+(remove-hook 'file-name-at-point-functions 'ffap-guess-file-name-at-point)
 
 ;;; === Org ===
 (setq org-adapt-indentation t
@@ -121,6 +127,7 @@ named arguments:
 (setq org-todo-keywords
       '(
         (sequence "TODO" "DELAY" "|" "DONE" "CANCEL" "DOING")))
+
 ;;; === Dired ===
 (setq dired-listing-switches "-aBhl --group-directories-first")
 (with-eval-after-load 'dired
@@ -147,8 +154,8 @@ named arguments:
    "!" 'dired-do-shell-command
    ))
 
-
 ;;; === better default ===
+(setq scroll-conservatively 10000)
 (load-theme 'modus-vivendi t)
 (setq-default grep-highlight-matches t
               grep-scroll-output t)
@@ -172,9 +179,6 @@ named arguments:
 
 ;; https://emacs-china.org/t/topic/25811/5
 (setq bidi-inhibit-bpa t)
-
-;; fix error when gpg no public key on rc centos
-(setq package-check-signature nil)
 
 ;; from doom emacs
 ;; PERF: A second, case-insensitive pass
@@ -219,6 +223,8 @@ named arguments:
 (setq native-comp-async-report-warnings-errors nil)
 
 ;; === Package Setup ===
+;; fix error when gpg no public key on rc centos
+(setq package-check-signature nil)
 (setq package-quickstart nil)
 ;; for magit, which requires 'transient' >= 0.5.0
 (setq package-install-upgrade-built-in t)
@@ -273,7 +279,6 @@ named arguments:
 (require 'init-windows)
 (require 'init-git)
 (require 'init-project)
-(require 'init-treesitter)
 (require 'init-prog)
 (require 'init-shell)
 (require 'init-ess)
