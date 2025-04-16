@@ -291,7 +291,6 @@ named arguments:
 (when *is-a-mac*
   (require 'init-macos)
   )
-
 (when (file-exists-p custom-file)
   (load custom-file))
 
