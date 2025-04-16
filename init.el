@@ -11,8 +11,10 @@
 ;; https://idiomdrottning.org/bad-emacs-defaults
 (make-directory "~/.emacs_backups/" t)
 (make-directory "~/.emacs_autosave/" t)
+;; this needs to start emacs out of elpha directory.
 (setq auto-save-file-name-transforms '((".*" "~/.emacs_autosave/" t)))
 (setq backup-directory-alist '(("." . "~/.emacs_backups/")))
+
 (setq backup-by-copying t)
 (setq sentence-end-double-space nil)
 (setq require-final-newline t)
@@ -121,7 +123,84 @@
 (require 'init-elpa)
 (require 'init-const)
 (require 'init-dired)
-(require 'init-utils)
+
+(use-package which-key
+  :hook (after-init . which-key-mode)
+  :delight
+  :init
+  (setq which-key-show-early-on-C-h t)
+  (setq which-key-idle-delay 0.4)
+  (setq which-key-idle-secondary-delay 0.01)
+  (setq which-key-popup-type 'side-window)
+  (setq which-key-side-window-location 'bottom)
+  (setq which-key-side-window-max-width 0.33)
+  (setq which-key-side-window-max-height 0.25)
+  (setq which-key-max-description-length 30)
+)
+
+;; a better undo
+(use-package vundo
+  :commands (vundo)
+  :bind ("C-x u" . vundo)
+  :delight
+  :config
+  (setq vundo-compact-display t))
+
+;; for text edit
+(general-define-key
+ :states '(normal visual insert emacs)
+ :prefix beyondpie/normal-leader-key
+ :non-normal-prefix beyondpie/non-normal-leader-key
+ :keymaps 'override
+ "ir" '(indent-region :which-key "indent region")
+ "rw" '(delete-trailing-whitespace :which-key "delete trailing whitespace")
+ "sr" '(eval-region :which-key "elisp eval-region")
+ )
+
+;; provide better explanations for elisp
+(use-package elisp-demos
+  :config
+  (advice-add 'describe-function-1 :after #'elisp-demos-advice-describe-function-1)
+  )
+
+;; better helpful mode
+(use-package helpful
+  :config
+  (global-set-key (kbd "C-h f") #'helpful-callable)
+  (global-set-key (kbd "C-h v") #'helpful-variable)
+  (global-set-key (kbd "C-h k") #'helpful-key)
+  (global-set-key (kbd "C-c C-d") #'helpful-at-point)
+  (global-set-key (kbd "C-h F") #'helpful-function)
+  (global-set-key (kbd "C-h C") #'helpful-command)
+)
+;; a minor-mode menu
+(use-package minions
+  :pin melpa
+  :hook (after-init . minions-mode)
+  )
+
+(defun read-only-if-symlink ()
+  (if (file-symlink-p buffer-file-name)
+      (progn (setq buffer-read-only t)
+             (message "File is a symlink."))
+    ))
+(add-hook 'find-file-hooks 'read-only-if-symlink)
+
+
+;; https://www.murilopereira.com/a-rabbit-hole-full-of-lisp/
+(remove-hook 'file-name-at-point-functions 'ffap-guess-file-name-at-point)
+;; view large file
+(use-package vlf
+  :ensure t
+  :hook (after-init . (lambda () (require 'vlf-setup)))
+  :general
+  (:states '(normal visual insert emacs)
+           :keymaps 'override
+           :prefix beyondpie/normal-leader-key
+           :non-normal-prefix beyondpie/non-normal-leader-key
+           "fl" '(vlf :which-key "visualize large file"))
+  )
+
 (require 'init-tramp)
 (require 'init-evil)
 (require 'init-themes)
