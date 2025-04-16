@@ -1,9 +1,62 @@
 ;;; init.el --- start emacs configuration  -*- lexical-binding: t -*-
 
 ;;; Commentary:
-;; Ref: purcell
+;; Ref:
+;; - emacs config: purcell, doom emacs, spacemacs, centaur emacs
+;; - better defaults:
+;;   - doom emacs's doom-start.el L37-L43
 
 ;;; Code:
+
+;; https://idiomdrottning.org/bad-emacs-defaults
+(make-directory "~/.emacs_backups/" t)
+(make-directory "~/.emacs_autosave/" t)
+(setq auto-save-file-name-transforms '((".*" "~/.emacs_autosave/" t)))
+(setq backup-directory-alist '(("." . "~/.emacs_backups/")))
+(setq backup-by-copying t)
+(setq sentence-end-double-space nil)
+(setq require-final-newline t)
+(setq frame-inhibit-implied-resize t)
+(setq pixel-scroll-precision-mode t)
+(setq show-trailing-whitespace t)
+(setq kill-whole-line t)
+
+;; https://emacs-china.org/t/topic/25811/5
+(setq bidi-inhibit-bpa t)
+
+;; fix error when gpg no public key on rc centos
+(setq package-check-signature nil)
+
+;; from doom emacs
+;; PERF: A second, case-insensitive pass
+;;  over `auto-mode-alist' is time wasted.
+(setq auto-mode-case-fold nil)
+
+;; Reduce rendering/line scan work for Emacs by not rendering cursors or regions
+;; in non-focused windows.
+(setq-default cursor-in-non-selected-windows nil)
+(setq highlight-nonselected-windows nil)
+
+;; make echo area showing message for 10s
+(setq suggest-key-bindings 10)
+
+;; garbage collection during startup
+(let ((normal-gc-cons-threshold (* 16 1024 1024))
+      (init-gc-cons-threshold (* 32 1024 1024)))
+  (setq gc-cons-threshold init-gc-cons-threshold)
+  (add-hook 'emacs-startup-hook
+            (lambda () (setq gc-cons-threshold normal-gc-cons-threshold))))
+
+;; close the warnings of gccemacs when compiling packages.
+(setq native-comp-async-report-warnings-errors nil)
+
+;; allow buffer undo with larger undo info
+(setq undo-outer-limit 500000000)
+
+;; https://emacs-china.org/t/emacs/21053/13
+(setq read-process-output-max (* 1024 1024))
+(setq process-adaptive-read-buffering nil)
+
 (setq package-quickstart nil)
 (defconst *is-a-mac* (eq system-type 'darwin))
 
@@ -70,7 +123,6 @@
 (require 'init-dired)
 (require 'init-utils)
 (require 'init-tramp)
-(require 'init-better-defaults)
 (require 'init-evil)
 (require 'init-themes)
 (require 'init-helm)
