@@ -1,13 +1,10 @@
 ;;; init.el --- start emacs configuration  -*- lexical-binding: t -*-
 
 ;;; Commentary:
-;; Ref:
-;; - emacs config: purcell, doom emacs, spacemacs, centaur emacs
-;; - better defaults:
-;;   - doom emacs's doom-start.el L37-L43
 
 ;;; Global variables
 (defconst *is-a-mac* (eq system-type 'darwin))
+
 (defcustom beyondpie/normal-leader-key
   "SPC"
   "Evil normal state leader key used as a global leader key."
