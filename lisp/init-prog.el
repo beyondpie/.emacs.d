@@ -31,6 +31,10 @@
 
 (setq-default display-fill-column-indicator-column 78)
 
+(custom-set-variables
+ '(eglot-ignored-server-capabilities '(:hoverProvider))
+)
+
 ;; === hooks ===
 (when (fboundp 'global-eldoc-mode)
   (add-hook 'after-init-hook 'global-eldoc-mode))

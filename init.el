@@ -256,12 +256,12 @@ named arguments:
    (package-initialize))
 
 ;; Should set before loading `use-package'
- (eval-and-compile
+(eval-and-compile
    (setq use-package-always-ensure t)
    (setq use-package-always-defer nil)
    (setq use-package-expand-minimally t)
    (setq use-package-enable-imenu-support t))
- (eval-when-compile
+(eval-when-compile
    (require 'use-package))
 
 (use-package general

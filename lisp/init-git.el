@@ -37,8 +37,9 @@
   :bind (("C-x g" . magit-status)
          ("C-c g" . magit-file-dispatch))
   :config
-  (setq magit-refresh-status-buffer t)
-  (setq auto-revert-buffer-list-filter 'magit-auto-revert-repository-buffer-p)
+  (setq magit-refresh-status-buffer nil)
+  (setq auto-revert-buffer-list-filter
+        'magit-auto-revert-repository-buffer-p)
   (setq magit-diff-highlight-indentation nil
         magit-diff-highlight-trailing nil
         magit-diff-paint-whitespace nil

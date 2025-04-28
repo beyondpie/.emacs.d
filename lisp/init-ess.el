@@ -15,6 +15,7 @@
   :hook (ess-r-mode . (lambda ()
                         (setq-local outline-regexp "^#+ +\\*+")))
   :hook (ess-r-mode . outline-minor-mode)
+  :hook (ess-r-help-mode . evil-mode)
   ;; :hook (ess-r-mode . (lambda ()
   ;;                       (when (not (file-remote-p default-directory))
   ;;                         (setq-local company-backends
