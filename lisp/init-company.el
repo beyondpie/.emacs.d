@@ -16,7 +16,8 @@
   :commands company-cancel
   :bind (("M-/" . company-complete))
   :init
-  (global-set-key (kbd "<tab>") #'company-indent-or-complete-common)
+  ;; this will cover magit in my macOS GUI Emacs.
+  ;; (global-set-key (kbd "<tab>") #'company-indent-or-complete-common)
   (setq company-tooltip-align-annotations nil
         company-tooltip-limit 10
         company-idle-delay 0.2
