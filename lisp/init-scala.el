@@ -4,7 +4,6 @@
 ;; https://scalameta.org/metals/docs/editors/emacs/
 ;;; Code:
 
-
 ;; Use monospaced font faces in current buffer
 ;; https://emacs.stackexchange.com/questions/3038/using-a-different-font-for-each-major-mode
  (defun my-buffer-face-mode-fixed ()
@@ -43,7 +42,7 @@
 	      lsp-signature-auto-activate t
         lsp-signature-render-documentation t
 	      lsp-modeline-code-actions-enable t
-        lsp-diagnostics-provider :flymake
+        lsp-diagnostics-provider :flycheck
 	      lsp-modeline-diagnostics-enable t
 	      lsp-modeline-workspace-status-enable nil
         ;; https://emacs-china.org/t/spacemacs-c-c/15695
