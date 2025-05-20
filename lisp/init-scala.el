@@ -62,6 +62,7 @@
         lsp-idle-delay 0.200
         lsp-log-io nil
         lsp-modeline-code-actions-enable nil
+        lsp-enable-dap-auto-configure nil
         )
   :hook
   (lsp-mode . lsp-enable-which-key-integration)

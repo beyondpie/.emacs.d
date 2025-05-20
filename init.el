@@ -3,7 +3,6 @@
 ;;; Commentary:
 
 ;;; Codes:
-
 ;;; === Requires / dependencies ===
 (require 'package)
 (require 'cl-lib)
