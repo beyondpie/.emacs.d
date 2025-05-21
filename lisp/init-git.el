@@ -46,6 +46,7 @@
         magit-diff-highlight-hunk-body nil
         magit-diff-refine-hunk nil)
   (setq magit-revision-insert-related-refs nil)
+  (setq git-commit-cd-to-toplevel t)
   ;;(remove-hook 'magit-refs-sections-hook 'magit-insert-tags)
   ;;(remove-hook 'server-switch-hook 'magit-commit-diff)
   ;;(remove-hook 'magit-status-sections-hook 'magit-insert-tags-header)

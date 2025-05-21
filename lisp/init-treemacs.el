@@ -36,18 +36,18 @@
           ;; don't show icons in treemacs
           treemacs-no-png-images                 t
           treemacs-no-delete-other-windows       t
-          treemacs-project-follow-cleanup        nil
+          treemacs-project-follow-cleanup        t
           treemacs-persist-file                  (expand-file-name ".cache/treemacs-persist" user-emacs-directory)
           treemacs-position                      'left
           treemacs-recenter-distance             0.1
-          treemacs-recenter-after-file-follow    nil
-          treemacs-recenter-after-tag-follow     nil
+          treemacs-recenter-after-file-follow    t
+          treemacs-recenter-after-tag-follow     t
           treemacs-recenter-after-project-jump   'always
           treemacs-recenter-after-project-expand 'on-distance
-          treemacs-show-cursor                   nil
+          treemacs-show-cursor                   t
           treemacs-show-hidden-files             t
-          treemacs-silent-filewatch              nil
-          treemacs-silent-refresh                nil
+          treemacs-silent-filewatch              t
+          treemacs-silent-refresh                t
           treemacs-sorting                       'alphabetic-asc
           treemacs-space-between-root-nodes      t
           treemacs-tag-follow-cleanup            t
@@ -55,7 +55,7 @@
           treemacs-user-mode-line-format         nil
           treemacs-user-header-line-format       nil
           treemacs-width                         35
-          treemacs-workspace-switch-cleanup      nil)
+          treemacs-workspace-switch-cleanup      t)
 
     ;; The default width and height of the icons is 22 pixels. If you are
     ;; using a Hi-DPI display, uncomment this to double the icon size.
