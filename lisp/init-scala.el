@@ -42,15 +42,15 @@
 	      lsp-signature-auto-activate t
         lsp-signature-render-documentation t
 	      lsp-modeline-code-actions-enable t
-        lsp-diagnostics-provider :none
+        lsp-diagnostics-provider :flymake
 	      lsp-modeline-diagnostics-enable t
-	      lsp-modeline-workspace-status-enable nil
+	      lsp-modeline-workspace-status-enable t
         ;; https://emacs-china.org/t/spacemacs-c-c/15695
         lsp-headerline-breadcrumb-enable nil
         lsp-completion-show-detail t
         lsp-completion-show-kind t
         ;; https://emacs-lsp.github.io/lsp-mode/page/performance/
-	      lsp-enable-file-watchers nil
+	      lsp-enable-file-watchers t
 	      lsp-enable-folding t
         lsp-semantic-tokens-enable t
 	      lsp-enable-symbol-highlighting t
@@ -59,7 +59,7 @@
         lsp-eldoc-enable-hover t
 	      lsp-enable-indentation t
 	      lsp-enable-on-type-formatting nil
-        lsp-idle-delay 0.200
+        lsp-idle-delay 0.500
         lsp-log-io nil
         lsp-modeline-code-actions-enable nil
         lsp-enable-dap-auto-configure nil
@@ -77,7 +77,7 @@
   (lsp-metals-server-args '(;; Metals claims to support range formatting by default but it supports range
                             ;; formatting of multiline strings only. You might want to disable it so that
                             ;; emacs can use indentation provided by scala-mode.
-                            "-J-Dmetals.allow-multiline-string-formatting=off"
+                            "-J-Dmetals.allow-multiline-string-formatting=on"
                             ;; Enable unicode icons. But be warned that emacs might not render unicode
                             ;; correctly in all cases.
                             "-J-Dmetals.icons=unicode"))

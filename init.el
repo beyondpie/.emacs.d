@@ -154,6 +154,12 @@ named arguments:
    ))
 
 ;;; === better default ===
+;; disable creation of .# files
+(setq create-lockfiles nil)
+;; disable creation of ~ files
+(setq make-backup-files nil)
+;; disable creation of # files
+(setq auto-save-default nil)
 (setq scroll-conservatively 10000)
 (load-theme 'modus-vivendi t)
 (setq-default grep-highlight-matches t
