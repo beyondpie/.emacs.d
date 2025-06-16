@@ -50,7 +50,7 @@
         lsp-completion-show-detail t
         lsp-completion-show-kind t
         ;; https://emacs-lsp.github.io/lsp-mode/page/performance/
-	      lsp-enable-file-watchers t
+	      lsp-enable-file-watchers nil
 	      lsp-enable-folding t
         lsp-semantic-tokens-enable t
 	      lsp-enable-symbol-highlighting t
