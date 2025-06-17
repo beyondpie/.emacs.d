@@ -41,10 +41,10 @@
         lsp-enable-xref t
 	      lsp-signature-auto-activate t
         lsp-signature-render-documentation t
-	      lsp-modeline-code-actions-enable t
+	      lsp-modeline-code-actions-enable nil
         lsp-diagnostics-provider :flymake
-	      lsp-modeline-diagnostics-enable t
-	      lsp-modeline-workspace-status-enable t
+	      lsp-modeline-diagnostics-enable nil
+	      lsp-modeline-workspace-status-enable nil
         ;; https://emacs-china.org/t/spacemacs-c-c/15695
         lsp-headerline-breadcrumb-enable nil
         lsp-completion-show-detail t
