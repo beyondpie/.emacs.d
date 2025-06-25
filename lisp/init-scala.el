@@ -35,29 +35,28 @@
   :init
   (setq lsp-keymap-prefix "C-c l"
         lsp-enable-symbol-highlighting t
-        lsp-lens-enable t
-	      lsp-keep-workspace-alive t
+        lsp-lens-enable nil
+	      lsp-keep-workspace-alive nil
         lsp-enable-snippet t
         lsp-enable-xref t
 	      lsp-signature-auto-activate t
-        lsp-signature-render-documentation t
+        lsp-signature-render-documentation nil
 	      lsp-modeline-code-actions-enable nil
-        lsp-diagnostics-provider :flymake
+        lsp-diagnostics-provider :none
 	      lsp-modeline-diagnostics-enable nil
 	      lsp-modeline-workspace-status-enable nil
         ;; https://emacs-china.org/t/spacemacs-c-c/15695
         lsp-headerline-breadcrumb-enable nil
-        lsp-completion-show-detail t
+        lsp-completion-show-detail nil
         lsp-completion-show-kind t
         ;; https://emacs-lsp.github.io/lsp-mode/page/performance/
 	      lsp-enable-file-watchers nil
-	      lsp-enable-folding t
-        lsp-semantic-tokens-enable t
-	      lsp-enable-symbol-highlighting t
+	      lsp-enable-folding nil
+        lsp-semantic-tokens-enable nil
 	      lsp-enable-text-document-color t
-        lsp-enable-imenu t
-        lsp-eldoc-enable-hover t
-	      lsp-enable-indentation t
+        lsp-enable-imenu nil
+        lsp-eldoc-enable-hover nil
+	      lsp-enable-indentation nil
 	      lsp-enable-on-type-formatting nil
         lsp-idle-delay 0.500
         lsp-log-io nil
@@ -77,16 +76,17 @@
   (lsp-metals-server-args '(;; Metals claims to support range formatting by default but it supports range
                             ;; formatting of multiline strings only. You might want to disable it so that
                             ;; emacs can use indentation provided by scala-mode.
-                            "-J-Dmetals.allow-multiline-string-formatting=on"
+                            "-J-Dmetals.allow-multiline-string-formatting=off"
                             ;; Enable unicode icons. But be warned that emacs might not render unicode
                             ;; correctly in all cases.
-                            "-J-Dmetals.icons=unicode"))
+                            ;; "-J-Dmetals.icons=unicode"
+                            ))
   ;; In case you want semantic highlighting. This also has to be enabled in lsp-mode using
   ;; `lsp-semantic-tokens-enable' variable. Also you might want to disable highlighting of modifiers
   ;; setting `lsp-semantic-tokens-apply-modifiers' to `nil' because metals sends `abstract' modifier
   ;; which is mapped to `keyword' face.
-  (lsp-metals-enable-semantic-highlighting t)
-  :hook (scala-mode . lsp)
+  (lsp-semantic-tokens--enable nil)
+  ;; :hook (scala-mode . lsp)
   )
 
 (use-package scala-mode
@@ -99,11 +99,11 @@
   :interpreter ("scala" . scala-mode)
   :hook (
          ;; (scala-mode . eglot-ensure)
-         ;;(scala-mode . tree-sitter-hl-mode)
+         ;; (scala-mode . scala-eglot-capabilities)
+         ;; (scala-mode . tree-sitter-hl-mode)
          (scala-mode . company-mode)
-         (scala-mode . my-buffer-face-mode-fixed)
+         ;; (scala-mode . my-buffer-face-mode-fixed)
          (scala-mode . my-pretty-mode)
-         (scala-mode . scala-eglot-capabilities)
          (scala-mode . scala-left-margin-width)
          )
   :general
