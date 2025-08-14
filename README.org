@@ -21,8 +21,19 @@
     provide powerful, unified programming language support.
 
 ** Install Emacs
-   - macOS: [[https://github.com/d12frosted/homebrew-emacs-plus][emacs-plus]]
+   - macOS: [[https://github.com/d12frosted/homebrew-emacs-plus][emacs-plus]] or [[https://emacsformacos.com/][Emacs for macOS]].
    - Linux: follow the instruction from the official website
+
+** Download package archieve.
+   - The packages used by this configuration are [[https://github.com/beyondpie?tab=repositories][here]].
+   - Use ~(setq package-archives '(("melpa" . "~/.emacs.d/myelpa/")))~ in =~/.emacs.d/init.el=
+     to set the local archieves, where myelpa points to the git repository above.
+   - If you want to use network to install packages (this happens when you have your configurations, and
+     packages are not included in myelpa), you can firstly
+     use ~(setq package-archives '(("melpa" . "https://melpa.org/packges/")))~. Then generate the local archives
+     by yourself.
+   - We can also use both local and website by setting different names of the package archives and set it explicitly
+     when using =use-package= to install some package.
      
 ** Reference
   - [[https://github.com/purcell/emacs.d][Purcell's emacs.d]]
@@ -33,4 +44,5 @@
   - [[https://github.com/redguardtoo/mastering-emacs-in-one-year-guide/blob/master/guide-en.org][Why and how to learn emacs]]
     [[https://github.com/redguardtoo/mastering-emacs-in-one-year-guide/blob/master/guide-zh.org][Chinese version]], which I learnt at first
   - [[https://www.masteringemacs.org][The Book of Mastering Emacs]]
+  - [[https://github.com/redguardtoo/elpa-mirror/tree/master][elpa-mirror]]
 
