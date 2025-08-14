@@ -30,10 +30,13 @@
   (push (expand-file-name dir user-emacs-directory) load-path))
 
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+;; (setq package-archives
+;;       '(("gnu"   . "https://elpa.gnu.org/packages/")
+;;         ("melpa" . "https://melpa.org/packages/")
+;;       ))
+
 (setq package-archives
-      '(("gnu"   . "https://elpa.gnu.org/packages/")
-        ("melpa" . "https://melpa.org/packages/")
-      ))
+      '(("melpa" . "~/.emacs.d/myelpa/")))
 
 ;;; === package init
 (unless (bound-and-true-p package--initialized) ; To avoid warnings in 27

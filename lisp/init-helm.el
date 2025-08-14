@@ -69,10 +69,10 @@
   )
 
 (use-package helm-git-grep
- :init
- (slot/vc-install :fetcher "github"
-                  :repo "yasuyk/helm-git-grep"
-                  )
+ ;; :init
+ ;; (slot/vc-install :fetcher "github"
+ ;;                  :repo "yasuyk/helm-git-grep"
+ ;;                  )
  :delight
  :commands helm-git-grep
  :general
@@ -91,8 +91,8 @@
 (use-package helm-swoop
   :delight
   :init
-  (slot/vc-install :fetcher "github"
-                   :repo "emacsattic/helm-swoop")
+  ;; (slot/vc-install :fetcher "github"
+  ;;                  :repo "emacsattic/helm-swoop")
   (setq helm-swoop-split-with-multiple-windows t
         helm-swoop-split-direction 'split-window-vertically)
   (setq helm-swoop-pre-input-function

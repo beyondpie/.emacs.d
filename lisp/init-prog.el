@@ -168,9 +168,9 @@
   :pin melpa)
 
 ;; program fold
-(use-package ts-fold
-  :init (slot/vc-install :fetcher "github" :repo "emacs-tree-sitter/ts-fold")
-  )
+;; (use-package ts-fold
+;;   :init (slot/vc-install :fetcher "github" :repo "emacs-tree-sitter/ts-fold")
+;;   )
 
 (use-package conda
   :delight

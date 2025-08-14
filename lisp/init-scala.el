@@ -90,9 +90,9 @@
   )
 
 (use-package scala-mode
-  :init
-  (slot/vc-install :fetcher "github"
-                   :repo "hvesalai/emacs-scala-mode")
+  ;; :init
+  ;; (slot/vc-install :fetcher "github"
+  ;;                  :repo "hvesalai/emacs-scala-mode")
   ;; (setq scala-indent:indent-value-expression t
   ;;       scala-indent:align-parameters t
   ;;      scala-indent:align-forms t)
@@ -154,9 +154,9 @@
 
 
 (use-package sbt-mode
-  :init
-  (slot/vc-install :fetcher "github"
-                   :repo "hvesalai/emacs-sbt-mode")
+  ;; :init
+  ;; (slot/vc-install :fetcher "github"
+  ;;                  :repo "hvesalai/emacs-sbt-mode")
   :commands sbt-start sbt-command sbt-send-region sbt-send-line
   :config
   (setq sbt:program-options '("-Dsbt.supershell=false"))
