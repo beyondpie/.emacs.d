@@ -15,16 +15,16 @@
 ;; for magit, which requires 'transient' >= 0.5.0
 (setq package-install-upgrade-built-in t)
 ;; https://www.emacswiki.org/emacs/LoadPath
-(setq package-user-dir
-      (expand-file-name
-       (format "elpa-%s.%s" emacs-major-version emacs-minor-version)
-       user-emacs-directory))
-(unless (file-exists-p package-user-dir)
-  (make-directory package-user-dir)
-  )
-(let ((default-directory package-user-dir))
-  (normal-top-level-add-subdirs-to-load-path)
-  )
+;; (setq package-user-dir
+;;       (expand-file-name
+;;        (format "elpa-%s.%s" emacs-major-version emacs-minor-version)
+;;        user-emacs-directory))
+;; (unless (file-exists-p package-user-dir)
+;;   (make-directory package-user-dir)
+;;   )
+;; (let ((default-directory package-user-dir))
+;;   (normal-top-level-add-subdirs-to-load-path)
+;;   )
 
 (dolist (dir '("site-lisp" "lisp"))
   (push (expand-file-name dir user-emacs-directory) load-path))
@@ -295,7 +295,7 @@ named arguments:
 (require 'init-tex)
 (require 'init-elfeed)
 (require 'init-treemacs)
-(require 'init-scala)
+;;(require 'init-scala)
 (when *is-a-mac*
   (require 'init-macos)
   )
