@@ -8,6 +8,52 @@
 (require 'cl-lib)
 (require 'bind-key)
 
+;; === Package Setup ===
+;; fix error when gpg no public key on rc centos
+(setq package-check-signature nil)
+(setq package-quickstart nil)
+;; for magit, which requires 'transient' >= 0.5.0
+(setq package-install-upgrade-built-in t)
+;; https://www.emacswiki.org/emacs/LoadPath
+(setq package-user-dir
+      (expand-file-name
+       (format "elpa-%s.%s" emacs-major-version emacs-minor-version)
+       user-emacs-directory))
+(unless (file-exists-p package-user-dir)
+  (make-directory package-user-dir)
+  )
+(let ((default-directory package-user-dir))
+  (normal-top-level-add-subdirs-to-load-path)
+  )
+
+(dolist (dir '("site-lisp" "lisp"))
+  (push (expand-file-name dir user-emacs-directory) load-path))
+
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(setq package-archives
+      '(("gnu"   . "https://elpa.gnu.org/packages/")
+        ("melpa" . "https://melpa.org/packages/")
+      ))
+
+;;; === package init
+(unless (bound-and-true-p package--initialized) ; To avoid warnings in 27
+   (setq package-enable-at-startup nil)          ; To prevent initializing twice
+   (package-initialize))
+
+;; Should set before loading `use-package'
+(eval-and-compile
+   (setq use-package-always-ensure t)
+   (setq use-package-always-defer nil)
+   (setq use-package-expand-minimally t)
+   (setq use-package-enable-imenu-support t))
+(eval-when-compile
+   (require 'use-package))
+
+(use-package general
+  :ensure t
+  :demand t)
+
+ 
 ;;; === Global variables ===
 (defconst *is-a-mac* (eq system-type 'darwin))
 
@@ -227,51 +273,8 @@ named arguments:
 (setq native-comp-deferred-compilation nil)
 (setq native-comp-async-report-warnings-errors nil)
 
-;; === Package Setup ===
-;; fix error when gpg no public key on rc centos
-(setq package-check-signature nil)
-(setq package-quickstart nil)
-;; for magit, which requires 'transient' >= 0.5.0
-(setq package-install-upgrade-built-in t)
-;; https://www.emacswiki.org/emacs/LoadPath
-(setq package-user-dir
-      (expand-file-name
-       (format "elpa-%s.%s" emacs-major-version emacs-minor-version)
-       user-emacs-directory))
-(unless (file-exists-p package-user-dir)
-  (make-directory package-user-dir)
-  )
-(let ((default-directory package-user-dir))
-  (normal-top-level-add-subdirs-to-load-path)
-  )
-
-(dolist (dir '("site-lisp" "lisp"))
-  (push (expand-file-name dir user-emacs-directory) load-path))
-
-(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-(setq package-archives
-      '(("gnu"   . "https://elpa.gnu.org/packages/")
-        ("melpa" . "https://melpa.org/packages/")
-      ))
 ;; remove compling in the mode-line
 (setq compilation-in-progress nil)
-;; Initialize packages
-(unless (bound-and-true-p package--initialized) ; To avoid warnings in 27
-   (setq package-enable-at-startup nil)          ; To prevent initializing twice
-   (package-initialize))
-
-;; Should set before loading `use-package'
-(eval-and-compile
-   (setq use-package-always-ensure t)
-   (setq use-package-always-defer nil)
-   (setq use-package-expand-minimally t)
-   (setq use-package-enable-imenu-support t))
-(eval-when-compile
-   (require 'use-package))
-
-(use-package general
-  :ensure t
-  :demand t)
 
 ;;; === Local Settings ===
 (require 'init-tramp)
