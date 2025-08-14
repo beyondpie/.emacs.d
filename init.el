@@ -295,7 +295,7 @@ named arguments:
 (require 'init-tex)
 (require 'init-elfeed)
 (require 'init-treemacs)
-;;(require 'init-scala)
+(require 'init-scala)
 (when *is-a-mac*
   (require 'init-macos)
   )

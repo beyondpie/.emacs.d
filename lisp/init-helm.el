@@ -68,38 +68,38 @@
        t nil '("*"))))
   )
 
-;;(use-package helm-git-grep
-;;  :init
-;;  (slot/vc-install :fetcher "github"
-;;                   :repo "yasuyk/helm-git-grep"
-;;                   )
-;;  :delight
-;;  :commands helm-git-grep
-;;  :general
-;;  (:states '(normal visual insert emacs)
-;;	   :prefix beyondpie/normal-leader-key
-;;	   :non-normal-prefix beyondpie/non-normal-leader-key
-;;	   :keymaps 'override
-;;	   "hg" '(helm-git-grep :which-key "helm git grep")
-;;	   )
-;;  )
+(use-package helm-git-grep
+ :init
+ (slot/vc-install :fetcher "github"
+                  :repo "yasuyk/helm-git-grep"
+                  )
+ :delight
+ :commands helm-git-grep
+ :general
+ (:states '(normal visual insert emacs)
+	   :prefix beyondpie/normal-leader-key
+	   :non-normal-prefix beyondpie/non-normal-leader-key
+	   :keymaps 'override
+	   "hg" '(helm-git-grep :which-key "helm git grep")
+	   )
+ )
 
 (use-package helm-xref
   :delight
   :pin melpa)
 
-;; (use-package helm-swoop
-;;   :delight
-;;   :init
-;;   (slot/vc-install :fetcher "github"
-;;                    :repo "emacsattic/helm-swoop")
-;;   (setq helm-swoop-split-with-multiple-windows t
-;;         helm-swoop-split-direction 'split-window-vertically)
-;;   (setq helm-swoop-pre-input-function
-;;         (lambda () ""))
-;;   :bind
-;;   ("C-s" . helm-swoop)
-;;   )
+(use-package helm-swoop
+  :delight
+  :init
+  (slot/vc-install :fetcher "github"
+                   :repo "emacsattic/helm-swoop")
+  (setq helm-swoop-split-with-multiple-windows t
+        helm-swoop-split-direction 'split-window-vertically)
+  (setq helm-swoop-pre-input-function
+        (lambda () ""))
+  :bind
+  ("C-s" . helm-swoop)
+  )
 
 (provide 'init-helm)
 ;;; init-helm.el ends here
