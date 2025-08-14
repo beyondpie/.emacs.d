@@ -38,7 +38,7 @@
          ("M-y" . helm-show-kill-ring)
          ("C-x b" . helm-mini)
          :map helm-map
-         ("C-c g" . helm-git-grep-from-helm)
+         ;; ("C-c g" . helm-git-grep-from-helm)
          ("C-i" . helm-execute-persistent-action)
          ("C-z" . helm-select-action)
          ([tab] . helm-execute-persistent-action)
@@ -48,7 +48,6 @@
            :prefix beyondpie/normal-leader-key
            :non-normal-prefix beyondpie/non-normal-leader-key
            :keymaps 'override
-           "hg" '(helm-git-grep :which-key "helm git grep")
            "bf" '(helm-mini :which-key "helm-mini"))
   ;; https://stackoverflow.com/questions/30142296/search-in-current-folder-with-helm-do-grep
   (defun my/helm-do-grep-current-directory-tree ()
@@ -69,29 +68,38 @@
        t nil '("*"))))
   )
 
-(use-package helm-git-grep
-  :ensure t
-  :pin melpa
-  :delight
-  :commands helm-git-grep)
+;;(use-package helm-git-grep
+;;  :init
+;;  (slot/vc-install :fetcher "github"
+;;                   :repo "yasuyk/helm-git-grep"
+;;                   )
+;;  :delight
+;;  :commands helm-git-grep
+;;  :general
+;;  (:states '(normal visual insert emacs)
+;;	   :prefix beyondpie/normal-leader-key
+;;	   :non-normal-prefix beyondpie/non-normal-leader-key
+;;	   :keymaps 'override
+;;	   "hg" '(helm-git-grep :which-key "helm git grep")
+;;	   )
+;;  )
 
 (use-package helm-xref
-  :ensure t
   :delight
   :pin melpa)
 
-(use-package helm-swoop
-  :delight
-  :ensure t
-  :pin melpa
-  :init
-  (setq helm-swoop-split-with-multiple-windows t
-        helm-swoop-split-direction 'split-window-vertically)
-  (setq helm-swoop-pre-input-function
-        (lambda () ""))
-  :bind
-  ("C-s" . helm-swoop)
-  )
+;; (use-package helm-swoop
+;;   :delight
+;;   :init
+;;   (slot/vc-install :fetcher "github"
+;;                    :repo "emacsattic/helm-swoop")
+;;   (setq helm-swoop-split-with-multiple-windows t
+;;         helm-swoop-split-direction 'split-window-vertically)
+;;   (setq helm-swoop-pre-input-function
+;;         (lambda () ""))
+;;   :bind
+;;   ("C-s" . helm-swoop)
+;;   )
 
 (provide 'init-helm)
 ;;; init-helm.el ends here
