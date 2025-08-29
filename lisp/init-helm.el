@@ -38,7 +38,6 @@
          ("M-y" . helm-show-kill-ring)
          ("C-x b" . helm-mini)
          :map helm-map
-         ;; ("C-c g" . helm-git-grep-from-helm)
          ("C-i" . helm-execute-persistent-action)
          ("C-z" . helm-select-action)
          ([tab] . helm-execute-persistent-action)
@@ -48,7 +47,9 @@
            :prefix beyondpie/normal-leader-key
            :non-normal-prefix beyondpie/non-normal-leader-key
            :keymaps 'override
-           "bf" '(helm-mini :which-key "helm-mini"))
+           "bf" '(helm-mini :which-key "helm-mini")
+           "hg" '(helm-grep-do-git-grep :which-key "helm-git-grep")
+           )
   ;; https://stackoverflow.com/questions/30142296/search-in-current-folder-with-helm-do-grep
   (defun my/helm-do-grep-current-directory-tree ()
     "Recursively search current directory.
