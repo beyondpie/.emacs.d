@@ -101,7 +101,6 @@
          ;; (scala-mode . eglot-ensure)
          ;; (scala-mode . scala-eglot-capabilities)
          ;; (scala-mode . tree-sitter-hl-mode)
-         (scala-mode . company-mode)
          ;; (scala-mode . my-buffer-face-mode-fixed)
          (scala-mode . my-pretty-mode)
          (scala-mode . scala-left-margin-width)

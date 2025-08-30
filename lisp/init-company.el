@@ -10,6 +10,7 @@
          (inferior-ess-r-mode . company-mode)
          (python-mode . company-mode)
          (eshell-mode . company-mode)
+         (scala-mode . company-mode)
          )  
   :delight
   :defines (company-dabbrev-ignore-case company-dabbrev-downcase)
@@ -32,6 +33,7 @@
   (add-to-list 'completion-styles 'initials t)
   :config
   (add-to-list 'company-transformers #'delete-dups)
+  (setq lsp-completion-provider :capf)
   )
 (provide 'init-company)
 ;;; init-company.el ends here
