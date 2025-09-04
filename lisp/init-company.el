@@ -33,7 +33,7 @@
   (add-to-list 'completion-styles 'initials t)
   :config
   (add-to-list 'company-transformers #'delete-dups)
-  (setq lsp-completion-provider :capf)
+  ;;(setq lsp-completion-provider :capf)
   )
 (provide 'init-company)
 ;;; init-company.el ends here

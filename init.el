@@ -36,7 +36,11 @@
 ;;       ))
 
 (setq package-archives
-      '(("melpa" . "~/.emacs.d/myelpa/")))
+      '(
+        ("melpa" . "~/.emacs.d/myelpa/")
+        ;;("rawmelpa" . "https://melpa.org/packages/")
+        )
+      )
 
 ;;; === package init
 (unless (bound-and-true-p package--initialized) ; To avoid warnings in 27

@@ -86,6 +86,7 @@
   ;; setting `lsp-semantic-tokens-apply-modifiers' to `nil' because metals sends `abstract' modifier
   ;; which is mapped to `keyword' face.
   (lsp-semantic-tokens--enable nil)
+  (lsp-metals-install-version "1.6.2")
   ;; :hook (scala-mode . lsp)
   )
 
@@ -164,6 +165,17 @@
     (sbt:send-region (line-beginning-position)
                      (line-end-position)))
   )
+
+(use-package ensime-mode
+  :ensure nil
+  :load-path "/Users/szu/softwares/ensime-tng/lisp"
+  :commands ensime-mode
+  :bind
+  (:map ensime-mode-map
+        ;;("M-." . ensime-jump-to-definition)
+        ("C-c C-i t" . ensime-type-at-point)
+        ("C-c C-i s" . ensime-symbol-at-point)
+        ("C-c C-r i" . ensime-import-symbol-at-point)))
 
 (provide 'init-scala)
 ;;; init-scala.el ends here
