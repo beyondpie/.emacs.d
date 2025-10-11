@@ -306,8 +306,6 @@ named arguments:
   )
 (when (file-exists-p custom-file)
   (load custom-file))
-;; setgui defined in themes
-(if (display-graphic-p) (beyondpie/setgui))
 
 (provide 'init)
 ;;; init.el ends here

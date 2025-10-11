@@ -128,5 +128,8 @@ ALPHA is numeric value from [0, 100]."
     )
   (beyondpie/set-evil-insert-state-cursor)
   )
+
+;; setgui defined in themes
+(if (display-graphic-p) (beyondpie/setgui))
 (provide 'init-themes)
 ;;; init-themes.el ends here
