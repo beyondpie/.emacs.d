@@ -31,6 +31,7 @@
 #+BEGIN_SRC shell
   # back up original configuration if you have.
   cp -r ~/.emacs.d ~/dot_emacsd_bk
+  rm -r ~/.emacs.d
   # download this configuration.
   cd ~ && git clone https://github.com/beyondpie/.emacs.d
   # download the packages this configuration needs
