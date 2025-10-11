@@ -115,18 +115,7 @@
   :pin melpa
   :hook (dired-mode . diff-hl-dired-mode)
   )
-(use-package all-the-icons
-  :pin melpa
-  :if (display-graphic-p))
 
-(use-package all-the-icons-dired
-  :diminish
-  :pin melpa
-  :init
-  (setq all-the-icons-dired-monochrome nil)
-  :if (display-graphic-p)
-  :hook (dired-mode . all-the-icons-dired-mode)
-  )
 
 (use-package conda
   :delight
