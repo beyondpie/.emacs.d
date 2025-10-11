@@ -24,7 +24,7 @@
    - macOS: [[https://github.com/d12frosted/homebrew-emacs-plus][emacs-plus]] or [[https://emacsformacos.com/][Emacs for macOS]].
    - Linux: follow the instruction from the official website
 
-** Configurations
+** Setup configurations
    Emacs needs to read a configuration file =init.el=, just like the
    one in this repository. In order to use the configurations here,
    you can
@@ -37,7 +37,8 @@
   # download the packages this configuration needs
   cd ~/.emacs.d && git clone https://github.com/beyondpie/myelpa
 #+END_SRC
-   
+  Then you can open Emacs, which will takes some time to set up the
+  configurations only at the first time you use this configuration. 
 
 ** Explanations about packages
    - In current config, we use ~(setq package-archives '(("melpa" . "~/.emacs.d/myelpa/")))~ in =~/.emacs.d/init.el=
