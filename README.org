@@ -24,9 +24,22 @@
    - macOS: [[https://github.com/d12frosted/homebrew-emacs-plus][emacs-plus]] or [[https://emacsformacos.com/][Emacs for macOS]].
    - Linux: follow the instruction from the official website
 
-** Download package archieve.
-   - The packages used by this configuration are [[https://github.com/beyondpie?tab=repositories][here]].
-   - Use ~(setq package-archives '(("melpa" . "~/.emacs.d/myelpa/")))~ in =~/.emacs.d/init.el=
+** Configurations
+   Emacs needs to read a configuration file =init.el=, just like the
+   one in this repository. In order to use the configurations here,
+   you can
+#+BEGIN_SRC shell
+  # back up original configuration if you have.
+  cp -r ~/.emacs.d ~/dot_emacsd_bk
+  # download this configuration.
+  cd ~ && git clone https://github.com/beyondpie/.emacs.d
+  # download the packages this configuration needs
+  cd ~/.emacs.d && git clone https://github.com/beyondpie/myelpa
+#+END_SRC
+   
+
+** Explanations about packages
+   - In current config, we use ~(setq package-archives '(("melpa" . "~/.emacs.d/myelpa/")))~ in =~/.emacs.d/init.el=
      to set the local archieves, where myelpa points to the git repository above.
    - If you want to use network to install packages (this happens when you have your configurations, and
      packages are not included in myelpa), you can firstly
