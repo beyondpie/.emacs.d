@@ -277,9 +277,10 @@ named arguments:
 (setq native-comp-speed -1)
 (setq native-comp-deferred-compilation nil)
 (setq native-comp-async-report-warnings-errors nil)
-
-;; remove compling in the mode-line
 (setq compilation-in-progress nil)
+
+;; === modeline design ===
+(setq mode-line-percent-position nil)
 
 ;;; === Local Settings ===
 (require 'init-tramp)
