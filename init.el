@@ -177,6 +177,7 @@ named arguments:
 (setq org-todo-keywords
       '(
         (sequence "TODO" "DELAY" "|" "DONE" "CANCEL" "DOING")))
+(add-to-list 'org-agenda-files (expand-file-name "~/git-recipes/diary"))
 
 ;;; === Dired ===
 (setq dired-listing-switches "-aBhl --group-directories-first")

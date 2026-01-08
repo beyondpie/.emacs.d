@@ -40,7 +40,7 @@
         lsp-enable-snippet t
         lsp-enable-xref t
 	      lsp-signature-auto-activate t
-        lsp-signature-render-documentation t
+        lsp-signature-render-documentation nil
 	      lsp-modeline-code-actions-enable t
         lsp-diagnostics-provider :flymake
 	      lsp-modeline-diagnostics-enable t
