@@ -174,10 +174,14 @@ named arguments:
       org-hide-leading-stars t
       org-old-levels-only t)
 
+;;; Edit
 (setq org-todo-keywords
       '(
-        (sequence "TODO" "DELAY" "|" "DONE" "CANCEL" "DOING")))
-(add-to-list 'org-agenda-files (expand-file-name "~/git-recipes/diary"))
+        (sequence "TODO" "DELAY" "DOING" "FEEDBACK" "VERIFY"
+                  "|" "DONE" "CANCEL" "REMIND" "DELEGATED")))
+;;; Edit
+(add-to-list 'org-agenda-files (expand-file-name "~/diary"))
+
 
 ;;; === Dired ===
 (setq dired-listing-switches "-aBhl --group-directories-first")
