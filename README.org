@@ -1,3 +1,4 @@
+This project is archived, and moved to https://gitee.com/beyondpie/.emacs.d.
 * 29 Garden Street Emacs
   My configuration for emacs since Dec, 2020 till now.
   - Emacs version: latest (current 30.05 in development)
