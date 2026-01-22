@@ -173,18 +173,18 @@ named arguments:
 (setq org-adapt-indentation t
       org-hide-leading-stars t
       org-old-levels-only t)
-
-(setq org-todo-keywords
-      '(
-        (sequence "TODO" "DELAY" "|" "DONE" "CANCEL" "DOING")))
-(setq org-agenda-files (expand-file-name "~/diary"))
+(setq calendar-week-start-day 1)
+;;; Edit
 (setq org-agenda-prefix-format
       '((agenda . " %i %-12:c %b ")
         (todo   . " %i %-12:c %b ")
         (tags   . " %i %-12:c %b ")
         (search . " %i %-12:c %b ")))
-(setq calendar-week-start-day 1)
 (setq diary-file (expand-file-name "~/diary/diary"))
+(setq org-todo-keywords  '((sequence "TODO" "DELAY" "DOING" "FEEDBACK" "VERIFY"
+                  "|" "DONE" "CANCEL" "REMIND" "DELEGATED")))
+(add-to-list 'org-agenda-files (expand-file-name "~/diary"))
+
 
 ;;; === Dired ===
 (setq dired-listing-switches "-aBhl --group-directories-first")
